@@ -7,6 +7,7 @@ import logger from 'morgan'
 import path from 'path'
 import session from 'express-session'
 
+
 // 使用檔案的session store，存在sessions資料夾
 import sessionFileStore from 'session-file-store'
 const FileStore = sessionFileStore(session)
@@ -72,6 +73,8 @@ for (const filename of filenames) {
   const slug = filename.split('.')[0]
   app.use(`${apiPath}/${slug === 'index' ? '' : slug}`, item.default)
 }
+
+
 // 載入routes中的各路由檔案，並套用api路由 END
 
 // 捕抓404錯誤處理
