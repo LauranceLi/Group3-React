@@ -12,5 +12,6 @@
     "editor.defaultFormatter": "cweijan.vscode-mysql-client2"
   },
   "javascript.preferences.importModuleSpecifierEnding": "js",
-  "typescript.preferences.importModuleSpecifierEnding": "js"
+  "typescript.preferences.importModuleSpecifierEnding": "js",
+  "liveServer.settings.port": 5501
 }
