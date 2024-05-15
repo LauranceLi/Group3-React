@@ -24,9 +24,24 @@
   padding: 0;
 }
 
+#__next {
+  height: 100vh; 
+}
+
+@media only screen and  (max-width: 991px) {
+  #__next {
+    height: auto;
+  }
+}
+
 body {
   font-family: "Roboto", sans-serif;
 }
+
+main {
+  width: 100%;
+}
+
 
 :root {
   --primary-color: #FFC107;
@@ -38,11 +53,10 @@ body {
   --info-color-50:rgba(25, 42, 86, 0.5);
   --info-color-25:rgba(25, 42, 86, 0.25);
 
+
 }
 
-body {
-  height: 100vh;
-}
+
 
 @media only screen and  (max-width: 768px) {
   body {
@@ -94,12 +108,9 @@ a {
   font-weight: 700;
 }
 a:hover, a:focus {
-  transition-duration: 500ms;
+  transition-duration: 350ms;
   text-decoration: none;
   outline: none;
-}
-body {
-  height: 100vh;
 }
 
 input:-webkit-autofill {
