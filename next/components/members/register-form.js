@@ -1,5 +1,7 @@
 import React from 'react'
 import styles from '/styles/register.module.css'
+import { ImGoogle2 } from 'react-icons/im'
+import { ImFacebook2 } from 'react-icons/im'
 
 const RegisterForm = () => {
   return (
@@ -13,12 +15,14 @@ const RegisterForm = () => {
           <div className={styles.thirdPartyLogin}>
             <h5>其他方式</h5>
             <div
-              className={`${styles.registerItem} border-0 justify-content-start`}
+              className={`${styles.registerItem} ${styles.thirdPartyLoginBtns}  border-0 justify-content-start`}
             >
-              <a href="" className={styles.thirdPartyLoginBtn}>
+              <a href="" className={`${styles.thirdPartyLoginBtn} ${styles.facebookIcon}`}>
+              <ImFacebook2 size={22} />
                 Facebook
               </a>
-              <a href="" className={styles.thirdPartyLoginBtn}>
+              <a href="" className={`${styles.thirdPartyLoginBtn} ${styles.googleIcon}`}>
+              <ImGoogle2 size={22} />
                 Google
               </a>
             </div>

@@ -51,8 +51,8 @@ const LoginForm = () => {
             <div className={styles.thirdPartyLogin}>
               <h5>其他登入方式</h5>
               <div className={`${styles.loginItem} border-0`}>
-                <a href="" className={styles.thirdPartyLoginBtn}>
-                  <ImFacebook2 size={22} />
+                <a href="" className={`${styles.thirdPartyLoginBtn} `}>
+                  <ImFacebook2 size={22} className={styles.facebookIcon}/>
                   Facebook
                 </a>
                 <a href="" className={styles.thirdPartyLoginBtn}>

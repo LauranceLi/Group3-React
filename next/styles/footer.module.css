@@ -1,0 +1,159 @@
+.footer {
+  width: 100%;
+  position: relative;
+}
+
+.footer-area {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+.footer-area .copywrite-text {
+  padding: 30px;
+  text-align: center;
+}
+.footer-area .copywrite-text p {
+  font-weight: 300;
+  margin-bottom: 0;
+}
+.footer-area .copywrite-text a {
+  color: #565656;
+  font-weight: 300;
+  font-size: 15px;
+}
+.footer-area .copywrite-text a:hover,
+.footer-area .copywrite-text a:focus {
+  font-size: 15px;
+}
+.footer-area .backEnd-content .dots {
+  position: absolute;
+  right: -50px;
+  top: 0;
+  z-index: -1;
+}
+.footer-area .backEnd-content h2 {
+  position: absolute;
+  font-size: 230px;
+  color: #f0f0f0;
+  z-index: -1;
+  top: -50px;
+  left: -50px;
+}
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  .footer-area .backEnd-content h2 {
+    font-size: 170px;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .footer-area .backEnd-content h2 {
+    font-size: 120px;
+    top: 0;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .footer-area .backEnd-content h2 {
+    font-size: 80px;
+    top: 0;
+    left: -30px;
+  }
+}
+
+/* footer */
+.footer {
+  /* border-top: 1px solid var(--info-color-75); */
+  /* background: linear-gradient(
+      0deg,
+      rgba(11, 21, 48, 1) 0%,
+      rgba(11, 21, 48, 0.3) 100%
+    ),
+    url(../public/images/lake&Stars.jpg) lightgray 50% / cover no-repeat; */
+    background-color: var(--info-color);
+  padding: 2rem;
+  margin: 0;
+}
+
+.footerContainer {
+  display: flex;
+  align-items: center;
+}
+
+.footer h5 {
+  color: var(--primary-color);
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+.footer ul {
+  padding: 0;
+}
+
+.footer a,
+.footer li {
+  color: white;
+  font-size: 1rem;
+  padding: 0.2rem 0;
+  font-weight: 300;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem 3rem;
+}
+
+.footerItem {
+  width: 28%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media only screen and (max-width: 576px) {
+  .footer {
+    align-items: start;
+    flex-wrap: wrap;
+  }
+
+  .footerItem{
+        display: flex;
+    align-items: start;
+    margin-bottom: 1.5rem;
+  }
+  .footerItem:nth-child(1) {
+    order: 1;
+    width: 100%;
+
+  }
+  .footerItem:nth-child(2),
+  .footerItem:nth-child(3) {
+    width: 50%;
+  }
+}
+
+.footerItemContext {
+  width: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.copyRight {
+  position: absolute;
+  
+  background-image: linear-gradient(
+    to right bottom,
+    #263762,
+    #203058,
+    #1a294e,
+    #152244,
+    #0f1c3b
+  );
+  /* background-color: var(--info-color); */
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.copyRight p {
+  color: white;
+  margin: 0;
+}

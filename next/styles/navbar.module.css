@@ -1,0 +1,374 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media only screen and (max-width: 576px) {
+.nav {
+  height: 100%;
+  justify-content: flex-end;
+}
+}
+
+.nav a {
+  display: flex;
+  color: white;
+  padding: 0.7rem;
+  font-size: 1.2rem;
+}
+
+.nav a:hover {
+  color: white;
+
+  font-size: 1.2rem;
+  text-shadow: 2px 1px 3px rgba(0, 0, 0, 0.35);
+  transition: all 0.2s linear;
+}
+
+.logoBox {
+  display: flex;
+  justify-content: center;
+  padding: 1.3rem;
+  height: 6.5rem;
+}
+
+@media only screen and (max-width: 991px) {
+  .logoBox {
+    display: none;
+  }
+}
+
+.logoBox a {
+  color: white;
+  font-size: 1.7rem;
+  font-weight: 500;
+}
+
+.logoBox a:hover {
+  font-size: 1.7rem;
+  font-weight: 500;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+}
+
+/* logo動畫 start*/
+.logo,
+.logo:focus,
+.logo:hover {
+  position: relative;
+  min-width: 200px;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  -webkit-font-smoothing: antialiased;
+}
+.logo span:nth-child(1),
+.logo span:nth-child(2),
+.logo span:nth-child(3),
+.logo span:nth-child(4) {
+  content: '';
+  display: block;
+  position: absolute;
+  background-color: #ffffff;
+}
+.logo span:nth-child(1) {
+  width: 1px;
+  left: 0;
+  bottom: 0;
+}
+.logo span:nth-child(2) {
+  height: 1px;
+  left: 0;
+  top: 0;
+}
+.logo span:nth-child(3) {
+  width: 1px;
+  right: 0;
+  top: 0;
+}
+.logo span:nth-child(4) {
+  height: 1px;
+  right: 0;
+  bottom: 0;
+}
+.logo:hover {
+  border: none;
+}
+.logo:hover span:nth-child(1) {
+  animation: move1 1500ms infinite ease;
+}
+.logo:hover span:nth-child(2) {
+  animation: move2 1500ms infinite ease;
+}
+.logo:hover span:nth-child(3) {
+  animation: move3 1500ms infinite ease;
+}
+.logo:hover span:nth-child(4) {
+  animation: move4 1500ms infinite ease;
+}
+@keyframes move1 {
+  0% {
+    height: 100%;
+    bottom: 0;
+  }
+  54% {
+    height: 0;
+    bottom: 100%;
+  }
+  55% {
+    height: 0;
+    bottom: 0;
+  }
+  100% {
+    height: 100%;
+    bottom: 0;
+  }
+}
+@keyframes move2 {
+  0% {
+    width: 0;
+    left: 0;
+  }
+  50% {
+    width: 100%;
+    left: 0;
+  }
+  100% {
+    width: 0;
+    left: 100%;
+  }
+}
+@keyframes move3 {
+  0% {
+    height: 100%;
+    top: 0;
+  }
+  54% {
+    height: 0;
+    top: 100%;
+  }
+  55% {
+    height: 0;
+    top: 0;
+  }
+  100% {
+    height: 100%;
+    top: 0;
+  }
+}
+@keyframes move4 {
+  0% {
+    width: 0;
+    right: 0;
+  }
+  55% {
+    width: 100%;
+    right: 0;
+  }
+  100% {
+    width: 0;
+    right: 100%;
+  }
+}
+/* logo動畫 end*/
+
+.rowNav {
+  display: flex;
+  align-items: center;
+}
+
+.rowNav ul {
+  display: flex;
+}
+
+@media only screen and (max-width: 576px) {
+  .rowNav {
+    display: none;
+  }
+}
+
+.navLink {
+  position: relative; /* Add this line */
+}
+
+.navLink:after {
+  width: 0%;
+  content: '';
+}
+
+.navLink:hover::after {
+  width: 100%;
+  height: 3px;
+  background-color: #ffffff;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transition: all 0.3s linear;
+}
+
+@media only screen and (max-width: 767px) {
+  .navLink {
+    max-width: 4.5rem;
+    display: flex;
+    text-align: center;
+  }
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+}
+.icons a {
+  padding: 0 0.3rem;
+}
+
+.facebookIcon:hover {
+  color: var(--facebook-blue);
+}
+
+.btn-1 {
+  background-color: #ffb534;
+}
+
+.btn-1:hover {
+  background-color: white;
+  color: #ffb534;
+  border-color: #ffb534;
+}
+
+.lectureBtn {
+  width: 50%;
+  border: 0;
+  width: 12rem;
+  font-size: 1.2rem;
+}
+.lectureBtn:hover {
+  font-size: 1.2rem;
+  color: white;
+  background-color: var(--info-color);
+}
+.lectureBtn:focus {
+  box-shadow: none;
+  font-size: 1.2rem;
+  color: var(--primary-color);
+  background-color: white;
+}
+
+.signUpform h3 {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 1rem;
+  border-bottom: 2.5px solid #ffb534;
+}
+
+.signUpformBtn {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 2rem;
+}
+
+.signUpInput {
+  margin: 1rem;
+}
+.signUpInput input:focus {
+  border-color: #ffb534;
+}
+
+.gallery-content {
+  background-color: #f5ab2c;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sonar-projects-area {
+  margin: auto;
+}
+
+.gallery-content h4,
+.gallery-content h5,
+.gallery-content h3 {
+  color: white;
+}
+
+.lectureContent {
+  border: 2px solid #e2c28e6b;
+  background-color: #e2c28e11;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+
+.lectureContent:hover {
+  transition: 1s ease;
+  background-color: #e2c28e2c;
+  border: 2px solid #e2c28e;
+}
+
+.signUpBox {
+  background-color: #ffb534;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  height: 3rem;
+}
+
+.signUpStatus {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  width: 60%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.068);
+}
+
+.signUpBtn {
+  width: 40%;
+  height: 100%;
+
+  background-color: rgb(255, 255, 255);
+  color: #ffb534;
+  border: 2px solid #ffb534;
+  transition: 0.3s;
+}
+
+.signUpBtn:hover {
+  background-color: rgb(28, 84, 136);
+  color: white;
+  border: 2px solid #00000000;
+}
+
+.sticky {
+  background-color: var(--primary-color-75);
+}
+
+
+.menuBtn {
+  display: none;
+}
+.menuBtn,
+.menuBtn:focus,
+.menuBtn:hover {
+  padding: 0;
+  background-color: transparent;
+  color: white;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  outline: none;
+
+}
+
+@media only screen and (max-width: 576px) {
+  .menuBtn {
+    display: flex;
+  }
+}

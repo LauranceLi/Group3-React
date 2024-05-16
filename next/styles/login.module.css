@@ -391,6 +391,9 @@
   background: rgba(0, 0, 0, 0);
 }
 
+.facebookIcon:hover {
+  color: var(--facebook-blue);
+}
 
 /* leftBox End */
 /* rightBox Start */
