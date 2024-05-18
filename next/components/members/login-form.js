@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from '/styles/login.module.css'
+import styles from '@/styles/members/login.module.css'
 import Avatar from './avatar'
 import PasswordInput from './passwordInput'
 import { ImGoogle2 } from 'react-icons/im'
@@ -9,10 +9,10 @@ import { GiCommercialAirplane } from 'react-icons/gi'
 const LoginForm = () => {
   return (
     <>
-      <main className={'h-100'}>
-        <div className={`${styles.loginFormContainer} bgImg h-100`}>
+      <main>
+        <div className={`${styles.loginFormContainer} bgImg`}>
           <div className={styles.leftBox}>
-            <Avatar width={300} height={300} />
+            <Avatar width={'12rem'} height={'12rem'} />
             <form action="#" className={styles.loginForm} method="post">
               <h5>會員登入</h5>
               <div className={styles.loginItem}>

@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import styles from '@/styles/navbar.module.css'
+import cn from 'classnames'
+import styles from '@/styles/layout/navbar.module.css'
 import { ImFacebook2 } from 'react-icons/im'
 import { FaShoppingCart } from 'react-icons/fa'
 import { RiMenuFoldFill } from 'react-icons/ri'
 
-const Navbar = () => {
+const Navbar = ({ navItemName = '', navbarControl = '' }) => {
   const [isSticky, setIsSticky] = useState(false)
 
   useEffect(() => {
@@ -29,9 +30,9 @@ const Navbar = () => {
       <div className="container-fluid">
         <div className="row d-flex justify-content-center h-100">
           <div className="col-lg-12 col-xl-10">
-            <div className={styles.nav}>
+            <div className={cn(styles.nav, navbarControl)}>
               {/* Logo Area  */}
-              <div className={styles.logoBox}>
+              <div className={cn(styles.logoBox, navItemName)}>
                 <a href="index.html" className={styles.logo}>
                   締杉旅遊
                   <span></span>
@@ -76,7 +77,7 @@ const Navbar = () => {
                   </li>
                 </ul>
               </nav>
-              <div className="menu-content-area d-flex align-items-center">
+              <div className={`menu-content-area d-flex align-items-center ${navItemName}`}>
                 {/* Header Social Area */}
                 <div className={styles.icons}>
                   <a

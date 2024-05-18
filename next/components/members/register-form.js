@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from '/styles/register.module.css'
+import styles from '/styles/members/register.module.css'
 import { ImGoogle2 } from 'react-icons/im'
 import { ImFacebook2 } from 'react-icons/im'
 

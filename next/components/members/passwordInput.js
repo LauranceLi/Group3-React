@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 import { RiEyeFill } from 'react-icons/ri'
 import { RiEyeOffFill } from 'react-icons/ri'
-import styles from '/styles/login.module.css'
-import { faL } from '@fortawesome/free-solid-svg-icons'
+import styles from '/styles/members/login.module.css'
 
 export default function IsVisible() {
   const [IsVisible, setIsVisible] = useState(false)

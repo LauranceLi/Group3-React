@@ -1,18 +1,16 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import Image from 'next/image'
-import styles from '/styles/login.module.css'
+import styles from '@/styles/members/login.module.css'
 
-function Avatar() {
-  const [avatarPath, setAvatarPath] = useState('/images/cedarAvatar.jpg')
-
+function Avatar({ width, height }) {
   return (
     <div className={styles.avatarContainer}>
-      <div className={styles.avatar}>
+      <div className={styles.avatar} style={{ width: width, height: height }}>
         <Image
-          src={avatarPath}
+          src='/images/cedarAvatar.jpg'
           alt="Avatar"
-          layout="fill" // 使用 fill 模式
-          objectFit="cover" // 确保图像填满容器并保持比例
+          layout="fill"
+          objectFit="cover"
         />
       </div>
     </div>
