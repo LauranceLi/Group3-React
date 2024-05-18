@@ -77,11 +77,10 @@
   display: flex;
   margin-bottom: 5%;
   align-items: center;
-
 }
+
 .avatar {
-  width: 12rem;
-  height: 12rem;
+  position: relative; 
   border-radius: 50%;
   overflow: hidden;
 }
