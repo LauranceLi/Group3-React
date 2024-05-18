@@ -1,19 +1,18 @@
 import React from 'react'
-import styles from '/styles/login.module.css' 
+import styles from '/styles/login.module.css'
 import Avatar from './avatar'
 import PasswordInput from './passwordInput'
 import { ImGoogle2 } from 'react-icons/im'
 import { ImFacebook2 } from 'react-icons/im'
-import { GiCommercialAirplane } from "react-icons/gi";
+import { GiCommercialAirplane } from 'react-icons/gi'
 
 const LoginForm = () => {
   return (
     <>
       <main className={'h-100'}>
         <div className={`${styles.loginFormContainer} bgImg h-100`}>
-
           <div className={styles.leftBox}>
-          <Avatar />
+            <Avatar width={300} height={300} />
             <form action="#" className={styles.loginForm} method="post">
               <h5>會員登入</h5>
               <div className={styles.loginItem}>
@@ -26,7 +25,7 @@ const LoginForm = () => {
                   placeholder="請填入信箱"
                 />
               </div>
-<PasswordInput />
+              <PasswordInput />
 
               <div className={styles.loginItem}>
                 <button
@@ -52,7 +51,7 @@ const LoginForm = () => {
               <h5>其他登入方式</h5>
               <div className={`${styles.loginItem} border-0`}>
                 <a href="" className={`${styles.thirdPartyLoginBtn} `}>
-                  <ImFacebook2 size={22} className={styles.facebookIcon}/>
+                  <ImFacebook2 size={22} className={styles.facebookIcon} />
                   Facebook
                 </a>
                 <a href="" className={styles.thirdPartyLoginBtn}>
@@ -76,7 +75,9 @@ const LoginForm = () => {
             <div className={styles.contact}>
               <button className={`${styles.contactBtn}`}>
                 <div>
-                  <span>探索更多精彩 <GiCommercialAirplane size={35}/></span>
+                  <span>
+                    探索更多精彩 <GiCommercialAirplane size={35} />
+                  </span>
                   <span>聯絡我們</span>
                 </div>
               </button>
