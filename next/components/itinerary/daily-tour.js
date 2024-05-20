@@ -61,9 +61,9 @@ function itineraryCountry() {
                       <FaBed />
                       住宿 :
                     </p>
-                    <span className={styles.chargeBoxBed}>
+                    <p className={styles.chargeBoxBed}>
                       Hilton Los Angeles Airport 或同等級
-                    </span>
+                    </p>
                   </div>
                 </section>
                 <br></br>
@@ -204,9 +204,9 @@ function itineraryCountry() {
                       <FaBed />
                       住宿 :
                     </p>
-                    <span className={styles.chargeBoxBed}>
+                    <p className={styles.chargeBoxBed}>
                       Country Club Lima Hotel 或同等級
-                    </span>
+                    </p>
                   </div>
                 </section>
                 <br></br>
@@ -294,9 +294,9 @@ function itineraryCountry() {
                       <FaBed />
                       住宿 :
                     </p>
-                    <span className={styles.chargeBoxBed}>
+                    <p className={styles.chargeBoxBed}>
                       Hotel Pakaritampu 或同等級
-                    </span>
+                    </p>
                   </div>
                 </section>
                 <br></br>
@@ -376,9 +376,9 @@ function itineraryCountry() {
                       <FaBed />
                       住宿 :
                     </p>
-                    <span className={styles.chargeBoxBed}>
+                    <p className={styles.chargeBoxBed}>
                       Hotel Pakaritampu 或同等級
-                    </span>
+                    </p>
                   </div>
                 </section>
                 <br></br>
@@ -468,9 +468,9 @@ function itineraryCountry() {
                       <FaBed />
                       住宿 :
                     </p>
-                    <span className={styles.chargeBoxBed}>
+                    <p className={styles.chargeBoxBed}>
                       Hotel Pakaritampu 或同等級
-                    </span>
+                    </p>
                   </div>
                 </section>
                 <br></br>
@@ -548,9 +548,9 @@ function itineraryCountry() {
                       <FaBed />
                       住宿 :
                     </p>
-                    <span className={styles.chargeBoxBed}>
+                    <p className={styles.chargeBoxBed}>
                       JW Marriott El Convento Cusco 或同等級
-                    </span>
+                    </p>
                   </div>
                 </section>
                 <br></br>
@@ -622,9 +622,9 @@ function itineraryCountry() {
                       <FaBed />
                       住宿 :
                     </p>
-                    <span className={styles.chargeBoxBed}>
+                    <p className={styles.chargeBoxBed}>
                       JW Marriott El Convento Cusco 或同等級
-                    </span>
+                    </p>
                   </div>
                 </section>
                 <br></br>
@@ -716,9 +716,9 @@ function itineraryCountry() {
                       <FaBed />
                       住宿 :
                     </p>
-                    <span className={styles.chargeBoxBed}>
+                    <p className={styles.chargeBoxBed}>
                       GHL Hotel Lago Titicaca 或同等級
-                    </span>
+                    </p>
                   </div>
                 </section>
                 <br></br>
@@ -802,9 +802,9 @@ function itineraryCountry() {
                       <FaBed />
                       住宿 :
                     </p>
-                    <span className={styles.chargeBoxBed}>
+                    <p className={styles.chargeBoxBed}>
                       Country Club Lima Hotel 或同等級
-                    </span>
+                    </p>
                   </div>
                 </section>
                 <br></br>
@@ -893,9 +893,9 @@ function itineraryCountry() {
                       <FaBed />
                       住宿 :
                     </p>
-                    <span className={styles.chargeBoxBed}>
+                    <p className={styles.chargeBoxBed}>
                       Hotel la Hacienda Bahía Paracas 或同等級
-                    </span>
+                    </p>
                   </div>
                 </section>
                 <br></br>

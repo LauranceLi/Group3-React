@@ -54,7 +54,7 @@
 .moduleItems {
   width: calc(28% - 10px);
   max-width: 23.4375rem;
-  height: 26.25rem;
+  height: auto;
   margin-bottom: 20px;
   /* background-color: #c5e4fb; */
   background-color: #ffc107;
@@ -68,6 +68,7 @@
 }
 .cardDiv2 {
   width: 10.3125rem;
+  height: 2.25rem;
   background-color: #192a56;
   color: white;
   font-weight: bold;

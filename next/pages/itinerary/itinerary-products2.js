@@ -1,6 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 import Search from '@/components/search/search'
+import ProductList from '@/components/itinerary/product-list'
 import styles from '@/styles/itinerary.module.css'
 import Slider1 from '@/components/itinerary/slider1'
 import Slider2 from '@/components/itinerary/slider2'
@@ -113,8 +114,9 @@ export default function itineraryProducts() {
                   </div>
                   <div className={styles.flightDetails}>台北-桃園機場出發</div>
                 </div>
+                {/* 0521 */}
 
-  
+              <ProductList />
 
               </div>
             </div>
