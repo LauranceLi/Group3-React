@@ -114,7 +114,7 @@ export default function itineraryProducts() {
                   </div>
                   <div className={styles.flightDetails}>台北-桃園機場出發</div>
                 </div>
-                {/* 0521 */}
+                {/* 0520更新 */}
 
               <ProductList />
 
