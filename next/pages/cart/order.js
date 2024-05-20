@@ -11,14 +11,14 @@ export default function Order() {
         <div className="container">
           <form action="#">
             <div className="travel-form mb-3">
-              <div className="row align-items-start justify-content-center text-center big-title">
+              {/* <div className="row align-items-start justify-content-center text-center big-title">
                 <div className="col first pass">1 選購商品</div>
                 <div className="col first pass">2 填寫訂單資訊</div>
                 <div className="col first  active-carttitle">3 付款完成</div>
-              </div>
+              </div> */}
               <div className="second mb-3 mt-5">
-                <div className="order-title">
-                  <h4>訂單詳細內容</h4>
+                <div>
+                  <h4  className="bottom-line d-inline">訂單詳細內容</h4>
                 </div>
                 <div>
                   <div className="travel-info2">
@@ -49,44 +49,10 @@ export default function Order() {
                     <span className="number">1</span>
                   </div>
                 </div>
-                <div className="travel-info">
-                  <div className="travel-saleitem">
-                    <Image
-                      src="/001.jpg"
-                      alt="001.jpg"
-                      width={100}
-                      height={150}
-                    />
-                    <span className="travel-saleitem bottom-line">
-                      追夢到秘魯：探索失落文明，尋覓古都風華
-                    </span>
-                  </div>
-                  <div className="unit-price text-center">NT$400</div>
-                  <div className="unit-price text-center">
-                    <span className="number">1</span>
-                  </div>
-                </div>
-                <div className="travel-info">
-                  <div className="travel-saleitem">
-                    <Image
-                      src="/001.jpg"
-                      alt="001.jpg"
-                      width={100}
-                      height={150}
-                    />
-                    <span className="travel-saleitem bottom-line">
-                      追夢到秘魯：探索失落文明，尋覓古都風華
-                    </span>
-                  </div>
-                  <div className="unit-price text-center">NT$400</div>
-                  <div className="unit-price text-center">
-                    <span className="number">1</span>
-                  </div>
-                </div>
               </div>
               <div className="second mb-3">
-                <div className="order-title">
-                  <h4>訂購人資訊</h4>
+                <div  className="mt-5">
+                  <h4  className="bottom-line d-inline">訂購人資訊</h4>
                 </div>
                 <div>
                   <div className="travel-info2">
@@ -119,8 +85,8 @@ export default function Order() {
                 </div>
               </div>
               <div className="second mb-3">
-                <div className="order-title">
-                  <h4>其他</h4>
+                <div  className="mt-5">
+                  <h4  className="bottom-line d-inline">其他</h4>
                 </div>
                 <div>
                   <div className="travel-info2">

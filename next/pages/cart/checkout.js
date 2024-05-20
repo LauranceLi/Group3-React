@@ -11,11 +11,11 @@ export default function Checkout() {
         <div className="container">
           <form action="#">
             <div className="travel-form mb-3">
-              <div className="row align-items-start justify-content-center text-center big-title">
+              {/* <div className="row align-items-start justify-content-center text-center big-title">
                 <div className="col first pass">1 選購商品</div>
                 <div className="col first active-carttitle">2 填寫訂單資訊</div>
                 <div className="col first">3 完成付款</div>
-              </div>
+              </div> */}
               <div className="second mb-3 mt-5">
                 <h4 className="bottom-line d-inline">確認購買商品</h4>
                 <div className="travel-info2">

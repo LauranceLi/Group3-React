@@ -14,7 +14,7 @@ export default function Cart() {
       <>
         <Navbar />
         <Link href="/product/product_list">返回商城</Link>
-        <div className="container mt-5">
+        <div className="container">
           <h2 className="bottom-line d-inline">我的購物車</h2>
           <div className="second">
             <CartList />

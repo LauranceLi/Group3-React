@@ -2,6 +2,8 @@ import React from 'react'
 import Image from 'next/image'
 import Navbar from '@/components/layout/navbar'
 import Footer from '@/components/layout/footer'
+import SquareMinus from '@/components/icons/square_minus'
+import SquarePlus from '@/components/icons/square_plus'
 
 export default function GroupCart() {
   return (
@@ -17,8 +19,8 @@ export default function GroupCart() {
                 <div className="col first">3 完成訂單</div>
               </div>
               <div className="second mb-3 mt-5">
-                <div className="order-title">
-                  <h4>訂購人資料</h4>
+                <div className="mb-3">
+                  <h4  className="bottom-line d-inline">訂購人資料</h4>
                 </div>
                 <div className="row customer-info">
                   <div className="col m-2">
@@ -57,15 +59,15 @@ export default function GroupCart() {
                 </div>
               </div>
               <div className="second mb-3">
-                <div className="order-title">
-                  <h4 className="mb-3">訂購內容</h4>
-                  <h6 className="travel-saleitem">
+                <div  className="mb-3">
+                  <h4 className="mb-3 bottom-line d-inline">訂購內容</h4>
+                </div>
+                  <h6 className="travel-saleitem bottom-line">
                     EU13BBTK240523A 西班牙13日：設計酒莊古堡美食宴饗
                   </h6>
                   <span>出發日期：2024/05/23 可售團位：經濟艙16</span>
-                </div>
                 <div className="">
-                  <div className="travel-info2">
+                  <div className="travel-info2 mt-3">
                     <h6 className="travel-saleitem">訂位人數</h6>
                     <div className="unit-price text-center">單價</div>
                     <div className="unit-price text-center">可售</div>
@@ -75,57 +77,27 @@ export default function GroupCart() {
                   <h6 className="travel-saleitem">大人</h6>
                   <div className="unit-price text-center">NT$219,900</div>
                   <div className="unit-price text-center">
-                    <Image
-                      src="/square-minus-regular.svg"
-                      alt="square-minus-regular.svg"
-                      width={20}
-                      height={20}
-                    />
+                    <SquareMinus />
                     <span className="number">1</span>
-                    <Image
-                      src="/square-plus-regular.svg"
-                      alt="square-plus-regular.svg"
-                      width={20}
-                      height={20}
-                    />
+                    <SquarePlus />
                   </div>
                 </div>
                 <div className="travel-info2">
                   <h6 className="travel-saleitem">小孩</h6>
                   <div className="unit-price text-center">NT$219,900</div>
                   <div className="unit-price text-center">
-                    <Image
-                      src="/square-minus-regular.svg"
-                      alt="square-minus-regular.svg"
-                      width={20}
-                      height={20}
-                    />
+                    <SquareMinus />
                     <span className="number">1</span>
-                    <Image
-                      src="/square-plus-regular.svg"
-                      alt="square-plus-regular.svg"
-                      width={20}
-                      height={20}
-                    />
+                    <SquarePlus />
                   </div>
                 </div>
                 <div className="travel-info2">
                   <h6 className="travel-saleitem">加床</h6>
                   <div className="unit-price text-center">NT$219,900</div>
                   <div className="unit-price text-center">
-                    <Image
-                      src="/square-minus-regular.svg"
-                      alt="square-minus-regular.svg"
-                      width={20}
-                      height={20}
-                    />
+                    <SquareMinus />
                     <span className="number">1</span>
-                    <Image
-                      src="/square-plus-regular.svg"
-                      alt="square-plus-regular.svg"
-                      width={20}
-                      height={20}
-                    />
+                    <SquarePlus />
                   </div>
                 </div>
                 <div className="row mt-3 p-2">
@@ -137,10 +109,10 @@ export default function GroupCart() {
                 </div>
               </div>
               <div className="second mb-3">
-                <div className="order-title">
+                <div>
                   <div className="row">
                     <div className="col">
-                      <h4>
+                      <h4  className="bottom-line d-inline">
                         訂單總金額 <span>NT$ 657,000</span>
                       </h4>
                     </div>
@@ -150,7 +122,9 @@ export default function GroupCart() {
               <div className="second mb-3">
                 <div className="row p-2">
                   <div className="col">
-                    <h4>訂購須知</h4>
+                  <div className="mb-3">
+                    <h4  className="bottom-line d-inline">訂購須知</h4>
+                  </div>
                     <ul>
                       <li>
                         1.選擇出符合您出發日期的行程，報名後確認行程表與旅遊契約書內容且填寫相關資料，並利用線上付款，完成訂購流程，我們也會

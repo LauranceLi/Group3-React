@@ -16,8 +16,8 @@ export default function GroupCartOrder() {
                 <div className="col first">3 完成訂單</div>
               </div>
               <div className="second mb-3 mt-5">
-                <div className="order-title">
-                  <h4>EU13BBTK240523A 西班牙13日：設計酒莊古堡美食宴饗</h4>
+                <div  className="mb-3">
+                  <h4  className="bottom-line d-inline">EU13BBTK240523A 西班牙13日：設計酒莊古堡美食宴饗</h4>
                 </div>
                 <div className="">
                   <div className="travel-info2">
@@ -48,25 +48,17 @@ export default function GroupCartOrder() {
                   </div>
                 </div>
                 <div className="row mt-3 p-2">
-                  <div className="col total-amount">
+                  <div className="col total-amount bottom-line">
                     <h4>訂單金額</h4>
                     <h4>NT$ 657,000</h4>
+                    <h4>需付訂金</h4>
+                    <h4>NT$ 100,000</h4>
                   </div>
                 </div>
               </div>
               <div className="second mb-3">
-                <div className="order-title">
-                  <div className="row">
-                    <div className="col total-amount">
-                      <h4>訂金</h4>
-                      <h4>NT$ 100,000</h4>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="second mb-3">
-                <div className="order-title">
-                  <h4>填寫旅客資料</h4>
+                <div className="mb-3 mt-5">
+                  <h4  className="bottom-line d-inline">填寫旅客資料</h4>
                 </div>
                 <div className="">
                   <div className="travel-info2">
@@ -150,8 +142,8 @@ export default function GroupCartOrder() {
                     />
                   </div>
                 </div>
-                <div className="order-title">
-                  <h4>代收轉付收據</h4>
+                <div  className="mb-3 mt-5">
+                  <h4  className="bottom-line d-inline">代收轉付收據</h4>
                 </div>
                 <div className="row m-3 p-2 customer-info">
                   <div className="col text-center">

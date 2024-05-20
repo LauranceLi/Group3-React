@@ -1,12 +1,17 @@
 /* 購物車 */
 
-* ,ul ,li{
+
+* ,ul ,li ,label{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     text-decoration: none;
     list-style-type: none;
 }
+input[type="radio"]{
+  display: none;
+}
+
 h1,h2,h3,h4,h5,h6{
   font-weight: 600;
 }
@@ -24,9 +29,8 @@ p{
 .container {
     width: 80%;
     height: 100%;
-    margin-top: 3.125rem;
     justify-content: center;
-    margin: auto;
+    margin: 9.375rem auto;
 }
 #cart_main {
     display: flex;
