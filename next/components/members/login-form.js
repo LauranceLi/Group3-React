@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useNavigate } from "react-router-dom";
+import { useRouter } from 'next/router'
 import styles from '@/styles/members/login.module.css'
 import Avatar from './avatar'
 import { ImGoogle2 } from 'react-icons/im'
@@ -16,7 +16,7 @@ const parseJwt = (token) => {
 }
 
 const LoginForm = () => {
-  // const navigate = useNavigate()
+  const router = useRouter()
   const [IsVisible, setIsVisible] = useState(false)
   const toggleVisibility = () => {
     setIsVisible(!IsVisible)
@@ -90,6 +90,7 @@ const LoginForm = () => {
     if (data.status === 'success') {
       const returnUser = parseJwt(data.data.accessToken)
       console.log(returnUser)
+      router.push('/members')
 
     } else {
       alert(data.message)

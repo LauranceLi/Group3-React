@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import Link from 'next/link'
 import cn from 'classnames'
 import styles from '@/styles/layout/navbar.module.css'
 import { ImFacebook2 } from 'react-icons/im'
@@ -71,13 +72,15 @@ const Navbar = ({ navItemName = '', navbarControl = '' }) => {
                     </a>
                   </li>
                   <li className="nav-item">
-                    <a className={styles.navLink} href="elements.html">
-                      締杉會員
-                    </a>
+                    <Link href="/members" className={styles.navLink}>
+                      <div >締杉會員</div>
+                    </Link>
                   </li>
                 </ul>
               </nav>
-              <div className={`menu-content-area d-flex align-items-center ${navItemName}`}>
+              <div
+                className={`menu-content-area d-flex align-items-center ${navItemName}`}
+              >
                 {/* Header Social Area */}
                 <div className={styles.icons}>
                   <a
