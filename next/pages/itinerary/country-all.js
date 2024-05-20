@@ -203,7 +203,9 @@ function CountryAll() {
                     />
                   </div>
                   <div className={styles.moduleH3}>
-                    <h3 className={styles.h3Country}>古巴・迷情之境12日</h3>
+                    <h3 className={styles.h3Country}>
+                      古巴&墨西哥・亡靈節12日
+                    </h3>
                   </div>
                   <div className={styles.moduleH4}>
                     <h4 className={styles.h4Country}>
@@ -323,7 +325,7 @@ function CountryAll() {
                   </div>
                   <div className={styles.moduleH4}>
                     <h4 className={styles.h4Country}>
-                      法西雙國12日、波爾多、梅鐸紅酒馬拉松、中古世紀卡爾卡頌、達利美術館、聖家堂、#一生必要跑一次、#跑者的夢想清單
+                      法西雙國12日、波爾多、梅鐸紅酒馬拉松、中古世紀卡爾卡頌、達利美術館、聖家堂
                     </h4>
                   </div>
                 </div>
@@ -736,7 +738,7 @@ function CountryAll() {
                     />
                   </div>
                   <div className={styles.moduleH3}>
-                    <h3 className={styles.h3Country}>古巴・迷情之境12日</h3>
+                    <h3 className={styles.h3Country}>古巴&墨西哥・亡靈節12日</h3>
                   </div>
                   <div className={styles.moduleH4}>
                     <h4 className={styles.h4Country}>
@@ -862,7 +864,7 @@ function CountryAll() {
                   </div>
                   <div className={styles.moduleH4}>
                     <h4 className={styles.h4Country}>
-                      法西雙國12日、波爾多、梅鐸紅酒馬拉松、中古世紀卡爾卡頌、達利美術館、聖家堂、#一生必要跑一次、#跑者的夢想清單
+                      法西雙國12日、波爾多、梅鐸紅酒馬拉松、中古世紀卡爾卡頌、達利美術館、聖家堂
                     </h4>
                   </div>
                 </div>

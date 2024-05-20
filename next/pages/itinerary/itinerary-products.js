@@ -69,10 +69,9 @@ export default function itineraryProducts() {
                             <option value="" disabled selected hidden>
                               請選擇
                             </option>
-                            <option value="1">出發日期</option>
-                            <option value="2">熱門推薦</option>
-                            <option value="2">售價</option>
-                            <option value="2">天數</option>
+                            <option value="datetime">出發日期</option>
+                            <option value="money">售價</option>
+                            <option value="day">天數</option>
                           </select>
                         </div>
                       </div>
@@ -84,7 +83,6 @@ export default function itineraryProducts() {
               <div className={styles.itineraryContainer}>
                 <div className={styles.itineraryProductsItem3}>
                   <div className={styles.itineraryProductsItem2}>
-                    <div>
                       <Image
                         src="/images/秘魯・印加帝國13日.jpg"
                         alt="秘魯・印加帝國13日"
@@ -94,7 +92,6 @@ export default function itineraryProducts() {
                       />
                       <div className={styles.triangleContainer}></div>
                       <div className={styles.itineraryProductsDays}>13天</div>
-                    </div>
                   </div>
 
                   <div className={styles.itineraryDetails}>

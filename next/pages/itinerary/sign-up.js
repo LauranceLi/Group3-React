@@ -70,7 +70,7 @@ export default function SignUp() {
                           <td>0</td>
                           <td className={styles.DateCell2}>282000</td>
                           <td>
-                            <a className={styles.btn2}>額滿</a>
+                            <div className={styles.btn2}>額滿</div>
                           </td>
                         </tr>
                         <tr>
