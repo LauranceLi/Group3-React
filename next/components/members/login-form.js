@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 
 import styles from '@/styles/members/login.module.css'
@@ -171,12 +172,13 @@ const LoginForm = () => {
                 </button>
               </div>
               <div className={styles.loginItem}>
-                <a
+                <Link
+                  href="/members/register"
+                  title='註冊'
                   className={`${styles.registerBtn}`}
-                  href="../register/register.html"
                 >
                   立即加入
-                </a>
+                </Link>
               </div>
               <a href="#" className={styles.forgetPW}>
                 忘記密碼

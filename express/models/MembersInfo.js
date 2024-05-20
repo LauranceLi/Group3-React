@@ -11,15 +11,15 @@ export default async function (sequelize) {
       },
       first_name: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       last_name: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       id_num: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       mobile: {
         type: DataTypes.INTEGER,
@@ -30,7 +30,7 @@ export default async function (sequelize) {
       },
       birthday: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       points: {
         type: DataTypes.INTEGER,
