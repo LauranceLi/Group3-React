@@ -20,7 +20,7 @@ export default function GroupCart() {
               </div>
               <div className="second mb-3 mt-5">
                 <div className="mb-3">
-                  <h4  className="bottom-line d-inline">訂購人資料</h4>
+                  <h4 className="bottom-line d-inline">訂購人資料</h4>
                 </div>
                 <div className="row customer-info">
                   <div className="col m-2">
@@ -59,13 +59,13 @@ export default function GroupCart() {
                 </div>
               </div>
               <div className="second mb-3">
-                <div  className="mb-3">
+                <div className="mb-3">
                   <h4 className="mb-3 bottom-line d-inline">訂購內容</h4>
                 </div>
-                  <h6 className="travel-saleitem bottom-line">
-                    EU13BBTK240523A 西班牙13日：設計酒莊古堡美食宴饗
-                  </h6>
-                  <span>出發日期：2024/05/23 可售團位：經濟艙16</span>
+                <h6 className="travel-saleitem bottom-line">
+                  EU13BBTK240523A 西班牙13日：設計酒莊古堡美食宴饗
+                </h6>
+                <span>出發日期：2024/05/23 可售團位：經濟艙16</span>
                 <div className="">
                   <div className="travel-info2 mt-3">
                     <h6 className="travel-saleitem">訂位人數</h6>
@@ -101,30 +101,24 @@ export default function GroupCart() {
                   </div>
                 </div>
                 <div className="row mt-3 p-2">
-                  <div className="col">
+                  <div className="col-8">
                     <h4>
                       小計 <span>NT$ 657,000</span>
                     </h4>
                   </div>
-                </div>
-              </div>
-              <div className="second mb-3">
-                <div>
-                  <div className="row">
-                    <div className="col">
-                      <h4  className="bottom-line d-inline">
-                        訂單總金額 <span>NT$ 657,000</span>
-                      </h4>
-                    </div>
+                  <div className="col">
+                    <h4 className="bottom-line d-inline">
+                      訂單總金額 <span>NT$ 657,000</span>
+                    </h4>
                   </div>
                 </div>
               </div>
               <div className="second mb-3">
                 <div className="row p-2">
                   <div className="col">
-                  <div className="mb-3">
-                    <h4  className="bottom-line d-inline">訂購須知</h4>
-                  </div>
+                    <div className="mb-3">
+                      <h4 className="bottom-line d-inline">訂購須知</h4>
+                    </div>
                     <ul>
                       <li>
                         1.選擇出符合您出發日期的行程，報名後確認行程表與旅遊契約書內容且填寫相關資料，並利用線上付款，完成訂購流程，我們也會

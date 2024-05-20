@@ -1,6 +1,5 @@
 /* 購物車 */
 
-
 * ,ul ,li ,label{
     margin: 0;
     padding: 0;
@@ -8,9 +7,9 @@
     text-decoration: none;
     list-style-type: none;
 }
-input[type="radio"]{
+/* input[type="radio"]{
   display: none;
-}
+} */
 
 h1,h2,h3,h4,h5,h6{
   font-weight: 600;

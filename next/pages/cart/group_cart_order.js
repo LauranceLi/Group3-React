@@ -16,8 +16,10 @@ export default function GroupCartOrder() {
                 <div className="col first">3 完成訂單</div>
               </div>
               <div className="second mb-3 mt-5">
-                <div  className="mb-3">
-                  <h4  className="bottom-line d-inline">EU13BBTK240523A 西班牙13日：設計酒莊古堡美食宴饗</h4>
+                <div className="mb-3">
+                  <h4 className="bottom-line d-inline">
+                    EU13BBTK240523A 西班牙13日：設計酒莊古堡美食宴饗
+                  </h4>
                 </div>
                 <div className="">
                   <div className="travel-info2">
@@ -58,7 +60,7 @@ export default function GroupCartOrder() {
               </div>
               <div className="second mb-3">
                 <div className="mb-3 mt-5">
-                  <h4  className="bottom-line d-inline">填寫旅客資料</h4>
+                  <h4 className="bottom-line d-inline">填寫旅客資料</h4>
                 </div>
                 <div className="">
                   <div className="travel-info2">
@@ -142,57 +144,48 @@ export default function GroupCartOrder() {
                     />
                   </div>
                 </div>
-                <div  className="mb-3 mt-5">
-                  <h4  className="bottom-line d-inline">代收轉付收據</h4>
+                <div className="mb-3 mt-5">
+                  <h4 className="bottom-line d-inline">代收轉付收據</h4>
                 </div>
                 <div className="row m-3 p-2 customer-info">
                   <div className="col text-center">
                     <div className="form-check form-check-inline">
                       <input
-                        className="form-check-input"
                         type="radio"
-                        name="inlineRadioOptions"
-                        id="inlineRadio1"
-                        defaultValue="option1"
+                        className="btn-check"
+                        name="options"
+                        id="option1"
+                        autoComplete="off"
                       />
-                      <label
-                        className="form-check-label"
-                        htmlFor="inlineRadio1"
-                      >
-                        不須提供(本公司依法開立保留，如日後需求，請來電)
+                      <label className="btn btn-outline-dark" htmlFor="option1">
+                        不須提供(公司依法保留、可日後來電詢問)
                       </label>
                     </div>
                   </div>
                   <div className="col text-center">
                     <div className="form-check form-check-inline">
                       <input
-                        className="form-check-input"
                         type="radio"
-                        name="inlineRadioOptions"
-                        id="inlineRadio1"
-                        defaultValue="option1"
+                        className="btn-check"
+                        name="options"
+                        id="option2"
+                        autoComplete="off"
                       />
-                      <label
-                        className="form-check-label"
-                        htmlFor="inlineRadio1"
-                      >
-                        電子代轉(同訂單訂購人Email)
+                      <label className="btn btn-outline-dark" htmlFor="option2">
+                        電子代轉(Email同訂購人資訊)
                       </label>
                     </div>
                   </div>
                   <div className="col text-center">
                     <div className="form-check form-check-inline">
                       <input
-                        className="form-check-input"
                         type="radio"
-                        name="inlineRadioOptions"
-                        id="inlineRadio2"
-                        defaultValue="option2"
+                        className="btn-check"
+                        name="options"
+                        id="option3"
+                        autoComplete="off"
                       />
-                      <label
-                        className="form-check-label"
-                        htmlFor="inlineRadio2"
-                      >
+                      <label className="btn btn-outline-dark" htmlFor="option3">
                         紙本代轉
                       </label>
                     </div>
