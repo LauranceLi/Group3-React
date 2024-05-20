@@ -113,6 +113,17 @@ export default function GroupCart() {
                   </div>
                 </div>
               </div>
+              {/* <div className="second mb-3">
+                <div>
+                  <div className="row">
+                    <div className="col">
+                      <h4 className="bottom-line d-inline">
+                        訂單總金額 <span>NT$ 657,000</span>
+                      </h4>
+                    </div>
+                  </div>
+                </div>
+              </div> */}
               <div className="second mb-3">
                 <div className="row p-2">
                   <div className="col">

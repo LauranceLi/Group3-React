@@ -5,6 +5,7 @@ import Navbar from '@/components/layout/navbar'
 import Footer from '@/components/layout/footer'
 import { useCart } from '@/hooks/use_cart'
 import CartList from '@/components/cart/cart_list'
+import TrashCan from '@/components/icons/trash_can'
 
 export default function Cart() {
   const { totalPrice, totalQty } = useCart()
@@ -13,22 +14,57 @@ export default function Cart() {
     <>
       <>
         <Navbar />
-        <Link href="/product/product_list">返回商城</Link>
         <div className="container">
           <h2 className="bottom-line d-inline">我的購物車</h2>
           <div className="second">
+            <div className="travel-info2">
+              <div className="travel-saleitem">品項</div>
+              <div className="unit-price text-center">單價</div>
+              <div className="unit-price text-center">數量</div>
+              <div className="unit-price text-center">
+                <TrashCan />
+              </div>
+              <div className="unit-price text-center">品項小計</div>
+            </div>
             <CartList />
           </div>
-          <div className="d-block">
-            <div>總數量: {totalQty}</div>
-            <div className="col-3 d-flex">
-              <input className="form-control" />
-              <button className="btn btn-warning">使用折扣碼</button>
+          <div>
+            <div className="total-amount mt-3">
+              <div className="col-3 d-flex">
+                <div className="input-group mb-3">
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="使用折扣碼"
+                    aria-label="Recipient's username"
+                    aria-describedby="button-addon2"
+                  />
+                  <button
+                    className="btn btn-outline-dark"
+                    type="button"
+                    id="button-addon2"
+                  >
+                    使用
+                  </button>
+                </div>
+              </div>
+              <div>
+                <span className="bottom-line d-inline me-5">
+                  商品總數量: {totalQty}
+                </span>
+                <h5 className="bottom-line d-inline ms-5 me-2">
+                  總金額: {totalPrice}
+                </h5>
+              </div>
             </div>
-            <div>總金額: {totalPrice}</div>
-            <button type="submit" className="btn btn-warning">
-              去結帳
-            </button>
+          </div>
+          <div className="total-amount">
+            <div></div>
+            <Link href="/cart/checkout">
+              <button type="button" className="btn btn-warning">
+                點我去結帳
+              </button>
+            </Link>
           </div>
         </div>
         <section className="mt-5 mb-3">

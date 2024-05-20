@@ -1,8 +1,8 @@
 import React from 'react'
-import Image from 'next/image'
 import Navbar from '@/components/layout/navbar'
 import Footer from '@/components/layout/footer'
-
+import CheckoutList from '@/components/checkout/checkout_list'
+import Link from 'next/link'
 export default function Checkout() {
   return (
     <>
@@ -22,48 +22,9 @@ export default function Checkout() {
                   <h6 className="travel-saleitem">商品名稱</h6>
                   <div className="unit-price text-center">單價</div>
                   <div className="unit-price text-center">數量</div>
+                  <div className="unit-price text-center">品項小計</div>
                 </div>
-                <div className="travel-info">
-                  <div className="travel-saleitem">
-                    <Image
-                      src="/001.jpg"
-                      alt="001.jpg"
-                      width={100}
-                      height={150}
-                    />
-                    <span className="travel-saleitem bottom-line">
-                      追夢到秘魯：探索失落文明，尋覓古都風華
-                    </span>
-                  </div>
-                  <div className="unit-price text-center">NT$</div>
-                  <div className="unit-price text-center">
-                    <span className="number">1</span>
-                  </div>
-                </div>
-                <div className="travel-info2">
-                  <h6 className="travel-saleitem">折扣碼</h6>
-                  <div className="unit-price text-center">折扣金額</div>
-                  <div className="unit-price text-center"></div>
-                </div>
-                <div className="travel-info2">
-                  <h6 className="travel-saleitem">無</h6>
-                  <div className="unit-price text-center">
-                    <span>$0</span>
-                  </div>
-                  <div className="unit-price text-center"></div>
-                </div>
-                <div className="row mt-3 p-2">
-                  <div className="col total-amount">
-                    <h4>小計</h4>
-                    <h4>NT$</h4>
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col total-amount  mb-5">
-                    <h4>確認訂單總金額</h4>
-                    <h4>NT$</h4>
-                  </div>
-                </div>
+                <CheckoutList />
               </div>
               <div className="second mb-3">
                 <div className="">
@@ -341,12 +302,14 @@ export default function Checkout() {
                 </label>
                 <div className="agreement-btn">
                   <div className="m-1">
-                    <button
-                      type="submit"
-                      className="text-center btn btn-warning go-shopping"
-                    >
-                      確認付款
-                    </button>
+                    <Link href="/cart/order">
+                      <button
+                        type="submit"
+                        className="text-center btn btn-warning go-shopping"
+                      >
+                        確認付款
+                      </button>
+                    </Link>
                   </div>
                   <div className="m-1">
                     <button

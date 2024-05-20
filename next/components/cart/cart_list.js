@@ -8,15 +8,6 @@ export default function CartList() {
   const { items, increaseItem, decreaseItem, removeItem } = useCart()
   return (
     <>
-      <div className="travel-info2">
-        <div className="travel-saleitem">品項</div>
-        <div className="unit-price text-center">單價</div>
-        <div className="unit-price text-center">數量</div>
-        <div className="unit-price text-center">
-          <TrashCan />
-        </div>
-        <div className="unit-price text-center">品項小計</div>
-      </div>
       {items.map((v, i) => {
         return (
           <div className="travel-info" key={v.id}>
