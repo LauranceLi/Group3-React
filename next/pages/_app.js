@@ -1,13 +1,22 @@
-import '/public/css/bootstrap.min.css'; // 确保路径正确
- // 确保路径正确
-import "/styles/globals.css";
-// import '/public/css/animate.css'; // 确保路径正确
-// import '/public/css/magnific-popup.css'; // 确保路径正确
-// import '/public/css/owl.carousel.css'; // 确保路径正确
+import '/public/css/bootstrap.min.css';
+import '/styles/globals.css' // 确保路
+import React from 'react';
+import { useRouter } from 'next/router';
+import dynamic from 'next/dynamic';
 
+const DynamicBrowserRouter = dynamic(
+  () => import('../components/BrowserRouterWrapper'),
+  { ssr: false }
+);
 
+function MyApp({ Component, pageProps }) {
+  const router = useRouter();
 
-export default function App({ Component, pageProps }) {
-  return <Component {...pageProps} />;
+  return (
+    <DynamicBrowserRouter>
+      <Component {...pageProps} />
+    </DynamicBrowserRouter>
+  );
 }
 
+export default MyApp;
