@@ -33,12 +33,12 @@ const RegisterForm = () => {
             <div className={styles.middleBox}>
               <div className={styles.leftBox}>
                 <div className={styles.registerItem}>
-                  <label htmlFor="registerAccount">帳號</label>
+                  <label htmlFor="email">帳號</label>
                   <input
                     className={styles.registerInput}
-                    name="registerAccount"
+                    name="email"
                     type="text"
-                    id="registerAccount"
+                    id="email"
                     placeholder="請填入信箱"
                   />
                 </div>
@@ -52,23 +52,23 @@ const RegisterForm = () => {
                   </button>
                 </div>
                 <div className={styles.registerItem}>
-                  <label htmlFor="registerPassword">密碼</label>
+                  <label htmlFor="password">密碼</label>
                   <input
                     className={styles.registerInput}
-                    name="registerPassword"
+                    name="password"
                     type="password"
-                    id="registerPassword"
+                    id="password"
                     placeholder="請輸入密碼"
                   />
                   <button className={styles.eyeIcon} type="button"></button>
                 </div>
                 <div className={styles.registerItem}>
-                  <label htmlFor="registerPassword">確認密碼</label>
+                  <label htmlFor="passwordAgain">確認密碼</label>
                   <input
                     className={styles.registerInput}
-                    name="registerPassword"
+                    name="passwordAgain"
                     type="password"
-                    id="registerPassword"
+                    id="passwordAgain"
                     placeholder="請再次確認密碼"
                   />
                   <button className={styles.eyeIcon} type="button"></button>
@@ -76,21 +76,21 @@ const RegisterForm = () => {
               </div>
               <div className={styles.rightBox}>
                 <div className={styles.registerItem}>
-                  <label htmlFor="registerName">姓名</label>
+                  <label htmlFor="name">姓名</label>
                   <input
                     className={styles.registerInput}
-                    name="registerName"
+                    name="name"
                     type="text"
-                    id="registerName"
+                    id="name"
                   />
                 </div>
                 <div className={styles.registerItem}>
-                  <label htmlFor="registermobile">電話</label>
+                  <label htmlFor="mobile">電話</label>
                   <input
                     className={styles.registerInput}
-                    name="registermobile"
+                    name="mobile"
                     type="mobile"
-                    id="registermobile"
+                    id="mobile"
                   />
                 </div>
                 <div className={styles.registerItem}>
