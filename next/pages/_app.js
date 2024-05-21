@@ -1,22 +1,10 @@
 import '/public/css/bootstrap.min.css';
-import '/styles/globals.css' // 确保路
+import '/styles/globals.css' 
 import React from 'react';
-import { useRouter } from 'next/router';
-import dynamic from 'next/dynamic';
 
-const DynamicBrowserRouter = dynamic(
-  () => import('../components/BrowserRouterWrapper'),
-  { ssr: false }
-);
+export default function MyApp({ Component, pageProps }) {
+  // Use the layout defined at the page level, if available
+  const getLayout = Component.getLayout || ((page) => page)
 
-function MyApp({ Component, pageProps }) {
-  const router = useRouter();
-
-  return (
-    <DynamicBrowserRouter>
-      <Component {...pageProps} />
-    </DynamicBrowserRouter>
-  );
+  return getLayout(<Component {...pageProps} />)
 }
-
-export default MyApp;
