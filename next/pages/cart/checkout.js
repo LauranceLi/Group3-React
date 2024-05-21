@@ -3,7 +3,14 @@ import Navbar from '@/components/layout/navbar'
 import Footer from '@/components/layout/footer'
 import CheckoutList from '@/components/checkout/checkout_list'
 import Link from 'next/link'
+import { useShip711StoreOpener } from '@/hooks/use-ship-711-store'
+
 export default function Checkout() {
+  const { store711, openWindow, closeWindow } = useShip711StoreOpener(
+    'http://localhost:3005/api/shipment/711',
+    { autoCloseMins: 3 } // x分鐘沒完成選擇會自動關閉，預設5分鐘。
+  )
+
   return (
     <>
       <Navbar />
@@ -11,11 +18,6 @@ export default function Checkout() {
         <div className="container">
           <form action="#">
             <div className="travel-form mb-3">
-              {/* <div className="row align-items-start justify-content-center text-center big-title">
-                <div className="col first pass">1 選購商品</div>
-                <div className="col first active-carttitle">2 填寫訂單資訊</div>
-                <div className="col first">3 完成付款</div>
-              </div> */}
               <div className="second mb-3 mt-5">
                 <h4 className="bottom-line d-inline">確認購買商品</h4>
                 <div className="travel-info2">
@@ -219,6 +221,39 @@ export default function Checkout() {
                         中華郵政
                       </label>
                     </div>
+                  </div>
+                </div>
+                <div className="ship711">
+                  <div className="mb-3 mt-3">
+                    <h4 className="bottom-line d-inline">7-11 運送商店選擇</h4>
+                  </div>
+                  <button
+                    onClick={() => {
+                      openWindow()
+                    }}
+                    className="btn btn-dark mb-3"
+                  >
+                    選擇門市
+                  </button>
+                  <br />
+                  <div className="d-flex col-5">
+                    <div className="col-2">門市名稱 : </div>
+                    <input
+                      type="text"
+                      value={store711.storename}
+                      disabled
+                      className="form-control"
+                    />
+                  </div>
+                  <br />
+                  <div className="d-flex col-5">
+                    <div className="col-2">門市地址 : </div>
+                    <input
+                      type="text"
+                      value={store711.storeaddress}
+                      disabled
+                      className="form-control"
+                    />
                   </div>
                 </div>
                 <div className="row customer-info">
