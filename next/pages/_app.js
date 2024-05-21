@@ -2,9 +2,14 @@ import '/public/css/bootstrap.min.css';
 import '/styles/globals.css' 
 import React from 'react';
 
-export default function MyApp({ Component, pageProps }) {
-  // Use the layout defined at the page level, if available
-  const getLayout = Component.getLayout || ((page) => page)
+import 'bootstrap/dist/css/bootstrap.css'
+import '/styles/cart/cart.css'
+import { CartProvider } from '@/hooks/use_cart'
 
-  return getLayout(<Component {...pageProps} />)
+
+
+export default function App({ Component, pageProps }) {
+  const getLayout = Component.getLayout || ((page) => page)
+  return <CartProvider>{getLayout(<Component {...pageProps} />)}</CartProvider>
+
 }
