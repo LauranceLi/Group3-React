@@ -1,23 +1,5 @@
 // const baseUrl = 'https://my-json-server.typicode.com/eyesofkids/json-fake-data/products'
 
-const sample = [
-  {
-    id: 1,
-    picture: 'https://via.placeholder.com/150',
-    stock: 5,
-    name: '無資料預設範例-1',
-    price: 25000,
-    tags: '蘋果,大螢幕',
-  },
-  {
-    id: 2,
-    picture: 'https://via.placeholder.com/150',
-    stock: 5,
-    name: '無資料預設範例-2',
-    price: 15000,
-    tags: '蘋果,小螢幕',
-  },
-]
 
 // 因應要分頁和查詢，所以回應整個data
 export const loadProducts = async (params = {}) => {
