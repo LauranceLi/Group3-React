@@ -1,5 +1,4 @@
 import React from 'react'
-import Image from 'next/image'
 import Search from '@/components/search/search'
 import ProductList from '@/components/itinerary/product-list'
 import styles from '@/styles/itinerary.module.css'
