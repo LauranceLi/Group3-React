@@ -52,7 +52,7 @@ export default function GroupCart() {
                     <h6>手機號碼&nbsp;</h6>
                   </label>
                   <input
-                    type="text"
+                    type="mobile"
                     name="mobile"
                     id="mobile"
                     className="form-control"
