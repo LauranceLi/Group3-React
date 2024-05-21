@@ -1,5 +1,3 @@
-
-
 .registerFormContainer {
   height: 100%;
   display: flex;
@@ -15,7 +13,6 @@
   .registerFormContainer {
     flex-direction: column-reverse;
   }
-  
 }
 .header-social-area {
   justify-content: right;
@@ -68,7 +65,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  
+
   gap: 0.5rem;
 }
 .registerTitle {
@@ -112,26 +109,78 @@
   }
 }
 
-
-
 .thirdPartyLogin,
 .registerForm {
   background-color: rgba(0, 0, 0, 0.5);
   padding: 1.2rem 1.2rem;
 }
 
-
-
-
 .registerItem {
   display: flex;
-justify-content: end;
+  justify-content: flex-end;
   width: 100%;
   height: 3.5rem;
-  margin-bottom: 3%;
+  margin-bottom: 1.8rem;
   align-items: center;
   border-bottom: 1px solid white;
 }
+.registerItem p {
+  display: none;
+}
+
+.eyeIcon {
+  border: 0;
+  background-color: transparent;
+  color: rgba(255, 255, 255, 0.7);
+  transition: 0.3s;
+}
+
+.eyeIcon:hover {
+  color: rgba(255, 255, 255, 1);
+}
+
+.eyeIcon:focus {
+  outline: none;
+}
+
+.warning,
+.success,
+.error {
+  position: relative;
+}
+
+.error p,
+.warning p,
+.success p {
+  font-style: italic;
+  bottom: -2.7rem;
+  left: 0;
+  display: flex;
+  position: absolute;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+}
+
+.error {
+  border-bottom: 1px solid var(--danger-color);
+}
+.success {
+  border-bottom: 1px solid var(--success-color);
+}
+.warning {
+  border-bottom: 1px solid var(--warning-color);
+}
+
+.error p {
+  color: var(--danger-color);
+}
+.warning p {
+  color: var(--warning-color);
+}
+.success p {
+  color: var(--success-color);
+}
+
 
 .thirdPartyLogin .registerItem {
   width: 90%;
@@ -142,35 +191,35 @@ justify-content: end;
 /* loginBtn 動畫 start*/
 
 .thirdPartyLoginBtn,
-.thirdPartyLoginBtn:focus
- {
-    position: relative;
-    min-width: 200px;
-    background: transparent;
-    color: white;
-    font-size: 1rem;
-    text-align: center;
-    text-transform: uppercase;
-    text-decoration: none;
-    box-sizing: inherit;
-    padding: 10px 20px;
-    border: 1px solid;
-    box-shadow: inset 0 0 20px rgba(225, 51, 45, 0);
-    outline: 1px solid !important;
-    outline-color: rgba(225, 51, 45, 0.5);
-    outline-offset: 0px;
-    text-shadow: none;
-    transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
+.thirdPartyLoginBtn:focus {
+  position: relative;
+  min-width: 200px;
+  background: transparent;
+  color: white;
+  font-size: 1rem;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: none;
+  box-sizing: inherit;
+  padding: 10px 20px;
+  border: 1px solid;
+  box-shadow: inset 0 0 20px rgba(225, 51, 45, 0);
+  outline: 1px solid !important;
+  outline-color: rgba(225, 51, 45, 0.5);
+  outline-offset: 0px;
+  text-shadow: none;
+  transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 .thirdPartyLoginBtn:hover {
-    color: white;
-    border: 1px solid;
-    box-shadow: inset 0 0 20px rgb(255, 255, 255,0.65), 0 0 20px rgba(225, 51, 45, 0.2);
-    outline: 1px solid !important;
-    outline-color: rgba(225, 51, 45, 0) !important;
-    outline-offset: 15px;
-    text-shadow: 1px 1px 2px var(--info-color);
+  color: white;
+  border: 1px solid;
+  box-shadow: inset 0 0 20px rgb(255, 255, 255, 0.65),
+    0 0 20px rgba(225, 51, 45, 0.2);
+  outline: 1px solid !important;
+  outline-color: rgba(225, 51, 45, 0) !important;
+  outline-offset: 15px;
+  text-shadow: 1px 1px 2px var(--info-color);
 }
 /* loginBtn  thirdPartyLoginBtn 動畫 end*/
 
@@ -244,9 +293,9 @@ justify-content: end;
   width: 30%;
 }
 
-.registerItem input{
+.registerItem input {
   display: flex;
-  
+
   height: 100%;
   padding: 0;
   letter-spacing: 0.1rem;
@@ -271,9 +320,8 @@ justify-content: end;
   color: white;
 }
 
-
-
-.checkMail,.registerBtn {
+.checkMail,
+.registerBtn {
   min-height: 0;
   display: flex;
   justify-content: center;
@@ -309,9 +357,6 @@ justify-content: end;
   color: var(--primary-color);
 }
 
-
-
-
 .thirdPartyLogin .registerItem {
   width: 90%;
   display: flex;
@@ -324,8 +369,6 @@ justify-content: end;
 .googleIcon:hover {
   color: var(--google-red);
 }
-
-
 
 .thirdPartyLoginBtn {
   color: white;
@@ -342,7 +385,7 @@ justify-content: end;
   min-width: none;
 }
 
-@media only screen and (max-width:576px) {
+@media only screen and (max-width: 576px) {
   .thirdPartyLoginBtns {
     flex-direction: column;
     height: auto;
@@ -354,4 +397,3 @@ justify-content: end;
 }
 
 /* leftBox End */
-
