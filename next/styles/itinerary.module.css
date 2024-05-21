@@ -724,6 +724,10 @@
 /* 團體行程購物車(end) */
 
 /* itinerary-products區塊 (START) */
+.itineraryProductsImg {
+  width: 21rem;
+  height: 15.625rem;
+}
 .Pagination {
   display: flex;
   align-items: center;
@@ -842,6 +846,11 @@
   width: 166.7px;
   margin-left: 15px;
 }
+.itineraryTime {
+  margin-left: .625rem;
+  font-weight: 600;
+  color: #ef7f1b;
+}
 .itineraryDetails {
   display: flex;
   flex-direction: column;
@@ -850,6 +859,7 @@
 }
 
 .itineraryDescription {
+  height: 4.5rem;
   margin-top: 10px;
   margin-left: 8px;
   margin-right: 8px;
@@ -886,7 +896,8 @@
 }
 
 .flightDetails {
-  border: 1px solid lightgray;
+  border-top: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
   width: 336px;
   padding-left: 8px;
 }
@@ -973,7 +984,7 @@
     margin-bottom: 5px;
   }
   .itineraryContainer {
-    margin-left: 2.375rem;
+    margin-left: 1.25rem;
   }
   .itinerarySelect {
     width: auto;
