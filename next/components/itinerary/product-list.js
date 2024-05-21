@@ -9,7 +9,7 @@ export default function ProductList() {
       <div className={styles.itineraryContainer}>
         {products.map((v, i) => {
           return (
-            <div key={v.id} className={styles.itineraryProductsItem3}>
+            <div key={v.travel_id} className={styles.itineraryProductsItem3}>
               <div className={styles.itineraryProductsItem2}>
                 <Image
                   src={`/images/${v.photos}`}
@@ -25,7 +25,7 @@ export default function ProductList() {
               <div className={styles.itineraryDetails}>
                 <div className={styles.itineraryTime}>{v.time}</div>
                 <div>
-                  <div className={styles.itineraryDescription}>{v.info}</div>
+                  <div className={styles.itineraryDescription}>{v.introduce}</div>
                 </div>
 
                 <div className={styles.itineraryDetailsIn}>
