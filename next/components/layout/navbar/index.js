@@ -5,6 +5,7 @@ import styles from '@/styles/layout/navbar.module.css'
 import { ImFacebook2 } from 'react-icons/im'
 import { FaShoppingCart } from 'react-icons/fa'
 import { RiMenuFoldFill } from 'react-icons/ri'
+import { VscSignOut } from 'react-icons/vsc'
 
 const Navbar = ({ navItemName = '', navbarControl = '' }) => {
   const [isSticky, setIsSticky] = useState(false)
@@ -73,7 +74,7 @@ const Navbar = ({ navItemName = '', navbarControl = '' }) => {
                   </li>
                   <li className="nav-item">
                     <Link href="/members" className={styles.navLink}>
-                      <div >締杉會員</div>
+                      <div>締杉會員</div>
                     </Link>
                   </li>
                 </ul>
@@ -83,31 +84,19 @@ const Navbar = ({ navItemName = '', navbarControl = '' }) => {
               >
                 {/* Header Social Area */}
                 <div className={styles.icons}>
-                  <a
-                    href="#"
-                    data-toggle="tooltip"
-                    data-placement="bottom"
-                    title="Twitter"
-                  >
+                  <Link href="#" title="購物車">
                     <FaShoppingCart size={25} />
-                  </a>
-                  <a
-                    href="#"
-                    data-toggle="tooltip"
-                    data-placement="bottom"
-                    title="Instagram"
-                  >
-                    <i className="fa fa-instagram" aria-hidden="true" />
-                  </a>
-                  <a
-                    href="#"
-                    data-toggle="tooltip"
-                    data-placement="bottom"
-                    title="Facebook"
-                  >
+                  </Link>
+
+                  <Link href="#" title="Facebook">
                     <ImFacebook2 size={23} className={styles.facebookIcon} />
-                  </a>
+                  </Link>
+
+                  <Link href="/members/logout" title="登出">
+                    <VscSignOut size={30} className={styles.facebookIcon} />
+                  </Link>
                 </div>
+
                 <div className={styles.menuIcon}>
                   <button type="button" className={styles.menuBtn}>
                     <RiMenuFoldFill size={25} />
