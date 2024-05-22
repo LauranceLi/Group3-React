@@ -23,7 +23,7 @@ export default function ItineraryProducts() {
         addOptionsToDestinationSelect(["秘魯", "智利", "阿根廷", "古巴", "墨西哥", "玻利維亞"]);
         break;
       case "Europe": // 歐洲
-        addOptionsToDestinationSelect(["西班牙", "葡萄牙", "法國", "奧地利、捷克"]);
+        addOptionsToDestinationSelect(["西班牙", "葡萄牙", "法國", "奧地利&捷克" ,, "鐵道之旅"]);
         break;
       case "Japan": // 日本
         addOptionsToDestinationSelect(["鐵道之旅", "九州", "名古屋", "沖繩", "福岡", "東京"]);

@@ -11,7 +11,9 @@
     "sale": 20,
     "price": 269000,
     "airport": "台北-桃園機場出發",
-    "sign_up": "報名中"
+    "sign_up": "報名中",
+    "country": "中南美洲",
+    "area": "秘魯"
   },
   {
     "travel_id": 2,
@@ -25,7 +27,9 @@
     "sale": 5,
     "price": 299000,
     "airport": "台北-桃園機場出發",
-    "sign_up": "報名中"
+    "sign_up": "報名中",
+    "country": "中南美洲",
+    "area": "秘魯"
   },
   {
     "travel_id": 3,
@@ -39,7 +43,9 @@
     "sale": 27,
     "price": 282000,
     "airport": "台北-桃園機場出發",
-    "sign_up": "報名中"
+    "sign_up": "報名中",
+    "country": "中南美洲",
+    "area": "秘魯"
   },
   {
     "travel_id": 4,
@@ -53,7 +59,9 @@
     "sale": 4,
     "price": 299000,
     "airport": "台北-桃園機場出發",
-    "sign_up": "報名中"
+    "sign_up": "報名中",
+    "country": "中南美洲",
+    "area": "秘魯"
   },
   {
     "travel_id": 5,
@@ -67,7 +75,9 @@
     "sale": 19,
     "price": 309000,
     "airport": "台北-桃園機場出發",
-    "sign_up": "報名中"
+    "sign_up": "報名中",
+    "country": "中南美洲",
+    "area": "秘魯"
   },
   {
     "travel_id": 6,
@@ -81,7 +91,9 @@
     "sale": 25,
     "price": 295000,
     "airport": "台北-桃園機場出發",
-    "sign_up": "報名中"
+    "sign_up": "報名中",
+    "country": "中南美洲",
+    "area": "阿根廷"
   },
   {
     "travel_id": 7,
@@ -95,7 +107,9 @@
     "sale": 8,
     "price": 225000,
     "airport": "台北-桃園機場出發",
-    "sign_up": "報名中"
+    "sign_up": "報名中",
+    "country": "中南美洲",
+    "area": "古巴"
   },
   {
     "travel_id": 8,
@@ -109,7 +123,9 @@
     "sale": 9,
     "price": 250000,
     "airport": "台北-桃園機場出發",
-    "sign_up": "報名中"
+    "sign_up": "報名中",
+    "country": "中南美洲",
+    "area": "古巴"
   },
   {
     "travel_id": 9,
@@ -123,7 +139,9 @@
     "sale": 22,
     "price": 182900,
     "airport": "台北-桃園機場出發",
-    "sign_up": "報名中"
+    "sign_up": "報名中",
+    "country": "歐洲",
+    "area": "奧地利&捷克"
   },
   {
     "travel_id": 10,
@@ -137,7 +155,9 @@
     "sale": 14,
     "price": 339000,
     "airport": "台北-桃園機場出發",
-    "sign_up": "報名中"
+    "sign_up": "報名中",
+    "country": "中南美洲",
+    "area": "智利"
   },
   {
     "travel_id": 11,
@@ -151,7 +171,9 @@
     "sale": 1,
     "price": 34900,
     "airport": "台北-桃園機場出發",
-    "sign_up": "報名中"
+    "sign_up": "報名中",
+    "country": "日本",
+    "area": "九州"
   },
   {
     "travel_id": 12,
@@ -165,7 +187,9 @@
     "sale": 9,
     "price": 198900,
     "airport": "台北-桃園機場出發",
-    "sign_up": "報名中"
+    "sign_up": "報名中",
+    "country": "歐洲",
+    "area": "葡萄牙"
   },
   {
     "travel_id": 13,
@@ -179,7 +203,9 @@
     "sale": 17,
     "price": 248900,
     "airport": "台北-桃園機場出發",
-    "sign_up": "報名中"
+    "sign_up": "報名中",
+    "country": "歐洲",
+    "area": "法國"
   },
   {
     "travel_id": 14,
@@ -193,7 +219,9 @@
     "sale": 13,
     "price": 185900,
     "airport": "台北-桃園機場出發",
-    "sign_up": "報名中"
+    "sign_up": "報名中",
+    "country": "歐洲",
+    "area": "奧地利&捷克"
   },
   {
     "travel_id": 15,
@@ -207,7 +235,9 @@
     "sale": 6,
     "price": 79900,
     "airport": "台北-桃園機場出發",
-    "sign_up": "報名中"
+    "sign_up": "報名中",
+    "country": "日本",
+    "area": "鐵道之旅"
   },
   {
     "travel_id": 16,
@@ -221,7 +251,9 @@
     "sale": 0,
     "price": 42900,
     "airport": "台北-桃園機場出發",
-    "sign_up": "額滿"
+    "sign_up": "額滿",
+    "country": "日本",
+    "area": "名古屋"
   },
   {
     "travel_id": 17,
@@ -235,7 +267,9 @@
     "sale": 3,
     "price": 36900,
     "airport": "台北-桃園機場出發",
-    "sign_up": "報名中"
+    "sign_up": "報名中",
+    "country": "日本",
+    "area": "名古屋"
   },
   {
     "travel_id": 18,
@@ -249,7 +283,9 @@
     "sale": 17,
     "price": 56900,
     "airport": "台北-桃園機場出發",
-    "sign_up": "報名中"
+    "sign_up": "報名中",
+    "country": "日本",
+    "area": "東京"
   },
   {
     "travel_id": 19,
@@ -263,7 +299,9 @@
     "sale": 0,
     "price": 50900,
     "airport": "台北-桃園機場出發",
-    "sign_up": "額滿"
+    "sign_up": "額滿",
+    "country": "日本",
+    "area": "名古屋"
   },
   {
     "travel_id": 20,
@@ -277,7 +315,9 @@
     "sale": 2,
     "price": 59900,
     "airport": "台北-桃園機場出發",
-    "sign_up": "報名中"
+    "sign_up": "報名中",
+    "country": "日本",
+    "area": "名古屋"
   },
   {
     "travel_id": 21,
@@ -291,7 +331,9 @@
     "sale": 1,
     "price": 28900,
     "airport": "台北-桃園機場出發",
-    "sign_up": "報名中"
+    "sign_up": "報名中",
+    "country": "日本",
+    "area": "沖繩"
   },
   {
     "travel_id": 22,
@@ -305,7 +347,9 @@
     "sale": 1,
     "price": 32900,
     "airport": "台北-桃園機場出發",
-    "sign_up": "報名中"
+    "sign_up": "報名中",
+    "country": "日本",
+    "area": "九州"
   },
   {
     "travel_id": 23,
@@ -319,7 +363,9 @@
     "sale": 6,
     "price": 50900,
     "airport": "台北-桃園機場出發",
-    "sign_up": "報名中"
+    "sign_up": "報名中",
+    "country": "日本",
+    "area": "名古屋"
   },
   {
     "travel_id": 24,
@@ -333,7 +379,9 @@
     "sale": 10,
     "price": 39900,
     "airport": "台北-桃園機場出發",
-    "sign_up": "報名中"
+    "sign_up": "報名中",
+    "country": "日本",
+    "area": "九州"
   },
   {
     "travel_id": 25,
@@ -347,7 +395,9 @@
     "sale": 8,
     "price": 38900,
     "airport": "台北-桃園機場出發",
-    "sign_up": "報名中"
+    "sign_up": "報名中",
+    "country": "日本",
+    "area": "福岡"
   },
   {
     "travel_id": 26,
@@ -361,7 +411,9 @@
     "sale": 31,
     "price": 259000,
     "airport": "台北-桃園機場出發",
-    "sign_up": "報名中"
+    "sign_up": "報名中",
+    "country": "中南美洲",
+    "area": "秘魯"
   },
   {
     "travel_id": 27,
@@ -375,7 +427,9 @@
     "sale": 5,
     "price": 280000,
     "airport": "台北-桃園機場出發",
-    "sign_up": "報名中"
+    "sign_up": "報名中",
+    "country": "中南美洲",
+    "area": "秘魯"
   },
   {
     "travel_id": 28,
@@ -389,7 +443,9 @@
     "sale": 0,
     "price": 289000,
     "airport": "台北-桃園機場出發",
-    "sign_up": "額滿"
+    "sign_up": "額滿",
+    "country": "中南美洲",
+    "area": "秘魯"
   },
   {
     "travel_id": 29,
@@ -403,7 +459,9 @@
     "sale": 7,
     "price": 295000,
     "airport": "台北-桃園機場出發",
-    "sign_up": "報名中"
+    "sign_up": "報名中",
+    "country": "中南美洲",
+    "area": "阿根廷"
   },
   {
     "travel_id": 30,
@@ -417,7 +475,9 @@
     "sale": 21,
     "price": 229000,
     "airport": "台北-桃園機場出發",
-    "sign_up": "報名中"
+    "sign_up": "報名中",
+    "country": "中南美洲",
+    "area": "古巴"
   },
   {
     "travel_id": 31,
@@ -431,7 +491,9 @@
     "sale": 31,
     "price": 229000,
     "airport": "台北-桃園機場出發",
-    "sign_up": "報名中"
+    "sign_up": "報名中",
+    "country": "中南美洲",
+    "area": "古巴"
   },
   {
     "travel_id": 32,
@@ -445,7 +507,9 @@
     "sale": 16,
     "price": 229900,
     "airport": "台北-桃園機場出發",
-    "sign_up": "報名中"
+    "sign_up": "報名中",
+    "country": "歐洲",
+    "area": "西班牙"
   },
   {
     "travel_id": 33,
@@ -459,7 +523,9 @@
     "sale": 21,
     "price": 219900,
     "airport": "台北-桃園機場出發",
-    "sign_up": "報名中"
+    "sign_up": "報名中",
+    "country": "歐洲",
+    "area": "西班牙"
   },
   {
     "travel_id": 34,
@@ -473,7 +539,9 @@
     "sale": 1,
     "price": 189900,
     "airport": "台北-桃園機場出發",
-    "sign_up": "報名中"
+    "sign_up": "報名中",
+    "country": "歐洲",
+    "area": "奧地利&捷克"
   },
   {
     "travel_id": 35,
@@ -487,7 +555,9 @@
     "sale": 22,
     "price": 248900,
     "airport": "台北-桃園機場出發",
-    "sign_up": "報名中"
+    "sign_up": "報名中",
+    "country": "歐洲",
+    "area": "法國"
   },
   {
     "travel_id": 36,
@@ -501,7 +571,9 @@
     "sale": 2,
     "price": 79900,
     "airport": "台北-桃園機場出發",
-    "sign_up": "報名中"
+    "sign_up": "報名中",
+    "country": "日本",
+    "area": "鐵道之旅"
   },
   {
     "travel_id": 37,
@@ -515,7 +587,9 @@
     "sale": 0,
     "price": 42900,
     "airport": "台北-桃園機場出發",
-    "sign_up": "額滿"
+    "sign_up": "額滿",
+    "country": "日本",
+    "area": "名古屋"
   },
   {
     "travel_id": 38,
@@ -529,7 +603,9 @@
     "sale": 6,
     "price": 36900,
     "airport": "台北-桃園機場出發",
-    "sign_up": "報名中"
+    "sign_up": "報名中",
+    "country": "日本",
+    "area": "名古屋"
   },
   {
     "travel_id": 39,
@@ -543,7 +619,9 @@
     "sale": 8,
     "price": 56900,
     "airport": "台北-桃園機場出發",
-    "sign_up": "報名中"
+    "sign_up": "報名中",
+    "country": "日本",
+    "area": "東京"
   },
   {
     "travel_id": 40,
@@ -557,7 +635,9 @@
     "sale": 1,
     "price": 50900,
     "airport": "台北-桃園機場出發",
-    "sign_up": "報名中"
+    "sign_up": "報名中",
+    "country": "日本",
+    "area": "名古屋"
   },
   {
     "travel_id": 41,
@@ -571,7 +651,9 @@
     "sale": 4,
     "price": 59900,
     "airport": "台北-桃園機場出發",
-    "sign_up": "報名中"
+    "sign_up": "報名中",
+    "country": "日本",
+    "area": "名古屋"
   },
   {
     "travel_id": 42,
@@ -585,7 +667,9 @@
     "sale": 0,
     "price": 28900,
     "airport": "台北-桃園機場出發",
-    "sign_up": "額滿"
+    "sign_up": "額滿",
+    "country": "日本",
+    "area": "沖繩"
   },
   {
     "travel_id": 43,
@@ -599,7 +683,9 @@
     "sale": 4,
     "price": 32900,
     "airport": "台北-桃園機場出發",
-    "sign_up": "報名中"
+    "sign_up": "報名中",
+    "country": "日本",
+    "area": "九州"
   },
   {
     "travel_id": 44,
@@ -613,7 +699,9 @@
     "sale": 4,
     "price": 50900,
     "airport": "台北-桃園機場出發",
-    "sign_up": "報名中"
+    "sign_up": "報名中",
+    "country": "日本",
+    "area": "名古屋"
   },
   {
     "travel_id": 45,
@@ -627,7 +715,9 @@
     "sale": 3,
     "price": 40900,
     "airport": "台北-桃園機場出發",
-    "sign_up": "報名中"
+    "sign_up": "報名中",
+    "country": "日本",
+    "area": "九州"
   },
   {
     "travel_id": 46,
@@ -641,7 +731,9 @@
     "sale": 4,
     "price": 37900,
     "airport": "台北-桃園機場出發",
-    "sign_up": "報名中"
+    "sign_up": "報名中",
+    "country": "日本",
+    "area": "福岡"
   },
   {
     "travel_id": 47,
@@ -655,7 +747,9 @@
     "sale": 11,
     "price": 349000,
     "airport": "台北-桃園機場出發",
-    "sign_up": "報名中"
+    "sign_up": "報名中",
+    "country": "中南美洲",
+    "area": "智利"
   },
   {
     "travel_id": 48,
@@ -669,7 +763,9 @@
     "sale": 5,
     "price": 279000,
     "airport": "台北-桃園機場出發",
-    "sign_up": "報名中"
+    "sign_up": "報名中",
+    "country": "中南美洲",
+    "area": "秘魯"
   },
   {
     "travel_id": 49,
@@ -683,7 +779,9 @@
     "sale": 17,
     "price": 198900,
     "airport": "台北-桃園機場出發",
-    "sign_up": "報名中"
+    "sign_up": "報名中",
+    "country": "歐洲",
+    "area": "葡萄牙"
   },
   {
     "travel_id": 50,
@@ -697,7 +795,9 @@
     "sale": 29,
     "price": 325000,
     "airport": "台北-桃園機場出發",
-    "sign_up": "報名中"
+    "sign_up": "報名中",
+    "country": "中南美洲",
+    "area": "秘魯"
   },
   {
     "travel_id": 51,
@@ -711,7 +811,9 @@
     "sale": 0,
     "price": 282000,
     "airport": "台北-桃園機場出發",
-    "sign_up": "額滿"
+    "sign_up": "額滿",
+    "country": "中南美洲",
+    "area": "秘魯"
   },
   {
     "travel_id": 52,
@@ -725,7 +827,9 @@
     "sale": 8,
     "price": 250000,
     "airport": "台北-桃園機場出發",
-    "sign_up": "報名中"
+    "sign_up": "報名中",
+    "country": "歐洲",
+    "area": "鐵道之旅"
   },
   {
     "travel_id": 53,
@@ -739,6 +843,8 @@
     "sale": 13,
     "price": 220000,
     "airport": "台北-桃園機場出發",
-    "sign_up": "報名中"
+    "sign_up": "報名中",
+    "country": "歐洲",
+    "area": "法國"
   }
 ]

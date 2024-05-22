@@ -53,6 +53,14 @@ export default async function (sequelize) {
         type: DataTypes.STRING,
         allowNull: true,
       },
+      country: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+      area: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
     },
     {
       tableName: 'itinerary', //直接提供資料表名稱

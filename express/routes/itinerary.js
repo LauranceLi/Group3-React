@@ -18,7 +18,11 @@ import db from '#configs/mysql.js'
 
 // GET - 得到所有資料
 router.get('/', async function (req, res) {
-  const products = await Itinerary.findAll({ logging: console.log })
+  //const products = await Itinerary.findAll({ logging: console.log })
+
+  const [row] = await db.query('SELECT * FROM itinerary')
+  const products = row
+
   // 處理如果沒找到資料
 
   // 標準回傳JSON
@@ -30,9 +34,12 @@ router.get('/:id', async function (req, res) {
   // 轉為數字
   const id = getIdParam(req)
 
-  const product = await Itinerary.findByPk(id, {
-    raw: true, // 只需要資料表中資料
-  })
+  // const product = await Itinerary.findByPk(id, {
+  //   raw: true, // 只需要資料表中資料
+  // })
+
+  const [row] = await db.query('SELECT * FROM itinerary WHERE travel_id = ?', [id])
+  const product = row[0]
 
   return res.json({ status: 'success', data: { product } })
 })
