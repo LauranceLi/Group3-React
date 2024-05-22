@@ -6,6 +6,10 @@ import SquarePlus from '../icons/square_plus'
 
 export default function CartList() {
   const { items, increaseItem, decreaseItem, removeItem } = useCart()
+  if (items.length === 0) {
+    return <div className="text-center mt-3">目前沒有選購商品</div>
+  }
+
   return (
     <>
       {items.map((v, i) => {
@@ -13,7 +17,7 @@ export default function CartList() {
           <div className="travel-info" key={v.id}>
             <div className="travel-saleitem">
               <img src={`/pics/${v.photos.split(',')[0]}`} alt="" width={150} />
-              <span className="bottom-line">{v.name}</span>
+              <span className="bottom-line m-2">{v.name}</span>
             </div>
             <div className="unit-price text-center">{v.price}</div>
             <div className="unit-price text-center">

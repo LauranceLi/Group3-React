@@ -1,15 +1,17 @@
 /* 購物車 */
 
+
 * ,ul ,li ,label{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    text-decoration: none;
-    list-style-type: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style-type: none;
 }
-/* input[type="radio"]{
+
+input[type="radio"]{
   display: none;
-} */
+}
 
 h1,h2,h3,h4,h5,h6{
   font-weight: 600;
@@ -106,7 +108,7 @@ p{
 }
 .travel-saleitem {
     width: 100%;
-    font-size: 1.25rem;
+    /* font-size: 1.25rem; */
     line-height: 2.6875rem;
     margin-bottom: 0px;
     margin-top: 0px;
@@ -179,6 +181,10 @@ p{
 .text{
   width: 80%;
 }
+.ship711{
+    max-width: 50%;
+}
+
 
 /* hero-area */
 .hero-area {
@@ -517,7 +523,6 @@ p{
     margin: .625rem;
     line-height: 1.875rem;
   }
-  
 
   /* 768~1023 */
 @media (min-width: 768px) and (max-width: 1023px) {
@@ -566,6 +571,10 @@ p{
   .go-shopping{
     width: 100%;
   }
+  .ship711{
+    max-width: 80%;
+}
+
 
 }
 
@@ -640,5 +649,23 @@ p{
   #list{
     display: none;
   }
+  .ship711{
+    display: block;
+    max-width: 100%;
+}
+.zipcode{
+  display: block;
+}
+.zipcode_city{
+  width: 100%;
+  margin-top: .625rem;
+}
+.zipcode_area{
+  width: 100%;
+  margin-top: .625rem;
+}
+.zipcode_address{
+  margin-top: .625rem;
+}
 }
   
