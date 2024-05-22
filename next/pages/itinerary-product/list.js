@@ -11,10 +11,16 @@ export default function List() {
   const [pageCount, setPageCount] = useState(0)
   const [products, setProducts] = useState([])
 
+  // 查詢條件用
+  const [titleLike, setTitleLike] = useState('')
+  const [brands, setBrands] = useState([])
+  const [priceGte, setPriceGte] = useState(0)
+  const [priceLte, setPriceLte] = useState(15000)
+
   // 分頁用
   const [page, setPage] = useState(1)
   const [perpage, setPerpage] = useState(9)
-  
+
   // 排序用
   const [orderby, setOrderby] = useState({ sort: 'travel_id', order: 'asc' })
 
@@ -46,6 +52,22 @@ export default function List() {
   // BS5Pagination分頁控制列觸發事件使用
   const handlePageClick = (e) => {
     setPage(e.selected + 1)
+  }
+
+  // 按下搜尋按鈕
+  const handleSearch = () => {
+    // 每次搜尋條件後，因為頁數和筆數可能不同，所以要導向第1頁
+    setPage(1)
+
+    const params = {
+      page: 1, // 每次搜尋條件後，因為頁數和筆數可能不同，所以要導向第1頁
+      perpage,
+      sort: orderby.sort,
+      order: orderby.order,
+      title_like: titleLike,
+    }
+
+    getProducts(params)
   }
 
   // 樣式3: didMount + didUpdate
@@ -86,6 +108,18 @@ export default function List() {
       </div>
       <hr />
       <div>
+        行程搜尋 :&nbsp;
+        <input type="text" 
+        placeholder="請輸入關鍵字"
+        value={titleLike} onChange={(e)=>{
+          setTitleLike(e.target.value)
+        }}
+        />
+        <button
+        onClick={handleSearch}>搜尋</button>
+      </div>
+      <hr />
+      <div>
         <label>
           排序:
           <select
@@ -106,15 +140,14 @@ export default function List() {
             <option value="time,desc">出發日期排序(由高至低)</option>
           </select>
         </label>
+        <hr />
         <ul>
           {products.map((v) => {
             return (
               <li key={v.travel_id}>
                 <Link href={`/itinerary-product/${v.travel_id}`}>
-                  {v.title}
                   {v.introduce}
-                  (價格:{v.price})
-                  (出發日期:{v.time})
+                  (價格:{v.price}) (出發日期:{v.time})
                 </Link>
               </li>
             )
