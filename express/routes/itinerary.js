@@ -77,8 +77,10 @@ router.get('/', async function (req, res) {
   const products = rows
 
   // 計算目前的where過濾條件下的總資料筆數
-  const [row2] = await db.query(`SELECT COUNT(*) AS count FROM itinerary`)
-  const { count } = row2[0].count
+  const [row2] = await db.query(
+    `SELECT COUNT(*) AS count FROM itinerary ${where}`
+  )
+  const { count } = row2[0]
 
   //計算目前總共幾頁
   const pageCount = Math.ceil(count / perpage)
@@ -107,10 +109,10 @@ router.get('/:id', async function (req, res) {
   //   raw: true, // 只需要資料表中資料
   // })
 
-  const [row] = await db.query('SELECT * FROM itinerary WHERE travel_id = ?', [
+  const [rows] = await db.query('SELECT * FROM itinerary WHERE travel_id = ?', [
     id,
   ])
-  const product = row[0]
+  const product = rows[0]
 
   return res.json({ status: 'success', data: { product } })
 })
