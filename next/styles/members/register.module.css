@@ -143,6 +143,12 @@
   outline: none;
 }
 
+
+
+
+
+
+
 .warning,
 .success,
 .error {
@@ -179,6 +185,11 @@
 }
 .success p {
   color: var(--success-color);
+}
+
+.star {
+  margin-left: 0.2rem;
+  color: var(--primary-color);
 }
 
 

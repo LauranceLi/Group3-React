@@ -57,6 +57,13 @@ const RegisterForm = () => {
     }
   }
 
+  
+
+
+
+
+
+
   // 密碼檢查（完成）
   const [pwAvailableClass, setPwAvailableClass] = useState('')
   const [pwAvailableMessage, setPwAvailableMessage] = useState('')
@@ -162,25 +169,47 @@ const RegisterForm = () => {
     }
   }
 
+  // 阻擋表單（完成）
   const handleSubmit = async (e) => {
     // 阻擋表單預設送出行為
     e.preventDefault()
 
     // 表單檢查---START---
     // 建立一個新的錯誤訊息物件
-    const newErrors = { email: '', password: '' }
+    const newErrors = {
+      email: '',
+      password: '',
+      name: '',
+      mobile: '',
+      passwordCheck: '',
+    }
 
     if (!user.email) {
-      newErrors.email = '帳號為必填'
+      newErrors.email = '帳號為必填欄位'
+      setEmailAvailableMessage(newErrors.email)
+      setEmailAvailableClass(styles.error)
+    }
+    if (!user.password) {
+      newErrors.password = '密碼為必填欄位'
+      setPwAvailableMessage(newErrors.password)
+      setPwAvailableClass(styles.error)
+    }
+    if (!user.name) {
+      newErrors.name = '姓名為必填欄位'
+      setNameAvailableMessage( newErrors.name)
+      setNameAvailableClass(styles.error)
+    }
+    if (!user.mobile) {
+      newErrors.mobile = '手機號碼為必填欄位'
+      setMobileAvailableMessage(newErrors.mobile )
+      setMobileAvailableClass(styles.error)
+    }
+    if (user.passwordCheck !== user.password) {
+      newErrors.passwordCheck = '兩次密碼不一致，請重新確認。'
+      setPwSameMessage(newErrors.passwordCheck)
+      setPwSameClass(styles.error)
     }
 
-    if (user.password && user.password.length < 6) {
-      newErrors.password = '密碼至少6個字元'
-    }
-
-    if (user.password === '') {
-      newErrors.password = '密碼為必填'
-    }
 
     // 檢查完設定到狀態中
     setErrors(newErrors)
@@ -193,9 +222,9 @@ const RegisterForm = () => {
       return
     }
     // 表單檢查--- END ---
-    setIsLoading(true)
+   
     // 檢查沒問題後再送到伺服器
-    const res = await fetch('http://localhost:3005/api/members/login', {
+    const res = await fetch('http://localhost:3005/api/members/register', {
       credentials: 'include', // 設定cookie或是要存取隱私資料時帶cookie到伺服器一定要加
       method: 'POST',
       headers: {
@@ -208,8 +237,6 @@ const RegisterForm = () => {
     const data = await res.json()
 
     if (data.status === 'success') {
-      const returnUser = parseJwt(data.data.accessToken)
-      console.log(returnUser)
       router.push('/members')
     } else {
       alert(data.message)
@@ -246,14 +273,15 @@ const RegisterForm = () => {
             </div>
           </div>
 
-          <form action="#" className={styles.registerForm} method="post">
+          <form onSubmit={handleSubmit} className={styles.registerForm}>
             <h5>註冊</h5>
             <div className={styles.middleBox}>
               <div className={styles.leftBox}>
                 <div
                   className={`${styles.registerItem} ${emailAvailableClass}`}
                 >
-                  <label htmlFor="email">帳號</label>
+                  <label htmlFor="email">帳號<span className={styles.star}>*</span></label>
+                  
                   <input
                     className={styles.registerInput}
                     name="email"
@@ -272,7 +300,7 @@ const RegisterForm = () => {
                   </button>
                 </div>
                 <div className={`${styles.registerItem} ${pwAvailableClass}`}>
-                  <label htmlFor="password">密碼</label>
+                  <label htmlFor="password">密碼<span className={styles.star}>*</span></label>
                   <input
                     className={styles.registerInput}
                     name="password"
@@ -321,7 +349,7 @@ const RegisterForm = () => {
               </div>
               <div className={styles.rightBox}>
                 <div className={`${styles.registerItem} ${nameAvailableClass}`}>
-                  <label htmlFor="name">姓名</label>
+                  <label htmlFor="name">姓名<span className={styles.star}>*</span></label>
                   <input
                     className={styles.registerInput}
                     name="name"
@@ -332,14 +360,16 @@ const RegisterForm = () => {
                   />
                   <p>{nameAvailableMessage}</p>
                 </div>
-                <div className={`${styles.registerItem} ${mobileAvailableClass}`}>
-                  <label htmlFor="mobile">手機</label>
+                <div
+                  className={`${styles.registerItem} ${mobileAvailableClass}`}
+                >
+                  <label htmlFor="mobile">手機<span className={styles.star}>*</span></label>
                   <input
                     className={styles.registerInput}
                     name="mobile"
                     type="mobile"
                     id="mobile"
-                    placeholder='ex: 0988123456'
+                    placeholder="ex: 0988123456"
                     onChange={handleMobileChange}
                   />
                   <p>{mobileAvailableMessage}</p>
