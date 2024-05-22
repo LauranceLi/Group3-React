@@ -19,7 +19,6 @@ const parseJwt = (token) => {
 const LoginForm = () => {
   const router = useRouter()
   const [IsVisible, setIsVisible] = useState(false)
-  const [isLoading, setIsLoading] = useState(false)
   const toggleVisibility = () => {
     setIsVisible(!IsVisible)
   }
