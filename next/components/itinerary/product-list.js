@@ -12,7 +12,7 @@ export default function ProductList() {
             <div key={v.travel_id} className={styles.itineraryProductsItem3}>
               <div className={styles.itineraryProductsItem2}>
                 <Image
-                  src={`/images/${v.photos}`}
+                  src={`/images/${v.logo}`}
                   width={336}
                   height={250}
                   alt=""

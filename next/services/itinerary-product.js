@@ -1,26 +1,23 @@
-// const baseUrl = 'https://my-json-server.typicode.com/eyesofkids/json-fake-data/products'
+//const baseUrl = 'https://my-json-server.typicode.com/eyesofkids/json-fake-data/products'
+const baseUrl = 'http://localhost:3005/api/itinerary'
 
 
-// 因應要分頁和查詢，所以回應整個data
-export const loadProducts = async (params = {}) => {
-  // 使用URLSearchParams產生查詢字串
-  const searchParams = new URLSearchParams(params)
-  const url = `${baseUrl}?${searchParams.toString()}`
-
+export const loadProducts = async () => {
+  // 要使用try...catch陳述式，讓與伺服器連線作REST更穩健
   try {
-    const res = await fetch(url)
+    const res = await fetch(baseUrl)
     const resData = await res.json()
     // 判斷是否成功
     if (resData.status === 'success') {
-      // 因應要分頁和查詢，所以回應整個data
-      return resData.data
+      return resData.data.products
     } else {
       console.warn('沒有得到資料')
-      return {}
+      return []
     }
   } catch (e) {
     console.error(e)
-    return {}
+    // 用範例資料當作例外資料
+    return sample
   }
 }
 
