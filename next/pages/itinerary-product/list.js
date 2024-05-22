@@ -13,9 +13,12 @@ export default function List() {
 
   // 查詢條件用
   const [titleLike, setTitleLike] = useState('')
-  const [brands, setBrands] = useState([])
+  const [country, setCountry] = useState([]) // 複選要用陣列
   const [priceGte, setPriceGte] = useState(0)
-  const [priceLte, setPriceLte] = useState(15000)
+  const [priceLte, setPriceLte] = useState(300000)
+
+  // 國家選項陣列
+  const countryOptions = ['中南美洲', '歐洲', '日本']
 
   // 分頁用
   const [page, setPage] = useState(1)
@@ -54,6 +57,22 @@ export default function List() {
     setPage(e.selected + 1)
   }
 
+  // 國家複選時使用
+  const handleCountryChecked = (e) => {
+    // 宣告方便使用的tv名稱，取得觸發事件物件的目標值
+    const tv = e.target.value
+    // 判斷是否有在陣列中
+    if (country.includes(tv)) {
+      // 如果有===>移出陣列
+      const nextCountry = country.filter((v) => v !== tv)
+      setCountry(nextCountry)
+    } else {
+      // 否則===>加入陣列
+      const nextCountry = [...country, tv]
+      setCountry(nextCountry)
+    }
+  }
+
   // 按下搜尋按鈕
   const handleSearch = () => {
     // 每次搜尋條件後，因為頁數和筆數可能不同，所以要導向第1頁
@@ -65,6 +84,9 @@ export default function List() {
       sort: orderby.sort,
       order: orderby.order,
       title_like: titleLike,
+      country: country.join(','),
+      price_gte: priceGte,
+      price_lte: priceLte,
     }
 
     getProducts(params)
@@ -77,6 +99,10 @@ export default function List() {
       perpage,
       sort: orderby.sort,
       order: orderby.order,
+      title_like: titleLike,
+      country: country.join(','),
+      price_gte: priceGte,
+      price_lte: priceLte,
     }
 
     getProducts(params)
@@ -109,14 +135,41 @@ export default function List() {
       <hr />
       <div>
         行程搜尋 :&nbsp;
-        <input type="text" 
-        placeholder="請輸入關鍵字"
-        value={titleLike} onChange={(e)=>{
-          setTitleLike(e.target.value)
+        {countryOptions.map((v, i) => {
+          return (
+            <label
+              // 當初次render後不會再改動，即沒有新增、刪除、更動時，可以用索引當key
+              key={i}
+            >
+              <input
+                type="checkbox"
+                value={v}
+                checked={country.includes(v)}
+                onChange={handleCountryChecked}
+              />
+              {v}
+            </label>
+          )
+        })}
+      </div>
+      價格大於:
+      <input
+        type="number"
+        value={priceGte}
+        onChange={(e) => {
+          setPriceGte(Number(e.target.value))
         }}
-        />
-        <button
-        onClick={handleSearch}>搜尋</button>
+      />
+      小於:
+      <input
+        type="number"
+        value={priceLte}
+        onChange={(e) => {
+          setPriceLte(Number(e.target.value))
+        }}
+      />
+      <div>
+        <button onClick={handleSearch}>搜尋</button>
       </div>
       <hr />
       <div>
