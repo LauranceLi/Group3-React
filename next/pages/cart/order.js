@@ -5,12 +5,10 @@ import Footer from '@/components/layout/footer'
 import CheckoutList from '@/components/checkout/checkout_list'
 import { useFormContext } from '@/context/formContext'
 import { useShip711StoreOpener } from '@/hooks/use-ship-711-store'
-import { useAddress } from '@/context/AddressContext'
 
 export default function Order() {
   const { formData } = useFormContext()
   const { store711 } = useShip711StoreOpener()
-  const { address } = useAddress()
 
   return (
     <>
@@ -97,9 +95,9 @@ export default function Order() {
                     <div className="travel-saleitem text-center">
                       {store711.storename}
                       {store711.storeaddress}
-                      {address.postcode}
-                      {address.country}
-                      {address.township}
+                      {formData.postcode}
+                      {formData.country}
+                      {formData.township}
                       {formData.shippingAddress}
                     </div>
                   </div>

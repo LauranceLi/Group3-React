@@ -45,7 +45,20 @@ const useFormCheck = () => {
     if (!values.invoiceType) {
       tempErrors.invoiceType = '發票類型是必選項'
     }
-
+    // 驗證載具格式
+    if (
+      values.invoiceType === '電子載具' &&
+      !/^\/[0-9A-Z.+-]{7}$/.test(values.invoiceValue)
+    ) {
+      tempErrors.invoiceValue = '載具格式錯誤'
+    }
+    // 驗證統編
+    if (
+      values.invoiceType === '三聯發票' &&
+      !/^[0-9]{8}$/.test(values.invoiceValue)
+    ) {
+      tempErrors.invoiceValue = '統編格式錯誤'
+    }
     // 驗證送貨方式
     if (!values.shippingMethod) {
       tempErrors.shippingMethod = '送貨方式及地址是必選項'

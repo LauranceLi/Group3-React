@@ -1,9 +1,9 @@
 import React from 'react'
-import { useCoupon } from '@/hooks/use_coupon'
+import { useCart } from '@/hooks/use_cart'
 
 export default function Coupon() {
   const { netTotal, selectedCouponId, setSelectedCouponId, couponOptions } =
-    useCoupon()
+    useCart()
   const selectedCoupon = couponOptions.find(
     (coupon) => coupon.id === selectedCouponId
   )

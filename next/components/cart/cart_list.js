@@ -3,11 +3,39 @@ import { useCart } from '@/hooks/use_cart'
 import TrashCan from '../icons/trash_can'
 import SquareMinus from '../icons/square_minus'
 import SquarePlus from '../icons/square_plus'
+import Link from 'next/link'
+import Coupon from '../coupon/coupon'
 
 export default function CartList() {
   const { items, increaseItem, decreaseItem, removeItem } = useCart()
+  const handleCheckout = () => {
+    // 收集購物車中每個物品的信息
+    const itemsData = []
+    // 遍歷購物車中的每個物品，並將其信息添加到 itemsData 中
+    items.map((item) => {
+      itemsData.push({
+        id: item.id,
+        name: item.name,
+        price: item.price,
+        qty: item.qty,
+        // 添加其他你需要的物品信息
+      })
+    })
+    console.log(itemsData)
+  }
+
   if (items.length === 0) {
-    return <div className="text-center mt-3">目前沒有選購商品</div>
+    return (
+      <>
+        <div className="text-center mt-3">目前沒有選購商品</div>
+        <div className="total-amount p-2">
+          <div></div>
+          <button type="button" className="btn btn-secondary">
+            點我去結帳
+          </button>
+        </div>
+      </>
+    )
   }
 
   return (
@@ -53,6 +81,20 @@ export default function CartList() {
           </div>
         )
       })}
+      <div className="total-amount p-2">
+        <div>
+          <Coupon />
+        </div>
+        <Link href="/cart/checkout">
+          <button
+            type="button"
+            className="btn btn-warning"
+            onClick={handleCheckout}
+          >
+            點我去結帳
+          </button>
+        </Link>
+      </div>
     </>
   )
 }
