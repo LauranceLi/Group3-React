@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import styles from '/styles/members/register.module.css'
+import { useRouter } from 'next/router'
 import { ImGoogle2 } from 'react-icons/im'
 import { ImFacebook2 } from 'react-icons/im'
 import { RiEyeFill } from 'react-icons/ri'
@@ -7,6 +8,7 @@ import { RiEyeOffFill } from 'react-icons/ri'
 
 const RegisterForm = () => {
   // 密碼可視 / 不可視
+  const router = useRouter()
   const [IsVisible, setIsVisible] = useState(false)
   const [IsVisibleCheck, setIsVisibleCheck] = useState(false)
   const toggleVisibility = () => {
@@ -56,13 +58,6 @@ const RegisterForm = () => {
       }
     }
   }
-
-  
-
-
-
-
-
 
   // 密碼檢查（完成）
   const [pwAvailableClass, setPwAvailableClass] = useState('')
@@ -196,12 +191,12 @@ const RegisterForm = () => {
     }
     if (!user.name) {
       newErrors.name = '姓名為必填欄位'
-      setNameAvailableMessage( newErrors.name)
+      setNameAvailableMessage(newErrors.name)
       setNameAvailableClass(styles.error)
     }
     if (!user.mobile) {
       newErrors.mobile = '手機號碼為必填欄位'
-      setMobileAvailableMessage(newErrors.mobile )
+      setMobileAvailableMessage(newErrors.mobile)
       setMobileAvailableClass(styles.error)
     }
     if (user.passwordCheck !== user.password) {
@@ -209,7 +204,6 @@ const RegisterForm = () => {
       setPwSameMessage(newErrors.passwordCheck)
       setPwSameClass(styles.error)
     }
-
 
     // 檢查完設定到狀態中
     setErrors(newErrors)
@@ -222,7 +216,7 @@ const RegisterForm = () => {
       return
     }
     // 表單檢查--- END ---
-   
+
     // 檢查沒問題後再送到伺服器
     const res = await fetch('http://localhost:3005/api/members/register', {
       credentials: 'include', // 設定cookie或是要存取隱私資料時帶cookie到伺服器一定要加
@@ -280,8 +274,10 @@ const RegisterForm = () => {
                 <div
                   className={`${styles.registerItem} ${emailAvailableClass}`}
                 >
-                  <label htmlFor="email">帳號<span className={styles.star}>*</span></label>
-                  
+                  <label htmlFor="email">
+                    帳號<span className={styles.star}>*</span>
+                  </label>
+
                   <input
                     className={styles.registerInput}
                     name="email"
@@ -300,7 +296,9 @@ const RegisterForm = () => {
                   </button>
                 </div>
                 <div className={`${styles.registerItem} ${pwAvailableClass}`}>
-                  <label htmlFor="password">密碼<span className={styles.star}>*</span></label>
+                  <label htmlFor="password">
+                    密碼<span className={styles.star}>*</span>
+                  </label>
                   <input
                     className={styles.registerInput}
                     name="password"
@@ -349,7 +347,9 @@ const RegisterForm = () => {
               </div>
               <div className={styles.rightBox}>
                 <div className={`${styles.registerItem} ${nameAvailableClass}`}>
-                  <label htmlFor="name">姓名<span className={styles.star}>*</span></label>
+                  <label htmlFor="name">
+                    姓名<span className={styles.star}>*</span>
+                  </label>
                   <input
                     className={styles.registerInput}
                     name="name"
@@ -363,7 +363,9 @@ const RegisterForm = () => {
                 <div
                   className={`${styles.registerItem} ${mobileAvailableClass}`}
                 >
-                  <label htmlFor="mobile">手機<span className={styles.star}>*</span></label>
+                  <label htmlFor="mobile">
+                    手機<span className={styles.star}>*</span>
+                  </label>
                   <input
                     className={styles.registerInput}
                     name="mobile"
