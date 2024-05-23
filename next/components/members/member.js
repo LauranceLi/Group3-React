@@ -1,10 +1,13 @@
 import React from 'react'
 import styles from '@/styles/members/member.module.css'
+import useMemberInfo from '@/hooks/use-member-info';
 import Avatar from '@/components/members/avatar'
-import MemberAction from '@/components/members/member-action'
-import { FaStar } from 'react-icons/fa'
+import MemberCenter from '@/components/members/member-center'
+import ActionList from '@/components/members/action-list'
 
 export default function Member() {
+
+const { name } = useMemberInfo()
   return (
     <main className={styles.memberMain}>
       <div className={styles.memberContainer}>
@@ -12,27 +15,12 @@ export default function Member() {
           <div className={styles.leftBox}>
             <div className="member">
               <Avatar width={'10rem'} height={'10rem'} />
-              <h4>締杉旅遊</h4>
+              <h4>{name}</h4>
             </div>
-            <MemberAction className={styles.actionColumn} />
+            <ActionList className={styles.actionColumn} />
           </div>
           <div className={styles.rightBox}>
-            <div className={styles.offerInfo}>
-              <div className={styles.recommendItinerary}></div>
-              <div className={styles.remainPoints}>
-
-                <div className={styles.iconBorder}>
-                  <FaStar />
-                </div>
-                <div className={styles.rightBox}>
-                  <h5>剩餘點數</h5>
-                  <h3>123456</h3>
-                </div>
-              </div>
-            </div>
-            <div className={styles.orderInfo}></div>
-            <div className={styles.itineraryInfo}></div>
-            <MemberAction className={styles.actionRow} />
+            <MemberCenter />
           </div>
         </div>
       </div>
