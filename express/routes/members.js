@@ -20,8 +20,19 @@ import 'dotenv/config.js'
 const accessTokenSecret = process.env.ACCESS_TOKEN_SECRET
 
 /* GET home page. */
-router.get('/', function (req, res, next) {
-  res.render('index', { title: '46' })
+router.get('/get_info', authenticate, async function (req, res, next) {
+  // 如果會員是在存取令牌合法的情況下，req.user中會有會員的id和username
+  const memberId = req.user.member_id // 假设你已经从请求中获取了 member_id
+  const [rows] = await db.query(
+    `SELECT * 
+     FROM members_info
+     JOIN members ON members.member_id = members_info.member_id
+     WHERE members_info.member_id = ?`,
+    [memberId]
+  )
+
+  const user = rows[0]
+  return res.json({ status: 'success', data: user })
 })
 
 // 登入（完成）
