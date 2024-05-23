@@ -11,11 +11,54 @@ export default function List() {
   const [products, setProducts] = useState([])
   const [titleLike, setTitleLike] = useState('')
   const [country, setCountry] = useState([])
+  const [area, setArea] = useState([])
   const [priceGte, setPriceGte] = useState(0)
   const [priceLte, setPriceLte] = useState(300000)
   const [days, setDays] = useState(15)
 
+  const updateDestinationOptions = () => {
+    const [destinationOptions, setDestinationOptions] = useState([]); // 目的地下拉式選單的選項狀態
+    //setState
+
+    // 清空目的地選項
+    destinationSelect.innerHTML = ''
+
+    // 添加"請選擇"選項
+    const defaultOption = document.createElement('option')
+    defaultOption.value = ''
+    defaultOption.disabled = true
+    defaultOption.selected = true
+    defaultOption.hidden = true
+    defaultOption.textContent = '請選擇'
+    destinationSelect.appendChild(defaultOption)
+
+    switch (selectedRegion) {
+      case 'CentralSouthAmerica': // 中南美洲
+        setDestinationOptions(['秘魯', '智利', '阿根廷', '古巴', '墨西哥', '玻利維亞']);
+        break;
+      case 'Europe': // 歐洲
+        setDestinationOptions(['西班牙', '葡萄牙', '法國', '奧地利&捷克', '鐵道之旅']);
+        break;
+      case 'Japan': // 日本
+        setDestinationOptions(['鐵道之旅', '九州', '名古屋', '沖繩', '福岡', '東京']);
+        break;
+      default:
+        setDestinationOptions([]); // 預設情況下清空目的地選項
+    }
+  }
+
+  const addOptionsToDestinationSelect = (options) => {
+    const destinationSelect = document.getElementById('destinationSelect')
+    options.forEach((option) => {
+      const newOption = document.createElement('option')
+      newOption.value = option
+      newOption.textContent = option
+      destinationSelect.appendChild(newOption)
+    })
+  }
+
   const countryOptions = ['請選擇', '中南美洲', '歐洲', '日本']
+  // const areaOptions = ['請選擇', '秘魯', '智利', '阿根廷']
 
   const [page, setPage] = useState(1)
   const [perpage, setPerpage] = useState(9)
@@ -36,45 +79,32 @@ export default function List() {
 
   const getProducts = async (params) => {
     try {
-      const data = await loadProducts(params);
-  
+      const data = await loadProducts(params)
+
       if (data.pageCount && typeof data.pageCount === 'number') {
-        setPageCount(data.pageCount);
+        setPageCount(data.pageCount)
       }
-  
+
       if (data.total && typeof data.total === 'number') {
-        setTotal(data.total);
+        setTotal(data.total)
       }
-  
+
       if (Array.isArray(data.products)) {
         // 篩選出符合條件的產品
         const filteredProducts = data.products.filter((product) => {
-          const productDays = extractDays(product.days);
+          const productDays = extractDays(product.days)
           // 比較產品的天數是否在您選擇的天數以內，只顯示相符的產品
-          return productDays <= days;
-        });
-        setProducts(filteredProducts); // 更新產品狀態
+          return productDays <= days
+        })
+        setProducts(filteredProducts) // 更新產品狀態
       }
     } catch (error) {
-      console.error('Failed to load products:', error);
+      console.error('Failed to load products:', error)
     }
-  };
-  
-  
+  }
 
   const handlePageClick = (e) => {
     setPage(e.selected + 1)
-  }
-
-  const handleCountryChecked = (e) => {
-    const tv = e.target.value
-    if (country.includes(tv)) {
-      const nextCountry = country.filter((v) => v !== tv)
-      setCountry(nextCountry)
-    } else {
-      const nextCountry = [...country, tv]
-      setCountry(nextCountry)
-    }
   }
 
   const handleSearch = () => {
@@ -87,7 +117,8 @@ export default function List() {
       sort: orderby.sort,
       order: orderby.order,
       title_like: titleLike,
-      country: country.join(','),
+      country: country.join(','), // 將選擇的旅遊區域轉換為字串
+      area: area.join(','), // 將選擇的目的地轉換為字串
       price_gte: priceGte,
       price_lte: priceLte,
       days: days,
@@ -108,6 +139,7 @@ export default function List() {
       order: orderby.order,
       title_like: titleLike,
       country: country.join(','),
+      area: area.join(','),
       price_gte: priceGte,
       price_lte: priceLte,
       days: days,
@@ -147,7 +179,7 @@ export default function List() {
       </div>
       <hr />
       <div>
-        行程搜尋 :&nbsp;
+        關鍵字搜尋 :&nbsp;
         <input
           type="text"
           placeholder="請輸入關鍵字"
@@ -159,17 +191,35 @@ export default function List() {
         <hr />
         旅遊區域 :&nbsp;
         <select
-          value={country}
-          onChange={(e) => {
-            setCountry(e.target.value.split(','))
-          }}
-        >
-          {countryOptions.map((v, i) => (
-            <option key={i} value={v}>
-              {v}
-            </option>
-          ))}
-        </select>
+        value={country}
+        id="regionSelect"
+        onChange={(e) => {
+          setCountry(e.target.value);
+          updateDestinationOptions(e.target.value); // 更新目的地下拉式選單
+        }}
+      >
+        {countryOptions.map((v, i) => (
+          <option key={i} value={v}>
+            {v}
+          </option>
+        ))}
+      </select>
+        <hr />
+        目的地 :&nbsp;
+        <select
+        value={area}
+        id="destinationSelect"
+        onChange={(e) => {
+          setArea(e.target.value.split(','));
+        }}
+      >
+        {destinationOptions.map((v, i) => (
+          <option key={i} value={v}>
+            {v}
+          </option>
+        ))}
+      </select>
+        <hr />
       </div>
       <div>
         價格範圍 :&nbsp;
@@ -177,6 +227,7 @@ export default function List() {
           type="range"
           min={0}
           max={300000}
+          step={5000}
           value={priceGte}
           onChange={(e) => setPriceGte(Number(e.target.value))}
         />
@@ -185,6 +236,7 @@ export default function List() {
           type="range"
           min={0}
           max={300000}
+          step={5000}
           value={priceLte}
           onChange={(e) => setPriceLte(Number(e.target.value))}
         />
