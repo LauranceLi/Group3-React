@@ -15,12 +15,19 @@ export default function List() {
   const [priceGte, setPriceGte] = useState(0)
   const [priceLte, setPriceLte] = useState(300000)
 
-  const countryOptions = ['全部', '中南美洲', '歐洲', '日本'];
+  const countryOptions = ['請選擇', '中南美洲', '歐洲', '日本']
 
   const [page, setPage] = useState(1)
   const [perpage, setPerpage] = useState(9)
 
   const [orderby, setOrderby] = useState({ sort: 'travel_id', order: 'asc' })
+
+  // 新增保存初始價格範圍的狀態
+  const [initialPriceGte, setInitialPriceGte] = useState(0)
+  const [initialPriceLte, setInitialPriceLte] = useState(300000)
+
+  // 新增保存是否已經搜尋的狀態
+  const [searched, setSearched] = useState(false)
 
   const getProducts = async (params) => {
     try {
@@ -59,6 +66,7 @@ export default function List() {
 
   const handleSearch = () => {
     setPage(1)
+    setSearched(true)
 
     const params = {
       page: 1,
@@ -70,6 +78,10 @@ export default function List() {
       price_gte: priceGte,
       price_lte: priceLte,
     }
+
+    // 保存當前價格範圍的值
+    setInitialPriceGte(priceGte)
+    setInitialPriceLte(priceLte)
 
     getProducts(params)
   }
@@ -88,6 +100,13 @@ export default function List() {
 
     getProducts(params)
   }, [page, perpage, orderby])
+
+  const resetFilters = () => {
+    if (!searched) {
+      setPriceGte(initialPriceGte)
+      setPriceLte(initialPriceLte)
+    }
+  }
 
   return (
     <>
@@ -137,22 +156,25 @@ export default function List() {
           ))}
         </select>
       </div>
-      價格大於:
-      <input
-        type="number"
-        value={priceGte}
-        onChange={(e) => {
-          setPriceGte(Number(e.target.value))
-        }}
-      />
-      小於:
-      <input
-        type="number"
-        value={priceLte}
-        onChange={(e) => {
-          setPriceLte(Number(e.target.value))
-        }}
-      />
+      <div>
+        價格範圍:
+        <input
+          type="range"
+          min={0}
+          max={300000}
+          value={priceGte}
+          onChange={(e) => setPriceGte(Number(e.target.value))}
+        />
+        <span>&nbsp;{priceGte}元</span>
+        <input
+          type="range"
+          min={0}
+          max={300000}
+          value={priceLte}
+          onChange={(e) => setPriceLte(Number(e.target.value))}
+        />
+        <span>&nbsp;{priceLte}元</span>
+      </div>
       <div>
         <button onClick={handleSearch}>搜尋</button>
       </div>
@@ -180,23 +202,20 @@ export default function List() {
         </label>
         <hr />
         <ul>
-          {products.map((v) => {
-            return (
-              <li key={v.travel_id}>
-                <Link href={`/itinerary-product/${v.travel_id}`}>
-                  <Image
-                    src={`/images/${v.logo}`}
-                    width={336}
-                    height={250}
-                    alt=""
-                    className={styles.itineraryProductsImg}
-                  />
-                  {v.introduce}
-                  (價格:{v.price}) (出發日期:{v.time})
-                </Link>
-              </li>
-            )
-          })}
+          {products.map((v) => (
+            <li key={v.travel_id}>
+              <Link href={`/itinerary-product/${v.travel_id}`}>
+                <Image
+                  src={`/images/${v.logo}`}
+                  width={336}
+                  height={250}
+                  alt=""
+                  className={styles.itineraryProductsImg}
+                />
+                {v.introduce} (價格:{v.price}) (出發日期:{v.time})
+              </Link>
+            </li>
+          ))}
         </ul>
       </div>
       <BS5Pagination
