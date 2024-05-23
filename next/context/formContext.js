@@ -16,14 +16,28 @@ export const FormProvider = ({ children }) => {
     invoiceValue: '', //發票的值類型欄位
     shippingMethod: '', // 新增的送貨類型欄位
     shippingAddress: '', // 新增的送貨地址類型欄位
+    country: '',
+    township: '',
+    postcode: '',
   })
+  const handlePostcodeChange = (country, township, postcode) => {
+    // 更新 formData
+    setFormData({
+      ...formData,
+      country: country,
+      township: township,
+      postcode: postcode,
+    })
+  }
 
   const updateFormData = (fieldName, value) => {
     setFormData({ ...formData, [fieldName]: value })
   }
 
   return (
-    <FormContext.Provider value={{ formData, updateFormData }}>
+    <FormContext.Provider
+      value={{ formData, updateFormData, handlePostcodeChange }}
+    >
       {children}
     </FormContext.Provider>
   )

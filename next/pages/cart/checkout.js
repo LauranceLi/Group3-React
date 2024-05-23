@@ -19,10 +19,7 @@ export default function Checkout() {
                 <div className="unit-price text-center">數量</div>
                 <div className="unit-price text-center">品項小計</div>
               </div>
-              <CheckoutList />
-              <div className="mt-5">
-                <MyFormComponent />
-              </div>
+              <MyFormComponent />
             </div>
           </div>
         </div>
