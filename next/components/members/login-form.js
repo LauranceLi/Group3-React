@@ -74,7 +74,6 @@ const LoginForm = () => {
       return
     }
     // 表單檢查--- END ---
-    setIsLoading(true)
     // 檢查沒問題後再送到伺服器
     const res = await fetch('http://localhost:3005/api/members/login', {
       credentials: 'include', // 設定cookie或是要存取隱私資料時帶cookie到伺服器一定要加
@@ -90,7 +89,7 @@ const LoginForm = () => {
 
     if (data.status === 'success') {
       const returnUser = parseJwt(data.data.accessToken)
-      console.log(returnUser)
+      localStorage.setItem('user', JSON.stringify(returnUser));
       router.push('/members')
     } else {
       alert(data.message)
