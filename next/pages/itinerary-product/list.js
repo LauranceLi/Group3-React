@@ -9,11 +9,11 @@ export default function List() {
   const [total, setTotal] = useState(0)
   const [pageCount, setPageCount] = useState(1)
   const [products, setProducts] = useState([])
-
   const [titleLike, setTitleLike] = useState('')
   const [country, setCountry] = useState([])
   const [priceGte, setPriceGte] = useState(0)
   const [priceLte, setPriceLte] = useState(300000)
+  const [days, setDays] = useState(15)
 
   const countryOptions = ['請選擇', '中南美洲', '歐洲', '日本']
 
@@ -29,25 +29,38 @@ export default function List() {
   // 新增保存是否已經搜尋的狀態
   const [searched, setSearched] = useState(false)
 
+  const extractDays = (daysString) => {
+    const daysMatch = daysString.match(/\d+/) // 提取文字中的數字
+    return daysMatch ? parseInt(daysMatch[0]) : 0 // 將提取的數字轉換為整數
+  }
+
   const getProducts = async (params) => {
     try {
-      const data = await loadProducts(params)
-
+      const data = await loadProducts(params);
+  
       if (data.pageCount && typeof data.pageCount === 'number') {
-        setPageCount(data.pageCount)
+        setPageCount(data.pageCount);
       }
-
+  
       if (data.total && typeof data.total === 'number') {
-        setTotal(data.total)
+        setTotal(data.total);
       }
-
+  
       if (Array.isArray(data.products)) {
-        setProducts(data.products)
+        // 篩選出符合條件的產品
+        const filteredProducts = data.products.filter((product) => {
+          const productDays = extractDays(product.days);
+          // 比較產品的天數是否在您選擇的天數以內，只顯示相符的產品
+          return productDays <= days;
+        });
+        setProducts(filteredProducts); // 更新產品狀態
       }
     } catch (error) {
-      console.error('Failed to load products:', error)
+      console.error('Failed to load products:', error);
     }
-  }
+  };
+  
+  
 
   const handlePageClick = (e) => {
     setPage(e.selected + 1)
@@ -77,6 +90,7 @@ export default function List() {
       country: country.join(','),
       price_gte: priceGte,
       price_lte: priceLte,
+      days: days,
     }
 
     // 保存當前價格範圍的值
@@ -96,6 +110,7 @@ export default function List() {
       country: country.join(','),
       price_gte: priceGte,
       price_lte: priceLte,
+      days: days,
     }
 
     getProducts(params)
@@ -142,7 +157,7 @@ export default function List() {
           }}
         />
         <hr />
-        旅遊區域 :
+        旅遊區域 :&nbsp;
         <select
           value={country}
           onChange={(e) => {
@@ -157,7 +172,7 @@ export default function List() {
         </select>
       </div>
       <div>
-        價格範圍:
+        價格範圍 :&nbsp;
         <input
           type="range"
           min={0}
@@ -174,6 +189,16 @@ export default function List() {
           onChange={(e) => setPriceLte(Number(e.target.value))}
         />
         <span>&nbsp;{priceLte}元</span>
+        <hr />
+        天數:&nbsp;
+        <input
+          type="range"
+          min={0}
+          max={15}
+          value={days}
+          onChange={(e) => setDays(extractDays(e.target.value))}
+        />
+        <span>&nbsp;{days}天</span>
       </div>
       <div>
         <button onClick={handleSearch}>搜尋</button>
