@@ -10,7 +10,7 @@
       rgba(11, 21, 48, 0.51) 0%,
       rgba(11, 21, 48, 0.51) 100%
     ),
-    url(../../public/images/tes.jpg) lightgray 50% / cover no-repeat;
+    url(../../public/images/trees.jpg) lightgray 50% / cover no-repeat;
 }
 
 @media only screen and (max-width: 576px) {
