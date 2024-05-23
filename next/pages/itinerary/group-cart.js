@@ -254,7 +254,14 @@ export default function GroupCart() {
               </label>
               <div className={styles.agreementDiv}>
                 <div className="m-1">
-                  <button type="submit" className="btn btn-primary">
+                  <button
+                    type="button"
+                    className="btn btn-primary"
+                    onClick={() =>
+                      (window.location.href =
+                        'http://localhost:3000/itinerary/group-cart2')
+                    }
+                  >
                     確認訂購
                   </button>
                 </div>

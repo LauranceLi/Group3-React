@@ -3,8 +3,10 @@ import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 
-
 import { loadProduct } from '@/services/itinerary-product'
+
+import SignUp from '@/components/itinerary/sign-up'
+
 
 // 資料夾的中的`[pid].js`檔案代表這路由中，除了根路由與靜態路由之外的所有路由，例如 `/product/123` 就是這個檔案
 // 資料來源:
@@ -29,6 +31,7 @@ export default function Detail() {
     price: 0,
     airport: '',
     sign_up: '',
+    country: '',
   })
 
   // 宣告一個指示是不是正在載入資料的狀態
@@ -74,17 +77,16 @@ export default function Detail() {
 
   return (
     <>
-      <h1>商品詳細頁</h1>
-      <hr />
+      {/* <h1>商品詳細頁</h1> */}
+      {/* <hr /> */}
       <Link href="/itinerary-product/list">連至 列表頁</Link>
       <br />
-      
-        <>
+        {/* <>
           <p>ID: {product.travel_id}</p>
           <p>行程: {product.introduce}</p>
           <p>價格: {product.price}</p>
-        </>
-      
+        </> */}
+        <SignUp />
     </>
   )
 }

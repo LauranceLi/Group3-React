@@ -694,16 +694,18 @@
     margin-left: 20px;
   }
   .GroupRow {
-    padding: 0.9375rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .activeCartTitle {
     font-size: 14px;
-    margin: 0;
+    height: 60px;
   }
   .first {
     font-size: 14px;
-    margin-right: 0;
-    margin-bottom: 0;
+    height: 60px;
+
   }
   .unitPrice {
     margin-right: 15px;

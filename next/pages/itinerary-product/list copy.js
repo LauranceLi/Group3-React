@@ -15,7 +15,7 @@ export default function List() {
   const [priceGte, setPriceGte] = useState(0)
   const [priceLte, setPriceLte] = useState(300000)
 
-  const countryOptions = ['全部', '中南美洲', '歐洲', '日本'];
+  const countryOptions = ['中南美洲', '歐洲', '日本']
 
   const [page, setPage] = useState(1)
   const [perpage, setPerpage] = useState(9)
@@ -124,18 +124,19 @@ export default function List() {
         />
         <hr />
         旅遊區域 :
-        <select
-          value={country}
-          onChange={(e) => {
-            setCountry(e.target.value.split(','))
-          }}
-        >
-          {countryOptions.map((v, i) => (
-            <option key={i} value={v}>
+        {countryOptions.map((v, i) => {
+          return (
+            <label key={i}>
+              <input
+                type="checkbox"
+                value={v}
+                checked={country.includes(v)}
+                onChange={handleCountryChecked}
+              />
               {v}
-            </option>
-          ))}
-        </select>
+            </label>
+          )
+        })}
       </div>
       價格大於:
       <input
