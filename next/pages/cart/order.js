@@ -5,12 +5,10 @@ import Footer from '@/components/layout/footer'
 import CheckoutList from '@/components/checkout/checkout_list'
 import { useFormContext } from '@/context/formContext'
 import { useShip711StoreOpener } from '@/hooks/use-ship-711-store'
-import useTime from '@/hooks/use_time'
 
 export default function Order() {
   const { formData } = useFormContext()
   const { store711 } = useShip711StoreOpener()
-  const orderTime = useTime()
 
   return (
     <>
@@ -122,7 +120,7 @@ export default function Order() {
                 </div>
                 <div className="travel-info2">
                   <h6 className="travel-saleitem">下單時間</h6>
-                  <div className="unit-price text-center">{orderTime}</div>
+                  <div className="unit-price text-center">{}</div>
                   <div className="unit-price text-center"></div>
                 </div>
               </div>
