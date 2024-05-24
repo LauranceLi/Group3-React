@@ -60,6 +60,7 @@ export default function itineraryProducts() {
                           </select>
                         </div>
                       </div>
+                      
                     </div>
                   </div>
                 </div>
@@ -69,6 +70,7 @@ export default function itineraryProducts() {
                 <ProductList />
               </div>
             </div>
+            
           </div>
         </div>
         <Pagination />
