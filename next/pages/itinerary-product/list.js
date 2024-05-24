@@ -4,6 +4,8 @@ import { loadProducts } from '@/services/itinerary-product'
 import BS5Pagination from '@/components/common/bs5-pagination'
 import Image from 'next/image'
 import styles from '@/styles/itinerary.module.css'
+import Navbar from '@/components/layout/navbar'
+import Footer from '@/components/layout/footer'
 
 export default function List() {
   const [total, setTotal] = useState(0)
@@ -99,6 +101,7 @@ export default function List() {
 
   return (
     <>
+    <Navbar />
       <main className={styles.itineraryMain}>
         <div className={styles.itineraryDiv}>
           <div className="row">
@@ -175,10 +178,10 @@ export default function List() {
                 </div>
 
                 <div className={styles.SliderDiv2}>
-                  關鍵字搜尋 :&nbsp;
+                  <span className={styles.keyWord}>關鍵字搜尋 :&nbsp;</span>
                   <input
                     type="text"
-                    placeholder="請輸入關鍵字"
+                    placeholder="&nbsp;請輸入關鍵字"
                     value={titleLike}
                     onChange={(e) => {
                       setTitleLike(e.target.value)
@@ -201,7 +204,7 @@ export default function List() {
                       </div>
                       <div className="col-6 col-md-3"></div>
                       <div className="col-6 col-md-3">
-                        <h6>共有 {total} 筆商品</h6>
+                        <h6 className={styles.itineraryH6}>共有 {total} 筆商品</h6>
                       </div>
                       <label className="col-6 col-md-3">
                         <div className={styles.itineraryProductsP}>
@@ -307,8 +310,9 @@ export default function List() {
             onPageChange={handlePageClick}
             pageCount={pageCount}
           />
-        </div>{' '}
+        </div>
       </main>
+      <Footer />        
     </>
   )
 }

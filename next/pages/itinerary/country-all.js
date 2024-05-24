@@ -2,11 +2,15 @@ import React from 'react'
 import Image from 'next/image'
 import { Tab, Tabs } from 'react-bootstrap'
 import styles from '@/styles/itinerary.module.css'
+import Navbar from '@/components/layout/navbar'
+import Footer from '@/components/layout/footer'
+
 
 function CountryAll() {
   return (
     <>
-      <main>
+    <Navbar />
+      <main className={styles.itineraryMain2}>
         <div>
           <h2 className={styles.itineraryCountryH2}>各國行程</h2>
           <div className={styles.itineraryDepartureLine}></div>
@@ -1524,6 +1528,7 @@ function CountryAll() {
           </Tab>
         </Tabs>
       </main>
+      <Footer />
     </>
   )
 }

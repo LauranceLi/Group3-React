@@ -1,14 +1,12 @@
 import { useState, useEffect } from 'react'
-
 import { useRouter } from 'next/router'
 import Link from 'next/link'
-
 import { loadProduct } from '@/services/itinerary-product'
-
-import SignUp from '@/components/itinerary/sign-up'
-
+import DailyTour from '@/components/itinerary/daily-tour'
 import styles from '@/styles/itinerary.module.css'
-
+import Navbar from '@/components/layout/navbar'
+import Footer from '@/components/layout/footer'
+import { MdPlayArrow } from "react-icons/md";
 
 
 // 資料夾的中的`[pid].js`檔案代表這路由中，除了根路由與靜態路由之外的所有路由，例如 `/product/123` 就是這個檔案
@@ -80,19 +78,30 @@ export default function Detail() {
 
   return (
     <>
-      {/* <h1>商品詳細頁</h1> */}
-      {/* <hr /> */}
-      <div className={styles.pid}>
-      <Link href="/itinerary-product/list">回到搜索頁</Link>
-      <br />
-        {/* <>
-          <p>ID: {product.travel_id}</p>
-          <p>行程: {product.introduce}</p>
-          <p>價格: {product.price}</p>
-        </> */}
-        </div>
-        <SignUp />
-      
+      <Navbar />
+      <main>
+        <section className={styles.pidFirst}>
+          <div className={styles.pid}>
+            <Link
+              href="/itinerary-product/list"
+              style={{ color: '#ffb534', fontSize: '20px' }}
+            >
+              回到搜索頁
+            </Link>
+          </div>
+          <div className={styles.pid2}>
+            <a
+              className={styles.itineraryBtn}
+              href="http://localhost:3000/itinerary/group-cart"
+            >
+              報名<MdPlayArrow />
+
+            </a>
+          </div>
+        </section>
+        <DailyTour />
+        <Footer />
+      </main>
     </>
   )
 }
