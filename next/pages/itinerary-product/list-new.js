@@ -99,7 +99,7 @@ export default function List() {
 
   return (
     <>
-      <main className={styles.itineraryMain}>
+      <main>
         <div className={styles.itineraryDiv}>
           <div className="row">
             <div className="col-lg-3">
@@ -141,6 +141,7 @@ export default function List() {
 
                   <div className={styles.itineraryProductsItem1}>
                     <div className={styles.SliderDiv}>
+                      <span>&nbsp;{days}天</span>
                       <input
                         type="range"
                         min={0}
@@ -148,7 +149,6 @@ export default function List() {
                         value={days}
                         onChange={(e) => setDays(extractDays(e.target.value))}
                       />
-                      <span>&nbsp;{days}天</span>
                     </div>
                   </div>
                 </div>
@@ -201,7 +201,7 @@ export default function List() {
                       </div>
                       <div className="col-6 col-md-3"></div>
                       <div className="col-6 col-md-3">
-                        <h6>共有 {total} 筆商品</h6>
+                        <p>共有 {total} 筆商品</p>
                       </div>
                       <label className="col-6 col-md-3">
                         <div className={styles.itineraryProductsP}>
@@ -255,7 +255,7 @@ export default function List() {
                         </div>
 
                         <div className={styles.itineraryDetails}>
-                          <div className={styles.itineraryTime}>出發日期:&nbsp;{v.time}</div>
+                          <div className={styles.itineraryTime}>{v.time}</div>
                           <div>
                             <div className={styles.itineraryDescription}>
                               {v.introduce}
@@ -301,14 +301,14 @@ export default function List() {
             </div>
           </div>
         </div>
-        <div className={styles.paginationContainer}>
-          <BS5Pagination
-            forcePage={page - 1}
-            onPageChange={handlePageClick}
-            pageCount={pageCount}
-          />
-        </div>{' '}
       </main>
+      <div className={styles.paginationContainer}>
+        <BS5Pagination
+          forcePage={page - 1}
+          onPageChange={handlePageClick}
+          pageCount={pageCount}
+        />
+      </div>
     </>
   )
 }

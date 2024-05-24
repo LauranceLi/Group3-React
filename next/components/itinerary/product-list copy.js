@@ -2,8 +2,6 @@ import React from 'react'
 import Image from 'next/image'
 import styles from '@/styles/itinerary.module.css'
 import products from '@/data/Itinerary.json'
-import Link from 'next/link'
-
 
 export default function ProductList() {
   return (
@@ -12,8 +10,6 @@ export default function ProductList() {
         {products.map((v, i) => {
           return (
             <div key={v.travel_id} className={styles.itineraryProductsItem3}>
-            <Link href={`/itinerary-product/${v.travel_id}`}>
-
               <div className={styles.itineraryProductsItem2}>
                 <Image
                   src={`/images/${v.logo}`}
@@ -53,7 +49,6 @@ export default function ProductList() {
                 </div>
                 <div className={styles.flightDetails}>{v.airport}</div>
               </div>
-              </Link>
             </div>
           )
         })}

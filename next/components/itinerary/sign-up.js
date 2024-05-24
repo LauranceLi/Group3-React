@@ -61,7 +61,7 @@ export default function SignUp() {
                       <tbody>
                         <tr>
                           <td className={styles.DateCell}>
-                            2024年06月10日(一)
+                            2024-06-10
                           </td>
                           <td>15天</td>
                           <td className={styles.textTd}>星宇航空</td>
@@ -75,14 +75,54 @@ export default function SignUp() {
                         </tr>
                         <tr>
                           <td className={styles.DateCell}>
-                            2024年07月09日(二)
+                            2024-08-20
+                          </td>
+
+                          <td>15天</td>
+                          <td className={styles.textTd}>星宇航空</td>
+                          <td>29</td>
+                          <td>24</td>
+                          <td>5</td>
+                          <td className={styles.DateCell2}>279000</td>
+                          <td>
+                            <a
+                              className={styles.btn}
+                              href="http://localhost:3000/itinerary/group-cart"
+                            >
+                              報名
+                            </a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td className={styles.DateCell}>
+                            2024-10-08
+                          </td>
+
+                          <td>15天</td>
+                          <td className={styles.textTd}>星宇航空</td>
+                          <td>29</td>
+                          <td>11</td>
+                          <td>18</td>
+                          <td className={styles.DateCell2}>280000</td>
+                          <td>
+                            <a
+                              className={styles.btn}
+                              href="http://localhost:3000/itinerary/group-cart"
+                            >
+                              報名
+                            </a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td className={styles.DateCell}>
+                            2024-11-15
                           </td>
 
                           <td>15天</td>
                           <td className={styles.textTd}>星宇航空</td>
                           <td>31</td>
-                          <td>13</td>
-                          <td>18</td>
+                          <td>4</td>
+                          <td>27</td>
                           <td className={styles.DateCell2}>282000</td>
                           <td>
                             <a

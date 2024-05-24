@@ -7,6 +7,9 @@ import { loadProduct } from '@/services/itinerary-product'
 
 import SignUp from '@/components/itinerary/sign-up'
 
+import styles from '@/styles/itinerary.module.css'
+
+
 
 // 資料夾的中的`[pid].js`檔案代表這路由中，除了根路由與靜態路由之外的所有路由，例如 `/product/123` 就是這個檔案
 // 資料來源:
@@ -79,14 +82,17 @@ export default function Detail() {
     <>
       {/* <h1>商品詳細頁</h1> */}
       {/* <hr /> */}
-      <Link href="/itinerary-product/list">連至 列表頁</Link>
+      <div className={styles.pid}>
+      <Link href="/itinerary-product/list">回到搜索頁</Link>
       <br />
         {/* <>
           <p>ID: {product.travel_id}</p>
           <p>行程: {product.introduce}</p>
           <p>價格: {product.price}</p>
         </> */}
+        </div>
         <SignUp />
+      
     </>
   )
 }

@@ -9,38 +9,47 @@ export default function List() {
   const [total, setTotal] = useState(0)
   const [pageCount, setPageCount] = useState(1)
   const [products, setProducts] = useState([])
-
   const [titleLike, setTitleLike] = useState('')
   const [country, setCountry] = useState([])
   const [priceGte, setPriceGte] = useState(0)
   const [priceLte, setPriceLte] = useState(300000)
+  const [days, setDays] = useState(15)
 
   const countryOptions = ['中南美洲', '歐洲', '日本']
 
   const [page, setPage] = useState(1)
   const [perpage, setPerpage] = useState(9)
 
+  const extractDays = (daysString) => {
+    const daysMatch = daysString.match(/\d+/) 
+    return daysMatch ? parseInt(daysMatch[0]) : 0 
+  }
+
   const [orderby, setOrderby] = useState({ sort: 'travel_id', order: 'asc' })
 
   const getProducts = async (params) => {
     try {
-      const data = await loadProducts(params)
-
+      const { page: currentPage, ...restParams } = params;
+      const data = await loadProducts(params);
+  
       if (data.pageCount && typeof data.pageCount === 'number') {
-        setPageCount(data.pageCount)
+        setPageCount(data.pageCount);
       }
-
+  
       if (data.total && typeof data.total === 'number') {
-        setTotal(data.total)
+        setTotal(data.total);
       }
-
-      if (Array.isArray(data.products)) {
-        setProducts(data.products)
-      }
+  
+      const filteredProducts = data.products.filter((product) => {
+        const productDays = extractDays(product.days);
+        return productDays <= days;
+      });
+      setProducts(filteredProducts); 
     } catch (error) {
-      console.error('Failed to load products:', error)
+      console.error('Failed to load products:', error);
     }
-  }
+  };
+  
 
   const handlePageClick = (e) => {
     setPage(e.selected + 1)
@@ -58,10 +67,8 @@ export default function List() {
   }
 
   const handleSearch = () => {
-    setPage(1)
-
     const params = {
-      page: 1,
+      page: 1, 
       perpage,
       sort: orderby.sort,
       order: orderby.order,
@@ -69,6 +76,7 @@ export default function List() {
       country: country.join(','),
       price_gte: priceGte,
       price_lte: priceLte,
+      days: days,
     }
 
     getProducts(params)
@@ -84,6 +92,7 @@ export default function List() {
       country: country.join(','),
       price_gte: priceGte,
       price_lte: priceLte,
+      days: days,
     }
 
     getProducts(params)
@@ -113,7 +122,7 @@ export default function List() {
       </div>
       <hr />
       <div>
-        行程搜尋 :&nbsp;
+        關鍵字搜尋 :&nbsp;
         <input
           type="text"
           placeholder="請輸入關鍵字"
@@ -138,22 +147,36 @@ export default function List() {
           )
         })}
       </div>
-      價格大於:
+      價格範圍 :&nbsp;
       <input
-        type="number"
+        type="range"
+        min={0}
+        max={300000}
+        step={5000}
         value={priceGte}
-        onChange={(e) => {
-          setPriceGte(Number(e.target.value))
-        }}
+        onChange={(e) => setPriceGte(Number(e.target.value))}
       />
-      小於:
+      <span>&nbsp;{priceGte}元</span>
       <input
-        type="number"
+        type="range"
+        min={0}
+        max={300000}
+        step={5000}
         value={priceLte}
-        onChange={(e) => {
-          setPriceLte(Number(e.target.value))
-        }}
+        onChange={(e) => setPriceLte(Number(e.target.value))}
       />
+      <span>&nbsp;{priceLte}元</span>
+      <hr />
+      <hr />
+      天數:&nbsp;
+      <input
+        type="range"
+        min={0}
+        max={15}
+        value={days}
+        onChange={(e) => setDays(extractDays(e.target.value))}
+      />
+      <span>&nbsp;{days}天</span>
       <div>
         <button onClick={handleSearch}>搜尋</button>
       </div>
@@ -171,11 +194,11 @@ export default function List() {
               })
             }}
           >
-            <option value="travel_id,asc">ID排序(由小至大)</option>
-            <option value="travel_id,desc">ID排序(由大至小)</option>
             <option value="price,asc">價格排序(由低至高)</option>
             <option value="price,desc">價格排序(由高至低)</option>
+            <option value="days,asc">天數排序(由低至高)</option>
             <option value="days,desc">天數排序(由高至低)</option>
+            <option value="time,asc">出發日期排序(由低至高)</option>
             <option value="time,desc">出發日期排序(由高至低)</option>
           </select>
         </label>

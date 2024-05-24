@@ -18,7 +18,7 @@ export default async function (sequelize) {
         allowNull: true,
       },
       time: {
-        type: DataTypes.STRING,
+        type: DataTypes.DATE,
         allowNull: true,
       },
       title: {
