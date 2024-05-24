@@ -9,73 +9,18 @@ export default function List() {
   const [total, setTotal] = useState(0)
   const [pageCount, setPageCount] = useState(1)
   const [products, setProducts] = useState([])
+
   const [titleLike, setTitleLike] = useState('')
   const [country, setCountry] = useState([])
-  const [area, setArea] = useState([])
   const [priceGte, setPriceGte] = useState(0)
   const [priceLte, setPriceLte] = useState(300000)
-  const [days, setDays] = useState(15)
 
-  const updateDestinationOptions = () => {
-    const [destinationOptions, setDestinationOptions] = useState([]); // 目的地下拉式選單的選項狀態
-    //setState
-
-    // 清空目的地選項
-    destinationSelect.innerHTML = ''
-
-    // 添加"請選擇"選項
-    const defaultOption = document.createElement('option')
-    defaultOption.value = ''
-    defaultOption.disabled = true
-    defaultOption.selected = true
-    defaultOption.hidden = true
-    defaultOption.textContent = '請選擇'
-    destinationSelect.appendChild(defaultOption)
-
-    switch (selectedRegion) {
-      case 'CentralSouthAmerica': // 中南美洲
-        setDestinationOptions(['秘魯', '智利', '阿根廷', '古巴', '墨西哥', '玻利維亞']);
-        break;
-      case 'Europe': // 歐洲
-        setDestinationOptions(['西班牙', '葡萄牙', '法國', '奧地利&捷克', '鐵道之旅']);
-        break;
-      case 'Japan': // 日本
-        setDestinationOptions(['鐵道之旅', '九州', '名古屋', '沖繩', '福岡', '東京']);
-        break;
-      default:
-        setDestinationOptions([]); // 預設情況下清空目的地選項
-    }
-  }
-
-  const addOptionsToDestinationSelect = (options) => {
-    const destinationSelect = document.getElementById('destinationSelect')
-    options.forEach((option) => {
-      const newOption = document.createElement('option')
-      newOption.value = option
-      newOption.textContent = option
-      destinationSelect.appendChild(newOption)
-    })
-  }
-
-  const countryOptions = ['請選擇', '中南美洲', '歐洲', '日本']
-  // const areaOptions = ['請選擇', '秘魯', '智利', '阿根廷']
+  const countryOptions = ['中南美洲', '歐洲', '日本']
 
   const [page, setPage] = useState(1)
   const [perpage, setPerpage] = useState(9)
 
   const [orderby, setOrderby] = useState({ sort: 'travel_id', order: 'asc' })
-
-  // 新增保存初始價格範圍的狀態
-  const [initialPriceGte, setInitialPriceGte] = useState(0)
-  const [initialPriceLte, setInitialPriceLte] = useState(300000)
-
-  // 新增保存是否已經搜尋的狀態
-  const [searched, setSearched] = useState(false)
-
-  const extractDays = (daysString) => {
-    const daysMatch = daysString.match(/\d+/) // 提取文字中的數字
-    return daysMatch ? parseInt(daysMatch[0]) : 0 // 將提取的數字轉換為整數
-  }
 
   const getProducts = async (params) => {
     try {
@@ -90,13 +35,7 @@ export default function List() {
       }
 
       if (Array.isArray(data.products)) {
-        // 篩選出符合條件的產品
-        const filteredProducts = data.products.filter((product) => {
-          const productDays = extractDays(product.days)
-          // 比較產品的天數是否在您選擇的天數以內，只顯示相符的產品
-          return productDays <= days
-        })
-        setProducts(filteredProducts) // 更新產品狀態
+        setProducts(data.products)
       }
     } catch (error) {
       console.error('Failed to load products:', error)
@@ -107,9 +46,19 @@ export default function List() {
     setPage(e.selected + 1)
   }
 
+  const handleCountryChecked = (e) => {
+    const tv = e.target.value
+    if (country.includes(tv)) {
+      const nextCountry = country.filter((v) => v !== tv)
+      setCountry(nextCountry)
+    } else {
+      const nextCountry = [...country, tv]
+      setCountry(nextCountry)
+    }
+  }
+
   const handleSearch = () => {
     setPage(1)
-    setSearched(true)
 
     const params = {
       page: 1,
@@ -117,16 +66,10 @@ export default function List() {
       sort: orderby.sort,
       order: orderby.order,
       title_like: titleLike,
-      country: country.join(','), // 將選擇的旅遊區域轉換為字串
-      area: area.join(','), // 將選擇的目的地轉換為字串
+      country: country.join(','),
       price_gte: priceGte,
       price_lte: priceLte,
-      days: days,
     }
-
-    // 保存當前價格範圍的值
-    setInitialPriceGte(priceGte)
-    setInitialPriceLte(priceLte)
 
     getProducts(params)
   }
@@ -139,21 +82,12 @@ export default function List() {
       order: orderby.order,
       title_like: titleLike,
       country: country.join(','),
-      area: area.join(','),
       price_gte: priceGte,
       price_lte: priceLte,
-      days: days,
     }
 
     getProducts(params)
   }, [page, perpage, orderby])
-
-  const resetFilters = () => {
-    if (!searched) {
-      setPriceGte(initialPriceGte)
-      setPriceLte(initialPriceLte)
-    }
-  }
 
   return (
     <>
@@ -179,7 +113,7 @@ export default function List() {
       </div>
       <hr />
       <div>
-        關鍵字搜尋 :&nbsp;
+        行程搜尋 :&nbsp;
         <input
           type="text"
           placeholder="請輸入關鍵字"
@@ -189,69 +123,37 @@ export default function List() {
           }}
         />
         <hr />
-        旅遊區域 :&nbsp;
-        <select
-        value={country}
-        id="regionSelect"
-        onChange={(e) => {
-          setCountry(e.target.value);
-          updateDestinationOptions(e.target.value); // 更新目的地下拉式選單
-        }}
-      >
-        {countryOptions.map((v, i) => (
-          <option key={i} value={v}>
-            {v}
-          </option>
-        ))}
-      </select>
-        <hr />
-        目的地 :&nbsp;
-        <select
-        value={area}
-        id="destinationSelect"
-        onChange={(e) => {
-          setArea(e.target.value.split(','));
-        }}
-      >
-        {destinationOptions.map((v, i) => (
-          <option key={i} value={v}>
-            {v}
-          </option>
-        ))}
-      </select>
-        <hr />
+        旅遊區域 :
+        {countryOptions.map((v, i) => {
+          return (
+            <label key={i}>
+              <input
+                type="checkbox"
+                value={v}
+                checked={country.includes(v)}
+                onChange={handleCountryChecked}
+              />
+              {v}
+            </label>
+          )
+        })}
       </div>
-      <div>
-        價格範圍 :&nbsp;
-        <input
-          type="range"
-          min={0}
-          max={300000}
-          step={5000}
-          value={priceGte}
-          onChange={(e) => setPriceGte(Number(e.target.value))}
-        />
-        <span>&nbsp;{priceGte}元</span>
-        <input
-          type="range"
-          min={0}
-          max={300000}
-          step={5000}
-          value={priceLte}
-          onChange={(e) => setPriceLte(Number(e.target.value))}
-        />
-        <span>&nbsp;{priceLte}元</span>
-        <hr />
-        天數:&nbsp;
-        <input
-          type="range"
-          min={0}
-          max={15}
-          value={days}
-          onChange={(e) => setDays(extractDays(e.target.value))}
-        />
-        <span>&nbsp;{days}天</span>
-      </div>
+      價格大於:
+      <input
+        type="number"
+        value={priceGte}
+        onChange={(e) => {
+          setPriceGte(Number(e.target.value))
+        }}
+      />
+      小於:
+      <input
+        type="number"
+        value={priceLte}
+        onChange={(e) => {
+          setPriceLte(Number(e.target.value))
+        }}
+      />
       <div>
         <button onClick={handleSearch}>搜尋</button>
       </div>
@@ -279,20 +181,23 @@ export default function List() {
         </label>
         <hr />
         <ul>
-          {products.map((v) => (
-            <li key={v.travel_id}>
-              <Link href={`/itinerary-product/${v.travel_id}`}>
-                <Image
-                  src={`/images/${v.logo}`}
-                  width={336}
-                  height={250}
-                  alt=""
-                  className={styles.itineraryProductsImg}
-                />
-                {v.introduce} (價格:{v.price}) (出發日期:{v.time})
-              </Link>
-            </li>
-          ))}
+          {products.map((v) => {
+            return (
+              <li key={v.travel_id}>
+                <Link href={`/itinerary-product/${v.travel_id}`}>
+                  <Image
+                    src={`/images/${v.logo}`}
+                    width={336}
+                    height={250}
+                    alt=""
+                    className={styles.itineraryProductsImg}
+                  />
+                  {v.introduce}
+                  (價格:{v.price}) (出發日期:{v.time})
+                </Link>
+              </li>
+            )
+          })}
         </ul>
       </div>
       <BS5Pagination
