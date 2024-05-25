@@ -3,13 +3,15 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Form from 'react-bootstrap/Form'
-
 import styles from '@/styles/itinerary.module.css'
+import Navbar from '@/components/layout/navbar'
+import Footer from '@/components/layout/footer'
 
 export default function GroupCart2() {
   return (
     <>
-      <main>
+    <Navbar />
+      <main className={styles.GroupCart1}>
         <br />
         <Container>
           <Row className={styles.GroupRow}>
@@ -335,6 +337,7 @@ export default function GroupCart2() {
           </section>
         </Container>
       </main>
+      <Footer />
     </>
   )
 }

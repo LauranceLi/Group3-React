@@ -13,7 +13,9 @@
     "airport": "台北-桃園機場出發",
     "sign_up": "報名中",
     "country": "中南美洲",
-    "area": "秘魯"
+    "area": "秘魯",
+    "deposit": "53800",
+    "deposit_date": "2024-06-09"
   },
   {
     "travel_id": 2,
@@ -29,7 +31,9 @@
     "airport": "台北-桃園機場出發",
     "sign_up": "報名中",
     "country": "中南美洲",
-    "area": "秘魯"
+    "area": "秘魯",
+    "deposit": "59800",
+    "deposit_date": "2024-05-18"
   },
   {
     "travel_id": 3,
@@ -45,7 +49,9 @@
     "airport": "台北-桃園機場出發",
     "sign_up": "報名中",
     "country": "中南美洲",
-    "area": "秘魯"
+    "area": "秘魯",
+    "deposit": "56500",
+    "deposit_date": "2024-10-15"
   },
   {
     "travel_id": 4,
@@ -61,7 +67,9 @@
     "airport": "台北-桃園機場出發",
     "sign_up": "報名中",
     "country": "中南美洲",
-    "area": "秘魯"
+    "area": "秘魯",
+    "deposit": "59800",
+    "deposit_date": "2024-06-12"
   },
   {
     "travel_id": 5,
@@ -77,7 +85,9 @@
     "airport": "台北-桃園機場出發",
     "sign_up": "報名中",
     "country": "中南美洲",
-    "area": "秘魯"
+    "area": "秘魯",
+    "deposit": "61800",
+    "deposit_date": "2024-08-07"
   },
   {
     "travel_id": 6,
@@ -93,7 +103,9 @@
     "airport": "台北-桃園機場出發",
     "sign_up": "報名中",
     "country": "中南美洲",
-    "area": "阿根廷"
+    "area": "阿根廷",
+    "deposit": "59000",
+    "deposit_date": "2024-08-12"
   },
   {
     "travel_id": 7,
@@ -109,7 +121,9 @@
     "airport": "台北-桃園機場出發",
     "sign_up": "報名中",
     "country": "中南美洲",
-    "area": "古巴"
+    "area": "古巴",
+    "deposit": "45000",
+    "deposit_date": "2024-07-16"
   },
   {
     "travel_id": 8,
@@ -125,7 +139,9 @@
     "airport": "台北-桃園機場出發",
     "sign_up": "報名中",
     "country": "中南美洲",
-    "area": "古巴"
+    "area": "古巴",
+    "deposit": "50000",
+    "deposit_date": "2024-09-12"
   },
   {
     "travel_id": 9,
@@ -141,7 +157,9 @@
     "airport": "台北-桃園機場出發",
     "sign_up": "報名中",
     "country": "歐洲",
-    "area": "奧地利&捷克"
+    "area": "奧地利&捷克",
+    "deposit": "36580",
+    "deposit_date": "2024-11-17"
   },
   {
     "travel_id": 10,
@@ -157,7 +175,9 @@
     "airport": "台北-桃園機場出發",
     "sign_up": "報名中",
     "country": "中南美洲",
-    "area": "智利"
+    "area": "智利",
+    "deposit": "67800",
+    "deposit_date": "2025-02-08"
   },
   {
     "travel_id": 11,
@@ -173,7 +193,9 @@
     "airport": "台北-桃園機場出發",
     "sign_up": "報名中",
     "country": "日本",
-    "area": "九州"
+    "area": "九州",
+    "deposit": "7000",
+    "deposit_date": "2024-07-23"
   },
   {
     "travel_id": 12,
@@ -189,7 +211,9 @@
     "airport": "台北-桃園機場出發",
     "sign_up": "報名中",
     "country": "歐洲",
-    "area": "葡萄牙"
+    "area": "葡萄牙",
+    "deposit": "40000",
+    "deposit_date": "2024-09-21"
   },
   {
     "travel_id": 13,
@@ -205,7 +229,9 @@
     "airport": "台北-桃園機場出發",
     "sign_up": "報名中",
     "country": "歐洲",
-    "area": "法國"
+    "area": "法國",
+    "deposit": "50000",
+    "deposit_date": "2024-08-18"
   },
   {
     "travel_id": 14,
@@ -221,7 +247,9 @@
     "airport": "台北-桃園機場出發",
     "sign_up": "報名中",
     "country": "歐洲",
-    "area": "奧地利&捷克"
+    "area": "奧地利&捷克",
+    "deposit": "37000",
+    "deposit_date": "2024-07-17"
   },
   {
     "travel_id": 15,
@@ -237,7 +265,9 @@
     "airport": "台北-桃園機場出發",
     "sign_up": "報名中",
     "country": "日本",
-    "area": "鐵道之旅"
+    "area": "鐵道之旅",
+    "deposit": "16000",
+    "deposit_date": "2024-06-19"
   },
   {
     "travel_id": 16,
@@ -253,7 +283,9 @@
     "airport": "台北-桃園機場出發",
     "sign_up": "額滿",
     "country": "日本",
-    "area": "名古屋"
+    "area": "名古屋",
+    "deposit": "8500",
+    "deposit_date": "2024-06-26"
   },
   {
     "travel_id": 17,
@@ -269,7 +301,9 @@
     "airport": "台北-桃園機場出發",
     "sign_up": "報名中",
     "country": "日本",
-    "area": "名古屋"
+    "area": "名古屋",
+    "deposit": "7400",
+    "deposit_date": "2024-06-26"
   },
   {
     "travel_id": 18,
@@ -285,7 +319,9 @@
     "airport": "台北-桃園機場出發",
     "sign_up": "報名中",
     "country": "日本",
-    "area": "東京"
+    "area": "東京",
+    "deposit": "11500",
+    "deposit_date": "2024-08-10"
   },
   {
     "travel_id": 19,
@@ -301,7 +337,9 @@
     "airport": "台北-桃園機場出發",
     "sign_up": "額滿",
     "country": "日本",
-    "area": "名古屋"
+    "area": "名古屋",
+    "deposit": "10000",
+    "deposit_date": "2024-06-03"
   },
   {
     "travel_id": 20,
@@ -317,7 +355,9 @@
     "airport": "台北-桃園機場出發",
     "sign_up": "報名中",
     "country": "日本",
-    "area": "名古屋"
+    "area": "名古屋",
+    "deposit": "12000",
+    "deposit_date": "2024-06-22"
   },
   {
     "travel_id": 21,
@@ -333,7 +373,9 @@
     "airport": "台北-桃園機場出發",
     "sign_up": "報名中",
     "country": "日本",
-    "area": "沖繩"
+    "area": "沖繩",
+    "deposit": "5800",
+    "deposit_date": "2024-06-25"
   },
   {
     "travel_id": 22,
@@ -349,7 +391,9 @@
     "airport": "台北-桃園機場出發",
     "sign_up": "報名中",
     "country": "日本",
-    "area": "九州"
+    "area": "九州",
+    "deposit": "6600",
+    "deposit_date": "2024-06-23"
   },
   {
     "travel_id": 23,
@@ -365,7 +409,9 @@
     "airport": "台北-桃園機場出發",
     "sign_up": "報名中",
     "country": "日本",
-    "area": "名古屋"
+    "area": "名古屋",
+    "deposit": "10000",
+    "deposit_date": "2024-05-28"
   },
   {
     "travel_id": 24,
@@ -381,7 +427,9 @@
     "airport": "台北-桃園機場出發",
     "sign_up": "報名中",
     "country": "日本",
-    "area": "九州"
+    "area": "九州",
+    "deposit": "8000",
+    "deposit_date": "2024-09-28"
   },
   {
     "travel_id": 25,
@@ -397,7 +445,9 @@
     "airport": "台北-桃園機場出發",
     "sign_up": "報名中",
     "country": "日本",
-    "area": "福岡"
+    "area": "福岡",
+    "deposit": "7800",
+    "deposit_date": "2024-09-28"
   },
   {
     "travel_id": 26,
@@ -413,7 +463,9 @@
     "airport": "台北-桃園機場出發",
     "sign_up": "報名中",
     "country": "中南美洲",
-    "area": "秘魯"
+    "area": "秘魯",
+    "deposit": "52000",
+    "deposit_date": "2025-01-17"
   },
   {
     "travel_id": 27,
@@ -429,7 +481,9 @@
     "airport": "台北-桃園機場出發",
     "sign_up": "報名中",
     "country": "中南美洲",
-    "area": "秘魯"
+    "area": "秘魯",
+    "deposit": "56000",
+    "deposit_date": "2024-09-08"
   },
   {
     "travel_id": 28,
@@ -445,7 +499,9 @@
     "airport": "台北-桃園機場出發",
     "sign_up": "額滿",
     "country": "中南美洲",
-    "area": "秘魯"
+    "area": "秘魯",
+    "deposit": "57800",
+    "deposit_date": "2024-05-19"
   },
   {
     "travel_id": 29,
@@ -461,7 +517,9 @@
     "airport": "台北-桃園機場出發",
     "sign_up": "報名中",
     "country": "中南美洲",
-    "area": "阿根廷"
+    "area": "阿根廷",
+    "deposit": "59000",
+    "deposit_date": "2024-06-12"
   },
   {
     "travel_id": 30,
@@ -477,7 +535,9 @@
     "airport": "台北-桃園機場出發",
     "sign_up": "報名中",
     "country": "中南美洲",
-    "area": "古巴"
+    "area": "古巴",
+    "deposit": "45800",
+    "deposit_date": "2024-08-12"
   },
   {
     "travel_id": 31,
@@ -493,7 +553,9 @@
     "airport": "台北-桃園機場出發",
     "sign_up": "報名中",
     "country": "中南美洲",
-    "area": "古巴"
+    "area": "古巴",
+    "deposit": "45800",
+    "deposit_date": "2025-01-22"
   },
   {
     "travel_id": 32,
@@ -509,7 +571,9 @@
     "airport": "台北-桃園機場出發",
     "sign_up": "報名中",
     "country": "歐洲",
-    "area": "西班牙"
+    "area": "西班牙",
+    "deposit": "46000",
+    "deposit_date": "2024-07-18"
   },
   {
     "travel_id": 33,
@@ -525,7 +589,9 @@
     "airport": "台北-桃園機場出發",
     "sign_up": "報名中",
     "country": "歐洲",
-    "area": "西班牙"
+    "area": "西班牙",
+    "deposit": "44000",
+    "deposit_date": "2024-08-12"
   },
   {
     "travel_id": 34,
@@ -541,7 +607,9 @@
     "airport": "台北-桃園機場出發",
     "sign_up": "報名中",
     "country": "歐洲",
-    "area": "奧地利&捷克"
+    "area": "奧地利&捷克",
+    "deposit": "38000",
+    "deposit_date": "2024-07-16"
   },
   {
     "travel_id": 35,
@@ -557,7 +625,9 @@
     "airport": "台北-桃園機場出發",
     "sign_up": "報名中",
     "country": "歐洲",
-    "area": "法國"
+    "area": "法國",
+    "deposit": "50000",
+    "deposit_date": "2024-09-22"
   },
   {
     "travel_id": 36,
@@ -573,7 +643,9 @@
     "airport": "台北-桃園機場出發",
     "sign_up": "報名中",
     "country": "日本",
-    "area": "鐵道之旅"
+    "area": "鐵道之旅",
+    "deposit": "16000",
+    "deposit_date": "2024-07-19"
   },
   {
     "travel_id": 37,
@@ -589,7 +661,9 @@
     "airport": "台北-桃園機場出發",
     "sign_up": "額滿",
     "country": "日本",
-    "area": "名古屋"
+    "area": "名古屋",
+    "deposit": "8500",
+    "deposit_date": "2024-05-20"
   },
   {
     "travel_id": 38,
@@ -605,7 +679,9 @@
     "airport": "台北-桃園機場出發",
     "sign_up": "報名中",
     "country": "日本",
-    "area": "名古屋"
+    "area": "名古屋",
+    "deposit": "7400",
+    "deposit_date": "2024-08-10"
   },
   {
     "travel_id": 39,
@@ -621,7 +697,9 @@
     "airport": "台北-桃園機場出發",
     "sign_up": "報名中",
     "country": "日本",
-    "area": "東京"
+    "area": "東京",
+    "deposit": "11000",
+    "deposit_date": "2024-07-08"
   },
   {
     "travel_id": 40,
@@ -637,7 +715,9 @@
     "airport": "台北-桃園機場出發",
     "sign_up": "報名中",
     "country": "日本",
-    "area": "名古屋"
+    "area": "名古屋",
+    "deposit": "10000",
+    "deposit_date": "2024-07-01"
   },
   {
     "travel_id": 41,
@@ -653,7 +733,9 @@
     "airport": "台北-桃園機場出發",
     "sign_up": "報名中",
     "country": "日本",
-    "area": "名古屋"
+    "area": "名古屋",
+    "deposit": "12000",
+    "deposit_date": "2024-06-23"
   },
   {
     "travel_id": 42,
@@ -669,7 +751,9 @@
     "airport": "台北-桃園機場出發",
     "sign_up": "額滿",
     "country": "日本",
-    "area": "沖繩"
+    "area": "沖繩",
+    "deposit": "5800",
+    "deposit_date": "2024-06-23"
   },
   {
     "travel_id": 43,
@@ -685,7 +769,9 @@
     "airport": "台北-桃園機場出發",
     "sign_up": "報名中",
     "country": "日本",
-    "area": "九州"
+    "area": "九州",
+    "deposit": "6500",
+    "deposit_date": "2024-07-23"
   },
   {
     "travel_id": 44,
@@ -701,7 +787,9 @@
     "airport": "台北-桃園機場出發",
     "sign_up": "報名中",
     "country": "日本",
-    "area": "名古屋"
+    "area": "名古屋",
+    "deposit": "10000",
+    "deposit_date": "2024-05-28"
   },
   {
     "travel_id": 45,
@@ -717,7 +805,9 @@
     "airport": "台北-桃園機場出發",
     "sign_up": "報名中",
     "country": "日本",
-    "area": "九州"
+    "area": "九州",
+    "deposit": "8000",
+    "deposit_date": "2024-07-28"
   },
   {
     "travel_id": 46,
@@ -733,7 +823,9 @@
     "airport": "台北-桃園機場出發",
     "sign_up": "報名中",
     "country": "日本",
-    "area": "福岡"
+    "area": "福岡",
+    "deposit": "7500",
+    "deposit_date": "2024-11-28"
   },
   {
     "travel_id": 47,
@@ -749,13 +841,15 @@
     "airport": "台北-桃園機場出發",
     "sign_up": "報名中",
     "country": "中南美洲",
-    "area": "智利"
+    "area": "智利",
+    "deposit": "69800",
+    "deposit_date": "2024-08-08"
   },
   {
     "travel_id": 48,
     "days": "15天",
     "logo": "秘魯・印加帝國15日.jpg",
-    "time": "2024-11-27",
+    "time": "2024-11-27日",
     "title": "秘魯・印加帝國15日",
     "introduce": "秘魯・印加帝國15日:星宇豪華經濟艙・世界七大奇景馬丘比丘・印加都城庫斯科・魔幻打卡聖地彩虹山",
     "seat": 29,
@@ -765,7 +859,9 @@
     "airport": "台北-桃園機場出發",
     "sign_up": "報名中",
     "country": "中南美洲",
-    "area": "秘魯"
+    "area": "秘魯",
+    "deposit": "56000",
+    "deposit_date": "2024-10-27"
   },
   {
     "travel_id": 49,
@@ -781,7 +877,9 @@
     "airport": "台北-桃園機場出發",
     "sign_up": "報名中",
     "country": "歐洲",
-    "area": "葡萄牙"
+    "area": "葡萄牙",
+    "deposit": "40000",
+    "deposit_date": "2024-11-24"
   },
   {
     "travel_id": 50,
@@ -797,7 +895,9 @@
     "airport": "台北-桃園機場出發",
     "sign_up": "報名中",
     "country": "中南美洲",
-    "area": "秘魯"
+    "area": "秘魯",
+    "deposit": "65000",
+    "deposit_date": "2024-10-11"
   },
   {
     "travel_id": 51,
@@ -813,7 +913,9 @@
     "airport": "台北-桃園機場出發",
     "sign_up": "額滿",
     "country": "中南美洲",
-    "area": "秘魯"
+    "area": "秘魯",
+    "deposit": "56500",
+    "deposit_date": "2024-05-10"
   },
   {
     "travel_id": 52,
@@ -829,7 +931,9 @@
     "airport": "台北-桃園機場出發",
     "sign_up": "報名中",
     "country": "歐洲",
-    "area": "鐵道之旅"
+    "area": "鐵道之旅",
+    "deposit": "50000",
+    "deposit_date": "2024-09-10"
   },
   {
     "travel_id": 53,
@@ -845,6 +949,8 @@
     "airport": "台北-桃園機場出發",
     "sign_up": "報名中",
     "country": "歐洲",
-    "area": "法國"
+    "area": "法國",
+    "deposit": "44000",
+    "deposit_date": "2024-09-10"
   }
 ]

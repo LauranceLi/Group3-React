@@ -61,6 +61,14 @@ export default async function (sequelize) {
         type: DataTypes.STRING,
         allowNull: true,
       },
+      deposit: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
+      },
+      deposit_date: {
+        type: DataTypes.DATE,
+        allowNull: true,
+      },
     },
     {
       tableName: 'itinerary', //直接提供資料表名稱

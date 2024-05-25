@@ -290,6 +290,10 @@
 /* itinerary_sign_up 區塊 (End)*/
 
 /* 團體行程購物車 1和2 */
+.GroupCart1 {
+  background-color: #ffffff;
+  margin-top: -6.25rem;
+}
 .orderTitle {
   background-color: #e0e0e0;
   padding: 0.625rem;
@@ -600,7 +604,7 @@
   width: 0;
   height: 0;
   border-style: solid;
-  border-width: 75px 80px 0 0;
+  border-width: 80px 90px 0 0;
   border-color: #faa003c2 transparent transparent transparent;
   transform: rotate(-360deg); /* 旋转三角形 */
 }
@@ -612,6 +616,7 @@
   color: white;
   font-weight: bold;
   z-index: 2; /* 确保文字在三角形上方显示 */
+  font-size: 18px;
 }
 
 .itineraryH3 {
@@ -818,6 +823,9 @@
     height: 1.625rem;
   }
 
+  .SliderDiv input{
+    padding-left: 30px;
+  }
   .SliderDiv2 button {
     width: 7.5rem;
     margin-left: 7.1875rem;
