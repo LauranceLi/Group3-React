@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
@@ -8,9 +8,100 @@ import Navbar from '@/components/layout/navbar'
 import Footer from '@/components/layout/footer'
 
 export default function GroupCart2() {
+  // 創建狀態變數來追蹤旅客數量和旅客標題
+  const [numTravelers, setNumTravelers] = useState(1)
+  const [travelerTitles, setTravelerTitles] = useState(['旅客 1'])
+
+  // 點擊新增旅客按鈕時的處理函數
+  const handleAddTraveler = () => {
+    setNumTravelers(numTravelers + 1)
+    // 更新旅客標題陣列
+    const newTitles = [...travelerTitles, `旅客 ${numTravelers + 1}`]
+    setTravelerTitles(newTitles)
+  }
+
+  // 根據旅客數量動態生成表單元素
+  const renderTravelerForms = () => {
+    const travelerForms = []
+    for (let i = 0; i < numTravelers; i++) {
+      travelerForms.push(
+        <div key={i}>
+          {/* 旅客標題 */}
+          <h6 className={styles.travelSaleItem}>{travelerTitles[i]}</h6>
+          {/* 旅客表單 */}
+          <div className="row m-3">
+            <Col>
+              <label htmlFor="name">中文姓名</label>
+              <input type="text" placeholder="姓名" className="form-control" />
+            </Col>
+            <Col>
+              <label htmlFor="name">英文姓名</label>
+              <input
+                type="text"
+                placeholder="英文姓名(同護照)"
+                className="form-control"
+              />
+            </Col>
+            <Col>
+              <label htmlFor="phone">聯絡電話</label>
+              <input
+                type="text"
+                placeholder="手機號碼"
+                className="form-control"
+              />
+            </Col>
+          </div>
+          <Row className="m-3">
+            <Col xs={12} md={4} className="mb-3">
+              <Form.Group controlId="gender">
+                <Form.Label>性別</Form.Label>
+                <Form.Select aria-label="Default select example">
+                  <option>請選擇</option>
+                  <option value="1">男</option>
+                  <option value="2">女</option>
+                </Form.Select>
+              </Form.Group>
+            </Col>
+            <Col xs={12} md={4} className="mb-3">
+              <Form.Group controlId="identity">
+                <Form.Label>身分證/護照號碼</Form.Label>
+                <Form.Control type="text" placeholder="身分證/護照號碼" />
+              </Form.Group>
+            </Col>
+            <Col xs={12} md={4} className="mb-3">
+              <Form.Group controlId="birthday">
+                <Form.Label>出生日期</Form.Label>
+                <Form.Control
+                  type="date"
+                  placeholder=""
+                  style={{ color: 'gray' }}
+                />
+              </Form.Group>
+            </Col>
+          </Row>
+          <div className="row m-3">
+            <Col>
+              <label htmlFor="address">聯絡地址</label>
+              <input
+                type="text"
+                className="form-control"
+                placeholder="聯絡地址"
+              />
+            </Col>
+            <Col>
+              <label htmlFor="note">備註</label>
+              <input type="text" placeholder="備註" className="form-control" />
+            </Col>
+          </div>
+          <hr />
+        </div>
+      )
+    }
+    return travelerForms
+  }
   return (
     <>
-    <Navbar />
+      <Navbar />
       <main className={styles.GroupCart1}>
         <br />
         <Container>
@@ -95,7 +186,7 @@ export default function GroupCart2() {
                   <div className="row mt-3 p-2">
                     <Col className={styles.totalAmount}>
                       <h4 style={{ fontSize: '20px', fontWeight: 600 }}>
-                        訂單金額
+                        訂單總金額
                       </h4>
                       <div className={styles.groupCart2Money}>
                         NT$
@@ -110,8 +201,29 @@ export default function GroupCart2() {
                   <div className={styles.orderTitle2}>
                     <div className="row">
                       <div className={styles.totalAmount1}>
+                        <h4>訂金</h4>
+                        <div className={styles.groupCart2Money}>
+                          NT$
+                          <span style={{ color: 'tomato', fontWeight: 'bold' }}>
+                            100,000
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className={styles.totalAmount}>
+                    <h6 className={styles.deadline}>
+                      訂金付款期限 :&nbsp;
+                      <span className={styles.deadline}>2024-01-01</span>
+                    </h6>
+                  </div>
+                </div>
+                <div className="second mb-3">
+                  <div className={styles.orderTitle2}>
+                    <div className="row">
+                      <div className={styles.totalAmount1}>
                         <h4 style={{ fontWeight: 600, fontSize: '20px' }}>
-                          訂金
+                          尾款
                         </h4>
                         <div className={styles.groupCart2Money}>
                           NT$
@@ -122,6 +234,12 @@ export default function GroupCart2() {
                       </div>
                     </div>
                   </div>
+                  <div className={styles.totalAmount}>
+                    <h6 className={styles.deadline}>
+                      尾款付款期限 :&nbsp;
+                      <span className={styles.deadline}>2024-01-01 </span>
+                    </h6>
+                  </div>
                 </div>
                 <div className={styles.orderWrite}>
                   <div className={styles.orderTitle}>
@@ -130,93 +248,21 @@ export default function GroupCart2() {
                     </h4>
                   </div>
                   <div>
-                    <div className={styles.travelInfo2}>
-                      <h6 className={styles.travelSaleItem}>旅客 1</h6>
-                      <div className={styles.unitPrice}>
-                        <button
-                          type="button"
-                          className="btn btn-outline-warning"
-                          style={{ fontWeight: 600, fontSize: '14px' }}
-                        >
-                          新增旅客
-                        </button>
-                      </div>
+                    <div className={styles.cartBtn}>
+                      {/* 點擊按鈕時，調用新增旅客處理函數 */}
+                      <button
+                        type="button"
+                        className="btn btn-outline-warning"
+                        style={{ fontWeight: 600, fontSize: '14px' }}
+                        onClick={handleAddTraveler}
+                      >
+                        新增旅客
+                      </button>
                     </div>
                   </div>
-                  <div className="row m-3">
-                    <Col>
-                      <label htmlFor="name">中文姓名</label>
-                      <input
-                        type="text"
-                        placeholder="姓名"
-                        className="form-control"
-                      />
-                    </Col>
-                    <Col>
-                      <label htmlFor="name">英文姓名</label>
-                      <input
-                        type="text"
-                        placeholder="英文姓名(同護照)"
-                        className="form-control"
-                      />
-                    </Col>
-                    <Col>
-                      <label htmlFor="phone">聯絡電話</label>
-                      <input
-                        type="text"
-                        placeholder="手機號碼"
-                        className="form-control"
-                      />
-                    </Col>
-                  </div>
-                  <Row className="m-3">
-                    <Col xs={12} md={4} className="mb-3">
-                      <Form.Group controlId="gender">
-                        <Form.Label>性別</Form.Label>
-                        <Form.Select aria-label="Default select example">
-                          <option>請選擇</option>
-                          <option value="1">男</option>
-                          <option value="2">女</option>
-                        </Form.Select>
-                      </Form.Group>
-                    </Col>
-                    <Col xs={12} md={4} className="mb-3">
-                      <Form.Group controlId="identity">
-                        <Form.Label>身分證/護照號碼</Form.Label>
-                        <Form.Control
-                          type="text"
-                          placeholder="身分證/護照號碼"
-                        />
-                      </Form.Group>
-                    </Col>
-                    <Col xs={12} md={4} className="mb-3">
-                      <Form.Group controlId="birthday">
-                        <Form.Label>出生日期</Form.Label>
-                        <Form.Control
-                          type="date"
-                          placeholder=""
-                          style={{ color: 'gray' }}
-                        />
-                      </Form.Group>
-                    </Col>
-                  </Row>
-                  <div className="row m-3">
-                    <Col>
-                      <label htmlFor="address">聯絡地址</label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        placeholder="聯絡地址"
-                      />
-                    </Col>
-                    <Col>
-                      <label htmlFor="note">備註</label>
-                      <input
-                        type="text"
-                        placeholder="備註"
-                        className="form-control"
-                      />
-                    </Col>
+                  <div>
+                    {/* 顯示現有的旅客表單 */}
+                    {renderTravelerForms()}
                   </div>
                   <div className={styles.orderTitle3}>
                     <h4 style={{ fontWeight: 600, fontSize: '22px' }}>
@@ -326,8 +372,15 @@ export default function GroupCart2() {
                       </button>
                     </div>
                     <div className="m-1">
-                      <button type="reset" className="btn btn-secondary">
-                        取消
+                      <button
+                        type="button"
+                        className="btn btn-secondary"
+                        onClick={() =>
+                          (window.location.href =
+                            'http://localhost:3000/itinerary-product/list')
+                        }
+                      >
+                        取消訂購
                       </button>
                     </div>
                   </div>

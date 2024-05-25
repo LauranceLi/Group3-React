@@ -1,18 +1,44 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import { CiCircleMinus } from 'react-icons/ci'
-import { CiCirclePlus } from 'react-icons/ci'
+import { CiCircleMinus, CiCirclePlus } from 'react-icons/ci'
 import styles from '@/styles/itinerary.module.css'
 import Navbar from '@/components/layout/navbar'
 import Footer from '@/components/layout/footer'
 
 
 export default function GroupCart() {
+  // 狀態管理
+  const [adultCount, setAdultCount] = useState(0);
+  const [childCount, setChildCount] = useState(0);
+  const [extraBedCount, setExtraBedCount] = useState(0);
+
+  const unitPrice = 279000;
+
+  // 計算小計
+  const adultSubtotal = adultCount * unitPrice;
+  const childSubtotal = childCount * unitPrice;
+  const extraBedSubtotal = extraBedCount * unitPrice;
+  const subtotal = adultSubtotal + childSubtotal + extraBedSubtotal;
+
+  // 處理加減事件
+  const handleIncrease = (setter, count) => {
+    setter(count + 1);
+  };
+
+  const handleDecrease = (setter, count) => {
+    if (count > 0) {
+      setter(count - 1);
+    }
+  };
+
+  // 計算訂單總金額
+  const totalPrice = subtotal.toLocaleString();
+
   return (
     <>
-    <Navbar />
+      <Navbar />
       <main className={styles.GroupCart1}>
         <br />
         <Container>
@@ -100,18 +126,26 @@ export default function GroupCart() {
                 >
                   大人
                 </h6>
-                <div className={styles.unitPrice}>NT$219,900</div>
                 <div className={styles.unitPrice}>
-                  <CiCircleMinus size={24} />
-
+                  <span>NT$</span>
+                  {(unitPrice * adultCount).toLocaleString()}
+                </div>
+                <div className={styles.unitPrice}>
+                  <CiCircleMinus
+                    size={24}
+                    onClick={() => handleDecrease(setAdultCount, adultCount)}
+                  />
                   <input
                     type="number"
                     name="quantity"
-                    value="1"
+                    value={adultCount}
                     className={styles.quantity}
-                    disabled
+                    readOnly
                   />
-                  <CiCirclePlus size={24} />
+                  <CiCirclePlus
+                    size={24}
+                    onClick={() => handleIncrease(setAdultCount, adultCount)}
+                  />
                 </div>
               </div>
               <div className={styles.travelInfo2}>
@@ -121,17 +155,26 @@ export default function GroupCart() {
                 >
                   小孩
                 </h6>
-                <div className={styles.unitPrice}>NT$219,900</div>
                 <div className={styles.unitPrice}>
-                  <CiCircleMinus size={24} />
+                  <span>NT$</span>
+                  {(unitPrice * childCount).toLocaleString()}
+                </div>
+                <div className={styles.unitPrice}>
+                  <CiCircleMinus
+                    size={24}
+                    onClick={() => handleDecrease(setChildCount, childCount)}
+                  />
                   <input
                     type="number"
                     name="quantity"
-                    value="1"
+                    value={childCount}
                     className={styles.quantity}
-                    disabled
+                    readOnly
                   />
-                  <CiCirclePlus size={24} />
+                  <CiCirclePlus
+                    size={24}
+                    onClick={() => handleIncrease(setChildCount, childCount)}
+                  />
                 </div>
               </div>
               <div className={styles.travelInfo2}>
@@ -141,23 +184,36 @@ export default function GroupCart() {
                 >
                   加床
                 </h6>
-                <div className={styles.unitPrice}>NT$219,900</div>
                 <div className={styles.unitPrice}>
-                  <CiCircleMinus size={24} />
+                  <span>NT$</span>
+                  {(unitPrice * extraBedCount).toLocaleString()}
+                </div>
+                <div className={styles.unitPrice}>
+                  <CiCircleMinus
+                    size={24}
+                    onClick={() =>
+                      handleDecrease(setExtraBedCount, extraBedCount)
+                    }
+                  />
                   <input
                     type="number"
                     name="quantity"
-                    value="1"
+                    value={extraBedCount}
                     className={styles.quantity}
-                    disabled
+                    readOnly
                   />
-                  <CiCirclePlus size={24} />
+                  <CiCirclePlus
+                    size={24}
+                    onClick={() =>
+                      handleIncrease(setExtraBedCount, extraBedCount)
+                    }
+                  />
                 </div>
               </div>
               <div className="row mt-3 p-2">
                 <div className="col">
                   <h4>
-                    小計 <span>NT$ 657,000</span>
+                    小計 <span>NT$ {subtotal.toLocaleString()}</span>
                   </h4>
                 </div>
               </div>
@@ -167,7 +223,7 @@ export default function GroupCart() {
                 <div className="row">
                   <div className="col">
                     <h4 style={{ fontSize: '22px' }}>
-                      訂單總金額 <span>NT$ 657,000</span>
+                      訂單總金額 <span>NT$ {subtotal.toLocaleString()}</span>
                     </h4>
                   </div>
                 </div>
@@ -176,7 +232,6 @@ export default function GroupCart() {
             <div className={styles.second2}>
               <div className="row p-2">
                 <div className="col">
-                  <h4>訂購須知</h4>
                   <ul>
                     <li>
                       1.選擇出符合您出發日期的行程，報名後確認行程表與旅遊契約書內容且填寫相關資料，並利用線上付款，完成訂購流程，我們也會

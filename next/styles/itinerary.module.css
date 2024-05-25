@@ -443,6 +443,7 @@
 .totalAmount1 {
   display: flex;
   justify-content: space-between;
+  
 }
 .contractView {
   width: 100%;
@@ -469,7 +470,10 @@
   display: flex;
   justify-content: center;
 }
-
+.deadline {
+  color: #1a88e2;
+  margin-top: .625rem;
+}
 @media only screen and (max-width: 767px) {
   .GroupCartSection {
     width: 100%;
@@ -760,6 +764,13 @@
 }
 .itineraryH6 {
   color: #ffffff;
+}
+.cartBtn {
+display: flex;
+justify-content: flex-end;
+align-items: flex-end;
+margin-right: 1.25rem;
+margin-top: 1.25rem;
 }
 
 /* 平板 */
