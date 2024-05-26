@@ -14,8 +14,8 @@ const { name } = useMemberInfo()
         <div className={styles.memberBox}>
           <div className={styles.leftBox}>
             <div className="member">
-              <Avatar width={'10rem'} height={'10rem'} />
-              <h4>{name}</h4>
+              <Avatar width={'9rem'} height={'9rem'} />
+              <h2>{name}</h2>
             </div>
             <ActionList className={styles.actionColumn} />
           </div>

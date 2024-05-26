@@ -1,7 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
 import styles from '@/styles/members/member.module.css'
-import cn from 'classnames'
 import { FaShieldAlt } from 'react-icons/fa'
 import { VscSignOut } from 'react-icons/vsc'
 import { FaStar } from "react-icons/fa";
@@ -10,7 +9,7 @@ import { BsPersonFillGear } from "react-icons/bs";
 
 export default function ActionList({ className }) {
   return (
-    <div className={cn(styles.memberActionList, className)}>
+    <div className={className}>
       <Link className={styles.memberActionItem} href="/members" >
       <BsFillPersonVcardFill size={20} className={styles.memberActionIcon}/>
         會員中心
