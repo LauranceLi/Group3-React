@@ -7,34 +7,44 @@ import styles from '@/styles/itinerary.module.css'
 import Navbar from '@/components/layout/navbar'
 import Footer from '@/components/layout/footer'
 
-
 export default function GroupCart() {
-  // 狀態管理
-  const [adultCount, setAdultCount] = useState(0);
-  const [childCount, setChildCount] = useState(0);
-  const [extraBedCount, setExtraBedCount] = useState(0);
+  const [adultCount, setAdultCount] = useState(0)
+  const [childCount, setChildCount] = useState(0)
+  const [extraBedCount, setExtraBedCount] = useState(0)
+  const [numTravelers, setNumTravelers] = useState(0)
 
-  const unitPrice = 279000;
+  const unitPrice = 279000
 
-  // 計算小計
-  const adultSubtotal = adultCount * unitPrice;
-  const childSubtotal = childCount * unitPrice;
-  const extraBedSubtotal = extraBedCount * unitPrice;
-  const subtotal = adultSubtotal + childSubtotal + extraBedSubtotal;
+  const adultSubtotal = adultCount * unitPrice
+  const childSubtotal = childCount * unitPrice
+  const extraBedSubtotal = extraBedCount * unitPrice
+  const subtotal = adultSubtotal + childSubtotal + extraBedSubtotal
 
-  // 處理加減事件
   const handleIncrease = (setter, count) => {
-    setter(count + 1);
-  };
+    setter(count + 1)
+    setNumTravelers(numTravelers + 1)
+    updateURLParams(count + 1)
+  }
 
   const handleDecrease = (setter, count) => {
     if (count > 0) {
-      setter(count - 1);
+      setter(count - 1)
+      setNumTravelers(numTravelers - 1)
+      updateURLParams(count - 1)
     }
-  };
+  }
 
-  // 計算訂單總金額
-  const totalPrice = subtotal.toLocaleString();
+  const updateURLParams = (count) => {
+    const currentURL = new URL(window.location.href)
+    currentURL.searchParams.set('numTravelers', count)
+    window.history.replaceState(null, '', currentURL.toString())
+  }
+
+  const handleConfirmOrder = () => {
+    const totalPrice = subtotal.toLocaleString()
+    const queryParams = `?totalPrice=${totalPrice}&adultSubtotal=${adultSubtotal}&childSubtotal=${childSubtotal}&extraBedSubtotal=${extraBedSubtotal}&adultCount=${adultCount}&childCount=${childCount}&extraBedCount=${extraBedCount}`
+    window.location.href = `/itinerary/group-cart2${queryParams}`
+  }
 
   return (
     <>
@@ -107,15 +117,14 @@ export default function GroupCart() {
                 <span className={styles.groupCartSpan1}>
                   出發日期:2024/05/23{' '}
                 </span>
-                <span className={styles.groupCartSpan}>可售團位:經濟艙16</span>
+                <span className={styles.groupCartSpan}>可售團位:16</span>
               </div>
               <div>
                 <div className={styles.travelInfo2}>
                   <h6 className={styles.travelSaleItem}>訂位人數</h6>
                   <div className={styles.unitPrice}>單價</div>
                   <div className={styles.unitPrice}>
-                    可售
-                    <div className={styles.groupCartSeat}>16</div>
+                    可售<div className={styles.groupCartSeat}>16</div>
                   </div>
                 </div>
               </div>
@@ -208,13 +217,6 @@ export default function GroupCart() {
                       handleIncrease(setExtraBedCount, extraBedCount)
                     }
                   />
-                </div>
-              </div>
-              <div className="row mt-3 p-2">
-                <div className="col">
-                  <h4>
-                    小計 <span>NT$ {subtotal.toLocaleString()}</span>
-                  </h4>
                 </div>
               </div>
             </div>
@@ -313,16 +315,13 @@ export default function GroupCart() {
               </label>
               <div className={styles.agreementDiv}>
                 <div className="m-1">
-                  <button
-                    type="button"
-                    className="btn btn-primary"
-                    onClick={() =>
-                      (window.location.href =
-                        'http://localhost:3000/itinerary/group-cart2')
-                    }
-                  >
-                    確認訂購
-                  </button>
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  onClick={handleConfirmOrder}
+                >
+                  確認訂購
+                </button>
                 </div>
                 <div className="m-1">
                   <button type="reset" className="btn btn-secondary">

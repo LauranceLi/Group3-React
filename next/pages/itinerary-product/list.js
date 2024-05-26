@@ -23,9 +23,10 @@ export default function List() {
   const [perpage, setPerpage] = useState(9)
 
   const extractDays = (daysString) => {
-    const daysMatch = daysString.match(/\d+/)
-    return daysMatch ? parseInt(daysMatch[0]) : 0
+    const daysMatch = daysString.match(/\d+/) // 提取文字中的數字
+    return daysMatch ? parseInt(daysMatch[0]) : 0 // 將提取的數字轉換為整數
   }
+
 
   const [orderby, setOrderby] = useState({ sort: 'travel_id', order: 'asc' })
 
@@ -101,7 +102,7 @@ export default function List() {
 
   return (
     <>
-    <Navbar />
+      <Navbar />
       <main className={styles.itineraryMain}>
         <div className={styles.itineraryDiv}>
           <div className="row">
@@ -119,7 +120,7 @@ export default function List() {
                         type="range"
                         min={0}
                         max={300000}
-                        step={5000}
+                        step={1000}
                         value={priceGte}
                         onChange={(e) => setPriceGte(Number(e.target.value))}
                       />
@@ -130,7 +131,7 @@ export default function List() {
                         type="range"
                         min={0}
                         max={300000}
-                        step={5000}
+                        step={1000}
                         value={priceLte}
                         onChange={(e) => setPriceLte(Number(e.target.value))}
                       />
@@ -204,7 +205,9 @@ export default function List() {
                       </div>
                       <div className="col-6 col-md-3"></div>
                       <div className="col-6 col-md-3">
-                        <h6 className={styles.itineraryH6}>共有 {total} 筆商品</h6>
+                        <h6 className={styles.itineraryH6}>
+                          共有 {total} 筆商品
+                        </h6>
                       </div>
                       <label className="col-6 col-md-3">
                         <div className={styles.itineraryProductsP}>
@@ -258,7 +261,9 @@ export default function List() {
                         </div>
 
                         <div className={styles.itineraryDetails}>
-                          <div className={styles.itineraryTime}>出發日期:&nbsp;{v.time}</div>
+                          <div className={styles.itineraryTime}>
+                            出發日期:&nbsp;{v.time}
+                          </div>
                           <div>
                             <div className={styles.itineraryDescription}>
                               {v.introduce}
@@ -312,7 +317,7 @@ export default function List() {
           />
         </div>
       </main>
-      <Footer />        
+      <Footer />
     </>
   )
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
@@ -8,27 +8,89 @@ import Navbar from '@/components/layout/navbar'
 import Footer from '@/components/layout/footer'
 
 export default function GroupCart2() {
-  // 創建狀態變數來追蹤旅客數量和旅客標題
+  const [totalPrice, setTotalPrice] = useState(0)
+  const [adultSubtotal, setAdultSubtotal] = useState(0)
+  const [childSubtotal, setChildSubtotal] = useState(0)
+  const [extraBedSubtotal, setExtraBedSubtotal] = useState(0)
+  const [deposit, setDeposit] = useState(0)
+  const [adultCount, setAdultCount] = useState(0)
+  const [childCount, setChildCount] = useState(0)
+  const [extraBedCount, setExtraBedCount] = useState(0)
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search)
+
+    const totalPriceParam = urlParams.get('totalPrice')
+    const adultSubtotalParam = urlParams.get('adultSubtotal')
+    const childSubtotalParam = urlParams.get('childSubtotal')
+    const extraBedSubtotalParam = urlParams.get('extraBedSubtotal')
+    const adultCountParam = urlParams.get('adultCount')
+    const childCountParam = urlParams.get('childCount')
+    const extraBedCountParam = urlParams.get('extraBedCount')
+
+    if (totalPriceParam) {
+      const total = parseFloat(totalPriceParam.replace(/[^0-9.-]+/g, ''))
+      setTotalPrice(total)
+      setDeposit(total * 0.2)
+    }
+    if (adultSubtotalParam) {
+      setAdultSubtotal(parseFloat(adultSubtotalParam.replace(/[^0-9.-]+/g, '')))
+    }
+    if (childSubtotalParam) {
+      setChildSubtotal(parseFloat(childSubtotalParam.replace(/[^0-9.-]+/g, '')))
+    }
+    if (extraBedSubtotalParam) {
+      setExtraBedSubtotal(parseFloat(extraBedSubtotalParam.replace(/[^0-9.-]+/g, '')))
+    }
+    if (adultCountParam !== null && adultCountParam !== undefined) {
+      const adultCountValue = parseInt(adultCountParam, 10)
+      setAdultCount(adultCountValue)
+    }
+    if (childCountParam !== null && childCountParam !== undefined) {
+      const childCountValue = parseInt(childCountParam, 10)
+      setChildCount(childCountValue)
+    }
+    if (extraBedCountParam !== null && extraBedCountParam !== undefined) {
+      const extraBedCountValue = parseInt(extraBedCountParam, 10)
+      setExtraBedCount(extraBedCountValue)
+    }
+
+    window.history.replaceState({}, '', `${window.location.pathname}?${urlParams}`)
+  }, [])
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search)
+    urlParams.set('adultCount', adultCount)
+    urlParams.set('childCount', childCount)
+    urlParams.set('extraBedCount', extraBedCount)
+    window.history.replaceState({}, '', `${window.location.pathname}?${urlParams}`)
+  }, [adultCount, childCount, extraBedCount])
+
+  const handleIncrease = (setter, count) => {
+    setter(count + 1)
+  }
+
+  const handleDecrease = (setter, count) => {
+    if (count > 1) {
+      setter(count - 1)
+    }
+  }
+
   const [numTravelers, setNumTravelers] = useState(1)
   const [travelerTitles, setTravelerTitles] = useState(['旅客 1'])
 
-  // 點擊新增旅客按鈕時的處理函數
   const handleAddTraveler = () => {
     setNumTravelers(numTravelers + 1)
-    // 更新旅客標題陣列
     const newTitles = [...travelerTitles, `旅客 ${numTravelers + 1}`]
     setTravelerTitles(newTitles)
   }
 
-  // 根據旅客數量動態生成表單元素
   const renderTravelerForms = () => {
     const travelerForms = []
     for (let i = 0; i < numTravelers; i++) {
       travelerForms.push(
         <div key={i}>
-          {/* 旅客標題 */}
           <h6 className={styles.travelSaleItem}>{travelerTitles[i]}</h6>
-          {/* 旅客表單 */}
           <div className="row m-3">
             <Col>
               <label htmlFor="name">中文姓名</label>
@@ -36,19 +98,11 @@ export default function GroupCart2() {
             </Col>
             <Col>
               <label htmlFor="name">英文姓名</label>
-              <input
-                type="text"
-                placeholder="英文姓名(同護照)"
-                className="form-control"
-              />
+              <input type="text" placeholder="英文姓名(同護照)" className="form-control" />
             </Col>
             <Col>
               <label htmlFor="phone">聯絡電話</label>
-              <input
-                type="text"
-                placeholder="手機號碼"
-                className="form-control"
-              />
+              <input type="text" placeholder="手機號碼" className="form-control" />
             </Col>
           </div>
           <Row className="m-3">
@@ -71,22 +125,14 @@ export default function GroupCart2() {
             <Col xs={12} md={4} className="mb-3">
               <Form.Group controlId="birthday">
                 <Form.Label>出生日期</Form.Label>
-                <Form.Control
-                  type="date"
-                  placeholder=""
-                  style={{ color: 'gray' }}
-                />
+                <Form.Control type="date" placeholder="" style={{ color: 'gray' }} />
               </Form.Group>
             </Col>
           </Row>
           <div className="row m-3">
             <Col>
               <label htmlFor="address">聯絡地址</label>
-              <input
-                type="text"
-                className="form-control"
-                placeholder="聯絡地址"
-              />
+              <input type="text" className="form-control" placeholder="聯絡地址" />
             </Col>
             <Col>
               <label htmlFor="note">備註</label>
@@ -99,6 +145,7 @@ export default function GroupCart2() {
     }
     return travelerForms
   }
+
   return (
     <>
       <Navbar />
@@ -115,10 +162,7 @@ export default function GroupCart2() {
               <div className="travelForm mb-3">
                 <div className={styles.second}>
                   <div className={styles.orderTitle}>
-                    <h6
-                      className={styles.travelSaleItem}
-                      style={{ fontSize: '22px' }}
-                    >
+                    <h6 className={styles.travelSaleItem} style={{ fontSize: '22px' }}>
                       西班牙13日:設計酒莊古堡美食宴饗
                     </h6>
                   </div>
@@ -130,69 +174,44 @@ export default function GroupCart2() {
                     </div>
                   </div>
                   <div className={styles.travelInfo2}>
-                    <h6
-                      className={styles.travelSaleItem}
-                      style={{ fontSize: '16px' }}
-                    >
+                    <h6 className={styles.travelSaleItem} style={{ fontSize: '16px' }}>
                       大人
                     </h6>
-                    <div className={styles.unitPrice}>NT$219,900</div>
                     <div className={styles.unitPrice}>
-                      <input
-                        type="number"
-                        name="quantity"
-                        value="1"
-                        className={styles.quantity}
-                        disabled
-                      />
+                      <span>NT$</span>{adultSubtotal.toLocaleString()}
+                    </div>
+                    <div className={styles.unitPrice}>
+                      <input type="number" name="quantity" value={adultCount} className={styles.quantity} readOnly />
                     </div>
                   </div>
                   <div className={styles.travelInfo2}>
-                    <h6
-                      className={styles.travelSaleItem}
-                      style={{ fontSize: '16px' }}
-                    >
+                    <h6 className={styles.travelSaleItem} style={{ fontSize: '16px' }}>
                       小孩
                     </h6>
-                    <div className={styles.unitPrice}>NT$219,900</div>
                     <div className={styles.unitPrice}>
-                      <input
-                        type="number"
-                        name="quantity"
-                        value="1"
-                        className={styles.quantity}
-                        disabled
-                      />
+                      <span>NT$</span>{childSubtotal.toLocaleString()}
+                    </div>
+                    <div className={styles.unitPrice}>
+                      <input type="number" name="quantity" value={childCount} className={styles.quantity} readOnly />
                     </div>
                   </div>
                   <div className={styles.travelInfo2}>
-                    <h6
-                      className={styles.travelSaleItem}
-                      style={{ fontSize: '16px' }}
-                    >
+                    <h6 className={styles.travelSaleItem} style={{ fontSize: '16px' }}>
                       加床
                     </h6>
-                    <div className={styles.unitPrice}>NT$219,900</div>
                     <div className={styles.unitPrice}>
-                      <input
-                        type="number"
-                        name="quantity"
-                        value="1"
-                        className={styles.quantity}
-                        disabled
-                      />
+                      <span>NT$</span>{extraBedSubtotal.toLocaleString()}
+                    </div>
+                    <div className={styles.unitPrice}>
+                      <input type="number" name="quantity" value={extraBedCount} className={styles.quantity} readOnly />
                     </div>
                   </div>
                   <div className="row mt-3 p-2">
                     <Col className={styles.totalAmount}>
-                      <h4 style={{ fontSize: '20px', fontWeight: 600 }}>
-                        訂單總金額
-                      </h4>
+                      <h4 style={{ fontSize: '20px', fontWeight: 600 }}>訂單總金額</h4>
                       <div className={styles.groupCart2Money}>
                         NT$
-                        <span style={{ color: 'tomato', fontWeight: 'bold' }}>
-                          657,000
-                        </span>
+                        <span style={{ color: 'tomato', fontWeight: 'bold' }}>{totalPrice.toLocaleString()}</span>
                       </div>
                     </Col>
                   </div>
@@ -204,9 +223,7 @@ export default function GroupCart2() {
                         <h4>訂金</h4>
                         <div className={styles.groupCart2Money}>
                           NT$
-                          <span style={{ color: 'tomato', fontWeight: 'bold' }}>
-                            100,000
-                          </span>
+                          <span style={{ color: 'tomato', fontWeight: 'bold' }}>{deposit.toLocaleString()}</span>
                         </div>
                       </div>
                     </div>
@@ -222,14 +239,10 @@ export default function GroupCart2() {
                   <div className={styles.orderTitle2}>
                     <div className="row">
                       <div className={styles.totalAmount1}>
-                        <h4 style={{ fontWeight: 600, fontSize: '20px' }}>
-                          尾款
-                        </h4>
+                        <h4 style={{ fontWeight: 600, fontSize: '20px' }}>尾款</h4>
                         <div className={styles.groupCart2Money}>
                           NT$
-                          <span style={{ color: 'tomato', fontWeight: 'bold' }}>
-                            100,000
-                          </span>
+                          <span style={{ color: 'tomato', fontWeight: 'bold' }}>100,000</span>
                         </div>
                       </div>
                     </div>
@@ -243,31 +256,23 @@ export default function GroupCart2() {
                 </div>
                 <div className={styles.orderWrite}>
                   <div className={styles.orderTitle}>
-                    <h4 style={{ fontWeight: 600, fontSize: '22px' }}>
-                      填寫旅客資料
-                    </h4>
+                    <h4 style={{ fontWeight: 600, fontSize: '22px' }}>填寫旅客資料</h4>
+                  </div>
+                  <div className={styles.cartBtn}>
+                    <button
+                      type="button"
+                      className="btn btn-outline-warning"
+                      style={{ fontWeight: 600, fontSize: '14px' }}
+                      onClick={handleAddTraveler}
+                    >
+                      新增旅客
+                    </button>
                   </div>
                   <div>
-                    <div className={styles.cartBtn}>
-                      {/* 點擊按鈕時，調用新增旅客處理函數 */}
-                      <button
-                        type="button"
-                        className="btn btn-outline-warning"
-                        style={{ fontWeight: 600, fontSize: '14px' }}
-                        onClick={handleAddTraveler}
-                      >
-                        新增旅客
-                      </button>
-                    </div>
-                  </div>
-                  <div>
-                    {/* 顯示現有的旅客表單 */}
                     {renderTravelerForms()}
                   </div>
                   <div className={styles.orderTitle3}>
-                    <h4 style={{ fontWeight: 600, fontSize: '22px' }}>
-                      代收轉付收據
-                    </h4>
+                    <h4 style={{ fontWeight: 600, fontSize: '22px' }}>代收轉付收據</h4>
                   </div>
                   <Row className="m-3">
                     <Form>
@@ -301,57 +306,19 @@ export default function GroupCart2() {
                   <div className="row p-2 m-3">
                     <div className="col">
                       收據抬頭
-                      <input
-                        type="text"
-                        className="form-control"
-                        placeholder="請輸入收據抬頭(買受人)"
-                      />
+                      <input type="text" className="form-control" placeholder="請輸入收據抬頭(買受人)" />
                     </div>
                     <div className="col">
                       統編/身分證字號
-                      <input
-                        type="text"
-                        className="form-control"
-                        placeholder="請輸入公司統編或身分證字號"
-                      />
+                      <input type="text" className="form-control" placeholder="請輸入公司統編或身分證字號" />
                     </div>
                   </div>
                 </div>
                 <div className={styles.second3}>
                   <div className="row p-2">
                     <div className="col">
-                      <h4 style={{ fontWeight: 600, fontSize: '20px' }}>
-                        隱私權政策
-                      </h4>
-                      <p className={styles.viewTextScroll}>
-                        前言申明:
-                        本公司在此聲明對於個人的網路隱私權，絕對尊重並予以保護。本公司在相關網站之資料收集及運用方式，以及我們的隱私權保護政策。
-                        隱私權保護政策適用範圍:
-                        隱私權保護政策內容，包括本公司如何處理在用戶使用網站服務時收集到的身份識別資料，也包括本公司如何處理在商業合作與本公司合作時分享的任何身份識別資料。隱私權保護政策不適用於本公司以外的公司或網站群，與非本站所僱用或管理人員。例如您透過本公司旗下網站上的廣告廠商連結，這些置放連結的廠商也可能蒐集您個人的資料。對於您主動提供的個人資訊，這些廣告廠商或連結網站有其個別的隱私權保護政策，其資料處理措施不適用於本公司隱私權保護政策。
-                        您個人在本網站上的聊天室或討論區中任意公開個人資料的行為，在非經加密的保護下，亦不適用於本公司隱私權保護政策。
-                        資料的蒐集與使用方式:
-                        為了在本網站提供您最佳的互動性服務，可能會請您提供相關個人的資料，其範圍如下：
-                        本網站在您使用服務信箱、問卷調查等互動性功能時，會保留您所提供的姓名、電子郵件地址、聯絡方式及使用時間等。
-                        於一般瀏覽時，伺服器會自行記錄相關行徑，包括您使用連線設備的
-                        IP
-                        位址、使用時間、使用的瀏覽器、瀏覽及點選資料記錄等，做為我們增進網站服務的參考依據，此記錄為內部應用，決不對外公布。
-                        為提供精確的服務，我們會將收集的問卷調查內容進行統計與分析，分析結果之統計數據或說明文字呈現，除供內部研究外，我們會視需要公佈統計數據及說明文字，但不涉及特定個人之資料。
-                        除非取得您的同意或其他法令之特別規定，本網站絕不會將您的個人資料揭露予第三人或使用於蒐集目的以外之其他用途。
-                        在您於本網站註冊帳號、使用本網站相關產品、服務、活動或贈獎時，本網站會收集您的個人識別資料，本網站也可以從商業夥伴處取得個人資料。
-                        當客戶在本網站註冊時，我們會取得您的姓名、電話、住址、身份證字號、電子郵件、出生日期、性別、行業等相關資料，當您註冊成功，並登入使用我們的服務後，我們即取得您的資料。註冊時，本網站取得您的姓名、電話、住址、身份證字號、電子郵件、出生日期、性別、行業等相關資料，當您註冊成功，並登入使用我們的服務後，本網站即取得您的資料。
-                        其他除了上述，會保留您在上網瀏覽或查詢時，伺服器自行產生的相關記錄，包括您使用連線設備的
-                        IP
-                        位址、使用時間、使用的瀏覽器、瀏覽及點選資料紀錄等。本網站會對個別連線者的瀏覽器予以標示，歸納使用者瀏覽器在本網站內部所瀏覽的網頁，除非您願意告知您的個人資料，否則本網站不會也無法將此項記錄和您對應。請您注意，在本網站網刊登廣告之廠商，或與連結本網站，也可能蒐集您個人的資料。對於您主動提供的個人資訊，這些廣告廠商、或連結網站有其個別的私權保護政策，其資料處理措施不適用本網站隱私權保護政策，本公司不負任何連帶責任。
-                        本網站將在事前或註冊登錄取得您的同意後，傳送商業性資料或電子郵件給您。本公司除了在該資料或電子郵件上註明是由本公司發送，也會在該資料或電子郵件上提供您能隨時停止接收這些資料或電子郵件的方法及說明。
-                        資料使用: 本公司不會向任何人出售或出借您的個人識別資料。
-                        在以下情況下，
-                        本公司會向其他人士或公司提供您的個人識別資料：
-                        1.遵守法令或政府機關的要求；或我們發覺您在網站上的行為違反本公司旗下網站的會員條款或產品、服務的特定使用指南。
-                        2.為了保護使用者個人隱私，我們無法為您查詢其他使用者的帳號資料。若您有相關法律上問題需查閱他人資料時，請務必向警政單位提出告訴，我們將全力配合警政單位調查並提供所有相關資料，以協助調查及破案！
-                        自我保護措施:
-                        請妥善保管您在本公司及相關企業伙伴網站的帳號、密碼或個人資料，不要將任何資料、密碼提供給任何人。並在您使用完本公司相關企業伙伴網站所提供的服務後，務必記得登出帳戶或關閉網頁瀏覽器，以防止他人讀取您的個人資料。
-                        倘若您發現有任何非經授權的第三者使用您的帳號進行任何詢問或訂購時，請立即通知本站。
-                      </p>
+                      <h4 style={{ fontWeight: 600, fontSize: '20px' }}>隱私權政策</h4>
+                      <p className={styles.viewTextScroll}></p>
                     </div>
                   </div>
                 </div>
@@ -376,8 +343,7 @@ export default function GroupCart2() {
                         type="button"
                         className="btn btn-secondary"
                         onClick={() =>
-                          (window.location.href =
-                            'http://localhost:3000/itinerary-product/list')
+                          (window.location.href = '/itinerary-product/list')
                         }
                       >
                         取消訂購
