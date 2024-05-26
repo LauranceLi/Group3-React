@@ -224,8 +224,8 @@ export default function List() {
                           >
                             <option value="price,asc">價格(由低至高)</option>
                             <option value="price,desc">價格(由高至低)</option>
-                            <option value="days,asc">天數(由低至高)</option>
-                            <option value="days,desc">天數(由高至低)</option>
+                            {/* <option value="days,asc">天數(由低至高)</option>
+                            <option value="days,desc">天數(由高至低)</option> */}
                             <option value="time,asc">出發日期(由近至遠)</option>
                             <option value="time,desc">
                               出發日期(由遠至近)
