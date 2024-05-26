@@ -1,0 +1,13 @@
+檢查"是否會員登入的Hooks已經寫好了"，請照以下方法使用：
+1. 先引入
+    import useCheckLoginStatus from '@/hooks/useCheckLoginStatus'
+2. 在你要export的組件中加入 
+    const { isLoggedIn, isLoading } = useCheckLoginStatus()
+3. 使用 isLoggedIn 寫出"如果登入了要執行的操作"，範例：
+
+          若登入
+        ^^^^^^^^^^
+    if (isLoggedIn) {
+    router.push('/members')   ---> 跳轉至 http://localhost:3000/members
+    return null // 防止在redirect之前顯示任何內容
+  }

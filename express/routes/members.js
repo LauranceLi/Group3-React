@@ -3,7 +3,8 @@ const router = express.Router()
 
 // 資料庫使用
 import sequelize from '#configs/db.js'
-const { Member } = sequelize.models
+const { Members } = sequelize.models
+const { MembersInfo } = sequelize.models
 
 import db from '#configs/mysql.js'
 // 密碼加密使用
@@ -23,7 +24,7 @@ router.get('/', function (req, res, next) {
   res.render('index', { title: '46' })
 })
 
-// 登入
+// 登入（完成）
 router.post('/login', async function (req, res, next) {
   // res.status(200).json({ message: `12456789` })
   // 從前端來的資料: req.body = {email:'xxx', password:'yyy'}
@@ -66,15 +67,15 @@ router.post('/login', async function (req, res, next) {
   return res.json({ status: 'success', data: { accessToken } })
 })
 
-// 登出
-router.post('/logout', async  (req, res, next) => {
+// 登出（完成）
+router.post('/logout', async (req, res, next) => {
   // 清除瀏覽器對應cookie
   res.clearCookie('accessToken', { httpOnly: true })
   res.json({ status: 'success', data: null })
 })
 
-// 檢查登入狀態，回應會員資料
-router.get('/check', authenticate, async  (req, res, next) => {
+// 檢查登入狀態（完成）
+router.get('/check', authenticate, async (req, res, next) => {
   // 如果會員是在存取令牌合法的情況下，req.user中會有會員的id和username
   // 使用username查詢資料表，把資料表中加密過密碼字串提取出來
   const [rows] = await db.query('SELECT * FROM members WHERE member_id = ?', [
@@ -88,11 +89,67 @@ router.get('/check', authenticate, async  (req, res, next) => {
   return res.json({ status: 'success', data: req.user })
 })
 
-router.post('/register', (req, res) => {
-  res.status(200).json({ message: `注册页` })
-  // 從前端來的資料: req.body = {email:'xxx', password:'yyy'}
-  const loginUser = req.body
-  // res.status(200).json(req.body)
+// 註冊
+router.post('/register', async (req, res, next) => {
+  // res.status(200).json({ message: `注册页` })
+  const newUser = req.body
+
+  // 加密密碼文字
+  const passwordHash = await generateHash(newUser.password)
+
+  // 自動生成member_id
+  const today = new Date()
+  const year = today.getFullYear()
+  const month = String(today.getMonth() + 1).padStart(2, '0')
+  const day = String(today.getDate()).padStart(2, '0')
+  const dateString = `${year}${month}${day}`
+  const [rows] = await db.query(
+    'SELECT COUNT(*) as count FROM `members` WHERE DATE(`created_at`) = CURDATE()'
+  )
+  const userCountToday = rows[0].count + 1
+  const memberId = `${dateString}${String(userCountToday).padStart(3, '0')}`
+
+  if (!newUser.mobile || !newUser.email || !newUser.name || !newUser.password) {
+    return res.json({ status: 'error', message: '缺少必要資料' })
+  }
+
+  // 執行後user是建立的會員資料，created為布林值
+  // where指的是不可以有相同的資料，如username與email不能有相同的
+  // defaults用於建立新資料用
+  const [user, created] = await Members.findOrCreate({
+    where: { email: newUser.email },
+    defaults: {
+      name: newUser.name,
+      email: newUser.email,
+      password: passwordHash,
+      member_id: memberId,
+    },
+    logging: console.log,
+  })
+
+  if (!created) {
+    return res.json({ status: 'error', message: '建立會員失敗' })
+  } else {
+    const [userInfo, createdInfo] = await MembersInfo.findOrCreate({
+      where: { member_id: memberId },
+      defaults: {
+        mobile: newUser.mobile,
+        member_id: newUser.member_id,
+      },
+      logging: console.log,
+    })
+    // if (!createdInfo) {
+    //   return res.json({ status: 'error', message: '建立會員資料失敗' })
+    // } else {
+    //   return res.json({ status: 'success', data: userInfo })
+    // }
+  }
+
+  // 新增失敗 !insertRows.insertId 代表沒新增
+  return res.status(201).json({
+    status: 'success',
+    data: null,
+  })
 })
 router.get('/forget_password', (req, res) => {
   res.status(200).json({ message: `忘记密码` })
