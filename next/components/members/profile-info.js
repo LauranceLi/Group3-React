@@ -7,16 +7,24 @@ import MemberAction from '@/components/members/action-list'
 
 import { FaShieldAlt } from 'react-icons/fa'
 import { VscSignOut } from 'react-icons/vsc'
-import { FaStar } from "react-icons/fa";
-import { BsFillPersonVcardFill } from "react-icons/bs";
-import { BsPersonFillGear } from "react-icons/bs";
+import { FaStar } from 'react-icons/fa'
+import { BsFillPersonVcardFill } from 'react-icons/bs'
+import { BsPersonFillGear } from 'react-icons/bs'
 import { stripLow } from 'validator'
 
-
 export default function ProfileInfo() {
-  const { name } = useMemberInfo()
-  const { firstName } = useMemberInfo()
-  const { lastName } = useMemberInfo()
+  const {
+    name,
+    email,
+    firstName,
+    lastName,
+    birthday,
+    address,
+    mobile,
+    tag,
+    idNum,
+    points,
+  } = useMemberInfo()
   const router = useRouter()
   const toEdit = () => {
     router.push('/members/profile/edit')
@@ -37,7 +45,7 @@ export default function ProfileInfo() {
             <div className={styles.rightBox}>
               <MemberAction className={styles.actionRow} />
               <div className={styles.title}>
-                < BsPersonFillGear
+                <BsPersonFillGear
                   size={40}
                   className={styles.memberActionIcon}
                 />
@@ -53,38 +61,40 @@ export default function ProfileInfo() {
                     <h5>護照姓名</h5>
                     <div className={styles.passportName}>
                       <p className="me-3">{firstName}</p>
-                      <p>{lastName }</p>
+                      <p>{lastName}</p>
                     </div>
                   </div>
                   <div className={styles.infoItem}>
                     <h5>信箱</h5>
-                    <p>group3@gmail.com</p>
+                    <p>{email}</p>
                   </div>
                   <div className={styles.infoItem}>
                     <h5>身分證字號</h5>
-                    <p>A123456789</p>
+                    <p>{idNum}</p>
                   </div>
                 </div>
                 <div className={styles.infoRight}>
                   <div className={styles.infoItem}>
                     <h5>手機號碼</h5>
-                    <p>0988123456</p>
+                    <p>{mobile}</p>
                   </div>
                   <div className={styles.infoItem}>
                     <h5>地址</h5>
-                    <p>台北市中山區林森北路100號1樓</p>
+                    <p>{address}</p>
                   </div>
                   <div className={styles.infoItem}>
                     <h5>興趣</h5>
-                    <p>日本</p>
+                    <p>{tag}</p>
                   </div>
                   <div className={styles.infoItem}>
                     <h5>生日</h5>
-                    <p>1970-01-01</p>
+                    <p>{birthday}</p>
                   </div>
                 </div>
               </div>
-              <buttom type="buttom" className={styles.editBtn} onClick={toEdit}>編輯</buttom>
+              <buttom type="buttom" className={styles.editBtn} onClick={toEdit}>
+                編輯
+              </buttom>
             </div>
           </div>
         </div>

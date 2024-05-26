@@ -246,7 +246,6 @@
   }
 }
 @media only screen and (max-width: 391px) {
-  
   .memberActionItem {
     width: 7rem;
     height: 4.5rem;
@@ -433,7 +432,6 @@
   color: var(--primary-color);
 }
 
-
 .editBtn,
 .editBtn:focus {
   position: relative;
@@ -466,3 +464,147 @@
 }
 
 /* profile End */
+
+/* editList Start */
+
+.editList {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.editLeft,
+.editRight {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  padding: 1rem;
+}
+.editList label {
+  color: white;
+}
+
+
+
+.editItem {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  height: 3.5rem;
+  margin-bottom: 1.8rem;
+  align-items: center;
+  border-bottom: 1px solid white;
+}
+.editItem p {
+  display: none;
+}
+.editInput {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  font-size: 14px;
+  font-style: italic;
+  color: #ffffff;
+  background-color: transparent;
+}
+
+.editInput:focus {
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+.editItem label {
+  color: white;
+  margin: 0;
+  padding-right: 0.1rem;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 30%;
+}
+
+.warning,
+.success,
+.error {
+  position: relative;
+}
+
+.error p,
+.warning p,
+.success p {
+  font-style: italic;
+  bottom: -2.7rem;
+  left: 0;
+  display: flex;
+  position: absolute;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+}
+
+.error {
+  border-bottom: 1px solid var(--danger-color);
+}
+.success {
+  border-bottom: 1px solid var(--success-color);
+}
+.warning {
+  border-bottom: 1px solid var(--warning-color);
+}
+
+.error p {
+  color: var(--danger-color);
+}
+.warning p {
+  color: var(--warning-color);
+}
+.success p {
+  color: var(--success-color);
+}
+.star {
+  color: var(--primary-color);
+}
+
+.editItem input {
+  display: flex;
+  /* justify-content: center; */
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  letter-spacing: 0.1rem;
+}
+.editPassportName {
+  display: flex;
+}
+.editItem label {
+  width: 50%;
+}
+
+.interestSelect {
+  padding: 5px;
+  width: 70%;
+  font-size: 16px;
+  background-color: var(--primary-color-55);
+  border: 0;
+  color: white;
+}
+.interestSelect:focus {
+  border: 0;
+  box-shadow: 0;
+}
+
+.interestOption {
+  background-color: #000;
+  border: 0;
+  color: white;
+}
+.react-datepicker-wrapper input{
+  background-color: transparent;
+}
+/* editList End */

@@ -1,10 +1,17 @@
 import React, { useState } from 'react'
-import styles from '/styles/members/register.module.css'
 import { useRouter } from 'next/router'
-import { ImGoogle2 } from 'react-icons/im'
-import { ImFacebook2 } from 'react-icons/im'
-import { RiEyeFill } from 'react-icons/ri'
-import { RiEyeOffFill } from 'react-icons/ri'
+import styles from '/styles/members/register.module.css'
+import { 
+  validateEmail, 
+  validatePassword, 
+  validatePasswordCheck, 
+  validateName, 
+  validateMobile 
+} from '@/utils/validation'
+
+import { ImGoogle2, ImFacebook2 } from 'react-icons/im'
+import { RiEyeFill, RiEyeOffFill } from 'react-icons/ri'
+
 
 const RegisterForm = () => {
   // 密碼可視 / 不可視
@@ -44,20 +51,14 @@ const RegisterForm = () => {
   const handleEmailChange = (e) => {
     const { name, value } = e.target
     setUser({ ...user, [name]: value })
-
     if (name === 'email') {
-      const emailPattern =
-        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-      const emailResult = emailPattern.test(value)
-      if (emailResult) {
-        setEmailAvailableMessage('請驗證信箱')
-        setEmailAvailableClass(styles.warning)
-      } else {
-        setEmailAvailableMessage('信箱格式錯誤')
-        setEmailAvailableClass(styles.error)
-      }
+      const result = validateEmail(value)
+      setEmailAvailableMessage(result.message)
+      setEmailAvailableClass(result.className)
     }
   }
+
+
 
   // 密碼檢查（完成）
   const [pwAvailableClass, setPwAvailableClass] = useState('')
@@ -65,37 +66,17 @@ const RegisterForm = () => {
   const [pwSameClass, setPwSameClass] = useState('')
   const [pwSameMessage, setPwSameMessage] = useState('')
   const handlePasswordChange = (e) => {
-    const passwordPattern = /^(?=.*[a-zA-Z])(?=.*\d).{6,}$/
     const { name, value } = e.target
     setUser({ ...user, [name]: value })
-
     if (name === 'password' || name === 'passwordCheck') {
       const newPassword = name === 'password' ? value : user.password
-      const confirmPassword =
-        name === 'passwordCheck' ? value : user.passwordCheck
-
-      const pwResult = passwordPattern.test(newPassword)
-
-      if (newPassword.length < 8) {
-        setPwAvailableMessage('密碼需8位以上')
-        setPwAvailableClass(styles.error)
-      } else {
-        if (pwResult) {
-          setPwAvailableMessage('密碼可使用')
-          setPwAvailableClass(styles.success)
-        } else {
-          setPwAvailableMessage('密碼必須至少包含一個英文字母和一個數字')
-          setPwAvailableClass(styles.error)
-        }
-      }
-
-      if (newPassword !== confirmPassword) {
-        setPwSameMessage('密碼不一致請重新確認')
-        setPwSameClass(styles.error)
-      } else {
-        setPwSameMessage('密碼一致')
-        setPwSameClass(styles.success)
-      }
+      const confirmPassword = name === 'passwordCheck' ? value : user.passwordCheck
+      const pwResult = validatePassword(newPassword)
+      setPwAvailableMessage(pwResult.message)
+      setPwAvailableClass(pwResult.className)
+      const pwCheckResult = validatePasswordCheck(newPassword, confirmPassword)
+      setPwSameMessage(pwCheckResult.message)
+      setPwSameClass(pwCheckResult.className)
     }
   }
 
@@ -105,42 +86,10 @@ const RegisterForm = () => {
   const handleNameChange = (e) => {
     const { name, value } = e.target
     setUser({ ...user, [name]: value })
-
     if (name === 'name') {
-      const chineseNamePattern = /^[\u4E00-\u9FA5]{2,}$/
-      const englishNamePattern = /^[A-Z][a-z]*(\s[A-Z][a-z]*)*$/
-
-      const chineseResult = chineseNamePattern.test(value)
-      const englishResult = englishNamePattern.test(value)
-
-      const isChinese = /^[\u4E00-\u9FA5]+$/.test(value)
-      const isEnglish = /^[A-Za-z\s]+$/.test(value)
-
-      if (!isChinese && !isEnglish) {
-        setNameAvailableMessage('請使用中文或英文姓名')
-        setNameAvailableClass(styles.error)
-      } else {
-        if (isChinese) {
-          if (chineseResult) {
-            setNameAvailableMessage('可用的中文姓名')
-            setNameAvailableClass(styles.success)
-          } else {
-            setNameAvailableMessage('中文姓名至少二字以上')
-            setNameAvailableClass(styles.error)
-          }
-        } else if (isEnglish) {
-          if (englishResult) {
-            setNameAvailableMessage('可用的英文姓名')
-            setNameAvailableClass(styles.success)
-          } else {
-            setNameAvailableMessage('英文姓名需且僅首字母大寫')
-            setNameAvailableClass(styles.error)
-          }
-        } else {
-          setNameAvailableMessage('姓名格式錯誤')
-          setNameAvailableClass(styles.error)
-        }
-      }
+      const result = validateName(value)
+      setNameAvailableMessage(result.message)
+      setNameAvailableClass(result.className)
     }
   }
 
@@ -150,17 +99,10 @@ const RegisterForm = () => {
   const handleMobileChange = (e) => {
     const { name, value } = e.target
     setUser({ ...user, [name]: value })
-
     if (name === 'mobile') {
-      const mobilePattern = /^09\d{8}$/
-      const mobileResult = mobilePattern.test(value)
-      if (mobileResult) {
-        setMobileAvailableMessage('可使用手機號碼')
-        setMobileAvailableClass(styles.success)
-      } else {
-        setMobileAvailableMessage('手機號碼格式錯誤')
-        setMobileAvailableClass(styles.error)
-      }
+      const result = validateMobile(value)
+      setMobileAvailableMessage(result.message)
+      setMobileAvailableClass(result.className)
     }
   }
 
@@ -281,7 +223,7 @@ const RegisterForm = () => {
                   <input
                     className={styles.registerInput}
                     name="email"
-                    type="text"
+                    type="email"
                     id="email"
                     placeholder="請填入信箱"
                     onChange={handleEmailChange}

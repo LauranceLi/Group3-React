@@ -12,6 +12,7 @@ const useMemberInfo = () => {
   const [idNum, setIdNum] = useState()
   const [points, setPoints] = useState(0)
   const [email, setEmail] = useState()
+  const [tag, setTag] = useState()
 
   useEffect(() => {
     const infoUrl = 'http://localhost:3005/api/members/get_info'
@@ -36,8 +37,9 @@ const useMemberInfo = () => {
           setFirstName(data.data.first_name)
           setLastName(data.data.last_name)
           setMobile(data.data.mobile)
-          setIdNum(data.data.idNum)
+          setIdNum(data.data.id_num)
           setEmail(data.data.email)
+          setTag(data.data.tag)
         }
         if (!data.data.points) {
           setPoints(0)
@@ -61,6 +63,7 @@ const useMemberInfo = () => {
     idNum,
     points,
     email,
+    tag
   }
 }
 

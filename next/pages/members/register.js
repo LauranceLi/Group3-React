@@ -6,7 +6,6 @@ import Preloader from '@/components/layout/preloader'
 import Navbar from '@/components/layout/navbar'
 import Footer from '@/components/layout/footer'
 
-const baseUrl = 'http://localhost:3005/api/members/register'
 
 export default function Register() {
 
