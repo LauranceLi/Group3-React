@@ -52,9 +52,10 @@ const Navbar = ({ navItemName = '', navbarControl = '' }) => {
                     </a>
                   </li>
                   <li className="nav-item">
-                    <a className={styles.navLink} href="about-me.html">
-                      各國行程
-                    </a>
+                    <Link href="/itinerary/country-all" className={styles.navLink}>
+                      <div>各國行程</div>
+                    </Link>
+
                   </li>
                   <li className="nav-item">
                     <a className={styles.navLink} href="services.html">
