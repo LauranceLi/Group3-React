@@ -159,7 +159,7 @@
 /* itinerary_sign_up 區塊-平板 */
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .countryBody {
-    background-color: #f5f5f5;
+    background-color: #192a56;
   }
   .tab {
     display: flex;
@@ -279,7 +279,7 @@
     height: auto;
   }
   .countryBody {
-    background-color: #f5f5f5;
+    background-color: #192a56;
     height: auto;
     padding-bottom: 240px;
   }
