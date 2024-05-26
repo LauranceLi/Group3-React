@@ -6,6 +6,7 @@ import Form from 'react-bootstrap/Form'
 import styles from '@/styles/itinerary.module.css'
 import Navbar from '@/components/layout/navbar'
 import Footer from '@/components/layout/footer'
+import toast from 'react-hot-toast'
 
 export default function GroupCart2() {
   const [totalPrice, setTotalPrice] = useState(0)
@@ -181,7 +182,9 @@ export default function GroupCart2() {
     }
     return travelerForms
   }
-
+  const handleReset = () => {
+    toast.success('報名成功')
+  }
   return (
     <>
       <Navbar />
@@ -425,7 +428,11 @@ export default function GroupCart2() {
                       </button>
                     </div>
                     <div className="m-1">
-                      <button type="reset" className="btn btn-secondary">
+                      <button
+                        type="reset"
+                        className="btn btn-secondary"
+                        onClick={handleReset}
+                      >
                         暫不付款
                       </button>
                     </div>
