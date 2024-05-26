@@ -112,19 +112,19 @@ export default function GroupCart() {
                   className={styles.travelSaleItem}
                   style={{ fontSize: '22px' }}
                 >
-                  西班牙13日:設計酒莊古堡美食宴饗
+                  秘魯・印加帝國15日
                 </h6>
                 <span className={styles.groupCartSpan1}>
-                  出發日期:2024/05/23{' '}
+                  出發日期:2024-11-15
                 </span>
-                <span className={styles.groupCartSpan}>可售團位:16</span>
+                <span className={styles.groupCartSpan}>可售團位:27</span>
               </div>
               <div>
                 <div className={styles.travelInfo2}>
                   <h6 className={styles.travelSaleItem}>訂位人數</h6>
                   <div className={styles.unitPrice}>單價</div>
                   <div className={styles.unitPrice}>
-                    可售<div className={styles.groupCartSeat}>16</div>
+                    可售<div className={styles.groupCartSeat}>27</div>
                   </div>
                 </div>
               </div>
@@ -315,13 +315,13 @@ export default function GroupCart() {
               </label>
               <div className={styles.agreementDiv}>
                 <div className="m-1">
-                <button
-                  type="button"
-                  className="btn btn-primary"
-                  onClick={handleConfirmOrder}
-                >
-                  確認訂購
-                </button>
+                  <button
+                    type="button"
+                    className="btn btn-primary"
+                    onClick={handleConfirmOrder}
+                  >
+                    確認訂購
+                  </button>
                 </div>
                 <div className="m-1">
                   <button type="reset" className="btn btn-secondary">
