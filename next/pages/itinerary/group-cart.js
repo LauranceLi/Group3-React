@@ -1,15 +1,55 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import { CiCircleMinus } from 'react-icons/ci'
-import { CiCirclePlus } from 'react-icons/ci'
+import { CiCircleMinus, CiCirclePlus } from 'react-icons/ci'
 import styles from '@/styles/itinerary.module.css'
+import Navbar from '@/components/layout/navbar'
+import Footer from '@/components/layout/footer'
 
 export default function GroupCart() {
+  const [adultCount, setAdultCount] = useState(0)
+  const [childCount, setChildCount] = useState(0)
+  const [extraBedCount, setExtraBedCount] = useState(0)
+  const [numTravelers, setNumTravelers] = useState(0)
+
+  const unitPrice = 279000
+
+  const adultSubtotal = adultCount * unitPrice
+  const childSubtotal = childCount * unitPrice
+  const extraBedSubtotal = extraBedCount * unitPrice
+  const subtotal = adultSubtotal + childSubtotal + extraBedSubtotal
+
+  const handleIncrease = (setter, count) => {
+    setter(count + 1)
+    setNumTravelers(numTravelers + 1)
+    updateURLParams(count + 1)
+  }
+
+  const handleDecrease = (setter, count) => {
+    if (count > 0) {
+      setter(count - 1)
+      setNumTravelers(numTravelers - 1)
+      updateURLParams(count - 1)
+    }
+  }
+
+  const updateURLParams = (count) => {
+    const currentURL = new URL(window.location.href)
+    currentURL.searchParams.set('numTravelers', count)
+    window.history.replaceState(null, '', currentURL.toString())
+  }
+
+  const handleConfirmOrder = () => {
+    const totalPrice = subtotal.toLocaleString()
+    const queryParams = `?totalPrice=${totalPrice}&adultSubtotal=${adultSubtotal}&childSubtotal=${childSubtotal}&extraBedSubtotal=${extraBedSubtotal}&adultCount=${adultCount}&childCount=${childCount}&extraBedCount=${extraBedCount}`
+    window.location.href = `/itinerary/group-cart2${queryParams}`
+  }
+
   return (
     <>
-      <main>
+      <Navbar />
+      <main className={styles.GroupCart1}>
         <br />
         <Container>
           <div className="mb-3">
@@ -52,7 +92,7 @@ export default function GroupCart() {
                     <h6>手機號碼&nbsp;</h6>
                   </label>
                   <input
-                    type="text"
+                    type="mobile"
                     name="mobile"
                     id="mobile"
                     className="form-control"
@@ -72,20 +112,19 @@ export default function GroupCart() {
                   className={styles.travelSaleItem}
                   style={{ fontSize: '22px' }}
                 >
-                  西班牙13日:設計酒莊古堡美食宴饗
+                  秘魯・印加帝國15日
                 </h6>
                 <span className={styles.groupCartSpan1}>
-                  出發日期:2024/05/23{' '}
+                  出發日期:2024-11-15
                 </span>
-                <span className={styles.groupCartSpan}>可售團位:經濟艙16</span>
+                <span className={styles.groupCartSpan}>可售團位:27</span>
               </div>
               <div>
                 <div className={styles.travelInfo2}>
                   <h6 className={styles.travelSaleItem}>訂位人數</h6>
                   <div className={styles.unitPrice}>單價</div>
                   <div className={styles.unitPrice}>
-                    可售
-                    <div className={styles.groupCartSeat}>16</div>
+                    可售<div className={styles.groupCartSeat}>27</div>
                   </div>
                 </div>
               </div>
@@ -96,18 +135,26 @@ export default function GroupCart() {
                 >
                   大人
                 </h6>
-                <div className={styles.unitPrice}>NT$219,900</div>
                 <div className={styles.unitPrice}>
-                  <CiCircleMinus size={24} />
-
+                  <span>NT$</span>
+                  {(unitPrice * adultCount).toLocaleString()}
+                </div>
+                <div className={styles.unitPrice}>
+                  <CiCircleMinus
+                    size={24}
+                    onClick={() => handleDecrease(setAdultCount, adultCount)}
+                  />
                   <input
                     type="number"
                     name="quantity"
-                    value="1"
+                    value={adultCount}
                     className={styles.quantity}
-                    disabled
+                    readOnly
                   />
-                  <CiCirclePlus size={24} />
+                  <CiCirclePlus
+                    size={24}
+                    onClick={() => handleIncrease(setAdultCount, adultCount)}
+                  />
                 </div>
               </div>
               <div className={styles.travelInfo2}>
@@ -117,17 +164,26 @@ export default function GroupCart() {
                 >
                   小孩
                 </h6>
-                <div className={styles.unitPrice}>NT$219,900</div>
                 <div className={styles.unitPrice}>
-                  <CiCircleMinus size={24} />
+                  <span>NT$</span>
+                  {(unitPrice * childCount).toLocaleString()}
+                </div>
+                <div className={styles.unitPrice}>
+                  <CiCircleMinus
+                    size={24}
+                    onClick={() => handleDecrease(setChildCount, childCount)}
+                  />
                   <input
                     type="number"
                     name="quantity"
-                    value="1"
+                    value={childCount}
                     className={styles.quantity}
-                    disabled
+                    readOnly
                   />
-                  <CiCirclePlus size={24} />
+                  <CiCirclePlus
+                    size={24}
+                    onClick={() => handleIncrease(setChildCount, childCount)}
+                  />
                 </div>
               </div>
               <div className={styles.travelInfo2}>
@@ -137,24 +193,30 @@ export default function GroupCart() {
                 >
                   加床
                 </h6>
-                <div className={styles.unitPrice}>NT$219,900</div>
                 <div className={styles.unitPrice}>
-                  <CiCircleMinus size={24} />
+                  <span>NT$</span>
+                  {(unitPrice * extraBedCount).toLocaleString()}
+                </div>
+                <div className={styles.unitPrice}>
+                  <CiCircleMinus
+                    size={24}
+                    onClick={() =>
+                      handleDecrease(setExtraBedCount, extraBedCount)
+                    }
+                  />
                   <input
                     type="number"
                     name="quantity"
-                    value="1"
+                    value={extraBedCount}
                     className={styles.quantity}
-                    disabled
+                    readOnly
                   />
-                  <CiCirclePlus size={24} />
-                </div>
-              </div>
-              <div className="row mt-3 p-2">
-                <div className="col">
-                  <h4>
-                    小計 <span>NT$ 657,000</span>
-                  </h4>
+                  <CiCirclePlus
+                    size={24}
+                    onClick={() =>
+                      handleIncrease(setExtraBedCount, extraBedCount)
+                    }
+                  />
                 </div>
               </div>
             </div>
@@ -163,7 +225,7 @@ export default function GroupCart() {
                 <div className="row">
                   <div className="col">
                     <h4 style={{ fontSize: '22px' }}>
-                      訂單總金額 <span>NT$ 657,000</span>
+                      訂單總金額 <span>NT$ {subtotal.toLocaleString()}</span>
                     </h4>
                   </div>
                 </div>
@@ -172,7 +234,6 @@ export default function GroupCart() {
             <div className={styles.second2}>
               <div className="row p-2">
                 <div className="col">
-                  <h4>訂購須知</h4>
                   <ul>
                     <li>
                       1.選擇出符合您出發日期的行程，報名後確認行程表與旅遊契約書內容且填寫相關資料，並利用線上付款，完成訂購流程，我們也會
@@ -254,7 +315,11 @@ export default function GroupCart() {
               </label>
               <div className={styles.agreementDiv}>
                 <div className="m-1">
-                  <button type="submit" className="btn btn-primary">
+                  <button
+                    type="button"
+                    className="btn btn-primary"
+                    onClick={handleConfirmOrder}
+                  >
                     確認訂購
                   </button>
                 </div>
@@ -268,6 +333,7 @@ export default function GroupCart() {
           </div>
         </Container>
       </main>
+      <Footer />
     </>
   )
 }

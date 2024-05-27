@@ -1,0 +1,345 @@
+.memberMain {
+  min-height: 100vh;
+  padding: 2rem 0;
+  display: flex;
+  background-color: white;
+  justify-content: center;
+
+  background: linear-gradient(
+      0deg,
+      rgba(11, 21, 48, 0.51) 0%,
+      rgba(11, 21, 48, 0.51) 100%
+    ),
+    url(../../public/images/trees.jpg) lightgray 50% / cover no-repeat;
+}
+
+@media only screen and (max-width: 576px) {
+  .memberContainer {
+    padding: 0;
+    width: 100%;
+      /* height: 100vh; */
+  }
+}
+
+.memberContainer {
+  width: 90%;
+  height: auto;
+  display: flex;
+}
+@media only screen and (max-width: 576px) {
+  .memberContainer {
+    padding: 0;
+    width: 100%;
+  }
+}
+
+.header-social-area {
+  justify-content: right;
+}
+
+.memberContainer {
+  justify-content: center;
+}
+
+.memberBox {
+  display: flex;
+  height: 100%;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  padding: 10rem 0 5rem 0;
+}
+
+.memberBox h4 {
+  width: 100%;
+  color: white;
+  text-align: center;
+}
+
+@media only screen and (max-width: 991px) {
+  .memberBox {
+    padding: 0;
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .leftBox {
+    height: 30%;
+  }
+}
+/*leftBox Start*/
+.leftBox {
+  height: 100%;
+  width: 30%;
+  margin: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(0, 0, 0, 0.5);
+}
+
+.divider {
+  height: 70%;
+  border: 1px solid white;
+}
+
+@media only screen and (max-width: 991px) {
+  .leftBox {
+    height: 30%;
+  }
+}
+
+.memberActionList {
+  width: 80%;
+  height: 60%;
+  display: flex;
+  margin: 1rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media only screen and (max-width: 991px) {
+  .memberActionList {
+    width: 100%;
+    height: auto;
+
+  }
+}
+
+.memberActionItem {
+  width: 100%;
+  height: 21%;
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  color: white;
+  border: 1px solid var(--info-color);
+
+  background-color: rgba(240, 248, 255, 0.18);
+}
+
+.memberActionItem,
+.memberActionItem:focus {
+  position: relative;
+  min-width: 200px;
+  background: transparent;
+  color: white;
+  font-size: 1rem;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: none;
+  box-sizing: inherit;
+  padding: 10px 20px;
+  border: 1px solid;
+  box-shadow: inset 0 0 20px rgba(225, 51, 45, 0);
+  outline: 1px solid !important;
+  outline-color: rgba(225, 51, 45, 0.5);
+  outline-offset: 0px;
+  text-shadow: none;
+  transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+.memberActionItem:hover {
+  color: white;
+  border: 1px solid;
+  box-shadow: inset 0 0 20px rgb(255, 255, 255, 0.65),
+    0 0 20px rgba(225, 51, 45, 0.2);
+  outline: 1px solid !important;
+  outline-color: rgba(225, 51, 45, 0) !important;
+  outline-offset: 15px;
+  text-shadow: 1px 1px 2px var(--info-color);
+
+}
+
+@media only screen and (max-width: 991px) {
+  .memberActionItem,
+  .memberActionItem:focus {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 0;
+    min-height: 5rem;
+    margin: 0 1rem;
+    padding: 0.8rem;
+    border-radius: 0.3rem;
+  }
+}
+@media only screen and (max-width: 576px) {
+  .memberActionItem,
+  .memberActionItem:focus {
+    min-height: 4.5rem;
+    height: auto;
+  }
+}
+
+.memberActionIcon {
+  margin-right: 0.5rem;
+}
+
+.avatarContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.avatar {
+  position: relative; /* 需要用于 layout="fill" */
+  width: 100%; /* 宽度为容器的100% */
+  padding-bottom: 100%; /* 高度与宽度相同，保持1:1比例 */
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.actionColumn {
+  flex-direction: column;
+}
+
+.actionRow {
+  flex-direction: row;
+  display: none;
+}
+
+@media only screen and (max-width: 991px) {
+  .actionColumn {
+    display: none;
+  }
+  .actionRow {
+    display: flex;
+  }
+}
+
+/* leftBox End */
+
+/* rightBox Start */
+
+.rightBox {
+  width: 70%;
+  height: 100%;
+  padding: 1rem ;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(0, 0, 0, 0.5);
+}
+
+@media only screen and (max-width: 991px) {
+  .rightBox {
+    width: 90%;
+    height: 70%;
+  }
+}
+
+.context {
+  display: flex;
+}
+
+.offerInfo,
+.orderInfo,
+.itineraryInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50%;
+  width: 100%;
+  background-color: transparent;
+}
+
+.memberItem {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 1rem ;
+  height: 100%;
+  background-color: transparent;
+}
+
+
+
+.recommendItinerary {
+  width: 60%;
+
+}
+
+.remainPointsBox {
+  width: 40%;
+  height: 100%; /*
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent */
+}
+
+.memberItem h3,
+.memberItem h5 {
+  margin: 0;
+  padding: 0;
+}
+
+.memberItem h5 {
+  padding-bottom: 0.5rem;
+  color: var(--primary-color);
+  border-bottom: 1px solid var(--primary-color);
+}
+
+.memberItem h3 {
+  color: white;
+}
+
+.iconBorder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 3rem;
+  height: 3rem;
+
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  background: var(--primary-color-25);
+  border-radius: 50%;
+
+  font-size: 2rem;
+}
+
+.remainPoints {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+.remainPointsIcon {
+  color: var(--primary-color);
+  margin-right: 1rem;
+}
+
+@media only screen and (max-width: 576px) {
+  .offerInfo {
+    height: auto;
+  }
+
+  .remainPointsBox,
+  .recommendItinerary {
+    height: 10rem;
+    padding: 0.5rem;
+    width: 50%;
+  }
+
+  .remainPointsBox .bottomBox {
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .iconBorder {
+    margin: 0.5rem 0;
+  }
+}
+
+/* rightBox End */
