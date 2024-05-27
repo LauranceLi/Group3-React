@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { loadProducts } from '@/services/itinerary-product'
+import { loadProducts } from '@/services/itinerary-order'
 
 
 
