@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 import { useRouter } from 'next/router'
 
-import Member from '@/components/members/member'
+import MemberCenter from '@/components/members/member'
 
 import Preloader from '@/components/layout/preloader'
 import Navbar from '@/components/layout/navbar'
@@ -50,7 +50,7 @@ export default function Members() {
     <>
     <Preloader />
       <Navbar />
-      <Member />
+      <MemberCenter />
       <Footer />
     </>
   );

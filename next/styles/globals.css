@@ -51,6 +51,9 @@ footer {
   --info-color-75: rgba(25, 42, 86, 0.75);
   --info-color-50: rgba(25, 42, 86, 0.5);
   --info-color-25: rgba(25, 42, 86, 0.25);
+  --danger-color: rgb(235, 41, 41);
+  --success-color: rgb(103, 212, 121);
+  --warning-color: rgb(71, 235, 235);
 
   --facebook-blue: #1877f2;
   --google-red: #db4437;

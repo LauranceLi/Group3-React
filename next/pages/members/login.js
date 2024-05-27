@@ -4,7 +4,7 @@ import styles from '@/styles/members/login.module.css'
 import Preloader from '@/components/layout/preloader'
 import LoginForm from '@/components/members/login-form'
 import Navbar from '@/components/layout/navbar'
-import useCheckLoginStatus from '@/hooks/useCheckLoginStatus'
+import useCheckLoginStatus from '@/hooks/use-check-login-status'
 
 
 const Login = () => {
