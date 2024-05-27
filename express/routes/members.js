@@ -3,7 +3,8 @@ const router = express.Router()
 
 // 資料庫使用
 import sequelize from '#configs/db.js'
-const { Member } = sequelize.models
+const { Members } = sequelize.models
+const { MembersInfo } = sequelize.models
 
 import db from '#configs/mysql.js'
 // 密碼加密使用
@@ -19,11 +20,85 @@ import 'dotenv/config.js'
 const accessTokenSecret = process.env.ACCESS_TOKEN_SECRET
 
 /* GET home page. */
-router.get('/', function (req, res, next) {
-  res.render('index', { title: '46' })
+router.get('/get_info', authenticate, async function (req, res, next) {
+  // 如果會員是在存取令牌合法的情況下，req.user中會有會員的id和username
+  const memberId = req.user.member_id // 假设你已经从请求中获取了 member_id
+  const [rows] = await db.query(
+    `SELECT * 
+    FROM members_info
+    JOIN members ON members.member_id = members_info.member_id
+    WHERE members_info.member_id = ?`,
+    [memberId]
+  )
+
+  const user = rows[0]
+  return res.json({ status: 'success', data: user })
 })
 
-// 登入
+// 資料編輯
+router.post('/profile_edit', authenticate, async function (req, res, next) {
+  // 如果會員是在存取令牌合法的情況下，req.user中會有會員的id和username
+  const memberId = req.user.member_id
+
+  // newProfile 接住新輸入的訊息
+  const newProfile = req.body
+
+  try {
+    // 更新會員資料
+    const [memberResult] = await db.query(
+      `UPDATE members 
+      SET name = ? ,
+      email =?
+      WHERE member_id = ?`,
+      [newProfile.name, newProfile.email, memberId]
+    )
+    const [memberInfoResult] = await db.query(
+      `UPDATE members_info
+      SET first_name = ?,
+      last_name =?,
+      id_num =?,
+      mobile =?,
+      tag =?,
+      address=?,
+      birthday =?
+      WHERE member_id = ?`,
+      [
+        newProfile.firstName,
+        newProfile.lastName,
+        newProfile.idNum,
+        newProfile.mobile,
+        newProfile.tag,
+        newProfile.address,
+        newProfile.birthday.slice(0, 10),
+        memberId,
+      ]
+    )
+
+    // // 检查是否有任何資料被更新
+    // if (memberResult.affectedRows === 0) {
+    //   return res.status(404).json({ status: 'error', message: '找不到該會員' })
+    // }
+
+    // 查詢更新後的會員資料
+    const [rows] = await db.query(
+      `SELECT * 
+      FROM members_info
+      JOIN members ON members.member_id = members_info.member_id
+      WHERE members_info.member_id = ?`,
+      [memberId]
+    )
+    const user = rows[0]
+
+    // 返回更新後的會員資料
+    return res.json({ status: 'success', data: user })
+  } catch (error) {
+    // 處理錯誤
+    console.error(error)
+    return res.status(500).json({ status: 'error', message: '伺服器錯誤' })
+  }
+})
+
+// 登入（完成）
 router.post('/login', async function (req, res, next) {
   // res.status(200).json({ message: `12456789` })
   // 從前端來的資料: req.body = {email:'xxx', password:'yyy'}
@@ -66,14 +141,14 @@ router.post('/login', async function (req, res, next) {
   return res.json({ status: 'success', data: { accessToken } })
 })
 
-// 登出
+// 登出（完成）
 router.post('/logout', async (req, res, next) => {
   // 清除瀏覽器對應cookie
   res.clearCookie('accessToken', { httpOnly: true })
   res.json({ status: 'success', data: null })
 })
 
-// 檢查登入狀態，回應會員資料
+// 檢查登入狀態（完成）
 router.get('/check', authenticate, async (req, res, next) => {
   // 如果會員是在存取令牌合法的情況下，req.user中會有會員的id和username
   // 使用username查詢資料表，把資料表中加密過密碼字串提取出來
@@ -88,11 +163,61 @@ router.get('/check', authenticate, async (req, res, next) => {
   return res.json({ status: 'success', data: req.user })
 })
 
-router.post('/register', (req, res) => {
-  res.status(200).json({ message: `注册页` })
-  // 從前端來的資料: req.body = {email:'xxx', password:'yyy'}
-  const loginUser = req.body
-  // res.status(200).json(req.body)
+// 註冊（完成）
+router.post('/register', async (req, res, next) => {
+  const newUser = req.body
+
+  // 加密密碼文字
+  const passwordHash = await generateHash(newUser.password)
+
+  // 自動生成member_id
+  const today = new Date()
+  const year = today.getFullYear()
+  const month = String(today.getMonth() + 1).padStart(2, '0')
+  const day = String(today.getDate()).padStart(2, '0')
+  const dateString = `${year}${month}${day}`
+  const [rows] = await db.query(
+    'SELECT COUNT(*) as count FROM `members` WHERE DATE(`created_at`) = CURDATE()'
+  )
+  const userCountToday = rows[0].count + 1
+  const memberId = `${dateString}${String(userCountToday).padStart(3, '0')}`
+
+  if (!newUser.mobile || !newUser.email || !newUser.name || !newUser.password) {
+    return res.json({ status: 'error', message: '缺少必要資料' })
+  }
+
+  // 執行後user是建立的會員資料，created為布林值
+  // where指的是不可以有相同的資料，如username與email不能有相同的
+  // defaults用於建立新資料用
+  const [user, created] = await Members.findOrCreate({
+    where: { email: newUser.email },
+    defaults: {
+      name: newUser.name,
+      email: newUser.email,
+      password: passwordHash,
+      member_id: memberId,
+    },
+    logging: console.log,
+  })
+
+  if (!created) {
+    return res.json({ status: 'error', message: '建立會員失敗' })
+  } else {
+    const [userInfo, createdInfo] = await MembersInfo.findOrCreate({
+      where: { member_id: memberId },
+      defaults: {
+        mobile: newUser.mobile,
+        member_id: newUser.member_id,
+      },
+      logging: console.log,
+    })
+  }
+
+  // 新增失敗 !insertRows.insertId 代表沒新增
+  return res.status(201).json({
+    status: 'success',
+    data: null,
+  })
 })
 router.get('/forget_password', (req, res) => {
   res.status(200).json({ message: `忘记密码` })
