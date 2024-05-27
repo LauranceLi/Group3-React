@@ -13,9 +13,9 @@ export default function Home() {
   return (
     <>
     <Preloader />
-    {/* <Navbar /> */}
+    <Navbar />
     <Slider />
-    {/* <Footer /> */}
+    <Footer />
     </>
   )
 }

@@ -1,0 +1,89 @@
+#app {
+  height: 100%;
+}
+html,
+body {
+  position: relative;
+}
+
+.mySwiper {
+  width: 100%;
+  height: auto; /* 高度自适应 */
+  overflow: hidden; /* 隐藏溢出部分 */
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto !important;
+  transition-timing-function: ease-in-out;
+}
+
+.slide-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* 确保超出部分被隐藏 */
+}
+
+.swiper-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 确保图片覆盖容器，并保持纵横比 */
+  display: block;
+}
+
+.overlay {
+  position: absolute;
+  bottom: -100%; /* 初始状态下在图片外部 */
+  left: 0;
+  right: 0;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* 黑色，透明度50% */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: bottom 0.3s ease-in-out; /* 添加动画效果 */
+  color: #fff; /* 文字颜色 */
+}
+
+.overlay-text {
+  width: 100%;
+  font-weight: bold; /* 加粗 */
+  color: #fff; /* 文字颜色 */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-self: end;
+  padding: 0.5rem 1.5rem;
+}
+
+.overlay-text p {
+  color: white;
+  font-size: 1rem;
+}
+
+.slide-content:hover .overlay {
+  bottom: 0; /* hover时覆盖层上移 */
+}
+
+@media (max-width: 768px) {
+  .mySwiper {
+    height: auto; /* 小屏幕上高度也自适应 */
+  }
+}
+
+
+.swiper-pagination-bullet-active {
+  /* 当前激活的分页器按钮的样式 */
+  background-color: var(--primary-color) !important; /* 修改背景颜色 */
+}
+
+
+.swiper-pagination-bullet-active,
+.swiper-pagination-bullet {
+  /* 当前激活的分页器按钮的样式 */
+  width:0.7rem !important; /* 设置激活按钮宽度 */
+  height: 0.7rem !important; /* 设置激活按钮高度 */
+}

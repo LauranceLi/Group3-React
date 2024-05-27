@@ -3,7 +3,7 @@
 }
 
 .navbarControl {
-  justify-content: end;
+  justify-content: end !important;
 }
 
 .loginFormContainer {
