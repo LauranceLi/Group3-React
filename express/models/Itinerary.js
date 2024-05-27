@@ -61,11 +61,11 @@ export default async function (sequelize) {
         type: DataTypes.STRING,
         allowNull: true,
       },
-      deposit: {
-        type: DataTypes.INTEGER,
+      deposit_date: {
+        type: DataTypes.DATE,
         allowNull: true,
       },
-      deposit_date: {
+      final_payment_date: {
         type: DataTypes.DATE,
         allowNull: true,
       },
