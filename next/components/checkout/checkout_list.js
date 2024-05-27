@@ -2,9 +2,14 @@ import React from 'react'
 import { useCart } from '@/hooks/use_cart'
 
 export default function CheckoutList() {
-  const { items } = useCart()
-  const { netTotal, selectedCouponId, setSelectedCouponId, couponOptions } =
-    useCart()
+  const {
+    items,
+    selectedCouponId,
+    setSelectedCouponId,
+    couponOptions,
+    discountAmount,
+    finalAmount,
+  } = useCart()
   const selectedCoupon = couponOptions.find(
     (coupon) => coupon.id === selectedCouponId
   )
@@ -36,7 +41,7 @@ export default function CheckoutList() {
               </div>
             )}
           </div>
-          <h4 className="bottom-line">訂單總金額NT${netTotal}</h4>
+          <h4 className="bottom-line">訂單總金額NT${finalAmount}</h4>
         </div>
       </div>
     </>

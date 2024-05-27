@@ -5,6 +5,7 @@ import SquareMinus from '../icons/square_minus'
 import SquarePlus from '../icons/square_plus'
 import Link from 'next/link'
 import Coupon from '../coupon/coupon'
+import Point from '../point/point'
 
 export default function CartList() {
   const { items, increaseItem, decreaseItem, removeItem } = useCart()
@@ -23,21 +24,6 @@ export default function CartList() {
       })
     })
     console.log(itemsData)
-    // 傳送JSON至後端
-    // try {
-    //   const res = await fetch('http://localhost:3005/api/checkout', {
-    //     method: 'POST',
-    //     headers: {
-    //       Accept: 'application/json',
-    //       'Content-Type': 'application/json',
-    //     },
-    //     body: JSON.stringify({ items: itemsData }),
-    //   })
-    //   const data = await res.json()
-    //   console.log('後端返回的數據:', data)
-    // } catch (error) {
-    //   console.error('提交表單時出錯:', error)
-    // }
   }
 
   if (items.length === 0) {
@@ -99,7 +85,7 @@ export default function CartList() {
       })}
       <div className="total-amount p-2">
         <div>
-          <Coupon />
+          <Point />
         </div>
         <Link href="/cart/checkout">
           <button

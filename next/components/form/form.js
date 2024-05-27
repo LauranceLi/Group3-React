@@ -6,7 +6,7 @@ import CheckoutList from '../checkout/checkout_list'
 import Privacy from '../checkout/privacy'
 import { useCart } from '@/hooks/use_cart'
 const MyFormComponent = () => {
-  const { items } = useCart()
+  const { items, discountAmount } = useCart()
   // 711的資料內容是存放在localStorage
   const { store711, openWindow, closeWindow } = useShip711StoreOpener(
     'http://localhost:3005/api/shipment/711',
@@ -57,9 +57,9 @@ const MyFormComponent = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const updatedFormData = { ...formData, store711, items }
+    const updatedFormData = { ...formData, store711, items, discountAmount }
     if (validate(updatedFormData)) {
-      // console.log(updatedFormData)
+      console.log(updatedFormData)
       try {
         const res = await fetch('http://localhost:3005/api/order', {
           method: 'POST',
