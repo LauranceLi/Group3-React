@@ -1,10 +1,17 @@
 import React from 'react'
-import Image from 'next/image'
+import Link from 'next/link'
 import Navbar from '@/components/layout/navbar'
 import Footer from '@/components/layout/footer'
 import CheckoutList from '@/components/checkout/checkout_list'
+import { useFormContext } from '@/context/formContext'
+import { useShip711StoreOpener } from '@/hooks/use-ship-711-store'
+import useTime from '@/hooks/use_time'
 
 export default function Order() {
+  const { formData } = useFormContext()
+  const { store711 } = useShip711StoreOpener()
+  const orderTime = useTime()
+
   return (
     <>
       <Navbar />
@@ -12,11 +19,6 @@ export default function Order() {
         <div className="container">
           <form action="#">
             <div className="travel-form mb-3">
-              {/* <div className="row align-items-start justify-content-center text-center big-title">
-                <div className="col first pass">1 選購商品</div>
-                <div className="col first pass">2 填寫訂單資訊</div>
-                <div className="col first  active-carttitle">3 付款完成</div>
-              </div> */}
               <div className="second mb-3 mt-5">
                 <div className="mb-3">
                   <h4 className="bottom-line d-inline">訂單內容</h4>
@@ -24,7 +26,7 @@ export default function Order() {
                 <div>
                   <div className="travel-info2">
                     <h6 className="travel-saleitem">訂單編號</h6>
-                    <div className="unit-price text-center">2024041500001</div>
+                    <div className="unit-price text-center">{}</div>
                     <div className="unit-price text-center" />
                   </div>
                   <div className="travel-info2">
@@ -43,30 +45,38 @@ export default function Order() {
                 <div>
                   <div className="travel-info2">
                     <h6 className="travel-saleitem">訂購人姓名</h6>
-                    <div className="unit-price text-center">王小明</div>
+                    <div className="unit-price text-center">
+                      {formData.name}
+                    </div>
                     <div className="unit-price text-center" />
                   </div>
                   <div className="travel-info2">
                     <h6 className="travel-saleitem">訂購人Email</h6>
                     <div className="unit-price text-center">
-                      LandMoutain@gmail.com
+                      {formData.email}
                     </div>
                     <div className="unit-price text-center" />
                   </div>
                 </div>
                 <div className="travel-info2">
                   <h6 className="travel-saleitem">訂購人手機號碼</h6>
-                  <div className="unit-price text-center">0910123123</div>
+                  <div className="unit-price text-center">
+                    {formData.mobile}
+                  </div>
                   <div className="unit-price text-center"></div>
                 </div>
                 <div className="travel-info2">
                   <h6 className="travel-saleitem">收件人姓名</h6>
-                  <div className="unit-price text-center">王小明</div>
+                  <div className="unit-price text-center">
+                    {formData.recipientName}
+                  </div>
                   <div className="unit-price text-center"></div>
                 </div>
                 <div className="travel-info2">
                   <h6 className="travel-saleitem">收件人手機號碼</h6>
-                  <div className="unit-price text-center">0910123123</div>
+                  <div className="unit-price text-center">
+                    {formData.recipientMobile}
+                  </div>
                   <div className="unit-price text-center"></div>
                 </div>
               </div>
@@ -77,36 +87,55 @@ export default function Order() {
                 <div>
                   <div className="travel-info2">
                     <h6 className="travel-saleitem">送貨方式</h6>
-                    <div className="unit-price text-center">超取</div>
+                    <div className="unit-price text-center">
+                      {formData.shippingMethod}
+                    </div>
                     <div className="unit-price text-center" />
                   </div>
                   <div className="travel-info2">
+                    <h6 className="travel-saleitem">送貨地址</h6>
+                    <div className="travel-saleitem text-center">
+                      {store711.storename}
+                      {store711.storeaddress}
+                      {formData.postcode}
+                      {formData.country}
+                      {formData.township}
+                      {formData.shippingAddress}
+                    </div>
+                  </div>
+                  <div className="travel-info2">
                     <h6 className="travel-saleitem">付款方式</h6>
-                    <div className="unit-price text-center">貨到付款</div>
+                    <div className="unit-price text-center">
+                      {formData.paymentMethod}
+                    </div>
                     <div className="unit-price text-center" />
                   </div>
                 </div>
                 <div className="travel-info2">
                   <h6 className="travel-saleitem">發票類型</h6>
-                  <div className="unit-price text-center">電子載具</div>
-                  <div className="unit-price text-center">/DSKD545</div>
+                  <div className="unit-price text-center">
+                    {formData.invoiceType}
+                  </div>
+                  <div className="unit-price text-center">
+                    {formData.invoiceValue}
+                  </div>
                 </div>
                 <div className="travel-info2">
                   <h6 className="travel-saleitem">下單時間</h6>
-                  <div className="unit-price text-center">2024/04/15 14:55</div>
+                  <div className="unit-price text-center">{orderTime}</div>
                   <div className="unit-price text-center"></div>
                 </div>
               </div>
               <div className="agreement-btn">
                 <div className="m-1">
-                  <a href="./index.html">
+                  <Link href="/cart/cart">
                     <button
                       type="button"
                       className="text-center btn btn-warning go-shopping mb-5 mt-5"
                     >
                       返回商城
                     </button>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

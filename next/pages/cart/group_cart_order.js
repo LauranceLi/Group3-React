@@ -213,7 +213,9 @@ export default function GroupCartOrder() {
               <div className="second mb-3">
                 <div className="row p-2">
                   <div className="col">
-                    <h4>隱私權政策</h4>
+                    <div className="mb-3">
+                      <h4 className="bottom-line d-inline">隱私權政策</h4>
+                    </div>
                     <p className="view-text-scroll">
                       前言申明:
                       本公司在此聲明對於個人的網路隱私權，絕對尊重並予以保護。本公司在相關網站之資料收集及運用方式，以及我們的隱私權保護政策。
