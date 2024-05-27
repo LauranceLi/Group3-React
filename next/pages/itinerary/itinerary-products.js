@@ -2,8 +2,8 @@ import React from 'react'
 import Search from '@/components/search/search'
 import ProductList from '@/components/itinerary/product-list'
 import styles from '@/styles/itinerary.module.css'
-import Slider1 from '@/components/itinerary/slider1'
-import Slider2 from '@/components/itinerary/slider2'
+// import Slider1 from '@/components/itinerary/slider1'
+// import Slider2 from '@/components/itinerary/slider2'
 import Pagination from '@/components/itinerary/pagination'
 
 export default function itineraryProducts() {
@@ -18,14 +18,14 @@ export default function itineraryProducts() {
               <div className={styles.itineraryProductsTitle}>價格區間</div>
               <div className={styles.itineraryProductsItem1}>
                 <div className={styles.SliderDiv}>
-                  <Slider1 />
+                  {/* <Slider1 /> */}
                 </div>
               </div>
               <div className={styles.SliderDiv2}>
                 <div className={styles.itineraryProductsTitle}>天數</div>
                 <div className={styles.itineraryProductsItem1}>
                   <div className={styles.SliderDiv}>
-                    <Slider2 />
+                    {/* <Slider2 /> */}
                   </div>
                 </div>
               </div>

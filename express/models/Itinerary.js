@@ -7,7 +7,7 @@ export default async function (sequelize) {
       travel_id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
-        // autoIncrement: true,
+        autoIncrement: true,
       },
       days: {
         type: DataTypes.STRING,

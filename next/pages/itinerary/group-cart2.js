@@ -19,6 +19,7 @@ export default function GroupCart2() {
   const [extraBedCount, setExtraBedCount] = useState(0)
   const [finalPayment, setFinalPayment] = useState(0) // 尾款
 
+
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search)
 
@@ -280,12 +281,12 @@ export default function GroupCart2() {
                   </div>
                   <div className="row mt-3 p-2">
                     <Col className={styles.totalAmount}>
-                      <h4 style={{ fontSize: '20px', fontWeight: 600 }}>
+                      <h4 style={{ fontSize: '22px', fontWeight: 600 }}>
                         訂單總金額
                       </h4>
                       <div className={styles.groupCart2Money}>
-                        NT$
-                        <span style={{ color: 'tomato', fontWeight: 'bold' }}>
+                        NT$&nbsp;
+                        <span style={{ fontSize: '20px',color: 'tomato', fontWeight: 'bold' }}>
                           {totalPrice.toLocaleString()}
                         </span>
                       </div>
@@ -298,7 +299,7 @@ export default function GroupCart2() {
                       <div className={styles.totalAmount1}>
                         <h4>訂金</h4>
                         <div className={styles.groupCart2Money}>
-                          NT$
+                          NT$&nbsp;
                           <span style={{ color: 'tomato', fontWeight: 'bold' }}>
                             {deposit.toLocaleString()}
                           </span>
@@ -321,7 +322,7 @@ export default function GroupCart2() {
                           尾款
                         </h4>
                         <div className={styles.groupCart2Money}>
-                          NT$
+                          NT$&nbsp;
                           <span style={{ color: 'tomato', fontWeight: 'bold' }}>
                             {finalPayment.toLocaleString()}
                           </span>

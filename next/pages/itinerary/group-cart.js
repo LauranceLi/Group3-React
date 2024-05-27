@@ -7,6 +7,7 @@ import styles from '@/styles/itinerary.module.css'
 import Navbar from '@/components/layout/navbar'
 import Footer from '@/components/layout/footer'
 
+
 export default function GroupCart() {
   const [adultCount, setAdultCount] = useState(0)
   const [childCount, setChildCount] = useState(0)
