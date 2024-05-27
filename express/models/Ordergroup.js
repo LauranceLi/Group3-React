@@ -34,8 +34,14 @@ export default async function (sequelize) {
         allowNull: true,
       },
       member_id: {
-        type: DataTypes.INTEGER,
-        allowNull: true,
+        // 新增 member_id 作為外鍵
+        type: DataTypes.STRING,
+        allowNull: false,
+        references: {
+          model: 'Members', // 要參考的模型名稱
+          key: 'member_id', // 要參考的欄位名稱
+        },
+        onDelete: 'CASCADE', // 設定當 Members 被刪除時，相關的 MembersInfo 也會被刪除
       },
     },
     {
