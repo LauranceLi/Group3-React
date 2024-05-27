@@ -1,21 +1,21 @@
 import React from 'react'
-import Link from 'next/link'
 import styles from '@/styles/members/member.module.css'
 import MemberAction from '@/components/members/action-list'
-import useMemberInfo from '@/hooks/use-member-info'
+import useMemberInfo from '@/hooks/use-member-info';
 import { FaShieldAlt } from 'react-icons/fa'
 import { VscSignOut } from 'react-icons/vsc'
-import { FaStar } from 'react-icons/fa'
-import { BsFillPersonVcardFill } from 'react-icons/bs'
-import { BsPersonFillGear } from 'react-icons/bs'
+import { FaStar } from "react-icons/fa";
+import { BsFillPersonVcardFill } from "react-icons/bs";
+import { BsPersonFillGear } from "react-icons/bs";
+
 
 export default function MemberCenter() {
-  const { points } = useMemberInfo()
+  const {points} = useMemberInfo()
   return (
     <>
       <MemberAction className={styles.actionRow} />
       <div className={styles.title}>
-        <BsFillPersonVcardFill size={40} className={styles.memberActionIcon} />
+      <BsFillPersonVcardFill size={40} className={styles.memberActionIcon}/>
         <h4>會員中心</h4>
       </div>
       <div className={styles.offerInfo}>
@@ -38,9 +38,7 @@ export default function MemberCenter() {
       </div>
       <div className={styles.itineraryInfo}>
         <div className={styles.memberItem}>
-          <Link href="/cart/order" title="購物車">
-            <h5>商城訂單</h5>
-          </Link>
+          <h5>商城訂單</h5>
         </div>
       </div>
     </>

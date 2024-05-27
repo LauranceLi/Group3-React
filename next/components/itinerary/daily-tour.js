@@ -134,11 +134,11 @@ function itineraryCountry() {
                     今天將前往於1988年被聯合國教科文組織列為世界文化遺產的利馬老城區市區觀光參觀:◆軍事廣場
                     Plaza Mayor de Armas、◆總統府 Government Palace of
                     Peru、◆大教堂 Lima Metropolitan
-                    Cathedral、◆聖法蘭西斯教堂修道院The Monastery of San
+                    Cathedral、◎聖法蘭西斯教堂修道院The Monastery of San
                     Francisco，這些都是來自當地及舊大陸的工藝師們所協力完成的建築瑰寶，將西班牙殖民時期的榮華表露無遺。
                   </span>
                   <span className={styles.dailyTourText}>
-                    接著我們將參訪於1926年成立的◆歷史博物館 Larco Herrera
+                    接著我們將參訪於1926年成立的◎歷史博物館 Larco Herrera
                     Museum，原本是十八世紀的西班牙皇家官邸，而在一千兩百年前，這裡是一座古秘魯文化的金字塔。館裡收藏了創辦人Rafael
                     Larco Herrera
                     發掘與購買共約一萬四千件古的秘魯文化考古文物，而除了展出藏品，這裡也是世界上少數開放民眾參觀館藏保存室的博物館之一。

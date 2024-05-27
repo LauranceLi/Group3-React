@@ -1,13 +1,13 @@
 import { DataTypes } from 'sequelize'
 
 export default async function (sequelize) {
-  const Itinerary = sequelize.define(
+  return sequelize.define(
     'Itinerary',
     {
       travel_id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
-        // autoIncrement: true,
+        autoIncrement: true,
       },
       days: {
         type: DataTypes.STRING,
@@ -79,5 +79,4 @@ export default async function (sequelize) {
       updatedAt: 'updated_at', // 更新的時間戳
     }
   )
-  return Itinerary
 }

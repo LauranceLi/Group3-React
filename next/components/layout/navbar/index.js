@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import Link from 'next/link'
 import cn from 'classnames'
 import styles from '@/styles/layout/navbar.module.css'
 import { ImFacebook2 } from 'react-icons/im'
 import { FaShoppingCart } from 'react-icons/fa'
 import { RiMenuFoldFill } from 'react-icons/ri'
-import { VscSignOut } from 'react-icons/vsc'
 
 const Navbar = ({ navItemName = '', navbarControl = '' }) => {
   const [isSticky, setIsSticky] = useState(false)
@@ -73,30 +71,40 @@ const Navbar = ({ navItemName = '', navbarControl = '' }) => {
                     </a>
                   </li>
                   <li className="nav-item">
-                    <Link href="/members" className={styles.navLink}>
-                      <div>締杉會員</div>
-                    </Link>
+                    <a className={styles.navLink} href="elements.html">
+                      締杉會員
+                    </a>
                   </li>
                 </ul>
               </nav>
-              <div
-                className={`menu-content-area d-flex align-items-center ${navItemName}`}
-              >
+              <div className={`menu-content-area d-flex align-items-center ${navItemName}`}>
                 {/* Header Social Area */}
                 <div className={styles.icons}>
-                  <Link href="/cart" title="購物車">
+                  <a
+                    href="#"
+                    data-toggle="tooltip"
+                    data-placement="bottom"
+                    title="Twitter"
+                  >
                     <FaShoppingCart size={25} />
-                  </Link>
-
-                  <Link href="#" title="Facebook">
+                  </a>
+                  <a
+                    href="#"
+                    data-toggle="tooltip"
+                    data-placement="bottom"
+                    title="Instagram"
+                  >
+                    <i className="fa fa-instagram" aria-hidden="true" />
+                  </a>
+                  <a
+                    href="#"
+                    data-toggle="tooltip"
+                    data-placement="bottom"
+                    title="Facebook"
+                  >
                     <ImFacebook2 size={23} className={styles.facebookIcon} />
-                  </Link>
-
-                  <Link href="/members/logout" title="登出">
-                    <VscSignOut size={30} className={styles.facebookIcon} />
-                  </Link>
+                  </a>
                 </div>
-
                 <div className={styles.menuIcon}>
                   <button type="button" className={styles.menuBtn}>
                     <RiMenuFoldFill size={25} />

@@ -2,8 +2,6 @@ import React from 'react'
 import Image from 'next/image'
 import styles from '@/styles/itinerary.module.css'
 import DailyTour from '@/components/itinerary/daily-tour'
-import Navbar from '@/components/layout/navbar'
-import Footer from '@/components/layout/footer'
 
 export default function SignUp() {
   return (
@@ -22,7 +20,6 @@ export default function SignUp() {
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
         rel="stylesheet"
       />
-      <Navbar />
       <main className={styles.SignUpMain}>
         <section className={styles.groupContainer}>
           <div className={styles.groupItinerary}>
@@ -63,7 +60,9 @@ export default function SignUp() {
                       </thead>
                       <tbody>
                         <tr>
-                          <td className={styles.DateCell}>2024-06-10</td>
+                          <td className={styles.DateCell}>
+                            2024年06月10日(一)
+                          </td>
                           <td>15天</td>
                           <td className={styles.textTd}>星宇航空</td>
                           <td>30</td>
@@ -75,49 +74,15 @@ export default function SignUp() {
                           </td>
                         </tr>
                         <tr>
-                          <td className={styles.DateCell}>2024-08-20</td>
-
-                          <td>15天</td>
-                          <td className={styles.textTd}>星宇航空</td>
-                          <td>29</td>
-                          <td>24</td>
-                          <td>5</td>
-                          <td className={styles.DateCell2}>279000</td>
-                          <td>
-                            <a
-                              className={styles.btn}
-                              href="http://localhost:3000/itinerary/group-cart"
-                            >
-                              報名
-                            </a>
+                          <td className={styles.DateCell}>
+                            2024年07月09日(二)
                           </td>
-                        </tr>
-                        <tr>
-                          <td className={styles.DateCell}>2024-10-08</td>
-
-                          <td>15天</td>
-                          <td className={styles.textTd}>星宇航空</td>
-                          <td>29</td>
-                          <td>11</td>
-                          <td>18</td>
-                          <td className={styles.DateCell2}>280000</td>
-                          <td>
-                            <a
-                              className={styles.btn}
-                              href="http://localhost:3000/itinerary/group-cart"
-                            >
-                              報名
-                            </a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td className={styles.DateCell}>2024-11-15</td>
 
                           <td>15天</td>
                           <td className={styles.textTd}>星宇航空</td>
                           <td>31</td>
-                          <td>4</td>
-                          <td>27</td>
+                          <td>13</td>
+                          <td>18</td>
                           <td className={styles.DateCell2}>282000</td>
                           <td>
                             <a
@@ -141,7 +106,6 @@ export default function SignUp() {
           <h4 className={styles.groupTitle2}>行程介紹:</h4>
         </div>
         <DailyTour />
-        <Footer />
       </main>
     </>
   )

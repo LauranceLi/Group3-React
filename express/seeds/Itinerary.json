@@ -104,7 +104,7 @@
     "sign_up": "報名中",
     "country": "中南美洲",
     "area": "阿根廷",
-    "deposit": "59000",
+    "deposit": 59000,
     "deposit_date": "2024-08-12"
   },
   {
@@ -122,7 +122,7 @@
     "sign_up": "報名中",
     "country": "中南美洲",
     "area": "古巴",
-    "deposit": "45000",
+    "deposit": 45000,
     "deposit_date": "2024-07-16"
   },
   {
@@ -140,7 +140,7 @@
     "sign_up": "報名中",
     "country": "中南美洲",
     "area": "古巴",
-    "deposit": "50000",
+    "deposit": 50000,
     "deposit_date": "2024-09-12"
   },
   {
@@ -158,7 +158,7 @@
     "sign_up": "報名中",
     "country": "歐洲",
     "area": "奧地利&捷克",
-    "deposit": "36580",
+    "deposit": 36580,
     "deposit_date": "2024-11-17"
   },
   {
@@ -176,7 +176,7 @@
     "sign_up": "報名中",
     "country": "中南美洲",
     "area": "智利",
-    "deposit": "67800",
+    "deposit": 67800,
     "deposit_date": "2025-02-08"
   },
   {
@@ -194,7 +194,7 @@
     "sign_up": "報名中",
     "country": "日本",
     "area": "九州",
-    "deposit": "7000",
+    "deposit": 7000,
     "deposit_date": "2024-07-23"
   },
   {
@@ -212,7 +212,7 @@
     "sign_up": "報名中",
     "country": "歐洲",
     "area": "葡萄牙",
-    "deposit": "40000",
+    "deposit": 40000,
     "deposit_date": "2024-09-21"
   },
   {
@@ -230,7 +230,7 @@
     "sign_up": "報名中",
     "country": "歐洲",
     "area": "法國",
-    "deposit": "50000",
+    "deposit": 50000,
     "deposit_date": "2024-08-18"
   },
   {
@@ -248,7 +248,7 @@
     "sign_up": "報名中",
     "country": "歐洲",
     "area": "奧地利&捷克",
-    "deposit": "37000",
+    "deposit": 37000,
     "deposit_date": "2024-07-17"
   },
   {
@@ -266,7 +266,7 @@
     "sign_up": "報名中",
     "country": "日本",
     "area": "鐵道之旅",
-    "deposit": "16000",
+    "deposit": 16000,
     "deposit_date": "2024-06-19"
   },
   {
@@ -284,7 +284,7 @@
     "sign_up": "額滿",
     "country": "日本",
     "area": "名古屋",
-    "deposit": "8500",
+    "deposit": 8500,
     "deposit_date": "2024-06-26"
   },
   {
@@ -302,7 +302,7 @@
     "sign_up": "報名中",
     "country": "日本",
     "area": "名古屋",
-    "deposit": "7400",
+    "deposit": 7400,
     "deposit_date": "2024-06-26"
   },
   {
@@ -320,7 +320,7 @@
     "sign_up": "報名中",
     "country": "日本",
     "area": "東京",
-    "deposit": "11500",
+    "deposit": 11500,
     "deposit_date": "2024-08-10"
   },
   {
@@ -338,7 +338,7 @@
     "sign_up": "額滿",
     "country": "日本",
     "area": "名古屋",
-    "deposit": "10000",
+    "deposit": 10000,
     "deposit_date": "2024-06-03"
   },
   {
@@ -356,7 +356,7 @@
     "sign_up": "報名中",
     "country": "日本",
     "area": "名古屋",
-    "deposit": "12000",
+    "deposit": 12000,
     "deposit_date": "2024-06-22"
   },
   {
@@ -374,7 +374,7 @@
     "sign_up": "報名中",
     "country": "日本",
     "area": "沖繩",
-    "deposit": "5800",
+    "deposit": 5800,
     "deposit_date": "2024-06-25"
   },
   {
@@ -392,7 +392,7 @@
     "sign_up": "報名中",
     "country": "日本",
     "area": "九州",
-    "deposit": "6600",
+    "deposit": 6600,
     "deposit_date": "2024-06-23"
   },
   {
@@ -410,7 +410,7 @@
     "sign_up": "報名中",
     "country": "日本",
     "area": "名古屋",
-    "deposit": "10000",
+    "deposit": 10000,
     "deposit_date": "2024-05-28"
   },
   {
@@ -428,7 +428,7 @@
     "sign_up": "報名中",
     "country": "日本",
     "area": "九州",
-    "deposit": "8000",
+    "deposit": 8000,
     "deposit_date": "2024-09-28"
   },
   {
@@ -446,7 +446,7 @@
     "sign_up": "報名中",
     "country": "日本",
     "area": "福岡",
-    "deposit": "7800",
+    "deposit": 7800,
     "deposit_date": "2024-09-28"
   },
   {
@@ -464,7 +464,7 @@
     "sign_up": "報名中",
     "country": "中南美洲",
     "area": "秘魯",
-    "deposit": "52000",
+    "deposit": 52000,
     "deposit_date": "2025-01-17"
   },
   {
@@ -482,7 +482,7 @@
     "sign_up": "報名中",
     "country": "中南美洲",
     "area": "秘魯",
-    "deposit": "56000",
+    "deposit": 56000,
     "deposit_date": "2024-09-08"
   },
   {
@@ -500,7 +500,7 @@
     "sign_up": "額滿",
     "country": "中南美洲",
     "area": "秘魯",
-    "deposit": "57800",
+    "deposit": 57800,
     "deposit_date": "2024-05-19"
   },
   {
@@ -518,7 +518,7 @@
     "sign_up": "報名中",
     "country": "中南美洲",
     "area": "阿根廷",
-    "deposit": "59000",
+    "deposit": 59000,
     "deposit_date": "2024-06-12"
   },
   {
@@ -536,7 +536,7 @@
     "sign_up": "報名中",
     "country": "中南美洲",
     "area": "古巴",
-    "deposit": "45800",
+    "deposit": 45800,
     "deposit_date": "2024-08-12"
   },
   {
@@ -554,7 +554,7 @@
     "sign_up": "報名中",
     "country": "中南美洲",
     "area": "古巴",
-    "deposit": "45800",
+    "deposit": 45800,
     "deposit_date": "2025-01-22"
   },
   {
@@ -572,7 +572,7 @@
     "sign_up": "報名中",
     "country": "歐洲",
     "area": "西班牙",
-    "deposit": "46000",
+    "deposit": 46000,
     "deposit_date": "2024-07-18"
   },
   {
@@ -590,7 +590,7 @@
     "sign_up": "報名中",
     "country": "歐洲",
     "area": "西班牙",
-    "deposit": "44000",
+    "deposit": 44000,
     "deposit_date": "2024-08-12"
   },
   {
@@ -608,7 +608,7 @@
     "sign_up": "報名中",
     "country": "歐洲",
     "area": "奧地利&捷克",
-    "deposit": "38000",
+    "deposit": 38000,
     "deposit_date": "2024-07-16"
   },
   {
@@ -626,7 +626,7 @@
     "sign_up": "報名中",
     "country": "歐洲",
     "area": "法國",
-    "deposit": "50000",
+    "deposit": 50000,
     "deposit_date": "2024-09-22"
   },
   {
@@ -644,7 +644,7 @@
     "sign_up": "報名中",
     "country": "日本",
     "area": "鐵道之旅",
-    "deposit": "16000",
+    "deposit": 16000,
     "deposit_date": "2024-07-19"
   },
   {
@@ -662,7 +662,7 @@
     "sign_up": "額滿",
     "country": "日本",
     "area": "名古屋",
-    "deposit": "8500",
+    "deposit": 8500,
     "deposit_date": "2024-05-20"
   },
   {
@@ -680,7 +680,7 @@
     "sign_up": "報名中",
     "country": "日本",
     "area": "名古屋",
-    "deposit": "7400",
+    "deposit": 7400,
     "deposit_date": "2024-08-10"
   },
   {
@@ -698,7 +698,7 @@
     "sign_up": "報名中",
     "country": "日本",
     "area": "東京",
-    "deposit": "11000",
+    "deposit": 11000,
     "deposit_date": "2024-07-08"
   },
   {
@@ -716,7 +716,7 @@
     "sign_up": "報名中",
     "country": "日本",
     "area": "名古屋",
-    "deposit": "10000",
+    "deposit": 10000,
     "deposit_date": "2024-07-01"
   },
   {
@@ -734,7 +734,7 @@
     "sign_up": "報名中",
     "country": "日本",
     "area": "名古屋",
-    "deposit": "12000",
+    "deposit": 12000,
     "deposit_date": "2024-06-23"
   },
   {
@@ -752,7 +752,7 @@
     "sign_up": "額滿",
     "country": "日本",
     "area": "沖繩",
-    "deposit": "5800",
+    "deposit": 5800,
     "deposit_date": "2024-06-23"
   },
   {
@@ -770,7 +770,7 @@
     "sign_up": "報名中",
     "country": "日本",
     "area": "九州",
-    "deposit": "6500",
+    "deposit": 6500,
     "deposit_date": "2024-07-23"
   },
   {
@@ -788,7 +788,7 @@
     "sign_up": "報名中",
     "country": "日本",
     "area": "名古屋",
-    "deposit": "10000",
+    "deposit": 10000,
     "deposit_date": "2024-05-28"
   },
   {
@@ -806,7 +806,7 @@
     "sign_up": "報名中",
     "country": "日本",
     "area": "九州",
-    "deposit": "8000",
+    "deposit": 8000,
     "deposit_date": "2024-07-28"
   },
   {
@@ -824,7 +824,7 @@
     "sign_up": "報名中",
     "country": "日本",
     "area": "福岡",
-    "deposit": "7500",
+    "deposit": 7500,
     "deposit_date": "2024-11-28"
   },
   {
@@ -842,7 +842,7 @@
     "sign_up": "報名中",
     "country": "中南美洲",
     "area": "智利",
-    "deposit": "69800",
+    "deposit": 69800,
     "deposit_date": "2024-08-08"
   },
   {
@@ -860,7 +860,7 @@
     "sign_up": "報名中",
     "country": "中南美洲",
     "area": "秘魯",
-    "deposit": "56000",
+    "deposit": 56000,
     "deposit_date": "2024-10-27"
   },
   {
@@ -878,7 +878,7 @@
     "sign_up": "報名中",
     "country": "歐洲",
     "area": "葡萄牙",
-    "deposit": "40000",
+    "deposit": 40000,
     "deposit_date": "2024-11-24"
   },
   {
@@ -896,7 +896,7 @@
     "sign_up": "報名中",
     "country": "中南美洲",
     "area": "秘魯",
-    "deposit": "65000",
+    "deposit": 65000,
     "deposit_date": "2024-10-11"
   },
   {
@@ -914,7 +914,7 @@
     "sign_up": "額滿",
     "country": "中南美洲",
     "area": "秘魯",
-    "deposit": "56500",
+    "deposit": 56500,
     "deposit_date": "2024-05-10"
   },
   {
@@ -932,7 +932,7 @@
     "sign_up": "報名中",
     "country": "歐洲",
     "area": "鐵道之旅",
-    "deposit": "50000",
+    "deposit": 50000,
     "deposit_date": "2024-09-10"
   },
   {
@@ -950,7 +950,7 @@
     "sign_up": "報名中",
     "country": "歐洲",
     "area": "法國",
-    "deposit": "44000",
+    "deposit": 44000,
     "deposit_date": "2024-09-10"
   }
 ]
