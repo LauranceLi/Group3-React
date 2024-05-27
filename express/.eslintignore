@@ -1,5 +1,4 @@
 node_modules
 data
 db-backups
-package-lock.json
 .env

@@ -1,13 +1,23 @@
-import Head from 'next/head'
-import { Inter } from 'next/font/google'
-import styles from '@/styles/home.module.css'
+import React from 'react'
+import Link from 'next/link'
+import LoginForm from '../components/members/login-form'
+import Navbar from '@/components/layout/navbar'
 
-const inter = Inter({ subsets: ['latin'] })
-
-export default function Home() {
+const HomePage = () => {
   return (
-    <>
-      <h1>假裝有的首頁</h1>
-    </>
+    <React.StrictMode>
+
+    <Navbar />
+      <h1>首頁</h1>
+      <Link href="/members/login" style={{ fontSize: '20px' }}>
+        登入頁面
+      </Link>
+      <br />
+      <Link href="/members/register" style={{ fontSize: '20px' }}>
+        註冊頁面
+      </Link>
+    </React.StrictMode>
   )
 }
+
+export default HomePage

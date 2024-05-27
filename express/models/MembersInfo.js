@@ -11,18 +11,18 @@ export default async function (sequelize) {
       },
       first_name: {
         type: DataTypes.STRING,
-        allowNull: true,
+        allowNull: false,
       },
       last_name: {
         type: DataTypes.STRING,
-        allowNull: true,
+        allowNull: false,
       },
       id_num: {
         type: DataTypes.STRING,
-        allowNull: true,
+        allowNull: false,
       },
       mobile: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         allowNull: false,
         validate: {
           len: [8, 15], // 限制整數的位數在 8 到 15 之間
@@ -30,7 +30,7 @@ export default async function (sequelize) {
       },
       birthday: {
         type: DataTypes.STRING,
-        allowNull: true,
+        allowNull: false,
       },
       points: {
         type: DataTypes.INTEGER,
