@@ -43,8 +43,6 @@ router.post('/profile_edit', authenticate, async function (req, res, next) {
   // newProfile 接住新輸入的訊息
   const newProfile = req.body
 
-  newProfile.mobile = newProfile.mobile
-
   try {
     // 更新會員資料
     const [memberResult] = await db.query(
