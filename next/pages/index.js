@@ -2,6 +2,7 @@
 import Head from 'next/head'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/members/login.module.css'
+import Slider from '@/components/slider';
 import Preloader from '@/components/layout/preloader'
 import Navbar from '@/components/layout/navbar'
 import Footer from '@/components/layout/footer'
@@ -12,9 +13,9 @@ export default function Home() {
   return (
     <>
     <Preloader />
-    <Navbar />
-      <h1>假裝有的首頁</h1>
-    <Footer />
+    {/* <Navbar /> */}
+    <Slider />
+    {/* <Footer /> */}
     </>
   )
 }
