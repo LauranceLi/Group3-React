@@ -67,14 +67,14 @@ router.post('/login', async function (req, res, next) {
 })
 
 // 登出
-router.post('/logout', async  (req, res, next) => {
+router.post('/logout', async (req, res, next) => {
   // 清除瀏覽器對應cookie
   res.clearCookie('accessToken', { httpOnly: true })
   res.json({ status: 'success', data: null })
 })
 
 // 檢查登入狀態，回應會員資料
-router.get('/check', authenticate, async  (req, res, next) => {
+router.get('/check', authenticate, async (req, res, next) => {
   // 如果會員是在存取令牌合法的情況下，req.user中會有會員的id和username
   // 使用username查詢資料表，把資料表中加密過密碼字串提取出來
   const [rows] = await db.query('SELECT * FROM members WHERE member_id = ?', [
