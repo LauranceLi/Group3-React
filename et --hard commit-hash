@@ -1,0 +1,270 @@
+[33mcommit 29d4db21d6aa62ca6b594ce547eed4f10db80c5a[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mfirst-integration[m[33m, [m[1;31morigin/first-integration[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Merge: 0590102 f5c39f2
+Author: LauranceLi <138154118+LauranceLi@users.noreply.github.com>
+Date:   Mon May 27 10:37:25 2024 +0800
+
+    Merge pull request #10 from LauranceLi/members
+    
+    找回丟失檔案
+
+[33mcommit f5c39f210cf67a551430934574ccc0d74b81f26d[m[33m ([m[1;31morigin/members[m[33m, [m[1;32mmembers[m[33m)[m
+Author: LauranceLi <lars108218@gmail.com>
+Date:   Mon May 27 10:36:59 2024 +0800
+
+    找回丟失檔案
+
+[33mcommit 0590102042ef37e80afb4357cc4d349a5dc8dc19[m
+Merge: 1ec3ec5 6ab81d2
+Author: LauranceLi <138154118+LauranceLi@users.noreply.github.com>
+Date:   Mon May 27 10:30:19 2024 +0800
+
+    Merge pull request #9 from LauranceLi/members
+    
+    匯入主線
+
+[33mcommit 6ab81d2e55185065a9e841d98b10917161b13b52[m
+Author: LauranceLi <lars108218@gmail.com>
+Date:   Mon May 27 10:29:54 2024 +0800
+
+    匯入主線
+
+[33mcommit 1ec3ec5618e1f0ef5453a2f3d6e2cfce2bfe82c8[m
+Merge: 8c3b204 2fa33be
+Author: LauranceLi <138154118+LauranceLi@users.noreply.github.com>
+Date:   Mon May 27 10:24:58 2024 +0800
+
+    Merge pull request #8 from LauranceLi/itinerary_
+    
+    把缺失的models新增回去
+
+[33mcommit 2fa33be060d67179b3cb32e4b3dbdacf7a99c74e[m[33m ([m[1;31morigin/itinerary_[m[33m, [m[1;32mitinerary_[m[33m)[m
+Author: Yun <159111847+XiaoYun3893z@users.noreply.github.com>
+Date:   Mon May 27 10:23:03 2024 +0800
+
+    把缺失的models新增回去
+
+[33mcommit 8c3b2049dba51696b99282559000163eba2b88aa[m
+Author: LauranceLi <lars108218@gmail.com>
+Date:   Mon May 27 10:19:27 2024 +0800
+
+    0527整合
+
+[33mcommit 493e678a6377c3a4d42c9e864fc44c2ebac9edf9[m
+Author: LauranceLi <lars108218@gmail.com>
+Date:   Mon May 27 10:13:48 2024 +0800
+
+    0527整合
+
+[33mcommit 07a312713e8c71e225e5f182e6c33d2056caf554[m
+Merge: 876b656 d85b704
+Author: LauranceLi <138154118+LauranceLi@users.noreply.github.com>
+Date:   Mon May 27 10:12:52 2024 +0800
+
+    Merge pull request #7 from LauranceLi/itinerary_
+    
+    Itinerary
+
+[33mcommit d85b704304257457c4765b9491582218bd1c91f8[m
+Merge: eb31a85 876b656
+Author: LauranceLi <lars108218@gmail.com>
+Date:   Mon May 27 10:12:41 2024 +0800
+
+    Merge branch 'first-integration' into itinerary_
+
+[33mcommit eb31a8534d07d37852ef025b10c6aa80d38f7d63[m
+Author: LauranceLi <lars108218@gmail.com>
+Date:   Mon May 27 10:06:11 2024 +0800
+
+    合併主線
+
+[33mcommit 57a2b0d37c9923e6474d628cce03c543648e1456[m
+Merge: 42377ed c9df6e8
+Author: LauranceLi <lars108218@gmail.com>
+Date:   Mon May 27 09:59:30 2024 +0800
+
+    Merge branch 'itinerary_' of https://github.com/LauranceLi/Group3-React into itinerary_
+
+[33mcommit c9df6e89789ec345086b38990a29e85850d5b559[m
+Author: Yun <159111847+XiaoYun3893z@users.noreply.github.com>
+Date:   Mon May 27 09:56:01 2024 +0800
+
+    主頁新增搜尋欄
+
+[33mcommit 876b6569f03f93494de442fc322956012d241161[m
+Author: LauranceLi <lars108218@gmail.com>
+Date:   Mon May 27 09:52:01 2024 +0800
+
+    0527整合
+
+[33mcommit de5ab5729177bc03c4cdfd32c762bab7ebc49bb1[m
+Author: Yun <159111847+XiaoYun3893z@users.noreply.github.com>
+Date:   Mon May 27 09:38:37 2024 +0800
+
+    0527更新
+
+[33mcommit 12dc6abbfe0751ade4576a08060aa274ce1b16e9[m
+Author: LauranceLi <lars108218@gmail.com>
+Date:   Mon May 27 06:20:14 2024 +0800
+
+    增加行程連結
+
+[33mcommit d7a0411e4c9b5ca481c330f17e6c2251fda649b3[m
+Merge: a5ca905 610ff93
+Author: LauranceLi <138154118+LauranceLi@users.noreply.github.com>
+Date:   Mon May 27 06:18:12 2024 +0800
+
+    Merge pull request #4 from LauranceLi/itinerary_
+    
+    Itinerary
+
+[33mcommit 610ff93dab5fad2e2dc1855877c48d31cf4c0469[m
+Merge: de3ba7b a5ca905
+Author: LauranceLi <lars108218@gmail.com>
+Date:   Mon May 27 06:11:34 2024 +0800
+
+    Merge branch 'first-integration' into itinerary_
+
+[33mcommit de3ba7b65f8e70e8c3a885fe0fd83906132b9e98[m
+Author: LauranceLi <lars108218@gmail.com>
+Date:   Mon May 27 06:03:22 2024 +0800
+
+    取消追蹤
+
+[33mcommit f4824f29a63296da18b7a00c03ffe90e6c620e01[m
+Author: LauranceLi <lars108218@gmail.com>
+Date:   Mon May 27 05:59:07 2024 +0800
+
+    取消追蹤
+
+[33mcommit 1e160a4902e25bc5e2b30e424bdc072ae1ca00e3[m
+Author: LauranceLi <lars108218@gmail.com>
+Date:   Mon May 27 05:50:53 2024 +0800
+
+    取消追蹤env
+
+[33mcommit a5ca9055c4e74c9dedd97ac945538d16a35f108e[m
+Author: LauranceLi <lars108218@gmail.com>
+Date:   Mon May 27 05:48:22 2024 +0800
+
+    增加連結
+
+[33mcommit 0cfb2c676bea81f6ab792293e5d9f0769791c14b[m
+Merge: a9356e8 6bb1953
+Author: LauranceLi <138154118+LauranceLi@users.noreply.github.com>
+Date:   Mon May 27 05:39:29 2024 +0800
+
+    Merge pull request #5 from LauranceLi/members
+    
+    Members
+
+[33mcommit 6bb1953dbe9306933313d651dee35a57bdc754c4[m
+Author: LauranceLi <lars108218@gmail.com>
+Date:   Mon May 27 05:38:40 2024 +0800
+
+    會員編輯功能完成
+
+[33mcommit 53201e94155dba9e88a9628cf21e936a9816f6b3[m
+Author: Yun <159111847+XiaoYun3893z@users.noreply.github.com>
+Date:   Mon May 27 02:44:20 2024 +0800
+
+    文字更新
+
+[33mcommit 2b8fb6ce4f434a6f4cc6d80d13802a62a7371da5[m
+Author: Yun <159111847+XiaoYun3893z@users.noreply.github.com>
+Date:   Mon May 27 01:38:50 2024 +0800
+
+    css調整
+
+[33mcommit d86a997124b254468e99efe071b58280c898b87c[m
+Author: Yun <159111847+XiaoYun3893z@users.noreply.github.com>
+Date:   Mon May 27 01:17:31 2024 +0800
+
+    隱藏天數排序
+
+[33mcommit f9a3bd3ba08d5c5599ff373f6d4e0d98472fa155[m
+Author: Yun <159111847+XiaoYun3893z@users.noreply.github.com>
+Date:   Mon May 27 01:13:32 2024 +0800
+
+    隱私權政策的內容補回去
+
+[33mcommit 4b4f0588e0da34ce0aaa4a337f5eac61c42766f7[m
+Author: Yun <159111847+XiaoYun3893z@users.noreply.github.com>
+Date:   Mon May 27 01:04:04 2024 +0800
+
+    react-hot-toast的使用
+
+[33mcommit d6f8827a32a5663d8b6fb78b0a911a3062b1f775[m
+Author: Yun <159111847+XiaoYun3893z@users.noreply.github.com>
+Date:   Sun May 26 22:50:05 2024 +0800
+
+    useEffect-新增尾款
+
+[33mcommit ea940d88304b464c89fcf8ec8c6bb3ef09a62575[m
+Author: Yun <159111847+XiaoYun3893z@users.noreply.github.com>
+Date:   Sun May 26 22:29:41 2024 +0800
+
+    0526更新
+
+[33mcommit 1f7ae950b4a874ad583da4efc4e26f31b8e2a478[m
+Author: LauranceLi <lars108218@gmail.com>
+Date:   Sun May 26 13:49:46 2024 +0800
+
+    會員資料刻板完成
+
+[33mcommit 7efd6c13799babb7567125a8912ef50f9f7cad52[m
+Author: Yun <159111847+XiaoYun3893z@users.noreply.github.com>
+Date:   Sun May 26 02:50:44 2024 +0800
+
+    更新結帳頁面程式碼
+
+[33mcommit def5cba4c80cf5071af2ee6a504bdac23031bef9[m
+Author: Yun <159111847+XiaoYun3893z@users.noreply.github.com>
+Date:   Sat May 25 17:20:00 2024 +0800
+
+    更新資料庫(訂金)
+
+[33mcommit 68014509624f27a4a8f8d2572bc7283d0a0ceadb[m
+Author: Yun <159111847+XiaoYun3893z@users.noreply.github.com>
+Date:   Sat May 25 15:52:02 2024 +0800
+
+    搜尋欄增加連結網址
+
+[33mcommit 902161a08c57b487a89991949cd0b31c688d9e68[m
+Author: Yun <159111847+XiaoYun3893z@users.noreply.github.com>
+Date:   Sat May 25 04:04:27 2024 +0800
+
+    新增footer、navbar
+
+[33mcommit 81151fb7ebc52cbd633314b13b5b84923845a9c9[m
+Author: Yun <159111847+XiaoYun3893z@users.noreply.github.com>
+Date:   Fri May 24 23:29:06 2024 +0800
+
+    0524更新搜尋表及排版，更新資料庫
+
+[33mcommit 6506995c365b06301d398c0dc58dfa811427613e[m
+Author: Yun <159111847+XiaoYun3893z@users.noreply.github.com>
+Date:   Fri May 24 16:21:04 2024 +0800
+
+    更新-
+
+[33mcommit 83095c4e6275484c5bad0874348a539071329cef[m
+Author: Yun <159111847+XiaoYun3893z@users.noreply.github.com>
+Date:   Fri May 24 13:26:47 2024 +0800
+
+    更新
+
+[33mcommit eedd9b8b60ffa2576cb76bb4e1d8096647798f5d[m
+Author: LauranceLi <lars108218@gmail.com>
+Date:   Thu May 23 16:57:02 2024 +0800
+
+    將會員中心的rightBox內容寫成組件
+
+[33mcommit d64c863acba6f9f4f299bfdd2f466a952e80d64e[m
+Author: LauranceLi <lars108218@gmail.com>
+Date:   Thu May 23 16:56:07 2024 +0800
+
+    修改樣式
+
+[33mcommit b24618b46f2c425c4b28453f8677d8b95dbd29e4[m
+Author: LauranceLi <lars108218@gmail.com>
+D
