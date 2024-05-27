@@ -1,7 +1,6 @@
 import React from 'react'
 import Navbar from '@/components/layout/navbar'
 import Footer from '@/components/layout/footer'
-import CheckoutList from '@/components/checkout/checkout_list'
 import MyFormComponent from '@/components/form/form'
 
 export default function Checkout() {

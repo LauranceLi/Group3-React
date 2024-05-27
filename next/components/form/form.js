@@ -1,45 +1,81 @@
 import React, { useState, useEffect } from 'react'
-import { useRouter } from 'next/router'
-import { useFormContext } from '@/context/formContext'
 import { useShip711StoreOpener } from '@/hooks/use-ship-711-store'
 import TWZipCode from '@/components/zipcode/twzipcode'
 import useFormCheck from '@/hooks/use_formCheck'
 import CheckoutList from '../checkout/checkout_list'
 import Privacy from '../checkout/privacy'
-
+import { useCart } from '@/hooks/use_cart'
 const MyFormComponent = () => {
+  const { items } = useCart()
   // 711的資料內容是存放在localStorage
   const { store711, openWindow, closeWindow } = useShip711StoreOpener(
     'http://localhost:3005/api/shipment/711',
     { autoCloseMins: 3 } // x分鐘沒完成選擇會自動關閉，預設5分鐘。
   )
-  const { formData, updateFormData, handlePostcodeChange } = useFormContext()
+
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    mobile: '',
+    recipientName: '',
+    recipientMobile: '',
+    paymentMethod: '', // 新增的付費方式欄位
+    invoiceType: '', // 新增的發票類型欄位
+    invoiceValue: '', //發票的值類型欄位
+    shippingMethod: '', // 新增的送貨類型欄位
+    shippingAddress: '', // 新增的送貨地址類型欄位
+    country: '',
+    township: '',
+    postcode: '',
+  })
+  const handlePostcodeChange = (country, township, postcode) => {
+    // 更新 formData
+    setFormData({
+      ...formData,
+      country: country,
+      township: township,
+      postcode: postcode,
+    })
+  }
+
+  const updateFormData = (fieldName, value) => {
+    setFormData({ ...formData, [fieldName]: value })
+  }
   const [myPostcode, setMyPostcode] = useState('')
+  const [paymentMethod, setPaymentMethod] = useState('')
 
   const handleInputChange = (e) => {
     const { name, value } = e.target
     updateFormData(name, value)
   }
-
   const handleCheckboxChange = (e) => {
     const { name, checked } = e.target
     updateFormData(name, checked)
   }
+
   const { errors, validate } = useFormCheck()
 
-  const router = useRouter()
-
-  const handleSubmit = (e) => {
-    e.preventDefault() // 防止表單的默認提交行為
-    const updatedFormData = { ...formData, store711 }
-    if (validate(formData)) {
-      // 表單驗證通過，提交表單
-      console.log('表單提交成功', updatedFormData)
-      router.push('/cart/order')
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    const updatedFormData = { ...formData, store711, items }
+    if (validate(updatedFormData)) {
+      // console.log(updatedFormData)
+      try {
+        const res = await fetch('http://localhost:3005/api/order', {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(updatedFormData),
+        })
+        const data = await res.json()
+        console.log('後端返回的數據:', data)
+      } catch (error) {
+        console.error('提交表單時出錯:', error)
+      }
     } else {
-      // 表單驗證失敗，顯示錯誤信息
       console.log('表單驗證失敗')
-      // 這裡可以添加顯示錯誤信息的邏輯，例如在界面上顯示錯誤提示
     }
   }
 
@@ -48,8 +84,6 @@ const MyFormComponent = () => {
     setMyPostcode(formData.postcode || '')
   }, [formData.postcode])
 
-  // formData物件包物件可以先試著用解構賦值處理
-
   return (
     <>
       <form>
@@ -57,6 +91,27 @@ const MyFormComponent = () => {
         <div className="mb-3">
           <h4 className="bottom-line d-inline">填寫訂購人資料</h4>
         </div>
+        <button
+          type="button"
+          onClick={() => {
+            // 重置需要自行設定回初始化值
+            setFormData({
+              name: '榮恩',
+              email: 'ron@test.com',
+              mobile: '0910123123',
+              recipientName: '榮恩',
+              recipientMobile: '0910123123',
+              paymentMethod: '貨到付款', //type='radio'
+              invoiceType: '三聯發票', //type='radio'
+              invoiceValue: '12345678',
+              shippingMethod: '超商取貨', //type='radio'
+              shippingAddress: 'cc',
+              agreement: true,
+            })
+          }}
+        >
+          一鍵填入
+        </button>
         <div className="row customer-info">
           <div className="col m-2">
             <label htmlFor="name">
@@ -143,12 +198,11 @@ const MyFormComponent = () => {
                   className="btn-check"
                   name="paymentMethod"
                   id="option1"
-                  autoComplete="off"
-                  value="ATM轉帳"
+                  value="綠界科技"
                   onChange={handleInputChange}
                 />
                 <label className="btn btn-outline-dark" htmlFor="option1">
-                  ATM轉帳
+                  綠界科技
                 </label>
               </div>
             </div>
@@ -159,7 +213,6 @@ const MyFormComponent = () => {
                   className="btn-check"
                   name="paymentMethod"
                   id="option2"
-                  autoComplete="off"
                   value="LINE PAY"
                   onChange={handleInputChange}
                 />
@@ -175,7 +228,6 @@ const MyFormComponent = () => {
                   className="btn-check"
                   name="paymentMethod"
                   id="option3"
-                  autoComplete="off"
                   value="貨到付款"
                   onChange={handleInputChange}
                 />
@@ -199,7 +251,6 @@ const MyFormComponent = () => {
                   className="btn-check"
                   name="invoiceType"
                   id="option4"
-                  autoComplete="off"
                   value="電子載具"
                   onChange={handleInputChange}
                 />
@@ -215,7 +266,6 @@ const MyFormComponent = () => {
                   className="btn-check"
                   name="invoiceType"
                   id="option5"
-                  autoComplete="off"
                   value="三聯發票"
                   onChange={handleInputChange}
                 />
@@ -236,7 +286,6 @@ const MyFormComponent = () => {
               <div className="col">載具 : </div>
               <input
                 type="text"
-                autoComplete="off"
                 className="form-control"
                 name="invoiceValue"
                 onChange={handleInputChange}
@@ -254,9 +303,9 @@ const MyFormComponent = () => {
               <div className="col">統編 : </div>
               <input
                 type="text"
-                autoComplete="off"
                 className="form-control"
                 name="invoiceValue"
+                value={formData.invoiceValue}
                 onChange={handleInputChange}
               />
             </div>
@@ -276,7 +325,6 @@ const MyFormComponent = () => {
                     className="btn-check"
                     name="shippingMethod"
                     id="option6"
-                    autoComplete="off"
                     value="超商取貨"
                     onChange={handleInputChange}
                   />
@@ -292,7 +340,6 @@ const MyFormComponent = () => {
                     className="btn-check"
                     name="shippingMethod"
                     id="option7"
-                    autoComplete="off"
                     value="賣家宅配"
                     onChange={handleInputChange}
                   />
@@ -360,6 +407,7 @@ const MyFormComponent = () => {
                 <input
                   type="text"
                   name="shippingAddress"
+                  value={formData.shippingAddress}
                   id="address"
                   className="form-control"
                   onChange={handleInputChange}

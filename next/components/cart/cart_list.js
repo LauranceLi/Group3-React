@@ -8,7 +8,8 @@ import Coupon from '../coupon/coupon'
 
 export default function CartList() {
   const { items, increaseItem, decreaseItem, removeItem } = useCart()
-  const handleCheckout = () => {
+
+  const handleCheckout = async () => {
     // 收集購物車中每個物品的信息
     const itemsData = []
     // 遍歷購物車中的每個物品，並將其信息添加到 itemsData 中
@@ -22,6 +23,21 @@ export default function CartList() {
       })
     })
     console.log(itemsData)
+    // 傳送JSON至後端
+    // try {
+    //   const res = await fetch('http://localhost:3005/api/checkout', {
+    //     method: 'POST',
+    //     headers: {
+    //       Accept: 'application/json',
+    //       'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify({ items: itemsData }),
+    //   })
+    //   const data = await res.json()
+    //   console.log('後端返回的數據:', data)
+    // } catch (error) {
+    //   console.error('提交表單時出錯:', error)
+    // }
   }
 
   if (items.length === 0) {

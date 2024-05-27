@@ -1,11 +1,11 @@
 import { DataTypes } from 'sequelize'
 
 export default async function Order(sequelize) {
-  const Order = sequelize.find(
+  return sequelize.define(
     'Order',
     {
       order_id: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: true,
         autoIncrement: true,
@@ -22,32 +22,60 @@ export default async function Order(sequelize) {
           key: 'member_id', // 要參考的欄位名稱
         },
       },
-      product_id: {
+      name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      email: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      mobile: {
         type: DataTypes.STRING,
         allowNull: false,
       },
       total_amount: {
-        type: DataTypes.NUMBER,
-        allowNull: false,
+        type: DataTypes.INTEGER,
+        allowNull: true,
       },
       net_total: {
         // 總金額扣除積分後的金額
-        type: DataTypes.NUMBER,
-        allowNull: false,
+        type: DataTypes.INTEGER,
+        allowNull: true,
       },
       shipping_method: {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      country: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+      township: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
       shipping_address: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
+      },
+      store_address: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+      store_id: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+      store_name: {
+        type: DataTypes.STRING,
+        allowNull: true,
       },
       payment_method: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      invoic_type: {
+      invoice_type: {
         type: DataTypes.STRING,
         allowNull: false,
       },
@@ -65,5 +93,4 @@ export default async function Order(sequelize) {
       updatedAt: 'updated_at',
     }
   )
-  return Order
 }
