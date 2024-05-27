@@ -195,12 +195,14 @@
 }
 
 .navLink {
-  position: relative; /* Add this line */
+  position: relative;/* Add this line */
+  text-decoration:none;
 }
 
 .navLink:after {
   width: 0%;
   content: '';
+  text-decoration:none;
 }
 
 .navLink:hover::after {
@@ -211,6 +213,7 @@
   bottom: 0;
   left: 0;
   transition: all 0.3s linear;
+  text-decoration:none;
 }
 
 @media only screen and (max-width: 767px) {
@@ -347,7 +350,8 @@
 }
 
 .sticky {
-  background-color: var(--primary-color-75);
+  background-color: var(--primary-color);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 

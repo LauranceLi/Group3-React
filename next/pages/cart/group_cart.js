@@ -1,5 +1,4 @@
 import React from 'react'
-import Image from 'next/image'
 import Navbar from '@/components/layout/navbar'
 import Footer from '@/components/layout/footer'
 import SquareMinus from '@/components/icons/square_minus'
@@ -106,7 +105,7 @@ export default function GroupCart() {
                       小計 <span>NT$ 657,000</span>
                     </h4>
                   </div>
-                  <div className="col">
+                  <div className="col text-center">
                     <h4 className="bottom-line d-inline">
                       訂單總金額 <span>NT$ 657,000</span>
                     </h4>
@@ -153,21 +152,25 @@ export default function GroupCart() {
               </div>
               <div className="second mb-3">
                 <div className="row p-2">
-                  <div className="col">
-                    <h4>觀光署發布之國外旅遊定型化契約</h4>
-                    <iframe
-                      src="/合約書.pdf"
-                      title="合約書"
-                      width="100%"
-                      height="500px"
-                    />
+                  <div className="col mb-3">
+                    <h4 className="bottom-line d-inline">
+                      觀光署發布之國外旅遊定型化契約
+                    </h4>
                   </div>
+                  <iframe
+                    src="/合約書.pdf"
+                    title="合約書"
+                    width="100%"
+                    height="500px"
+                  />
                 </div>
               </div>
               <div className="second mb-3">
                 <div className="row p-2">
                   <div className="col">
-                    <h4>隱私權政策</h4>
+                    <div className="mb-3">
+                      <h4 className="bottom-line d-inline">隱私權政策</h4>
+                    </div>
                     <p className="view-text-scroll">
                       前言申明:
                       本公司在此聲明對於個人的網路隱私權，絕對尊重並予以保護。本公司在相關網站之資料收集及運用方式，以及我們的隱私權保護政策。

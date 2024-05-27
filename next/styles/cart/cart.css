@@ -1,15 +1,11 @@
 /* 購物車 */
-
 * ,ul ,li ,label{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    text-decoration: none;
-    list-style-type: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style-type: none;
 }
-/* input[type="radio"]{
-  display: none;
-} */
 
 h1,h2,h3,h4,h5,h6{
   font-weight: 600;
@@ -106,7 +102,7 @@ p{
 }
 .travel-saleitem {
     width: 100%;
-    font-size: 1.25rem;
+    /* font-size: 1.25rem; */
     line-height: 2.6875rem;
     margin-bottom: 0px;
     margin-top: 0px;
@@ -179,244 +175,10 @@ p{
 .text{
   width: 80%;
 }
-
-/* hero-area */
-.hero-area {
-    background-color: #FFB534;
-    position: relative;
-    z-index: 1;
-    overflow: hidden;
-    flex-wrap: wrap;
-  }
-  .hero-area .backEnd-content .dots {
-    position: absolute;
-    right: -200px;
-    top: 50%;
-    z-index: -2;
-    opacity: 0.1;
-    transform: translateY(-50%);
-  }
-  .hero-area .hero-thumbnail,
-  .hero-area .hero-content {
-    flex: 0 0 50%;
-    min-width: 50%;
-    position: relative;
-    z-index: 1;
-  }
-  @media only screen and (max-width:767px) {
-    .hero-area .hero-thumbnail,
-    .hero-area .hero-content {
-      flex: 0 0 100%;
-      min-width: 100%;
-    }
-  }
-  .hero-area .hero-content {
-    height: 880px;
-    padding: 100px 0;
-  }
-  .hero-area .hero-content .line {
-    width: 100px;
-    height: 1px;
-    background-color: #ffffff;
-    margin-bottom: 30px;
-    display: block;
-  }
-  .hero-area .hero-content h2 {
-    color: #ffffff;
-    font-size: 48px;
-    margin-bottom: 25px;
-  }
-  .hero-area .hero-thumbnail,
-  .hero-area .hero-content {
-    flex: 0 0 50%;
-    min-width: 50%;
-    position: relative;
-    z-index: 1;
-  }
-  @media only screen and (max-width:767px) {
-    .hero-area .hero-thumbnail,
-    .hero-area .hero-content {
-      flex: 0 0 100%;
-      min-width: 100%;
-    }
-  }
-
-  @media only screen and (min-width:992px) and (max-width:1199px) {
-    .hero-area .hero-content h2 {
-      font-size: 40px;
-    }
-  }
-  @media only screen and (min-width:768px) and (max-width:991px) {
-    .hero-area .hero-content h2 {
-      font-size: 30px;
-    }
-  }
-  @media only screen and (max-width:767px) {
-    .hero-area .hero-content h2 {
-      font-size: 30px;
-    }
-  }
-  .hero-area .hero-content p {
-    color: #ffffff;
-    margin-bottom: 30px;
-  }
-  .hero-area .hero-content.aboutUs {
-    height: 1100px;
-  }
-  @media only screen and (max-width:767px) {
-    .hero-area .hero-content.aboutUs {
-      height: auto;
-    }
-  }
-  @media only screen and (max-width:767px) {
-    .hero-area .hero-content {
-      height: auto;
-    }
-  }
-  @media only screen and (max-width:767px) {
-    .hero-area .hero-thumbnail.aboutUs::before {
-      display: none;
-    }
-  }
-  @media only screen and (max-width:767px) {
-    .hero-area .hero-thumbnail {
-      height: 400px;
-    }
-  }
-  /* service頁面 */
-.hero-img{
-    width: 100%;
-    height:880px;
-    background-image: url("/tes.jpg");
-    background-size: cover;
+.ship711{
+    max-width: 50%;
 }
-.section-heading .line {
-    width: 100px;
-    height: 1px;
-    background-color: #FFB534;
-    margin-bottom: 30px;
-    display: block;
-  }
-.single-services-area {
-    position: relative;
-    z-index: 1;
-    margin-bottom: 50px;
-  }
-  .single-services-area img {
-    margin-bottom: 20px;
-  }
-  .single-services-area h4 {
-    font-size: 28px;
-    margin-bottom: 40px;
-  }
-  .single-services-area p {
-    margin-bottom: 0;
-  }
-  
-  /* :: Testimonials Area CSS */
-  .sonar-testimonials-area {
-    position: relative;
-    z-index: 1;
-    padding: 70px 0;
-    margin: 0 50px;
-  }
-  .sonar-testimonials-area::before {
-    position: absolute;
-    width: 20%;
-    height: 100%;
-    left: 0;
-    top: 0;
-    background-color: #ffffff;
-    content: "";
-  }
-  .sonar-testimonials-area .testimonial-content {
-    padding: 100px 80px 100px 200px;
-    position: relative;
-    z-index: 1;
-    left: -15px;
-    box-shadow: -10px 10px 40px rgba(0, 0, 0, 0.15);
-  }
-  @media only screen and (min-width:992px) and (max-width:1199px) {
-    .sonar-testimonials-area .testimonial-content {
-      padding: 100px 80px 100px 130px;
-    }
-  }
-  @media only screen and (max-width:767px) {
-    .sonar-testimonials-area .testimonial-content {
-      padding: 50px 15px 50px 15px;
-    }
-  }
-  .sonar-testimonials-area .single-tes-slide p {
-    margin-bottom: 40px;
-    font-style: italic;
-  }
-  .sonar-testimonials-area .single-tes-slide h6 {
-    margin-bottom: 0;
-    font-style: italic;
-  }
-  .sonar-testimonials-area .owl-dots {
-    position: absolute;
-    top: 0;
-    left: -100px;
-    z-index: 10;
-    transform: translateY(-50%);
-  }
-  .sonar-testimonials-area .owl-dots .owl-dot {
-    width: 8px;
-    height: 8px;
-    border: 1px solid #6a6a67;
-    border-radius: 50%;
-    margin: 8px 0;
-    display: block;
-  }
-  .sonar-testimonials-area .owl-dots .owl-dot.active {
-    border-color: #FFB534;
-    background-color: #FFB534;
-  }
-  @media only screen and (min-width:992px) and (max-width:1199px) {
-    .sonar-testimonials-area .owl-dots {
-      top: 20%;
-    }
-  }
-  @media only screen and (min-width:768px) and (max-width:991px) {
-    .sonar-testimonials-area .owl-dots {
-      top: 30%;
-    }
-  }
-  @media only screen and (max-width:767px) {
-    .sonar-testimonials-area .owl-dots {
-      display: none;
-    }
-  }
-  @media only screen and (max-width:767px) {
-    .sonar-testimonials-area {
-      margin: 0 15px;
-    }
-  }
-.stars{
-    color: #FFB534;
-  }
-  .comment-btn{
-    width: 42%;
-    height:3.125rem;
-    position: relative;
-  }
-  .comment-text{
-    width: 100%;
-  }
-  .comment-text2{
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-  }
-  .comment-pic{
-    width: 18.75rem;
-    height: 18.75rem;
-    background-image: url("/tony-frost-wAujJ8jc134-unsplash.jpg");
-    background-size: cover;
-    border-radius: 50%;
-    margin: .625rem 3.125rem .625rem .625rem ;
-  }
+
   /* 商城 */
   .view{
     background-size: cover;
@@ -517,7 +279,6 @@ p{
     margin: .625rem;
     line-height: 1.875rem;
   }
-  
 
   /* 768~1023 */
 @media (min-width: 768px) and (max-width: 1023px) {
@@ -566,6 +327,10 @@ p{
   .go-shopping{
     width: 100%;
   }
+  .ship711{
+    max-width: 80%;
+}
+
 
 }
 
@@ -640,5 +405,23 @@ p{
   #list{
     display: none;
   }
+  .ship711{
+    display: block;
+    max-width: 100%;
+}
+.zipcode{
+  display: block;
+}
+.zipcode_city{
+  width: 100%;
+  margin-top: .625rem;
+}
+.zipcode_area{
+  width: 100%;
+  margin-top: .625rem;
+}
+.zipcode_address{
+  margin-top: .625rem;
+}
 }
   
