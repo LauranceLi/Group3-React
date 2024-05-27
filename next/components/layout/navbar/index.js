@@ -52,9 +52,11 @@ const Navbar = ({ navItemName = '', navbarControl = '' }) => {
                     </a>
                   </li>
                   <li className="nav-item">
-                    <a className={styles.navLink} href="about-me.html">
-                      各國行程
-                    </a>
+
+                    <Link href="/itinerary/country-all" className={styles.navLink}>
+                      <div>各國行程</div>
+                    </Link>
+                    
                   </li>
                   <li className="nav-item">
                     <a className={styles.navLink} href="services.html">
@@ -84,7 +86,7 @@ const Navbar = ({ navItemName = '', navbarControl = '' }) => {
               >
                 {/* Header Social Area */}
                 <div className={styles.icons}>
-                  <Link href="#" title="購物車">
+                  <Link href="/cart" title="購物車">
                     <FaShoppingCart size={25} />
                   </Link>
 
