@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import { useNavigate } from "react-router-dom";
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 import styles from '@/styles/members/login.module.css'
 import Avatar from './avatar'
 import { ImGoogle2 } from 'react-icons/im'
@@ -16,7 +17,7 @@ const parseJwt = (token) => {
 }
 
 const LoginForm = () => {
-  // const navigate = useNavigate()
+  const router = useRouter()
   const [IsVisible, setIsVisible] = useState(false)
   const toggleVisibility = () => {
     setIsVisible(!IsVisible)
@@ -70,10 +71,9 @@ const LoginForm = () => {
 
     // 有錯誤發生，不送到伺服器去
     if (hasErrors) {
-      return 
+      return
     }
     // 表單檢查--- END ---
-
     // 檢查沒問題後再送到伺服器
     const res = await fetch('http://localhost:3005/api/members/login', {
       credentials: 'include', // 設定cookie或是要存取隱私資料時帶cookie到伺服器一定要加
@@ -89,13 +89,12 @@ const LoginForm = () => {
 
     if (data.status === 'success') {
       const returnUser = parseJwt(data.data.accessToken)
-      console.log(returnUser)
-
+      localStorage.setItem('user', JSON.stringify(returnUser));
+      router.push('/members')
     } else {
       alert(data.message)
     }
   }
-
 
   // const handleCheck = async () => {
   //   // 檢查沒問題後再送到伺服器
@@ -119,6 +118,7 @@ const LoginForm = () => {
 
   return (
     <>
+   
       <main>
         <div className={`${styles.loginFormContainer} bgImg`}>
           <div className={styles.leftBox}>
@@ -167,15 +167,15 @@ const LoginForm = () => {
                 >
                   登入
                 </button>
-
               </div>
               <div className={styles.loginItem}>
-                <a
+                <Link
+                  href="/members/register"
+                  title='註冊'
                   className={`${styles.registerBtn}`}
-                  href="../register/register.html"
                 >
                   立即加入
-                </a>
+                </Link>
               </div>
               <a href="#" className={styles.forgetPW}>
                 忘記密碼

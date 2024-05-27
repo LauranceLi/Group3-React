@@ -26,6 +26,7 @@
 .formGroup2 {
   margin-right: 20px;
   margin-left: 20px;
+  margin-top: 7px;
 }
 .formGroup label {
   min-width: 150px;
@@ -113,20 +114,20 @@
 /* Search區塊-平板*/
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .SearchBAR {
-    height: 400px;
-    margin-top: 20px;
-    margin-bottom: 30px;
+    height: 18.75rem;
+    margin-top: 1.25rem;
+    margin-bottom: 1.875rem;
   }
   .SearchContainer {
     margin-left: 0;
   }
   .formGroup {
-    height: 5.625rem;
+    height: auto;
     margin-left: 1.25rem;
     margin-bottom: .9375rem;
   }
   .formGroup select {
-    height: 55px;
+    height: 3rem;
   }
   .searchButton,
   .searchButton:focus,
@@ -135,41 +136,41 @@
     width: 13.625rem;
     font-size: 24px;
     margin-left: 16.125rem;
-    margin-top: 1.25rem;
-    height: 3.75rem;
+    margin-top: 0.8rem;
+    height: 3.125rem;
   }
   .formGroup label {
-    font-size: 24px;
+    font-size: 20px;
   }
   .formGroup2 label {
-    font-size: 24px;
+    font-size: 20px;
   }
 
   .datepicker1 {
     width: 218px;
-    height: 55px !important;
+    height: 50px !important;
   }
   .datepickerDash {
     padding: 10px;
     font-size: 16px;
   }
   .formField select {
-    font-size: 24px;
+    font-size: 20px;
   }
   .keywordSearch::placeholder {
-    font-size: 24px;
+    font-size: 20px;
   }
   .datepicker1::-webkit-datetime-edit,
   .datepicker1::-webkit-datetime-edit-year-field,
   .datepicker1::-webkit-datetime-edit-month-field,
   .datepicker1::-webkit-datetime-edit-day-field {
-    font-size: 24px;
+    font-size: 20px;
   }
   .formField:focus-within select option[disabled]:first-child {
     font-size: 16px;
   }
   .keywordSearch {
-    height: 55px;
+    height: 50px;
   }
 }
 /* Search區塊-手機板*/
