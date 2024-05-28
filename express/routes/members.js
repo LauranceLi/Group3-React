@@ -1,5 +1,7 @@
 import express from 'express'
 const router = express.Router()
+import axios from 'axios'
+import qs from 'qs'
 
 // 資料庫使用
 import sequelize from '#configs/db.js'
@@ -219,21 +221,47 @@ router.post('/register', async (req, res, next) => {
     data: null,
   })
 })
-router.get('/forget_password', (req, res) => {
-  res.status(200).json({ message: `忘记密码` })
-})
+router.post('/auth/google', async (req, res) => {
+  const { code } = req.body
+  const googleTokenUrl = 'https://oauth2.googleapis.com/token'
 
-router.post('/profile', (req, res) => {
-  res.status(200).json({ message: `个人资料` })
-})
-router.post('/profile/edit', (req, res) => {
-  res.status(200).json({ message: `编辑资料` })
-})
-router.post('/security', (req, res) => {
-  res.status(200).json({ message: `账号安全` })
-})
-router.post('/points', (req, res) => {
-  res.status(200).json({ message: `积分记录` })
+  const values = {
+    code,
+    client_id:
+      '800909597978-ros4m9t6dfugt5im5df6ulfud19henpo.apps.googleusercontent.com', // 替換為你的 Google Client ID
+    client_secret: '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',
+    redirect_uri: 'http://localhost:3000', // 替換為你的重定向 URI
+    grant_type: 'authorization_code',
+  }
+  try {
+    const response = await axios.post(googleTokenUrl, qs.stringify(values), {
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+    })
+    const { id_token, access_token } = response.data
+
+    // 解碼（需要sub、email、name、picture）
+    const decodedToken = jsonwebtoken.decode(id_token)
+    // res.json({ decodedToken })
+
+    // 檢查用戶是否存在
+
+    const [rows] = await db.query('SELECT * FROM members WHERE email = ?', [
+      decodedToken.email,
+    ])
+
+    const dbUser = rows[0]
+
+    if (rows.length === 0) {
+      res.status(200).json({ message: '創建' })
+    } else {
+      res.status(200).json({ message: '更新' })
+    }
+  } catch (error) {
+    console.error('Failed to fetch Google OAuth tokens', error)
+    res.status(500).json({ error: 'Failed to fetch Google OAuth tokens' })
+  }
 })
 
 export default router

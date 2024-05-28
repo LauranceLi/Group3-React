@@ -173,19 +173,7 @@ const LoginForm = () => {
                   <ImFacebook2 size={22} className={styles.facebookIcon} />
                   Facebook
                 </buttom>
-                {/* <a href="" className={styles.thirdPartyLoginBtn}>
-                  <ImGoogle2 size={22} />
-                  Google
-                </a> */}
-                {/* <GoogleOAuthProvider clientId="800909597978-ros4m9t6dfugt5im5df6ulfud19henpo.apps.googleusercontent.com">
-                  <button
-                    className={styles.thirdPartyLoginBtn}
-                    onClick={() => login()}
-                  >
-                    <ImGoogle2 size={22} />
-                    Google
-                  </button>
-                </GoogleOAuthProvider> */}
+
                 <GoogleLogin />
               </div>
             </div>
