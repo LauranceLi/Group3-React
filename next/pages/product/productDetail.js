@@ -2,7 +2,8 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
-
+import Header from '../../components/layout/head'
+import Footer from '../../components/layout/footer'
 
 const updateCart = ({ productId, count }) => {
   let cart = localStorage.getItem('cart')
@@ -16,7 +17,7 @@ const ProductDetail = () => {
 
   const { query } = router
   if (!query) router.push('/product')
-  const { title, src, type, desc, productId } = query || {}
+  const { title, src, type, desc, productId, price } = query || {}
   const [cart, setCart] = useState(undefined)
   const [count, setCount] = useState(0)
   const [btnHover, setBtnHover] = useState(false)
@@ -29,6 +30,7 @@ const ProductDetail = () => {
   }, [])
   return (
     <>
+      <Header />
       <Head>
         <link
           rel="stylesheet"
@@ -119,13 +121,17 @@ const ProductDetail = () => {
                       }`}
                     ></i>
                   </div>
-                  <div style={{ margin: 10 }}>{`共 ${count} 件 `}</div>
+                  <div style={{ margin: 10 }}>
+                    <span>{`共 ${count} 件 `}</span>
+                    <span>價格:{price * count}</span>
+                  </div>
                 </span>
               </span>
             </div>
           </div>
         </div>
       </div>
+      <Footer />
     </>
   )
 }
