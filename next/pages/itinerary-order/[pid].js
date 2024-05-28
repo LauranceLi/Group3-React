@@ -8,6 +8,9 @@ import { CiCircleMinus, CiCirclePlus } from 'react-icons/ci'
 import styles from '@/styles/itinerary.module.css'
 import Navbar from '@/components/layout/navbar'
 import Footer from '@/components/layout/footer'
+import axios from 'axios'
+import { useGroupOrder2 } from '../../hooks/use-group-order2'
+import useLocalStorage from '../../hooks/use-group-order' // 導入 useLocalStorage Hook
 
 export default function GroupCart() {
   const [product, setProduct] = useState({
@@ -23,36 +26,14 @@ export default function GroupCart() {
     final_payment_date: '',
   })
 
-  // 通過點擊icon去增和減，在input中產生數字
-  const [adultQuantity, setAdultQuantity] = useState(0)
-  const [childQuantity, setChildQuantity] = useState(0)
-  // 小計的金額計算
-  const totalAmount =
-    product.price * adultQuantity + product.price * childQuantity
-
-  // 減少成人數量
-  const decreaseAdultQuantity = () => {
-    if (adultQuantity > 0) {
-      setAdultQuantity(adultQuantity - 1)
-    }
-  }
-  // 增加成人數量
-  const increaseAdultQuantity = () => {
-    setAdultQuantity(adultQuantity + 1)
-  }
-  // 減少小孩佔床數量
-  const decreaseChildQuantity = () => {
-    if (childQuantity > 0) {
-      setChildQuantity(childQuantity - 1)
-    }
-  }
-  // 增加小孩佔床數量
-  const increaseChildQuantity = () => {
-    setChildQuantity(childQuantity + 1)
-  }
-
-  // 計算訂金的值（totalAmount的20%）
-  const depositAmount = totalAmount * 0.2
+  const {
+    adultQuantity,
+    childQuantity,
+    decreaseAdultQuantity,
+    increaseAdultQuantity,
+    decreaseChildQuantity,
+    increaseChildQuantity,
+  } = useGroupOrder2()
 
   const router = useRouter()
 
@@ -75,9 +56,39 @@ export default function GroupCart() {
     }
   }, [router.isReady])
 
+  // 使用 useLocalStorage Hook
+  const [storedProduct, setStoredProduct] = useLocalStorage('product', null)
+
+  // 小計的金額計算
+  const totalAmount = product.price * (adultQuantity + childQuantity)
+  // 計算訂金的值（totalAmount的20%）
+  const depositAmount = totalAmount * 0.2
+  const finalAmount = totalAmount - depositAmount
+
+  // 在 handleConfirmOrder 函數中，將所需的資料作為查詢參數添加到路由中
+  const handleConfirmOrder = async () => {
+    try {
+      // 將訂單資訊寫入 localStorage
+      setStoredProduct({
+        productId: product.travel_id,
+        introduce: product.introduce,
+        price: product.price,
+        adultQuantity,
+        childQuantity,
+        totalAmount,
+        depositAmount,
+        finalAmount,
+      });
+
+      // 跳轉到訂單確認頁面
+      router.push('/itinerary-order/group-cart2');
+    } catch (error) {
+      console.error('訂單提交失敗:', error);
+    }
+  };
+
   return (
     <>
-      {/* <Link href="/itinerary-order/list">連至 列表頁</Link> */}
       <Navbar />
       <main className={styles.GroupCart1}>
         <br />
@@ -86,7 +97,6 @@ export default function GroupCart() {
             <Row className={styles.GroupRow}>
               <Col className={styles.activeCartTitle}>1. 訂購內容</Col>
               <Col className={styles.first}>2. 填寫旅客資訊</Col>
-              <Col className={styles.first}>3. 完成訂單</Col>
             </Row>
             <div className={styles.second}>
               <div className={styles.orderTitle}>
@@ -142,6 +152,7 @@ export default function GroupCart() {
                   className={styles.travelSaleItem}
                   style={{ fontSize: '22px' }}
                 >
+                  <span> ID:{product.travel_id} </span>
                   {product.introduce}
                 </h6>
                 <span className={styles.groupCartSpan1}>
@@ -190,7 +201,7 @@ export default function GroupCart() {
                   />
                 </div>
                 <div className={styles.unitPrice}>
-                  <span>NT${product.price * adultQuantity}</span>
+                  <span>NT$&nbsp;{product.price * adultQuantity}</span>
                 </div>
               </div>
               <div className={styles.travelInfo2}>
@@ -224,20 +235,23 @@ export default function GroupCart() {
                   />
                 </div>
                 <div className={styles.unitPrice}>
-                  <span>NT${product.price * childQuantity}</span>
+                  <span>NT$&nbsp;{product.price * childQuantity}</span>
                 </div>
               </div>
               <span className={styles.unitPrice2}>
-                總計&nbsp;NT${totalAmount}
+                總計&nbsp;NT$&nbsp;{totalAmount}
               </span>
             </div>
             <div className="second mb-3">
               <div className={styles.orderTitle2}>
                 <div className="row">
                   <div className="col">
-                    <h4 style={{ fontSize: '22px' }}>
-                      訂單總金額 <span>NT${totalAmount}</span>
-                    </h4>
+                    <div className={styles.totalAmount1}>
+                      <span style={{ fontSize: '22px' }}>訂單總金額</span>
+                      <span className={styles.groupCart2Money}>
+                        NT$&nbsp;{totalAmount}
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -327,10 +341,7 @@ export default function GroupCart() {
                   <button
                     type="button"
                     className="btn btn-primary"
-                    onClick={() =>
-                      (window.location.href =
-                        'http://localhost:3000/itinerary-order/group-cart2')
-                    }
+                    onClick={handleConfirmOrder}
                   >
                     確認訂購
                   </button>

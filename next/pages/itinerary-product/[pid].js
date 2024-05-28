@@ -92,7 +92,7 @@ export default function Detail() {
           <div className={styles.pid2}>
             <a
               className={styles.itineraryBtn}
-              href="http://localhost:3000/itinerary/group-cart"
+              href="http://localhost:3000/itinerary-order/3"
             >
               報名<MdPlayArrow />
 
