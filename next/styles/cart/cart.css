@@ -178,16 +178,19 @@ p{
 .ship711{
     max-width: 50%;
 }
-
+.view{
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  height:37.5rem;
+  /* background-color: #ffca6e; */
+}
+.view_color{
+  color: rgb(0, 0, 0);
+  margin: 3.125rem;
+}
   /* 商城 */
-  .view{
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    width: 100%;
-    height:37.5rem;
-
-  }
 #Shopping_mall{
     display: flex;
     justify-content: center;
