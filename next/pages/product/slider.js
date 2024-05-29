@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Slider, Row, Col } from 'antd'
 
 export default function Slide() {
