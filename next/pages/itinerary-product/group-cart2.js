@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
@@ -8,19 +8,14 @@ import styles from '@/styles/itinerary.module.css'
 import Navbar from '@/components/layout/navbar'
 import Footer from '@/components/layout/footer'
 import toast from 'react-hot-toast'
-import useLocalStorage from '../../hooks/use-group-order' // 導入 useLocalStorage Hook
+// import useLocalStorage from '../../hooks/use-group-order' // 導入 useLocalStorage Hook
+import { useOrder } from '../../hooks/OrderContext';
+
+
+
 
 export default function GroupCart2() {
-  // 從LocalStorage讀取 travel_id, introduce, price, adultQuantity, childQuantity
-  const [storedId] = useLocalStorage('travel_id', 0)
-  const [storedIntroduce] = useLocalStorage('introduce', '')
-  const [storedPrice] = useLocalStorage('price', 0)
-  const [storedAdultQuantity] = useLocalStorage('adultQuantity', 0)
-  const [storedChildQuantity] = useLocalStorage('childQuantity', 0)
-
-  // 在組件中獲取路由參數
-  const router = useRouter()
-
+  const { order } = useOrder();
   const handleReset = () => {
     toast.success('報名成功')
   }
@@ -39,7 +34,7 @@ export default function GroupCart2() {
               <div className="travelForm mb-3">
                 <div className={styles.second}>
                   <div className={styles.orderTitle}>
-                    ID:{storedId}&nbsp;{storedIntroduce}
+                    ID:{order.travel_id}&nbsp;<span>,</span>{order.introduce}
                   </div>
                   <div>
                     <div className={styles.travelInfo2}>
@@ -57,14 +52,14 @@ export default function GroupCart2() {
                       大人
                     </h6>
                     <div className={styles.unitPrice}>
-                      <span>NT${storedPrice}</span>
+                      <span>NT$</span>{order.price}
                     </div>
                     <div className={styles.unitPrice}>
                       <input
                         type="number"
                         name="quantity"
                         className={styles.quantity}
-                        value={storedAdultQuantity}
+                        value={order.adultQuantity}
                         readOnly
                       />
                     </div>
@@ -80,14 +75,14 @@ export default function GroupCart2() {
                       小孩佔床
                     </h6>
                     <div className={styles.unitPrice}>
-                      <span>NT${storedPrice}</span>
+                      <span>NT$</span>{order.price}
                     </div>
                     <div className={styles.unitPrice}>
                       <input
                         type="number"
                         name="quantity"
                         className={styles.quantity}
-                        value={storedChildQuantity}
+                        value={order.childQuantity}
                         readOnly
                       />
                     </div>

@@ -10,13 +10,18 @@ import Navbar from '@/components/layout/navbar'
 import Footer from '@/components/layout/footer'
 import useMemberInfo from '@/hooks/use-member-info' // 引入會員資料
 import { useGroupOrder2 } from '../../hooks/use-group-order2' // 計算購買數量
+import { useOrder } from '../../hooks/OrderContext'; //第一页中，使用 setOrder 来更新订单信息
+
 
 export default function GroupCart() {
+  const { order, setOrder } = useOrder();
+
   // 會員資料
   const { name, email, mobile } = useMemberInfo()
 
   const [product, setProduct] = useState({
     travel_id: 0,
+    introduce: '',
     days: '',
     time: '',
     title: '',
@@ -65,23 +70,36 @@ export default function GroupCart() {
   // 計算尾款
   const finalAmount = totalAmount - depositAmount
 
-  // 在 handleConfirmOrder 函數中，將所需的資料作為查詢參數添加到路由中(use-group-order.js)
+  const [isChecked, setIsChecked] = useState(false)
+  const [showAlert, setShowAlert] = useState(false)
+
+  const handleCheckboxChange = () => {
+    setIsChecked(!isChecked)
+    if (showAlert) {
+      setShowAlert(false)
+    }
+  }
+
   const handleConfirmOrder = async () => {
+    if (!isChecked) {
+      setShowAlert(true)
+      return
+    }
     try {
-      // 將訂單資訊寫入 localStorage
-      setStoredProduct({
-        productId: product.travel_id,
+      setOrder({
+        travel_id: product.travel_id,
         introduce: product.introduce,
+        time: product.time,
         price: product.price,
-        adultQuantity,
-        childQuantity,
-        totalAmount,
-        depositAmount,
-        finalAmount,
-      })
+        deposit_date: product.deposit_date,
+        final_payment_date: product.final_payment_date,
+        adultQuantity: product.adultQuantity,
+        childQuantity: product.childQuantity,
+        setAdultQuantity: product.setAdultQuantity
+      });
 
       // 跳轉到訂單確認頁面
-      router.push('/itinerary-order/group-cart2')
+      router.push('/itinerary-product/group-cart2')
     } catch (error) {
       console.error('訂單提交失敗:', error)
     }
@@ -380,7 +398,7 @@ export default function GroupCart() {
               </div>
             </div>
             <div className={styles.agreement}>
-              <input type="checkbox" name="agreement" id="agreement" />
+              {/* <input type="checkbox" name="agreement" id="agreement" />
               <label htmlFor="agreement" className={styles.agreement}>
                 已閱讀並同意「訂購須知」、「旅遊契約書」、及「隱私權政策」。
               </label>
@@ -394,6 +412,37 @@ export default function GroupCart() {
                     確認訂購
                   </button>
                 </div>
+                <div className="m-1">
+                  <button type="reset" className="btn btn-secondary">
+                    取消訂購
+                  </button>
+                </div>
+              </div> */}
+              <input
+                type="checkbox"
+                id="agreeTerms"
+                checked={isChecked}
+                onChange={handleCheckboxChange}
+              />
+              <label htmlFor="agreeTerms">
+                已閱讀並同意「訂購須知」、「旅遊契約書」、及「隱私權政策」
+              </label>
+              {showAlert && (
+                <div className="alert alert-danger" role="alert">
+                  請閱讀並勾選按鈕。
+                </div>
+              )}
+
+              <div className={styles.agreementDiv}>
+                <div className="m-1">
+                  <button
+                    onClick={handleConfirmOrder}
+                    className="btn btn-primary"
+                  >
+                    確認訂購
+                  </button>
+                </div>
+
                 <div className="m-1">
                   <button type="reset" className="btn btn-secondary">
                     取消訂購
