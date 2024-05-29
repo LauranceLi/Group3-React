@@ -8,10 +8,14 @@ import { CiCircleMinus, CiCirclePlus } from 'react-icons/ci'
 import styles from '@/styles/itinerary.module.css'
 import Navbar from '@/components/layout/navbar'
 import Footer from '@/components/layout/footer'
+import useMemberInfo from '@/hooks/use-member-info' // 引入會員資料
 import { useGroupOrder2 } from '../../hooks/use-group-order2' // 計算購買數量
 import useLocalStorage from '../../hooks/use-group-order' // 導入useLocalStorage,第一頁訂單資訊傳到第二頁
 
 export default function GroupCart() {
+  // 會員資料
+  const { name, email, mobile } = useMemberInfo()
+
   const [product, setProduct] = useState({
     travel_id: 0,
     days: '',
@@ -55,13 +59,11 @@ export default function GroupCart() {
     }
   }, [router.isReady])
 
-  // 使用 useLocalStorage Hook
-  const [storedProduct, setStoredProduct] = useLocalStorage('product', null)
-
   // 小計的金額計算
   const totalAmount = product.price * (adultQuantity + childQuantity)
   // 計算訂金的值（訂單總金額 totalAmount 的20%）
   const depositAmount = totalAmount * 0.2
+  // 計算尾款
   const finalAmount = totalAmount - depositAmount
 
   // 在 handleConfirmOrder 函數中，將所需的資料作為查詢參數添加到路由中(use-group-order.js)
@@ -106,35 +108,38 @@ export default function GroupCart() {
               <div className="row">
                 <div className="col m-2">
                   <label htmlFor="name">
-                    <h6>訂購人姓名&nbsp;</h6>
+                    <h6>訂購人姓名</h6>
                   </label>
                   <input
                     type="text"
                     name="name"
                     id="name"
                     className="form-control"
+                    value={name}
                   />
                 </div>
                 <div className="col m-2">
                   <label htmlFor="email">
-                    <h6>電子信箱&nbsp;</h6>
+                    <h6>電子信箱</h6>
                   </label>
                   <input
                     type="text"
                     name="email"
                     id="email"
                     className="form-control"
+                    value={email}
                   />
                 </div>
                 <div className="col m-2">
                   <label htmlFor="number">
-                    <h6>手機號碼&nbsp;</h6>
+                    <h6>手機號碼</h6>
                   </label>
                   <input
                     type="mobile"
                     name="mobile"
                     id="mobile"
                     className="form-control"
+                    value={mobile}
                   />
                 </div>
               </div>

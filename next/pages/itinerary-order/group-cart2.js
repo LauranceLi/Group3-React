@@ -12,7 +12,7 @@ import useLocalStorage from '../../hooks/use-group-order'; // 導入 useLocalSto
 
 
 export default function GroupCart2() {
-    // 从LocalStorage讀取 travel_id, introduce, price, adultQuantity, childQuantity
+    // 從LocalStorage讀取 travel_id, introduce, price, adultQuantity, childQuantity
     const [storedId] = useLocalStorage('travel_id', 0);
     const [storedIntroduce] = useLocalStorage('introduce', '');
     const [storedPrice] = useLocalStorage('price', 0);
@@ -20,15 +20,9 @@ export default function GroupCart2() {
     const [storedChildQuantity] = useLocalStorage('childQuantity', 0);
 
 
-
   // 在組件中獲取路由參數
   const router = useRouter();
-  const { id, introduce } = router.query;
-  const { totalAmount } = router.query;
 
-
-  // 計算訂單總金額
-  const orderTotalAmount = parseInt(storedPrice) * parseInt(storedAdultQuantity) + parseInt(storedPrice) * parseInt(storedChildQuantity);
 
 
   const handleReset = () => {
