@@ -41,7 +41,7 @@ const Navbar = ({ navItemName = '', navbarControl = '' }) => {
                 {/* Logo Area  */}
                 <div className={cn(styles.logoBox, navItemName)}>
                   <a href="index.html" className={styles.logo}>
-                    締杉旅遊
+                    <span className={styles.logoText}>締杉旅遊</span>
                     <span></span>
                     <span></span>
                     <span></span>
