@@ -20,6 +20,10 @@ import authenticate from '##/middlewares/authenticate.js'
 import 'dotenv/config.js'
 // 定義安全私鑰字串
 const accessTokenSecret = process.env.ACCESS_TOKEN_SECRET
+const googleClientId =
+  '800909597978-ros4m9t6dfugt5im5df6ulfud19henpo.apps.googleusercontent.com'
+const googleClientSecret = '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'
+const googleRedirectUri = 'http://localhost:3000'
 
 /* GET home page. */
 router.get('/get_info', authenticate, async function (req, res, next) {
@@ -37,7 +41,7 @@ router.get('/get_info', authenticate, async function (req, res, next) {
   return res.json({ status: 'success', data: user })
 })
 
-// 資料編輯
+// 資料編輯`（完成）
 router.post('/profile_edit', authenticate, async function (req, res, next) {
   // 如果會員是在存取令牌合法的情況下，req.user中會有會員的id和username
   const memberId = req.user.member_id
@@ -227,37 +231,83 @@ router.post('/auth/google', async (req, res) => {
 
   const values = {
     code,
-    client_id:
-      '800909597978-ros4m9t6dfugt5im5df6ulfud19henpo.apps.googleusercontent.com', // 替換為你的 Google Client ID
-    client_secret: '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',
-    redirect_uri: 'http://localhost:3000', // 替換為你的重定向 URI
+    client_id: googleClientId,
+    client_secret: googleClientSecret,
+    redirect_uri: googleRedirectUri,
     grant_type: 'authorization_code',
   }
+
   try {
     const response = await axios.post(googleTokenUrl, qs.stringify(values), {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
       },
     })
+
     const { id_token, access_token } = response.data
 
-    // 解碼（需要sub、email、name、picture）
     const decodedToken = jsonwebtoken.decode(id_token)
-    // res.json({ decodedToken })
-
-    // 檢查用戶是否存在
-
     const [rows] = await db.query('SELECT * FROM members WHERE email = ?', [
       decodedToken.email,
     ])
 
-    const dbUser = rows[0]
-
     if (rows.length === 0) {
-      res.status(200).json({ message: '創建' })
+      const [user, created] = await Members.findOrCreate({
+        where: { email: decodedToken.email },
+        defaults: {
+          name: decodedToken.name,
+          email: decodedToken.email,
+          member_id: decodedToken.sub,
+        },
+        logging: console.log,
+      })
+
+      if (!created) {
+        return res.json({ status: 'error', message: '建立會員失敗' })
+      } else {
+        await MembersInfo.findOrCreate({
+          where: { member_id: decodedToken.sub },
+          defaults: {
+            mobile: decodedToken.phone_number,
+            avatar: decodedToken.picture,
+            points: 0,
+          },
+          logging: console.log,
+        })
+      }
     } else {
-      res.status(200).json({ message: '更新' })
+      await Members.update(
+        { name: decodedToken.name },
+        { where: { member_id: decodedToken.sub }, logging: console.log }
+      )
+      await MembersInfo.update(
+        { avatar: decodedToken.picture },
+        { where: { member_id: decodedToken.sub }, logging: console.log }
+      )
     }
+
+    const [newRows] = await db.query(
+      'SELECT * FROM members WHERE member_id = ?',
+      [decodedToken.sub]
+    )
+
+    const dbUser = newRows[0]
+    // 存取令牌中的資訊，只需要id和email就足夠，需要其它資料再向資料庫查詢
+    const returnUser = {
+      member_id: dbUser.member_id,
+      email: dbUser.email,
+    }
+
+    // 產生存取令牌(access token)
+    const accessToken = jsonwebtoken.sign(returnUser, accessTokenSecret, {
+      expiresIn: '3d',
+    })
+
+    // 在瀏覽器端使用httpOnly cookie儲存accessToken
+    res.cookie('accessToken', accessToken, { httpOnly: true })
+
+    // 回應accessToken到前端(讓react可以儲在狀態中)
+    return res.json({ status: 'success', data: { accessToken } })
   } catch (error) {
     console.error('Failed to fetch Google OAuth tokens', error)
     res.status(500).json({ error: 'Failed to fetch Google OAuth tokens' })

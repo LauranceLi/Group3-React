@@ -18,7 +18,7 @@ export default async function (sequelize) {
       },
       password: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
     },
     {

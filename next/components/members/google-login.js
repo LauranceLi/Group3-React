@@ -14,12 +14,21 @@ function GoogleLoginButton() {
   const googleLogin = useGoogleLogin({
     flow: 'auth-code',
     onSuccess: async (codeResponse) => {
-      // console.log(codeResponse)
-      const info = await axios.post('http://localhost:3005/api/members/auth/google', {
-        code: codeResponse.code,
-      })
-      console.log(info.data)
-      // router.push('/members')
+      try {
+        const info = await axios.post(
+          'http://localhost:3005/api/members/auth/google',
+          {
+            code: codeResponse.code,
+          },
+          {
+            withCredentials: true, // 确保 cookies 被发送和接收
+          }
+        )
+        console.log(info.data)
+        router.push('/')
+      } catch (error) {
+        console.error('Login failed:', error)
+      }
     },
     onError: (errorResponse) => console.log(errorResponse),
   })

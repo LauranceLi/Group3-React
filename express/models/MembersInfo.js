@@ -23,7 +23,7 @@ export default async function (sequelize) {
       },
       mobile: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
         validate: {
           len: [8, 15], // 限制整數的位數在 8 到 15 之間
         },
