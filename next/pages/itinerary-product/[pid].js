@@ -9,30 +9,14 @@ import styles from '@/styles/itinerary.module.css'
 import Navbar from '@/components/layout/navbar'
 import Footer from '@/components/layout/footer'
 import useMemberInfo from '@/hooks/use-member-info' // 引入會員資料
-import { useGroupOrder2 } from '../../hooks/use-group-order2' // 計算購買數量
-import { useOrder } from '../../hooks/OrderContext'; //第一页中，使用 setOrder 来更新订单信息
-
+import { useOrderCount } from '../../hooks/use-order-count' // 計算購買數量
+import { useOrder } from '../../hooks/use-order' // context
+import useLocalStorageOrder from '@/hooks/use-localstorage-order' // localstorage
 
 export default function GroupCart() {
-  const { order, setOrder } = useOrder();
-
-  // 會員資料
-  const { name, email, mobile } = useMemberInfo()
-
-  const [product, setProduct] = useState({
-    travel_id: 0,
-    introduce: '',
-    days: '',
-    time: '',
-    title: '',
-    seat: 0,
-    number: 0,
-    sale: 0,
-    price: 0,
-    deposit_date: '',
-    final_payment_date: '',
-  })
-
+  // context
+  const { order, setOrder } = useOrder()
+  // 使用鉤子獲取訂單數量
   const {
     adultQuantity,
     childQuantity,
@@ -40,7 +24,35 @@ export default function GroupCart() {
     increaseAdultQuantity,
     decreaseChildQuantity,
     increaseChildQuantity,
-  } = useGroupOrder2()
+  } = useOrderCount()
+
+  // 登入時，使用會員資料
+  // 帳號: group3@gmail.com ,密碼:123456
+  const { name, email, mobile } = useMemberInfo()
+
+  const [member, setMember] = useState({
+    name: '',
+    email: '',
+    mobile: 0,
+  })
+  const [product, setProduct] = useLocalStorageOrder('order', {
+    travel_id: 0,
+    introduce: '',
+    time: '',
+    price: 0,
+    deposit_date: '',
+    final_payment_date: '',
+    adultQuantity: 0,
+    childQuantity: 0,
+  });
+
+  useEffect(() => {
+    setOrder((prevOrder) => ({
+      ...prevOrder,
+      adultQuantity,
+      childQuantity,
+    }));
+  }, [adultQuantity, childQuantity, setOrder]);
 
   const router = useRouter()
 
@@ -70,6 +82,7 @@ export default function GroupCart() {
   // 計算尾款
   const finalAmount = totalAmount - depositAmount
 
+  // 提示需勾選checkbox
   const [isChecked, setIsChecked] = useState(false)
   const [showAlert, setShowAlert] = useState(false)
 
@@ -95,10 +108,10 @@ export default function GroupCart() {
         final_payment_date: product.final_payment_date,
         adultQuantity: product.adultQuantity,
         childQuantity: product.childQuantity,
-        setAdultQuantity: product.setAdultQuantity
-      });
+        setAdultQuantity: product.setAdultQuantity,
+      })
 
-      // 跳轉到訂單確認頁面
+      // 跳轉到訂單確認頁面(第二頁)
       router.push('/itinerary-product/group-cart2')
     } catch (error) {
       console.error('訂單提交失敗:', error)
@@ -398,26 +411,6 @@ export default function GroupCart() {
               </div>
             </div>
             <div className={styles.agreement}>
-              {/* <input type="checkbox" name="agreement" id="agreement" />
-              <label htmlFor="agreement" className={styles.agreement}>
-                已閱讀並同意「訂購須知」、「旅遊契約書」、及「隱私權政策」。
-              </label>
-              <div className={styles.agreementDiv}>
-                <div className="m-1">
-                  <button
-                    type="button"
-                    className="btn btn-primary"
-                    onClick={handleConfirmOrder}
-                  >
-                    確認訂購
-                  </button>
-                </div>
-                <div className="m-1">
-                  <button type="reset" className="btn btn-secondary">
-                    取消訂購
-                  </button>
-                </div>
-              </div> */}
               <input
                 type="checkbox"
                 id="agreeTerms"
@@ -428,8 +421,12 @@ export default function GroupCart() {
                 已閱讀並同意「訂購須知」、「旅遊契約書」、及「隱私權政策」
               </label>
               {showAlert && (
-                <div className="alert alert-danger" role="alert">
-                  請閱讀並勾選按鈕。
+                <div
+                  style={{ backgroundColor: 'white', color: 'red' }}
+                  className="alert"
+                  role="alert"
+                >
+                  請閱讀「訂購須知」、「旅遊契約書」、及「隱私權政策」並勾選按鈕。
                 </div>
               )}
 
@@ -442,9 +439,16 @@ export default function GroupCart() {
                     確認訂購
                   </button>
                 </div>
-
                 <div className="m-1">
-                  <button type="reset" className="btn btn-secondary">
+                  <button
+                    type="reset"
+                    className="btn btn-secondary"
+                    onClick={(e) => {
+                      e.preventDefault()
+                      window.location.href =
+                        'http://localhost:3000/itinerary-product/list'
+                    }}
+                  >
                     取消訂購
                   </button>
                 </div>

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-export function useGroupOrder2() {
+export function useOrderCount() {
   const [adultQuantity, setAdultQuantity] = useState(0)
   const [childQuantity, setChildQuantity] = useState(0)
 
