@@ -28,6 +28,7 @@ export default function RecommendItems() {
                   onClick={() => {
                     addItem(v)
                   }}
+                  className="btn btn-warning"
                 >
                   加入購物車
                 </button>
