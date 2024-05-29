@@ -1,5 +1,7 @@
 import express from 'express'
 const router = express.Router()
+import axios from 'axios'
+import qs from 'qs'
 
 // 資料庫使用
 import sequelize from '#configs/db.js'
@@ -18,6 +20,10 @@ import authenticate from '##/middlewares/authenticate.js'
 import 'dotenv/config.js'
 // 定義安全私鑰字串
 const accessTokenSecret = process.env.ACCESS_TOKEN_SECRET
+const googleClientId =
+  '800909597978-ros4m9t6dfugt5im5df6ulfud19henpo.apps.googleusercontent.com'
+const googleClientSecret = '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'
+const googleRedirectUri = 'http://localhost:3000'
 
 /* GET home page. */
 router.get('/get_info', authenticate, async function (req, res, next) {
@@ -35,7 +41,7 @@ router.get('/get_info', authenticate, async function (req, res, next) {
   return res.json({ status: 'success', data: user })
 })
 
-// 資料編輯
+// 資料編輯`（完成）
 router.post('/profile_edit', authenticate, async function (req, res, next) {
   // 如果會員是在存取令牌合法的情況下，req.user中會有會員的id和username
   const memberId = req.user.member_id
@@ -219,21 +225,93 @@ router.post('/register', async (req, res, next) => {
     data: null,
   })
 })
-router.get('/forget_password', (req, res) => {
-  res.status(200).json({ message: `忘记密码` })
-})
+router.post('/auth/google', async (req, res) => {
+  const { code } = req.body
+  const googleTokenUrl = 'https://oauth2.googleapis.com/token'
 
-router.post('/profile', (req, res) => {
-  res.status(200).json({ message: `个人资料` })
-})
-router.post('/profile/edit', (req, res) => {
-  res.status(200).json({ message: `编辑资料` })
-})
-router.post('/security', (req, res) => {
-  res.status(200).json({ message: `账号安全` })
-})
-router.post('/points', (req, res) => {
-  res.status(200).json({ message: `积分记录` })
+  const values = {
+    code,
+    client_id: googleClientId,
+    client_secret: googleClientSecret,
+    redirect_uri: googleRedirectUri,
+    grant_type: 'authorization_code',
+  }
+
+  try {
+    const response = await axios.post(googleTokenUrl, qs.stringify(values), {
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+    })
+
+    const { id_token, access_token } = response.data
+
+    const decodedToken = jsonwebtoken.decode(id_token)
+    const [rows] = await db.query('SELECT * FROM members WHERE email = ?', [
+      decodedToken.email,
+    ])
+
+    if (rows.length === 0) {
+      const [user, created] = await Members.findOrCreate({
+        where: { email: decodedToken.email },
+        defaults: {
+          name: decodedToken.name,
+          email: decodedToken.email,
+          member_id: decodedToken.sub,
+        },
+        logging: console.log,
+      })
+
+      if (!created) {
+        return res.json({ status: 'error', message: '建立會員失敗' })
+      } else {
+        await MembersInfo.findOrCreate({
+          where: { member_id: decodedToken.sub },
+          defaults: {
+            mobile: decodedToken.phone_number,
+            avatar: decodedToken.picture,
+            points: 0,
+          },
+          logging: console.log,
+        })
+      }
+    } else {
+      await Members.update(
+        { name: decodedToken.name },
+        { where: { member_id: decodedToken.sub }, logging: console.log }
+      )
+      await MembersInfo.update(
+        { avatar: decodedToken.picture },
+        { where: { member_id: decodedToken.sub }, logging: console.log }
+      )
+    }
+
+    const [newRows] = await db.query(
+      'SELECT * FROM members WHERE member_id = ?',
+      [decodedToken.sub]
+    )
+
+    const dbUser = newRows[0]
+    // 存取令牌中的資訊，只需要id和email就足夠，需要其它資料再向資料庫查詢
+    const returnUser = {
+      member_id: dbUser.member_id,
+      email: dbUser.email,
+    }
+
+    // 產生存取令牌(access token)
+    const accessToken = jsonwebtoken.sign(returnUser, accessTokenSecret, {
+      expiresIn: '3d',
+    })
+
+    // 在瀏覽器端使用httpOnly cookie儲存accessToken
+    res.cookie('accessToken', accessToken, { httpOnly: true })
+
+    // 回應accessToken到前端(讓react可以儲在狀態中)
+    return res.json({ status: 'success', data: { accessToken } })
+  } catch (error) {
+    console.error('Failed to fetch Google OAuth tokens', error)
+    res.status(500).json({ error: 'Failed to fetch Google OAuth tokens' })
+  }
 })
 
 export default router

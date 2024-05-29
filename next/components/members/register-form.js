@@ -8,7 +8,7 @@ import {
   validateName, 
   validateMobile 
 } from '@/utils/validation'
-
+import GoogleLogin from './google-login'
 import { ImGoogle2, ImFacebook2 } from 'react-icons/im'
 import { RiEyeFill, RiEyeOffFill } from 'react-icons/ri'
 
@@ -199,13 +199,14 @@ const RegisterForm = () => {
                 <ImFacebook2 size={22} />
                 Facebook
               </a>
-              <a
+              {/* <a
                 href=""
                 className={`${styles.thirdPartyLoginBtn} ${styles.googleIcon}`}
               >
                 <ImGoogle2 size={22} />
                 Google
-              </a>
+              </a> */}
+              <GoogleLogin />
             </div>
           </div>
 
