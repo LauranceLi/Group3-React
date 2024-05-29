@@ -14,10 +14,9 @@ export default function Point() {
   return (
     <>
       <div>
-        <span className="me-2">*300點換1元 單筆訂單最多折抵100元*</span>
-        <span>可用點數(目前是memberId = '20150221008'的值): {points}點</span>
+        <span>可用點數: {points}點</span>
       </div>
-      <div className="d-flex col-3 m-2">
+      <div className="d-flex col-6 m-2">
         <button
           onClick={handleDecrease}
           disabled={discountAmount <= 0}

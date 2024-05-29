@@ -36,13 +36,17 @@ function OrderQueryNew() {
   const details = orderData.orderDetails
 
   return (
+    <>
+
     <div>
       {latestOrder ? (
         <div key={latestOrder.transaction_id}>
+        <div className="mt-2 mb-2">
           <h5 className="bottom-line d-inline">
             交易編號: {latestOrder.transaction_id}
           </h5>
-          <div>
+        </div>
+          {/* <div>
             <div className="d-flex">
               <div className="travel-saleitem">商品名稱</div>
               <div className="me-4 unit-price text-center">數量</div>
@@ -57,11 +61,11 @@ function OrderQueryNew() {
                 </p>
               </div>
             ))}
-          </div>
+          </div> */}
           <div className="d-flex">
-            <p>折扣後金額: {latestOrder.net_total}</p>
+            <p className="view_whitecolor">訂單金額: {latestOrder.net_total}</p>
           </div>
-          <p>
+          <p className="view_whitecolor">
             送貨地址:
             {latestOrder.country}
             {latestOrder.township}
@@ -69,19 +73,20 @@ function OrderQueryNew() {
             {latestOrder.store_name}
             {latestOrder.store_address}
           </p>
-          <p>下單時間: {new Date(latestOrder.created_at).toLocaleString()}</p>
-          <p>
+          <p className="view_whitecolor">下單時間: {new Date(latestOrder.created_at).toLocaleString()}</p>
+          <p className="view_whitecolor">
             訂單狀態:
-            <span className="m-2">{latestOrder.order_status}</span>
-            <span className="m-2">{latestOrder.payment_status}</span>
-            <span className="m-2">{latestOrder.shipping_status}</span>
+            <span className="m-2 view_whitecolor">{latestOrder.order_status}</span>
+            <span className="m-2 view_whitecolor">{latestOrder.payment_status}</span>
+            <span className="m-2 view_whitecolor">{latestOrder.shipping_status}</span>
           </p>
           <hr />
         </div>
       ) : (
-        <p>暫無訂單</p>
+        <p className="view_whitecolor">暫無訂單</p>
       )}
     </div>
+    </>
   )
 }
 

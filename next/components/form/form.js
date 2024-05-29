@@ -79,10 +79,8 @@ const MyFormComponent = () => {
         })
         const data = await res.json()
         console.log('後端返回的數據:', data)
-        // 獲取訂單 ID
-        const orderId = data.orderId
         // 使用 orderId 執行跳轉到 /payment/callback 页面
-        window.location.href = `http://localhost:3000/payment/callback?orderId=${orderId}`
+        window.location.href = `http://localhost:3000/payment/callback`
         // 清空 localStorage 中的购物车数据
         localStorage.removeItem('cartItems')
         // 清空购物车状态

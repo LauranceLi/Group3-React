@@ -190,6 +190,9 @@ p{
   color: rgb(0, 0, 0);
   margin: 3.125rem;
 }
+.view_whitecolor{
+  color: rgb(255, 255, 255);
+}
   /* 商城 */
 #Shopping_mall{
     display: flex;
