@@ -54,7 +54,6 @@ function OrderQuery() {
             ))}
           </div>
           <div className="d-flex">
-            <p className="me-4">總金額: {order.total_amount}</p>
             <p>折扣後金額: {order.net_total}</p>
           </div>
           <p>
@@ -66,6 +65,12 @@ function OrderQuery() {
             {order.store_address}
           </p>
           <p>下單時間: {new Date(order.created_at).toLocaleString()}</p>
+          <p>
+            訂單狀態:
+            <span className="m-2">{order.order_status}</span>
+            <span className="m-2">{order.payment_status}</span>
+            <span className="m-2">{order.shipping_status}</span>
+          </p>
           <hr />
         </div>
       ))}

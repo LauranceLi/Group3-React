@@ -63,6 +63,10 @@ const MyFormComponent = () => {
       console.log(updatedFormData)
       if (formData.paymentMethod === '綠界科技') {
         window.location.href = `http://localhost:3005/api/ec/?amount=${finalAmount}`
+        // 清空 localStorage 中的购物车数据
+        localStorage.removeItem('cartItems')
+        // 清空购物车状态
+        setItems([])
       }
       try {
         const res = await fetch('http://localhost:3005/api/order', {
@@ -101,6 +105,7 @@ const MyFormComponent = () => {
         </div>
         <button
           type="button"
+          className="btn btn-warning"
           onClick={() => {
             // 重置需要自行設定回初始化值
             setFormData({
@@ -118,7 +123,7 @@ const MyFormComponent = () => {
             })
           }}
         >
-          一鍵填入
+          快速輸入
         </button>
         <div className="row customer-info">
           <div className="col m-2">
