@@ -48,7 +48,7 @@ export default function itineraryCard() {
               <div className={styles.cardDiv2}>
                 <a
                   className={styles.cardDiv2}
-                  href="http://localhost:3000/itinerary/sign-up"
+                  href="http://localhost:3000/itinerary-order/3"
                 >
                   點此報名
                 </a>
