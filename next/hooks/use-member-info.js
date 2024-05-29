@@ -39,10 +39,8 @@ const useMemberInfo = () => {
           setMobile(data.data.mobile)
           setIdNum(data.data.id_num)
           setEmail(data.data.email)
+          setPoints(data.data.points)
           setTag(data.data.tag)
-        }
-        if (!data.data.points) {
-          setPoints(0)
         }
       } catch (error) {
         console.error('Failed to fetch avatar:', error)
