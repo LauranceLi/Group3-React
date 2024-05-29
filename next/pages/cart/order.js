@@ -3,15 +3,8 @@ import Link from 'next/link'
 import Navbar from '@/components/layout/navbar'
 import Footer from '@/components/layout/footer'
 import CheckoutList from '@/components/checkout/checkout_list'
-import { useFormContext } from '@/context/formContext'
-import { useShip711StoreOpener } from '@/hooks/use-ship-711-store'
-import useTime from '@/hooks/use_time'
 
 export default function Order() {
-  const { formData } = useFormContext()
-  const { store711 } = useShip711StoreOpener()
-  const orderTime = useTime()
-
   return (
     <>
       <Navbar />

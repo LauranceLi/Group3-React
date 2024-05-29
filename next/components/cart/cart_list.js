@@ -4,7 +4,6 @@ import TrashCan from '../icons/trash_can'
 import SquareMinus from '../icons/square_minus'
 import SquarePlus from '../icons/square_plus'
 import Link from 'next/link'
-import Coupon from '../coupon/coupon'
 import Point from '../point/point'
 
 export default function CartList() {
@@ -90,7 +89,7 @@ export default function CartList() {
         <Link href="/cart/checkout">
           <button
             type="button"
-            className="btn btn-warning"
+            className="btn btn-warning mt-5"
             onClick={handleCheckout}
           >
             點我去結帳

@@ -6,7 +6,8 @@ import CheckoutList from '../checkout/checkout_list'
 import Privacy from '../checkout/privacy'
 import { useCart } from '@/hooks/use_cart'
 const MyFormComponent = () => {
-  const { items, discountAmount } = useCart()
+  const { items, discountAmount, setItems, finalAmount } = useCart()
+
   // 711的資料內容是存放在localStorage
   const { store711, openWindow, closeWindow } = useShip711StoreOpener(
     'http://localhost:3005/api/shipment/711',
@@ -60,6 +61,9 @@ const MyFormComponent = () => {
     const updatedFormData = { ...formData, store711, items, discountAmount }
     if (validate(updatedFormData)) {
       console.log(updatedFormData)
+      if (formData.paymentMethod === '綠界科技') {
+        window.location.href = `http://localhost:3005/api/ec/?amount=${finalAmount}`
+      }
       try {
         const res = await fetch('http://localhost:3005/api/order', {
           method: 'POST',
@@ -71,6 +75,10 @@ const MyFormComponent = () => {
         })
         const data = await res.json()
         console.log('後端返回的數據:', data)
+        // 清空 localStorage 中的购物车数据
+        localStorage.removeItem('cartItems')
+        // 清空购物车状态
+        setItems([])
       } catch (error) {
         console.error('提交表單時出錯:', error)
       }
@@ -101,10 +109,10 @@ const MyFormComponent = () => {
               mobile: '0910123123',
               recipientName: '榮恩',
               recipientMobile: '0910123123',
-              paymentMethod: '貨到付款', //type='radio'
-              invoiceType: '三聯發票', //type='radio'
-              invoiceValue: '12345678',
-              shippingMethod: '超商取貨', //type='radio'
+              // paymentMethod: '綠界科技', //type='radio'
+              // invoiceType: '電子載具', //type='radio'
+              invoiceValue: '/2345678',
+              // shippingMethod: '賣家宅配', //type='radio'
               shippingAddress: 'cc',
               agreement: true,
             })
@@ -288,6 +296,7 @@ const MyFormComponent = () => {
                 type="text"
                 className="form-control"
                 name="invoiceValue"
+                value={formData.invoiceValue}
                 onChange={handleInputChange}
               />
             </div>
@@ -305,7 +314,6 @@ const MyFormComponent = () => {
                 type="text"
                 className="form-control"
                 name="invoiceValue"
-                value={formData.invoiceValue}
                 onChange={handleInputChange}
               />
             </div>

@@ -32,7 +32,9 @@ function OrderQuery() {
       {/* <h2>Orders and Order Details for Member {memberId}</h2> */}
       {sortedOrders.map((order) => (
         <div key={order.transaction_id}>
-          <h4 className="bottom-line d-inline">交易編號: {order.transaction_id}</h4>
+          <h5 className="bottom-line d-inline">
+            交易編號: {order.transaction_id}
+          </h5>
           <div>
             <div className="d-flex">
               <div className="travel-saleitem">商品名稱</div>
@@ -61,6 +63,7 @@ function OrderQuery() {
             {order.township}
             {order.shipping_address}
             {order.store_name}
+            {order.store_address}
           </p>
           <p>下單時間: {new Date(order.created_at).toLocaleString()}</p>
           <hr />
