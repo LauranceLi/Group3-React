@@ -4,15 +4,9 @@ import { useCart } from '@/hooks/use_cart'
 export default function CheckoutList() {
   const {
     items,
-    selectedCouponId,
-    setSelectedCouponId,
-    couponOptions,
     discountAmount,
     finalAmount,
   } = useCart()
-  const selectedCoupon = couponOptions.find(
-    (coupon) => coupon.id === selectedCouponId
-  )
 
   return (
     <>
@@ -31,16 +25,6 @@ export default function CheckoutList() {
       })}
       <div className="row mt-3">
         <div className="col total-amount mb-5">
-          <div className="">
-            {selectedCouponId !== 0 && selectedCoupon && (
-              <div className="mb-2">
-                折扣金額:
-                {selectedCoupon.type === 'amount'
-                  ? `${selectedCoupon.value} 元`
-                  : `${selectedCoupon.value * 100}%`}
-              </div>
-            )}
-          </div>
           <h4 className="bottom-line">訂單總金額NT${finalAmount}</h4>
         </div>
       </div>
