@@ -2,7 +2,7 @@
 
 /* itinerary_sign_up 區塊 (Start) */
 .pidFirst {
-  background-color: #192a56;
+  background-color: #ffffff;
   display: flex;
   justify-content:space-around;
   align-items: center;
@@ -33,7 +33,7 @@
 
 .SignUpMain {
   padding-top: 10.875rem;
-  background-color: #192a56;
+  background-color: #ffffff;
   /* height: 100vh; */
 }
 .SignUpMain2 {
@@ -48,6 +48,7 @@
   padding: 0 18px 9px;
   max-width: 95%;
   box-shadow: rgba(200, 200, 200, 0.5) 0px 0px 8px;
+  outline: #dee1e7 solid 0.8px;
   border-radius: 10px;
   background-color: #ffffff;
   display: flex;
@@ -83,7 +84,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #192a56;
+  background-color: #ffffff;
 }
 
 .groupIntroduce {
@@ -869,7 +870,7 @@ margin-top: 1.25rem;
 
 /* country-all區塊 (start) */
 .itineraryMain2 {
-  background-color: #192a56;
+  background-color: #ffffff;
   padding-top: 180px;
 }
 .itineraryCard {
@@ -882,7 +883,7 @@ margin-top: 1.25rem;
   letter-spacing: 4.8px;
   font-family: Helvetica, 微軟正黑體, Arial, sans-serif;
   position: relative;
-  color: #ffffff;
+  color: #192a56;
 }
 .itineraryDepartureLine {
   border-bottom: 3px solid #ffb534;
@@ -942,7 +943,7 @@ margin-top: 1.25rem;
     transition: transform 0.3s; 
 }
 .cardDiv1 {
-  width: 13.125rem;
+  width: 16.125rem;
   height: auto;
   background-color: #ffd145;
 }
@@ -1000,7 +1001,7 @@ margin-top: 1.25rem;
     font-weight: 600;
   }
   .cardDiv1 {
-    width: 8.1225rem;
+    width: 13.1225rem;
   }
 
   .cardDiv2 {
@@ -1012,9 +1013,9 @@ margin-top: 1.25rem;
   .itineraryDepartureLine {
     margin-top: 0px;
   }
-  .itineraryCard {
+  /* .itineraryCard {
     height: 93.5rem;
-  }
+  } */
   .moduleContainer {
     display: flex;
     flex-wrap: wrap;

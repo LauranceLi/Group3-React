@@ -8,9 +8,8 @@ import { CiCircleMinus, CiCirclePlus } from 'react-icons/ci'
 import styles from '@/styles/itinerary.module.css'
 import Navbar from '@/components/layout/navbar'
 import Footer from '@/components/layout/footer'
-import axios from 'axios'
-import { useGroupOrder2 } from '../../hooks/use-group-order2'
-import useLocalStorage from '../../hooks/use-group-order' // 導入 useLocalStorage Hook
+import { useGroupOrder2 } from '../../hooks/use-group-order2' // 計算購買數量
+import useLocalStorage from '../../hooks/use-group-order' // 導入useLocalStorage,第一頁變數傳到第二頁
 
 export default function GroupCart() {
   const [product, setProduct] = useState({
@@ -65,7 +64,7 @@ export default function GroupCart() {
   const depositAmount = totalAmount * 0.2
   const finalAmount = totalAmount - depositAmount
 
-  // 在 handleConfirmOrder 函數中，將所需的資料作為查詢參數添加到路由中
+  // 在 handleConfirmOrder 函數中，將所需的資料作為查詢參數添加到路由中(use-group-order.js)
   const handleConfirmOrder = async () => {
     try {
       // 將訂單資訊寫入 localStorage
@@ -75,6 +74,10 @@ export default function GroupCart() {
         price: product.price,
         adultQuantity,
         childQuantity,
+        decreaseAdultQuantity,
+        increaseAdultQuantity,
+        decreaseChildQuantity,
+        increaseChildQuantity,    
         totalAmount,
         depositAmount,
         finalAmount,
