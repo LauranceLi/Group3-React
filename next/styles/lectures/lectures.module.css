@@ -1,0 +1,276 @@
+.lectureList {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 3rem;
+  justify-content: center;
+}
+
+.lecture_item {
+  width: 21%;
+  min-width: 23rem;
+  padding: 1.5rem;
+  border-radius: 1rem;
+}
+
+.lectureBtn {
+  width: 50%;
+  border: 0;
+  width: 12rem;
+  font-size: 1.2rem;
+}
+.lectureBtn:hover {
+  font-size: 1.2rem;
+  color: white;
+  background-color: var(--info-color);
+}
+.lectureBtn:focus {
+  box-shadow: none;
+  font-size: 1.2rem;
+  color: var(--primary-color);
+  background-color: white;
+}
+
+.signUpform h3 {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 1rem;
+  border-bottom: 2.5px solid #ffb534;
+}
+
+.signUpformBtn {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* 動畫signUpformBtn */
+.signUpformBtn {
+  position: relative;
+  border: 1px solid var(--info-color-25);
+  transform: translate3d(0px, 0%, 0px);
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  transition-delay: 0.6s;
+  overflow: hidden;
+  padding: 0.5rem;
+}
+.signUpformBtn:before,
+.signUpformBtn:after {
+  content: '';
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  transition: all 0.6s ease;
+}
+.signUpformBtn:before {
+  background: var(--primary-color);
+  border-radius: 50% 50% 0 0;
+  transform: translateY(100%) scaleY(0.5);
+}
+.signUpformBtn:after {
+  background: #FFFFFF;
+  border-radius: 0;
+  transform: translateY(0) scaleY(1);
+}
+.signUpformBtn div {
+  position: relative;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 32px;
+  text-transform: uppercase;
+  overflow: hidden;
+}
+.signUpformBtn span {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  z-index: 1;
+  text-align: center;
+  transition: transform 0.5s ease;
+}
+.signUpformBtn span:first-child {
+  color: #FFFFFF;
+  transform: translateY(24px);
+}
+.signUpformBtn span:last-child {
+  color: var(--info-color);
+  transform: translateY(0);
+}
+.signUpformBtn:hover {
+  background: var(--primary-color);
+  transition: background 0.2s linear;
+  transition-delay: 0.6s;
+  color: #FFFFFF;
+}
+.signUpformBtn:hover:after {
+  border-radius: 0 0 50% 50%;
+  transform: translateY(-100%) scaleY(0.5);
+  transition-delay: 0;
+}
+.signUpformBtn:hover:before {
+  border-radius: 0;
+  transform: translateY(0) scaleY(1);
+  transition-delay: 0;
+}
+.signUpformBtn:hover span:first-child {
+  transform: translateY(0);
+}
+.signUpformBtn:hover span:last-child {
+  transform: translateY(-32px);
+}
+
+
+
+
+
+
+.signUpInput {
+  margin: 1rem;
+}
+.signUpInput input:focus {
+  border-color: #ffb534;
+}
+
+.gallery-content {
+  background-color: #f5ab2c;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sonar-projects-area {
+  margin: auto;
+}
+
+.lectureContent {
+  background-color: var(--info-color-25);
+  margin: 0.5rem;
+  
+}
+
+.lectureContent:hover {
+  transition: 0.5s ease;
+}
+
+.signUpBox {
+  background-color: #ffb534;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  height: 3rem;
+}
+
+
+.imgContainer {
+  position: relative;
+  width: 100%;
+}
+
+.country {
+  position: absolute;
+  font-size: 1.6rem;
+  font-weight: 500;
+  letter-spacing: 2px;
+  color: white;
+  width: 100%;
+  margin: 0;
+  padding: 0.3rem;
+  padding-left: 1rem;
+  background-color: var(--balck-color-40);
+  bottom: 0%;
+}
+
+.speaker {
+  position: absolute;
+  border: 0;
+  background-color: var(--info-color);
+
+  color: white;
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  margin: 1rem;
+  right: 0%;
+  top: 0%;
+  transition: 0.1s;
+}
+
+.speaker:hover {
+  right: 3px;
+  top: -2px;
+  box-shadow: 2px 3px 3px var(--balck-color-50);
+}
+
+.selectBar {
+  position: relative;
+  width: 100%;
+  height: 7rem;
+  background-color: var(--info-color-75);
+}
+
+@media only screen and  (max-width: 1024px) {
+   .selectBar{
+    height: 12rem;
+  }
+}
+@media only screen and  (max-width: 610px) {
+   .selectBar{
+    height: 18rem;
+  }
+}
+
+.selectTitle {
+  font-size: 3.2rem;
+  font-weight: 600;
+  color: white;
+  margin: 0;
+  padding: 0.3rem;
+  padding-left: 1rem;
+}
+.selectTitle::after {
+  content: '';
+  display: block;
+  width: 6.5rem;
+  height: 4px;
+  background-color: var(--primary-color);
+  margin: 0.2rem 0;
+}
+.selectBtns {
+  display: flex;
+  flex-wrap: wrap;
+  color: white;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  bottom: 0;
+  padding-bottom: 1rem;
+}
+
+.selectBtn {
+  width: 8rem;
+  height: 100%;
+  border: 1px solid white;
+  border-radius: 5px;
+  background-color: transparent;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 2px;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  transition: 0.3s;
+}
+
+
+.cardContext {
+  padding: 1rem;
+  border-left:1px solid var(--info-color-25);
+  border-right:1px solid var(--info-color-25);
+}

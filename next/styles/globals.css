@@ -55,6 +55,12 @@ footer {
   --success-color: rgb(103, 212, 121);
   --warning-color: rgb(71, 235, 235);
 
+  --balck-color: rgb(0, 0, 0);
+  --balck-color-75: rgb(0, 0, 0, 0.75);
+  --balck-color-50: rgb(0, 0, 0, 0.5);
+  --balck-color-40: rgb(0, 0, 0, 0.4);
+  --balck-color-25: rgb(0, 0, 0, 0.25);
+
   --facebook-blue: #1877f2;
   --google-red: #db4437;
 }

@@ -65,9 +65,9 @@ const Navbar = ({ navItemName = '', navbarControl = '' }) => {
                       </Link>
                     </li>
                     <li className="nav-item">
-                      <a className={styles.navLink} href="services.html">
+                      <Link className={styles.navLink} href="/lectures">
                         旅遊講座
-                      </a>
+                      </Link>
                     </li>
 
                     <li className="nav-item">
