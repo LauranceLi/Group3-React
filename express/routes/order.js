@@ -12,6 +12,7 @@ router.post('/', async (req, res) => {
     recipientName,
     recipientMobile,
     paymentMethod,
+    discountAmount,
     invoiceType,
     invoiceValue,
     shippingMethod,
@@ -62,6 +63,7 @@ router.post('/', async (req, res) => {
         store_address: storeaddress,
         store_id: storeid,
         store_name: storename,
+        discount: discountAmount,
         // 其他訂單相關欄位
       },
       { transaction }
@@ -89,6 +91,13 @@ router.post('/', async (req, res) => {
     }
     await Order.update(
       { total_amount: totalAmount },
+      {
+        where: { transaction_id: transactionID },
+        transaction,
+      }
+    )
+    await Order.update(
+      { net_total: totalAmount - discountAmount },
       {
         where: { transaction_id: transactionID },
         transaction,

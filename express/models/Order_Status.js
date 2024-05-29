@@ -15,15 +15,15 @@ export default async function OrderStatus(sequelize) {
         allowNull: false,
       },
       payment_status: {
-        type: DataTypes.BOOLEAN,
+        type: DataTypes.STRING,
         allowNull: true,
       },
       shipping_status: {
-        type: DataTypes.BOOLEAN,
+        type: DataTypes.STRING,
         allowNull: true,
       },
       order_status: {
-        type: DataTypes.BOOLEAN,
+        type: DataTypes.STRING,
         allowNull: true,
       },
     },

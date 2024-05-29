@@ -38,6 +38,11 @@ export default async function Order(sequelize) {
         type: DataTypes.INTEGER,
         allowNull: true,
       },
+      discount: {
+        //由積分轉換的金額
+        type: DataTypes.INTEGER,
+        allowNull: true,
+      },
       net_total: {
         // 總金額扣除積分後的金額
         type: DataTypes.INTEGER,
