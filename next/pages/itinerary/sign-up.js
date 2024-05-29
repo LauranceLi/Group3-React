@@ -86,7 +86,7 @@ export default function SignUp() {
                           <td>
                             <a
                               className={styles.btn}
-                              href="http://localhost:3000/itinerary-order/3"
+                              href="http://localhost:3000/itinerary-product/48"
                             >
                               報名
                             </a>
@@ -104,7 +104,7 @@ export default function SignUp() {
                           <td>
                             <a
                               className={styles.btn}
-                              href="http://localhost:3000/itinerary-order/3"
+                              href="http://localhost:3000/itinerary-product/27"
                             >
                               報名
                             </a>
@@ -122,7 +122,7 @@ export default function SignUp() {
                           <td>
                             <a
                               className={styles.btn}
-                              href="http://localhost:3000/itinerary-order/3"
+                              href="http://localhost:3000/itinerary-product/3"
                             >
                               報名
                             </a>

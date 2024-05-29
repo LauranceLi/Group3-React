@@ -48,7 +48,8 @@ export default function itineraryCard() {
               <div className={styles.cardDiv2}>
                 <a
                   className={styles.cardDiv2}
-                  href="http://localhost:3000/itinerary-order/3"
+                  href="http://localhost:3000/itinerary-product/3"
+                  // href={`http://localhost:3000/itinerary-order/${travel_id}`}
                 >
                   點此報名
                 </a>
@@ -76,7 +77,15 @@ export default function itineraryCard() {
             </div>
             <section className={styles.cardDiv3}>
               <div className={styles.cardDiv1}>&nbsp;</div>
-              <div className={styles.cardDiv2}>點此報名</div>
+              <div className={styles.cardDiv2}>
+                <a
+                  className={styles.cardDiv2}
+                  href="http://localhost:3000/itinerary-product/47"
+                  // href={`http://localhost:3000/itinerary-order/${travel_id}`}
+                >
+                  點此報名
+                </a>
+              </div>
             </section>
           </div>
           <div className={styles.moduleItems}>
@@ -99,7 +108,15 @@ export default function itineraryCard() {
             </div>
             <section className={styles.cardDiv3}>
               <div className={styles.cardDiv1}>&nbsp;</div>
-              <div className={styles.cardDiv2}>點此報名</div>
+              <div className={styles.cardDiv2}>
+                <a
+                  className={styles.cardDiv2}
+                  href="http://localhost:3000/itinerary-product/29"
+                  // href={`http://localhost:3000/itinerary-order/${travel_id}`}
+                >
+                  點此報名
+                </a>
+              </div>
             </section>
           </div>
           <div className={styles.moduleItems}>
@@ -122,7 +139,15 @@ export default function itineraryCard() {
             </div>
             <section className={styles.cardDiv3}>
               <div className={styles.cardDiv1}>&nbsp;</div>
-              <div className={styles.cardDiv2}>點此報名</div>
+              <div className={styles.cardDiv2}>
+                <a
+                  className={styles.cardDiv2}
+                  href="http://localhost:3000/itinerary-product/7"
+                  // href={`http://localhost:3000/itinerary-order/${travel_id}`}
+                >
+                  點此報名
+                </a>
+              </div>
             </section>
           </div>
           <div className={styles.moduleItems}>
@@ -145,7 +170,15 @@ export default function itineraryCard() {
             </div>
             <section className={styles.cardDiv3}>
               <div className={styles.cardDiv1}>&nbsp;</div>
-              <div className={styles.cardDiv2}>點此報名</div>
+              <div className={styles.cardDiv2}>
+                <a
+                  className={styles.cardDiv2}
+                  href="http://localhost:3000/itinerary-product/22"
+                  // href={`http://localhost:3000/itinerary-order/${travel_id}`}
+                >
+                  點此報名
+                </a>
+              </div>
             </section>
           </div>
           <div className={styles.moduleItems}>
@@ -168,7 +201,15 @@ export default function itineraryCard() {
             </div>
             <section className={styles.cardDiv3}>
               <div className={styles.cardDiv1}>&nbsp;</div>
-              <div className={styles.cardDiv2}>點此報名</div>
+              <div className={styles.cardDiv2}>
+                <a
+                  className={styles.cardDiv2}
+                  href="http://localhost:3000/itinerary-product/24"
+                  // href={`http://localhost:3000/itinerary-order/${travel_id}`}
+                >
+                  點此報名
+                </a>
+              </div>
             </section>
           </div>
         </div>
