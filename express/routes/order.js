@@ -43,7 +43,7 @@ router.post('/', async (req, res) => {
     // 假設 member_id 是已知的，這裡我們假設為 '20150221008'
     const memberId = '20150221008'
     // 更新訂單狀態函式
-    const paymentStatus = paymentMethod === '綠界科技' ? '已付款' : '未付款'
+    const paymentStatus = paymentMethod === '貨到付款' ? '未付款' : '已付款'
     const shippingStatus = '未出貨'
     const orderStatus = '已成立'
 
