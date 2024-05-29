@@ -2,6 +2,8 @@ import express from 'express'
 const router = express.Router()
 import axios from 'axios'
 import qs from 'qs'
+import nodemailer from 'nodemailer'
+import bodyParser from 'body-parser'
 
 // 資料庫使用
 import sequelize from '#configs/db.js'
@@ -25,6 +27,64 @@ const googleClientId =
 const googleClientSecret = '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'
 const googleRedirectUri = 'http://localhost:3000'
 
+// router.use(bodyParser.json())
+
+const verificationCodes = {} // 存儲信箱與對應的驗證碼
+
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: 'mfee50group3@gmail.com',
+    pass: 'group3!!!',
+  },
+})
+
+// router.post('/send-verification-email', (req, res) => {
+//   const { email } = req.body
+//   const code = Math.floor(100000 + Math.random() * 900000) // 生成6位數驗證碼
+//   verificationCodes[email] = code
+
+//   const mailOptions = {
+//     from: 'mfee50group3@gmail.com',
+//     to: email,
+//     subject: 'Verification Code',
+//     text: `Your verification code is: ${code}`,
+//   }
+
+//   transporter.sendMail(mailOptions, (error, info) => {
+//     if (error) {
+//       return res.status(500).send('Error sending email')
+//     }
+//     res.status(200).send('Verification email sent')
+//   })
+
+//   // 設置60秒後才能再次發送
+//   setTimeout(() => {
+//     delete verificationCodes[email]
+//   }, 60000)
+// })
+
+// router.post('/verify-code', (req, res) => {
+//   const { email, code } = req.body
+//   if (
+//     verificationCodes[email] &&
+//     verificationCodes[email] === parseInt(code, 10)
+//   ) {
+//     return res.status(200).send({ success: true })
+//   }
+//   res.status(400).send({ success: false })
+// })
+
+router.post('/', (req, res) => {
+  const { email, code } = req.body
+  if (
+    verificationCodes[email] &&
+    verificationCodes[email] === parseInt(code, 10)
+  ) {
+    return res.status(200).send({ success: true })
+  }
+  res.status(400).send({ success: false })
+})
 /* GET home page. */
 router.get('/get_info', authenticate, async function (req, res, next) {
   // 如果會員是在存取令牌合法的情況下，req.user中會有會員的id和username
@@ -207,7 +267,7 @@ router.post('/register', async (req, res, next) => {
   })
 
   if (!created) {
-    return res.json({ status: 'error', message: '建立會員失敗' })
+    return res.json({ status: 'error', message: '創建會員失敗' })
   } else {
     const [userInfo, createdInfo] = await MembersInfo.findOrCreate({
       where: { member_id: memberId },
@@ -263,7 +323,7 @@ router.post('/auth/google', async (req, res) => {
       })
 
       if (!created) {
-        return res.json({ status: 'error', message: '建立會員失敗' })
+        return res.json({ status: 'error', message: '創建會員失敗' })
       } else {
         await MembersInfo.findOrCreate({
           where: { member_id: decodedToken.sub },
@@ -311,6 +371,23 @@ router.post('/auth/google', async (req, res) => {
   } catch (error) {
     console.error('Failed to fetch Google OAuth tokens', error)
     res.status(500).json({ error: 'Failed to fetch Google OAuth tokens' })
+  }
+})
+
+router.post('/register/mailCheck', async (req, res) => {
+  const loginUser = req.body
+
+  if (!loginUser.email) {
+    return res.json({ status: 'error', message: `帳號欄位不可為空` })
+  }
+  const [rows] = await db.query('SELECT * FROM members WHERE email = ?', [
+    loginUser.email,
+  ])
+
+  if (rows.length === 1) {
+    return res.json({ status: 'error', message: `此信箱已被使用` })
+  } else {
+    return res.json({ status: 'success', message: '此信箱可使用' })
   }
 })
 
