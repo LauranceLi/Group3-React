@@ -40,13 +40,13 @@ const Navbar = ({ navItemName = '', navbarControl = '' }) => {
               <div className={cn(styles.nav, navbarControl)}>
                 {/* Logo Area  */}
                 <div className={cn(styles.logoBox, navItemName)}>
-                  <a href="index.html" className={styles.logo}>
+                  <Link href="/" className={styles.logo}>
                     <span className={styles.logoText}>締杉旅遊</span>
                     <span></span>
                     <span></span>
                     <span></span>
                     <span></span>
-                  </a>
+                  </Link>
                 </div>
                 {/* Nav */}
                 <nav className={styles.rowNav}>
