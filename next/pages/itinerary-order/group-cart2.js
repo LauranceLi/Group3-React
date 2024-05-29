@@ -12,7 +12,7 @@ import useLocalStorage from '../../hooks/use-group-order'; // 導入 useLocalSto
 
 
 export default function GroupCart2() {
-    // 从本地存储中读取 travel_id, introduce, price, adultQuantity
+    // 从LocalStorage讀取 travel_id, introduce, price, adultQuantity, childQuantity
     const [storedId] = useLocalStorage('travel_id', 0);
     const [storedIntroduce] = useLocalStorage('introduce', '');
     const [storedPrice] = useLocalStorage('price', 0);
@@ -43,7 +43,6 @@ export default function GroupCart2() {
           <Row className={styles.GroupRow}>
             <Col className={styles.first}>1. 訂購內容</Col>
             <Col className={styles.activeCartTitle}>2. 填寫旅客資訊</Col>
-            {/* <Col className={styles.first}>3. 完成訂單</Col> */}
           </Row>
           <section>
             <div>

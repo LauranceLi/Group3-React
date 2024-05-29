@@ -6,8 +6,7 @@ import DailyTour from '@/components/itinerary/daily-tour'
 import styles from '@/styles/itinerary.module.css'
 import Navbar from '@/components/layout/navbar'
 import Footer from '@/components/layout/footer'
-import { MdPlayArrow } from "react-icons/md";
-
+import { MdPlayArrow } from 'react-icons/md'
 
 // 資料夾的中的`[pid].js`檔案代表這路由中，除了根路由與靜態路由之外的所有路由，例如 `/product/123` 就是這個檔案
 // 資料來源:
@@ -94,8 +93,8 @@ export default function Detail() {
               className={styles.itineraryBtn}
               href="http://localhost:3000/itinerary-order/3"
             >
-              報名<MdPlayArrow />
-
+              報名
+              <MdPlayArrow />
             </a>
           </div>
         </section>
