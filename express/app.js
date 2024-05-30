@@ -27,8 +27,23 @@ const app = express()
 // cors設定，參數為必要，注意不要只寫`app.use(cors())`
 app.use(
   cors({
-    origin: ['http://localhost:3000', 'https://localhost:9000'],
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    origin: function (origin, callback) {
+      // 檢查請求是否來自允許的來源
+      if (
+        [
+          'http://localhost:3000',
+          'https://localhost:9000',
+          'http://localhost:3000/members',
+        ].includes(origin) ||
+        !origin
+      ) {
+        callback(null, true) // 允許
+      } else {
+        callback(new Error('Not allowed by CORS')) // 不允許
+      }
+    },
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+    allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true,
   })
 )

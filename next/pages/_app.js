@@ -1,5 +1,7 @@
-import '/public/css/bootstrap.min.css'
+// import '/public/css/bootstrap.min.css'
 import '/styles/globals.css'
+
+import "@/styles/layout/slider.css";
 import React from 'react'
 import product from '/styles/product/product.css'
 
