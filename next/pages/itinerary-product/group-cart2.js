@@ -35,7 +35,7 @@ export default function GroupCart2() {
         <Container>
           <Row className={styles.GroupRow}>
             <Col className={styles.first}>1. 訂購內容</Col>
-            <Col className={styles.activeCartTitle}>2. 填寫旅客資訊</Col>
+            <Col className={styles.activeCartTitle}>2. 確認訂購內容</Col>
           </Row>
           <section>
             <div>
@@ -43,10 +43,9 @@ export default function GroupCart2() {
                 <div className="travelForm mb-3">
                   <div className={styles.orderTitle}>
                     <h4 style={{ fontSize: '18px', fontWeight: 600 }}>
-                      訂購人資料
+                      訂購人資料_ID:{order.memberId}
                     </h4>
                   </div>
-
                   <div className="row">
                     <div className="col m-2">
                       <label htmlFor="name">
@@ -57,6 +56,7 @@ export default function GroupCart2() {
                         name="name"
                         id="name"
                         className="form-control"
+                        value={order.name}
                       />
                     </div>
                     <div className="col m-2">
@@ -68,6 +68,7 @@ export default function GroupCart2() {
                         name="email"
                         id="email"
                         className="form-control"
+                        value={order.email}
                       />
                     </div>
                     <div className="col m-2">
@@ -79,6 +80,7 @@ export default function GroupCart2() {
                         name="mobile"
                         id="mobile"
                         className="form-control"
+                        value={order.mobile}
                       />
                     </div>
                   </div>

@@ -28,16 +28,17 @@ export default function GroupCart() {
     increaseChildQuantity,
   } = useOrderCount()
 
-  // 登入時，使用會員資料
+  // 登入時，自動填寫會員資料
   // 帳號: group3@gmail.com ,密碼:123456
-  const { name, email, mobile } = useMemberInfo()
+  const { memberId, name, email, mobile } = useMemberInfo()
 
   const [member, setMember] = useState({
+    memberId: 0,
     name: '',
     email: '',
     mobile: 0,
   })
-  
+
   const [product, setProduct] = useState({
     travel_id: 0,
     introduce: '',
@@ -103,6 +104,10 @@ export default function GroupCart() {
     }
     try {
       const newOrder = {
+        memberId,
+        name,
+        email,
+        mobile,
         travel_id: product.travel_id,
         introduce: product.introduce,
         time: product.time,
@@ -136,7 +141,7 @@ export default function GroupCart() {
             <div className={styles.second}>
               <div className={styles.orderTitle}>
                 <h4 style={{ fontSize: '18px', fontWeight: 600 }}>
-                  訂購人資料
+                  訂購人資料_ID:{memberId}
                 </h4>
               </div>
               <div className="row">
