@@ -2,8 +2,13 @@ import React from 'react'
 import Link from 'next/link'
 import styles from '@/styles/lectures/lectures.module.css'
 import { PiChalkboardTeacherFill } from 'react-icons/pi'
+import { BsInfoCircle } from "react-icons/bs";
 
-export default function LectureCard() {
+export default function LectureCard({title,country, date, place}) {
+
+  console.log('country:', country);
+  console.log('date:', date);
+  console.log('place:', place);
   return (
     <>
       <div
@@ -13,28 +18,25 @@ export default function LectureCard() {
         <div className={styles.lectureContent}>
           <div className={styles.imgContainer}>
             <img src="images/blog.jpg" alt="" />
-            <div className={styles.country}>巴西</div>
+            <div className={styles.country}>{country}</div>
             <button type="button" title="講師資訊" className={styles.speaker}>
               <PiChalkboardTeacherFill size={30} />
             </button>
+            <button type="button" title="講座介紹" className={styles.introduction}>
+            <BsInfoCircle size={30}/>
+            </button>
           </div>
           <div className={styles.cardContext}>
-            <h4>04/12（五）台北</h4>
-            <h5>19:00-20:30</h5>
+            <h4>{title}</h4>
+            <h6>{date}</h6>
+            <h5>{place}</h5>
           </div>
           <Link className={styles.signUpformBtn} href="#">
             <div>
               <span>點此報名</span>
               <span>免費參加</span>
             </div>
-            {/* <button
-              type="button"
-              className={`${styles.btn} ${styles.btnOne} ${styles.btnSep}`}
-              data-bs-toggle="modal"
-              data-bs-target="#signUpdrop"
-            >
-              免費報名
-            </button> */}
+
           </Link>
         </div>
       </div>
