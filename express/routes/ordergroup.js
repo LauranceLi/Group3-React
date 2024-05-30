@@ -14,6 +14,7 @@ const { OrderGroup } = sequelize.models
 // })
 
 //http://localhost:3005/api/ordergroup
+
 // GET - 得到所有資料
 router.get('/', async function (req, res) {
   const order = await OrderGroup.findAll({ logging: console.log })
@@ -35,4 +36,10 @@ router.get('/:id', async function (req, res) {
   return res.json({ status: 'success', data: { product } })
 })
 
+// POST - 送回資料庫
+// router.post('/ordergroup', async (req, res, next) =>{
+//   const newOrdergroup =req.body
+
+//   const [ordergroup, created] =await Ordergroup.
+// })
 export default router
