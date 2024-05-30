@@ -1,3 +1,4 @@
+// 計算購買數量的鉤子
 import { useState } from 'react'
 
 export function useOrderCount() {

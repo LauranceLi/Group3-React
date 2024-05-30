@@ -7,9 +7,22 @@ import Navbar from '@/components/layout/navbar'
 import Footer from '@/components/layout/footer'
 import toast from 'react-hot-toast'
 import { useOrder } from '../../hooks/use-order'
+import  useOrderAmount  from '@/hooks/use-order-amount' // 計算總金額、訂金、尾款
+
 
 export default function GroupCart2() {
   const { order } = useOrder()
+
+    // 使用鉤子獲取總金額、訂金、尾款
+    const {
+      totalAmount,
+      depositAmount,
+      finalAmount,
+      } = useOrderAmount(order.price, order.adultQuantity, order.childQuantity)
+
+    const adultTotal = order.price * order.adultQuantity  // 計算 單價 * 大人數量後的小計
+    const childTotal = order.price * order.childQuantity  // 計算 單價 * 小孩數量後的小計
+
 
   const handleReset = () => {
     toast.success('報名成功')
@@ -120,6 +133,7 @@ export default function GroupCart2() {
                   </div>
                   <div className={styles.unitPrice}>
                     <span>NT$</span>
+                    {adultTotal}
                   </div>
                 </div>
                 <div className={styles.travelInfo2}>
@@ -143,7 +157,8 @@ export default function GroupCart2() {
                     />
                   </div>
                   <div className={styles.unitPrice}>
-                    <span>NT$</span>
+                    <span>NT$&nbsp;</span>
+                    {childTotal}
                   </div>
                 </div>
                 <div className="row mt-3 p-2">
@@ -159,7 +174,9 @@ export default function GroupCart2() {
                           color: 'tomato',
                           fontWeight: 'bold',
                         }}
-                      ></span>
+                      >
+                        {totalAmount}
+                      </span>
                     </div>
                   </Col>
                 </div>
@@ -172,9 +189,9 @@ export default function GroupCart2() {
                     <h4>訂金</h4>
                     <div className={styles.groupCart2Money}>
                       NT$&nbsp;
-                      <span
-                        style={{ color: 'tomato', fontWeight: 'bold' }}
-                      ></span>
+                      <span style={{ color: 'tomato', fontWeight: 'bold' }}>
+                        {depositAmount}
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -193,9 +210,9 @@ export default function GroupCart2() {
                     <h4 style={{ fontWeight: 600, fontSize: '20px' }}>尾款</h4>
                     <div className={styles.groupCart2Money}>
                       NT$&nbsp;
-                      <span
-                        style={{ color: 'tomato', fontWeight: 'bold' }}
-                      ></span>
+                      <span style={{ color: 'tomato', fontWeight: 'bold' }}>
+                        {finalAmount}
+                      </span>
                     </div>
                   </div>
                 </div>

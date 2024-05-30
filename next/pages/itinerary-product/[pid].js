@@ -11,11 +11,13 @@ import Footer from '@/components/layout/footer'
 import useMemberInfo from '@/hooks/use-member-info' // 引入會員資料
 import { useOrderCount } from '../../hooks/use-order-count' // 計算購買數量
 import { useOrder } from '../../hooks/use-order' // context
-import useLocalStorageOrder from '@/hooks/use-localstorage-order' // localstorage
+import useLocalStorageOrder from '@/hooks/use-localstorage-order'; // localstorage(儲存第一頁的數據)
 
 export default function GroupCart() {
   // context
   const { order, setOrder } = useOrder()
+  const [localOrder, setLocalOrder] = useLocalStorageOrder('order', {})
+
   // 使用鉤子獲取訂單數量
   const {
     adultQuantity,
@@ -35,7 +37,8 @@ export default function GroupCart() {
     email: '',
     mobile: 0,
   })
-  const [product, setProduct] = useLocalStorageOrder('order', {
+  
+  const [product, setProduct] = useState({
     travel_id: 0,
     introduce: '',
     time: '',
@@ -44,15 +47,15 @@ export default function GroupCart() {
     final_payment_date: '',
     adultQuantity: 0,
     childQuantity: 0,
-  });
+  })
 
   useEffect(() => {
     setOrder((prevOrder) => ({
       ...prevOrder,
       adultQuantity,
       childQuantity,
-    }));
-  }, [adultQuantity, childQuantity, setOrder]);
+    }))
+  }, [adultQuantity, childQuantity, setOrder])
 
   const router = useRouter()
 
@@ -99,17 +102,19 @@ export default function GroupCart() {
       return
     }
     try {
-      setOrder({
+      const newOrder = {
         travel_id: product.travel_id,
         introduce: product.introduce,
         time: product.time,
         price: product.price,
         deposit_date: product.deposit_date,
         final_payment_date: product.final_payment_date,
-        adultQuantity: product.adultQuantity,
-        childQuantity: product.childQuantity,
-        setAdultQuantity: product.setAdultQuantity,
-      })
+        adultQuantity,
+        childQuantity,
+      }
+
+      setOrder(newOrder)
+      setLocalOrder(newOrder)
 
       // 跳轉到訂單確認頁面(第二頁)
       router.push('/itinerary-product/group-cart2')
