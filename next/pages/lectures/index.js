@@ -62,9 +62,12 @@ export default function Lectures() {
           <LectureCard
             key={lecture.lecture_id}
             country={lecture.country}
-            date={lecture.date}
+            date={lecture.date.slice(0,10)}
+            time={lecture.date.slice(11,16)}
             place={lecture.place}
             title={lecture.title}
+            img ={lecture.img_id}
+            introduction={lecture.introduction}
           />
         ))}
       </div>

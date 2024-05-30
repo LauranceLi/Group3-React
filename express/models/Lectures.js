@@ -37,6 +37,9 @@ export default async function (sequelize) {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
+      img_id: {
+        type: DataTypes.INTEGER,
+      }
     },
     {
       tableName: 'lectures',

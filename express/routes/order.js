@@ -79,7 +79,7 @@ router.post('/', async (req, res) => {
     // 創建訂單詳細資料
     let totalAmount = 0
     for (const item of items) {
-      const { id, name, price, qty } = item
+      const { id, name, title, price, qty } = item
       const itemTotal = price * qty
       totalAmount += itemTotal
 
@@ -88,7 +88,7 @@ router.post('/', async (req, res) => {
           member_id: memberId,
           transaction_id: transactionID,
           product_id: id,
-          product_name: name,
+          product_name: name || title,
           quantity: qty,
           unit_price: price,
           // 其他訂單詳細資料相關欄位
