@@ -8,6 +8,7 @@ import { VscSignOut } from 'react-icons/vsc'
 import { FaStar } from 'react-icons/fa'
 import { BsFillPersonVcardFill } from 'react-icons/bs'
 import { BsPersonFillGear } from 'react-icons/bs'
+import OrderQueryNew from '../order/order_query_new'
 
 export default function MemberCenter() {
   const { points } = useMemberInfo()
@@ -38,9 +39,10 @@ export default function MemberCenter() {
       </div>
       <div className={styles.itineraryInfo}>
         <div className={styles.memberItem}>
-          <Link href="/cart/order" title="購物車">
+          <Link href="/cart/order_query" title="購物車">
             <h5>商城訂單</h5>
           </Link>
+          <OrderQueryNew />
         </div>
       </div>
     </>
