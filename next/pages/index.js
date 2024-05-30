@@ -6,6 +6,9 @@ import Slider from '@/components/slider';
 import Preloader from '@/components/layout/preloader'
 import Navbar from '@/components/layout/navbar'
 import Footer from '@/components/layout/footer'
+import Search from '@/components/search/search'
+import ItineraryCard from '@/components/itinerary/itinerary-card'
+
 import Drawer from '@/components/layout/drawer'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -17,6 +20,8 @@ export default function Home() {
 
     <Navbar />
     <Slider />
+    <Search />
+    <ItineraryCard />
     <Footer />
     
     </>

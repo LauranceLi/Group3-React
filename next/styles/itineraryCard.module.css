@@ -65,11 +65,11 @@
   border-radius: 10px;
 }
 .cardDiv1 {
-  width: 13.125rem;
+  width: 16.125rem;
   background-color: #ffd145;
 }
 .cardDiv2 {
-  width: 10.3125rem;
+  width: 8.2656rem;
   height: 2.25rem;
   background-color: #192a56;
   color: white;
@@ -85,6 +85,7 @@
   color: #192a56;
 }
 .cardDiv3 {
+  width: auto;
   display: flex;
   height: 36px;
 }
@@ -124,9 +125,9 @@
   .itineraryDepartureLine {
     margin-top: 0px;
   }
-  .itineraryCard {
+  /* .itineraryCard {
     height: 93.5rem;
-  }
+  } */
   .moduleContainer {
     display: flex;
     flex-wrap: wrap;

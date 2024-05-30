@@ -2,7 +2,7 @@ import { DataTypes } from 'sequelize'
 
 export default async function (sequelize) {
   return sequelize.define(
-    'ItineraryOrder',
+    'OrderGroup',
     {
       order_group_id: {
         type: DataTypes.INTEGER,

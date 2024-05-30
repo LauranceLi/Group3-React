@@ -2,7 +2,7 @@
 
 /* itinerary_sign_up 區塊 (Start) */
 .pidFirst {
-  background-color: #192a56;
+  background-color: #ffffff;
   display: flex;
   justify-content:space-around;
   align-items: center;
@@ -32,8 +32,8 @@
 }
 
 .SignUpMain {
-  padding-top: 10.875rem;
-  background-color: #192a56;
+  padding-top: 5rem;
+  background-color: #f9f8f3;
   /* height: 100vh; */
 }
 .SignUpMain2 {
@@ -48,6 +48,7 @@
   padding: 0 18px 9px;
   max-width: 95%;
   box-shadow: rgba(200, 200, 200, 0.5) 0px 0px 8px;
+  outline: #dee1e7 solid 0.8px;
   border-radius: 10px;
   background-color: #ffffff;
   display: flex;
@@ -83,7 +84,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #192a56;
+  background-color: #f9f8f3;
 }
 
 .groupIntroduce {
@@ -315,6 +316,7 @@
   box-shadow: rgba(0, 0, 0, 0.25) 0px 0px 4px;
   border-radius: 5px;
   border: 0.0938rem solid #c0c0c0;
+  margin-top: 30px;
 }
 .orderTitle3 {
   background-color: #e0e0e0;
@@ -398,11 +400,12 @@
 }
 .travelInfo2 {
   display: flex;
-  justify-content: space-around;
+  /* justify-content: space-around; */
   align-content: center;
   border-bottom: 0.0938rem solid #c0c0c0;
   padding: 0.3125rem;
 }
+
 .unitPrice {
   font-family: 'Microsoft JhengHei';
   font-size: 18px;
@@ -411,6 +414,13 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+}
+.unitPrice2 {
+  font-size: 18px;
+  font-weight: 600;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 1.25rem;
 }
 .travelSaleItem {
   width: 100%;
@@ -438,10 +448,12 @@
   border-radius: 0.375rem;
   text-align: center;
   margin: 0.5rem;
+  padding-left: .7rem;
 }
 .totalAmount {
   display: flex;
   justify-content: space-between;
+  font-family: Helvetica, 微軟正黑體, Arial, sans-serif;
 }
 .totalAmount1 {
   display: flex;
@@ -467,6 +479,7 @@
   width: 140px;
   height: 28.8px;
   font-size: 18px;
+  color: #ff6347;
 }
 .formCheckLabel {
   margin-left: 0%;
@@ -477,6 +490,11 @@
   color: #1a88e2;
   margin-top: .625rem;
 }
+
+.second2Li {
+  margin-bottom: .625rem; 
+}
+
 @media only screen and (max-width: 767px) {
   .GroupCartSection {
     width: 100%;
@@ -499,10 +517,23 @@
     height: 60px;
   }
   .unitPrice {
-    margin-right: 15px;
+    font-size: 14px;
+  }
+  .unitPrice2 {
+    width: auto;
+    margin-right: .3125rem;
   }
   .agreement {
     display: inline;
+  }
+  .quantity {
+    padding-left: 0;
+  }
+  .travelSaleItem {
+    font-size: 16px;
+  }
+  .groupCart2Money {
+    width: auto;
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -513,13 +544,19 @@
   .inputCart {
     margin-left: 4px;
   }
+  .quantity {
+    padding-left: 0;
+  }
+  .groupCart2Money {
+    width: auto;
+  }
 }
 /* 團體行程購物車(end) */
 
 /* itinerary-products區塊 (START) */
 .itineraryMain {
-  background-color: #192a56;
-  padding-top: 11.25rem;
+  background-color: #f9f8f3;
+  padding-top: 5rem;
   padding-bottom: 2.25rem;
 }
 .itineraryProductsImg {
@@ -538,6 +575,7 @@
   margin: 0 auto;
 }
 .SliderDiv {
+  font-family: 'Noto Sans TC', '微軟正黑體', sans-serif;
   padding: 1.25rem;
   background-color: #ffffff;
 }
@@ -580,7 +618,7 @@
 
 .itineraryProductsTitle {
   height: 35px;
-  background-color: #b5b9c4;
+  background-color: #192a56;
   color: white;
   font-size: 18px;
   font-weight: bold;
@@ -629,13 +667,13 @@
 .itineraryH3 {
   font-size: 18px;
   font-weight: bold;
-  color: #ffffff;
+  color: #192a56;
 }
 
 .itineraryProductsP {
   font-family: Helvetica, 微軟正黑體, Arial, sans-serif;
   font-weight: 600;
-  color: #ffffff;
+  color: #192a56;
 }
 .itineraryItem {
   display: flex;
@@ -734,7 +772,7 @@
   color: rgb(91, 90, 90);
   border: 1px solid rgb(91, 90, 90);
 }
-.SliderDiv2 button {
+/* .SliderDiv2 button {
   width: 7.5rem;
   margin-left: 6.1875rem;
   margin-top: 1.25rem;
@@ -754,7 +792,63 @@
   border: 1px solid white;
   font-size: 18px;
   box-shadow: 0 8px 10px rgba(0, 0, 0, 0.1);
+} */
+.searchBtn {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
 }
+.SliderDiv2 button,
+.SliderDiv2 button:focus {
+    position: relative;
+    min-width: 100px;
+    background: none;
+    border: none;
+    color: #ffb534;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: inset 0 0 0 4px #ffb534;
+    transition: color 0.25s 0.0833333333s;
+    padding: 10px 20px;
+}
+.SliderDiv2 button:before,
+.SliderDiv2 button:after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    bottom: 0;
+    right: 0;
+    border: 0 solid transparent;
+    box-sizing: border-box;
+}
+.SliderDiv2 button:before {
+    border-bottom-width: 4px;
+    border-left-width: 4px;
+}
+.SliderDiv2 button:after {
+    border-top-width: 4px;
+    border-right-width: 4px;
+}
+.SliderDiv2 button:hover {
+    color: #2f4fa0;
+}
+.SliderDiv2 button:hover:before,
+.SliderDiv2 button:hover:after {
+    border-color: #2f4fa0;
+    transition: border-color 0s, width 0.25s, height 0.25s;
+    width: 100%;
+    height: 100%;
+}
+.SliderDiv2 button:hover:before {
+    transition-delay: 0s, 0s, 0.25s;
+}
+.SliderDiv2 button:hover:after {
+    transition-delay: 0s, 0.25s, 0s;
+}
+
 .paginationContainer {
   display: flex;
   justify-content: center;
@@ -763,10 +857,11 @@
   margin-bottom: 6.25rem;
 }
 .keyWord {
-  color: #ffffff;
+  font-family: 'Noto Sans TC', '微軟正黑體', sans-serif;
+  color: #192a56;
 }
 .itineraryH6 {
-  color: #ffffff;
+  color: #192a56;
 }
 .cartBtn {
 display: flex;
@@ -775,9 +870,11 @@ align-items: flex-end;
 margin-right: 1.25rem;
 margin-top: 1.25rem;
 }
-
 /* 平板 */
 @media only screen and (min-width: 768px) and (max-width: 991px) {
+  .itineraryMain {
+    padding-top: 1.25rem;
+  }
   .itineraryProductsH3 {
     width: 80px;
     height: 21.59px;
@@ -814,6 +911,9 @@ margin-top: 1.25rem;
 }
 
 @media only screen and (max-width: 767px) {
+  .itineraryMain {
+    padding-top: 1.25rem;
+  }
   .itineraryProductsItem1 input {
     margin-top: 0.75rem;
     margin-bottom: 0.3125rem;
@@ -838,21 +938,18 @@ margin-top: 1.25rem;
   }
 
   .SliderDiv input{
-    padding-left: 30px;
+    padding-left: 1.875rem;
   }
   .SliderDiv2 button {
-    width: 7.5rem;
-    margin-left: 7.1875rem;
-    margin-top: 1.25rem;
-    margin-bottom: 1.25rem;
+    margin-bottom: 2.5rem;
   }
 }
 /* itinerary_products區塊 (END) */
 
 /* country-all區塊 (start) */
 .itineraryMain2 {
-  background-color: #192a56;
-  padding-top: 180px;
+  background-color: #ffffff;
+  padding-top: 6.25rem;
 }
 .itineraryCard {
   margin-top: -1rem;
@@ -864,7 +961,7 @@ margin-top: 1.25rem;
   letter-spacing: 4.8px;
   font-family: Helvetica, 微軟正黑體, Arial, sans-serif;
   position: relative;
-  color: #ffffff;
+  color: #192a56;
 }
 .itineraryDepartureLine {
   border-bottom: 3px solid #ffb534;
@@ -924,7 +1021,7 @@ margin-top: 1.25rem;
     transition: transform 0.3s; 
 }
 .cardDiv1 {
-  width: 13.125rem;
+  width: 16.125rem;
   height: auto;
   background-color: #ffd145;
 }
@@ -982,7 +1079,7 @@ margin-top: 1.25rem;
     font-weight: 600;
   }
   .cardDiv1 {
-    width: 8.1225rem;
+    width: 13.1225rem;
   }
 
   .cardDiv2 {
@@ -994,9 +1091,9 @@ margin-top: 1.25rem;
   .itineraryDepartureLine {
     margin-top: 0px;
   }
-  .itineraryCard {
+  /* .itineraryCard {
     height: 93.5rem;
-  }
+  } */
   .moduleContainer {
     display: flex;
     flex-wrap: wrap;

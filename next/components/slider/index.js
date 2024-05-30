@@ -26,7 +26,7 @@ export default function Slider() {
 
   return (
     <>
-      <h3>Slider</h3>
+      {/* <h3>Slider</h3> */}
 
       <div
         ref={swiperRef}
