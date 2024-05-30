@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
+
+
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import styles from '@/styles/members/login.module.css'
 import Avatar from './avatar'
+import GoogleLogin from './google-login'
 import { ImGoogle2 } from 'react-icons/im'
 import { ImFacebook2 } from 'react-icons/im'
 import { RiEyeFill } from 'react-icons/ri'
@@ -37,8 +40,6 @@ const LoginForm = () => {
   const handleFieldChange = (e) => {
     // 可以利用e.target觀察目前是在輸入或操作哪個欄位上
     setUser({ ...user, [e.target.name]: e.target.value })
-    console.log(e.target.name, e.target.type, e.target.value)
-    console.log(user)
   }
 
   // 表單送出事件處理函式
@@ -89,36 +90,17 @@ const LoginForm = () => {
 
     if (data.status === 'success') {
       const returnUser = parseJwt(data.data.accessToken)
-      localStorage.setItem('user', JSON.stringify(returnUser));
+      localStorage.setItem('user', JSON.stringify(returnUser))
       router.push('/members')
     } else {
       alert(data.message)
     }
   }
 
-  // const handleCheck = async () => {
-  //   // 檢查沒問題後再送到伺服器
-  //   const res = await fetch('http://localhost:3005/api/members/check', {
-  //     credentials: 'include', // 設定cookie或是要存取隱私資料時帶cookie到伺服器一定要加
-  //     method: 'GET',
-  //     headers: {
-  //       Accept: 'application/json',
-  //       'Content-Type': 'application/json',
-  //     },
-  //   })
 
-  //   const data = await res.json()
-
-  //   if (data.status === 'success') {
-  //     console.log(data.data)
-  //   } else {
-  //     alert(data.message)
-  //   }
-  // }
 
   return (
     <>
-   
       <main>
         <div className={`${styles.loginFormContainer} bgImg`}>
           <div className={styles.leftBox}>
@@ -171,7 +153,7 @@ const LoginForm = () => {
               <div className={styles.loginItem}>
                 <Link
                   href="/members/register"
-                  title='註冊'
+                  title="註冊"
                   className={`${styles.registerBtn}`}
                 >
                   立即加入
@@ -184,14 +166,15 @@ const LoginForm = () => {
             <div className={styles.thirdPartyLogin}>
               <h5>其他登入方式</h5>
               <div className={`${styles.loginItem} border-0`}>
-                <a href="" className={`${styles.thirdPartyLoginBtn} `}>
+                <buttom
+                  type="button"
+                  className={`${styles.thirdPartyLoginBtn} `}
+                >
                   <ImFacebook2 size={22} className={styles.facebookIcon} />
                   Facebook
-                </a>
-                <a href="" className={styles.thirdPartyLoginBtn}>
-                  <ImGoogle2 size={22} />
-                  Google
-                </a>
+                </buttom>
+
+                <GoogleLogin />
               </div>
             </div>
           </div>

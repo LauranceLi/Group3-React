@@ -1,30 +1,62 @@
-import React, { useState } from 'react'
-import OtpInput from 'react-otp-input'
-import Modal from '@/components/layout/modal'
+// VerificationComponent.jsx
+import React, { useState } from 'react';
+import axios from 'axios';
 
-export default function App() {
-  const [otp, setOtp] = useState('')
-  const handleChange = (otp) => {
-    if (otp.length <= 6 && 0 < otp.length) {
-      setOtp(otp)
+const VerificationComponent = () => {
+  const [email, setEmail] = useState('');
+  const [code, setCode] = useState('');
+  const [step, setStep] = useState(1);
+  const [message, setMessage] = useState('');
+
+  const sendVerificationEmail = async () => {
+    try {
+      await axios.post('http://localhost:3005/api/members/send-verification-email', { email });
+      setStep(2);
+    } catch (error) {
+      setMessage('Error sending email');
     }
-  }
+  };
 
-  // const clear = () => {
-  //   setOtp('');
-  // }
+  const verifyCode = async () => {
+    try {
+      const response = await axios.post('http://localhost:3005/api/members/verify-code', { email, code });
+      if (response.data.success) {
+        alert('認證成功');
+      } else {
+        alert('認證碼不正確');
+      }
+    } catch (error) {
+      setMessage('Verification failed');
+    }
+  };
 
   return (
-    <>
-      <OtpInput
-        value={otp}
-        onChange={handleChange}
-        numInputs={6}
-        renderSeparator={<span>-</span>}
-        renderInput={(props) => <input {...props} />}
-      />
-      <Modal></Modal>
-      {/* <button type='button' onClick={clear}>清除</button> */}
-    </>
-  )
-}
+    <div>
+      {step === 1 && (
+        <div>
+          <input
+            type="email"
+            placeholder="Enter your email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <button onClick={sendVerificationEmail}>認證信箱按鈕</button>
+        </div>
+      )}
+      {step === 2 && (
+        <div>
+          <input
+            type="text"
+            placeholder="Enter verification code"
+            value={code}
+            onChange={(e) => setCode(e.target.value)}
+          />
+          <button onClick={verifyCode}>驗證碼驗證</button>
+        </div>
+      )}
+      {message && <p>{message}</p>}
+    </div>
+  );
+};
+
+export default VerificationComponent;

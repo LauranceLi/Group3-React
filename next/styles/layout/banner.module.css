@@ -1,0 +1,13 @@
+.lecturesBanner {
+  background-image: url(/images/tes.jpg);
+}
+
+/* 
+1 - 在這裡加入圖片
+2 - 引用的時候記得傳入這個className，格式為字串
+3 - 範例： <Banner imgClassName={"styles.itineraryBanner"} >
+
+.itineraryBanner{
+  background-image: url(/images/tes.jpg)
+}
+*/
