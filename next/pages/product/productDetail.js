@@ -2,8 +2,9 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
-
-
+import Header from '../../components/layout/head'
+import Footer from '../../components/layout/footer'
+import Navbar from '@/components/layout/navbar'
 const updateCart = ({ productId, count }) => {
   let cart = localStorage.getItem('cart')
     ? JSON.parse(localStorage.getItem('cart'))
@@ -16,7 +17,7 @@ const ProductDetail = () => {
 
   const { query } = router
   if (!query) router.push('/product')
-  const { title, src, type, desc, productId } = query || {}
+  const { title, src, type, desc, productId, price } = query || {}
   const [cart, setCart] = useState(undefined)
   const [count, setCount] = useState(0)
   const [btnHover, setBtnHover] = useState(false)
@@ -29,28 +30,32 @@ const ProductDetail = () => {
   }, [])
   return (
     <>
+      <Navbar />
+      <Header />
       <Head>
         <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
         />
       </Head>
-      <div class="custom-shape-divider-top-1716194365">
-        <svg
-          data-name="Layer 1"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 1200 120"
-          preserveAspectRatio="none"
-        >
-          <path
-            d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z"
-            class="shape-fill"
-          ></path>
-        </svg>
+      <div style={{ position: 'relative' }}>
+        <div class="custom-shape-divider-top-1716194365">
+          <svg
+            data-name="Layer 1"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 1200 120"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z"
+              class="shape-fill"
+            ></path>
+          </svg>
+        </div>
+        <h1 style={{ position: 'relative', color: 'white', marginLeft: 250 }}>
+          {`${type} - ${title}`}
+        </h1>
       </div>
-      <h1 style={{ position: 'relative', color: 'white', marginLeft: 250 }}>
-        {`${type} - ${title}`}
-      </h1>
       <div
         style={{
           display: 'flex',
@@ -119,13 +124,17 @@ const ProductDetail = () => {
                       }`}
                     ></i>
                   </div>
-                  <div style={{ margin: 10 }}>{`共 ${count} 件 `}</div>
+                  <div style={{ margin: 10 }}>
+                    <span>{`共 ${count} 件 `}</span>
+                    <span>價格:{price * count}</span>
+                  </div>
                 </span>
               </span>
             </div>
           </div>
         </div>
       </div>
+      <Footer />
     </>
   )
 }

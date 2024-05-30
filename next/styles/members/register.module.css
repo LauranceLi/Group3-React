@@ -1,12 +1,13 @@
 .registerFormContainer {
   height: 100%;
   display: flex;
+  background-attachment: fixed;
   background: linear-gradient(
       0deg,
       rgba(11, 21, 48, 0.2) 0%,
       rgba(11, 21, 48, 0.2) 100%
     ),
-    url(../../public/images/lake.jpg) lightgray 30% / cover no-repeat;
+    url(../../public/images/forest.jpg) lightgray 30% / cover no-repeat;
 }
 
 @media only screen and (max-width: 1024px) {
@@ -69,13 +70,43 @@
   gap: 0.5rem;
 }
 .registerTitle {
-  background-color: var(--primary-color-75);
   padding: 2rem 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  box-shadow: 0 0.3px 0.7px rgba(0, 0, 0, 0.126),
+    0 0.9px 1.7px rgba(0, 0, 0, 0.179), 0 1.8px 3.5px rgba(0, 0, 0, 0.224),
+    0 3.7px 5.3px rgba(0, 0, 0, 0.277), 0 10px 20px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(7px);
+  transition: 0.5s ease;
+}
+
+.registerTitle:hover{
+  background-color: rgb(0, 0, 0, 0.3);
+  backdrop-filter: blur(1px);
 }
 
 .registerTitle h2 {
+  letter-spacing: 5px;
   color: white;
   margin: 0;
+  cursor: pointer;
+}
+
+.group3 {
+  background: linear-gradient(90deg, var(--primary-color), var(--primary-color));
+  background-size: 0 100px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-clip: text;
+  transition: .6s all linear;
+}
+
+.registerTitle:hover .group3 {
+  background-size: 100% 100px;
+  color: transparent;
 }
 @media only screen and (max-width: 1440px) {
   .registerForm,
@@ -111,7 +142,7 @@
 
 .thirdPartyLogin,
 .registerForm {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.55);
   padding: 1.2rem 1.2rem;
 }
 
@@ -142,12 +173,6 @@
 .eyeIcon:focus {
   outline: none;
 }
-
-
-
-
-
-
 
 .warning,
 .success,
@@ -191,7 +216,6 @@
   margin-left: 0.2rem;
   color: var(--primary-color);
 }
-
 
 .thirdPartyLogin .registerItem {
   width: 90%;

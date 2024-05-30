@@ -232,7 +232,7 @@ const RegisterForm = () => {
       <div className={`${styles.registerFormContainer} bg-img`}>
         <div className={styles.registerBox}>
           <div className={styles.registerTitle}>
-            <h2>歡迎加入締杉旅遊</h2>
+            <h2>歡迎加入<span className={styles.group3}>締杉旅遊</span></h2>
           </div>
 
           <div className={styles.thirdPartyLogin}>

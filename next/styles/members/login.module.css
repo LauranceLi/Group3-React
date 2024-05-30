@@ -389,6 +389,7 @@
   color: white;
   display: flex;
   width: 50%;
+  max-width: 10rem;
   height: 2.5rem;
   padding: 0px 2%;
   margin: 0px 0.3rem;

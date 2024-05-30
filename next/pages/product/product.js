@@ -9,7 +9,10 @@ import imgSrc from '../../public/images/services.jpg'
 import { useNavigate } from 'react-router-dom'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
-
+// import Slider from './slider'
+import Header from '../../components/layout/head'
+import Footer from '../../components/layout/footer'
+import Navbar from '@/components/layout/navbar'
 const FaQComponent = ({ options, setSearch }) => {
   const [activeIndex, setActiveIndex] = useState(null)
 
@@ -17,35 +20,37 @@ const FaQComponent = ({ options, setSearch }) => {
     setActiveIndex(activeIndex === index ? null : index)
   }
   return (
-    <div className="faq-container">
-      <div
-        className="faq-item"
-        onClick={() => {
-          toggleAnswer(0)
-        }}
-      >
-        <div className="faq-question">商品分類</div>
-        <div className="icon-container">
-          <i
-            className={
-              activeIndex === 0
-                ? 'fas fa-chevron-right  active'
-                : 'fas fa-chevron-right '
-            }
-          ></i>
+    <>
+      <div className="faq-container">
+        <div
+          className="faq-item"
+          onClick={() => {
+            toggleAnswer(0)
+          }}
+        >
+          <div className="faq-question">商品分類</div>
+          <div className="icon-container">
+            <i
+              className={
+                activeIndex === 0
+                  ? 'fas fa-chevron-right  active'
+                  : 'fas fa-chevron-right '
+              }
+            ></i>
+          </div>
+        </div>
+        <div className={activeIndex === 0 ? 'faq-answer active' : 'faq-answer'}>
+          {options && options.length
+            ? options.map((d) => (
+                <p className="catOptions" onClick={() => setSearch(d.type)}>
+                  {d.type}
+                  <span style={{ marginLeft: 15 }}>{`(${d.num})`}</span>
+                </p>
+              ))
+            : null}
         </div>
       </div>
-      <div className={activeIndex === 0 ? 'faq-answer active' : 'faq-answer'}>
-        {options && options.length
-          ? options.map((d) => (
-              <p className="catOptions" onClick={() => setSearch(d.type)}>
-                {d.type}
-                <span style={{ marginLeft: 15 }}>{`(${d.num})`}</span>
-              </p>
-            ))
-          : null}
-      </div>
-    </div>
+    </>
   )
 }
 
@@ -57,6 +62,7 @@ const ImgComponent = (props) => {
     <div className="card">
       {img ? (
         <div
+          style={{ height: '100%', display: 'flex', flexDirection: 'column' }}
           onClick={() => {
             router.push({
               pathname: '/product/productDetail',
@@ -64,13 +70,11 @@ const ImgComponent = (props) => {
             })
           }}
         >
-          {/* <h3>{img.name}</h3> */}
-          <img
-            alt=""
-            src={img.src ? img.src : null}
-            style={{ width: 300 }}
-          ></img>
-          <h2 className="prodTitle">{img.title}</h2>
+          <img alt="" src={img.src ? img.src : null} style={{ flex: 1 }}></img>
+          <h2 className="prodTitle">
+            <span>{img.title}</span>
+            <span>{img.price}</span>
+          </h2>
         </div>
       ) : null}
     </div>
@@ -318,6 +322,7 @@ const Product = () => {
         title: item.product,
         type: item.type,
         desc: item.description,
+        price: item.price,
       }))
       setData(productData)
       setOptions(countItemsByType(productData))
@@ -336,6 +341,9 @@ const Product = () => {
 
   return (
     <>
+      <Navbar />
+
+      <Header />
       <Head>
         <link
           rel="stylesheet"
@@ -371,7 +379,14 @@ const Product = () => {
                 </div>
               </div>
             </div>
-            <div style={{ flex: 0.8 }}>
+            <div
+              style={{
+                flex: 0.8,
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+              }}
+            >
               {data?.length ? (
                 <FaQComponent
                   options={
@@ -384,13 +399,16 @@ const Product = () => {
                 />
               ) : null}
             </div>
+            {/* <Slider/> */}
           </div>
           <div className="">
             <ProductList data={products} ref={listRef} />
           </div>
         </div>
       </div>
+      <Footer />
     </>
   )
 }
+ProductList.displayName = 'ProductList'
 export default Product
