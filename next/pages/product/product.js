@@ -410,4 +410,5 @@ const Product = () => {
     </>
   )
 }
+ProductList.displayName = 'ProductList'
 export default Product
