@@ -1,7 +1,7 @@
 import { DataTypes } from 'sequelize'
 
 export default async function OrderDetail(sequelize) {
-  return sequelize.define(
+  const OrderDetail = sequelize.define(
     'OrderDetail',
     {
       detail_id: {
@@ -48,4 +48,5 @@ export default async function OrderDetail(sequelize) {
       updatedAt: 'updated_at',
     }
   )
+  return OrderDetail
 }

@@ -1,7 +1,7 @@
 import { DataTypes } from 'sequelize'
 
 export default async function Order(sequelize) {
-  return sequelize.define(
+  const Order = sequelize.define(
     'Order',
     {
       order_id: {
@@ -88,6 +88,18 @@ export default async function Order(sequelize) {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      payment_status: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+      shipping_status: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+      order_status: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
     },
     {
       tableName: 'order', //直接提供資料表名稱
@@ -98,4 +110,5 @@ export default async function Order(sequelize) {
       updatedAt: 'updated_at',
     }
   )
+  return Order
 }
