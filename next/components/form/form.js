@@ -104,16 +104,11 @@ const MyFormComponent = () => {
           onClick={() => {
             // 重置需要自行設定回初始化值
             setFormData({
-              name: '榮恩',
-              email: 'ron@test.com',
-              mobile: '0910123123',
-              recipientName: '榮恩',
-              recipientMobile: '0910123123',
-              // paymentMethod: '綠界科技', //type='radio'
-              // invoiceType: '電子載具', //type='radio'
-              invoiceValue: '/2345678',
-              // shippingMethod: '賣家宅配', //type='radio'
-              shippingAddress: 'cc',
+              name: 'Group3',
+              email: 'group3@gmail.com',
+              mobile: '0970265836',
+              recipientName: 'Group3',
+              recipientMobile: '0970265836',
               agreement: true,
             })
           }}
@@ -249,182 +244,193 @@ const MyFormComponent = () => {
             )}
           </div>
           <div className="mt-5 mb-3">
-            <h4 className="bottom-line d-inline">發票類型</h4>
+        <h4 className="bottom-line d-inline">發票類型</h4>
+        </div>
+        <div className="row mt-3 mb-3">
+        <div className="col text-center">
+          <div className="form-check form-check-inline">
+            <input
+              type="radio"
+              className="btn-check"
+              name="invoiceType"
+              id="option4"
+              value="電子載具"
+              onChange={handleInputChange}
+            />
+            <label className="btn btn-outline-dark" htmlFor="option4">
+              電子載具
+            </label>
           </div>
-          <div className="row mt-3 mb-3">
-            <div className="col text-center">
-              <div className="form-check form-check-inline">
-                <input
-                  type="radio"
-                  className="btn-check"
-                  name="invoiceType"
-                  id="option4"
-                  value="電子載具"
-                  onChange={handleInputChange}
-                />
-                <label className="btn btn-outline-dark" htmlFor="option4">
-                  電子載具
-                </label>
-              </div>
-            </div>
-            <div className="col text-center">
-              <div className="form-check form-check-inline">
-                <input
-                  type="radio"
-                  className="btn-check"
-                  name="invoiceType"
-                  id="option5"
-                  value="三聯發票"
-                  onChange={handleInputChange}
-                />
-                <label className="btn btn-outline-dark" htmlFor="option5">
-                  三聯發票
-                </label>
-              </div>
-            </div>
-            {errors.invoiceType && (
-              <p className="text-danger">{errors.invoiceType}</p>
-            )}
+        </div>
+        <div className="col text-center">
+          <div className="form-check form-check-inline">
+            <input
+              type="radio"
+              className="btn-check"
+              name="invoiceType"
+              id="option5"
+              value="三聯發票"
+              onChange={handleInputChange}
+            />
+            <label className="btn btn-outline-dark" htmlFor="option5">
+              三聯發票
+            </label>
           </div>
-          <div className="ship711">
-            <div className="mb-3 mt-5">
-              <h4 className="bottom-line d-inline">輸入載具號碼</h4>
-            </div>
-            <div className="col-12">
-              <div className="col">載具 : </div>
-              <input
-                type="text"
-                className="form-control"
-                name="invoiceValue"
-                value={formData.invoiceValue}
-                onChange={handleInputChange}
-              />
-            </div>
-            {errors.invoiceValue && (
-              <p className="text-danger">{errors.invoiceValue}</p>
-            )}
+        </div>
+        {errors.invoiceType && (
+          <p className="text-danger">{errors.invoiceType}</p>
+        )}
+        </div>
+        {formData.invoiceType === '電子載具' && (
+        <div className="ship711">
+          <div className="mb-3 mt-5">
+            <h4 className="bottom-line d-inline">輸入載具號碼</h4>
           </div>
-          <div className="ship711">
-            <div className="mb-3 mt-5">
-              <h4 className="bottom-line d-inline">輸入統編號碼</h4>
-            </div>
-            <div className="col-12">
-              <div className="col">統編 : </div>
-              <input
-                type="text"
-                className="form-control"
-                name="invoiceValue"
-                onChange={handleInputChange}
-              />
-            </div>
-            {errors.invoiceValue && (
-              <p className="text-danger">{errors.invoiceValue}</p>
-            )}
+          <div className="col-12">
+            <div className="col">載具 : </div>
+            <input
+              type="text"
+              className="form-control"
+              name="invoiceValue"
+              value={formData.invoiceValue}
+              onChange={handleInputChange}
+            />
           </div>
+          {errors.invoiceValue && (
+            <p className="text-danger">{errors.invoiceValue}</p>
+          )}
+        </div>
+        )}
+        {formData.invoiceType === '三聯發票' && (
+        <div className="ship711">
+          <div className="mb-3 mt-5">
+            <h4 className="bottom-line d-inline">輸入統編號碼</h4>
+          </div>
+          <div className="col-12">
+            <div className="col">統編 : </div>
+            <input
+              type="text"
+              className="form-control"
+              name="invoiceValue"
+              value={formData.invoiceValue}
+              onChange={handleInputChange}
+            />
+          </div>
+          {errors.invoiceValue && (
+            <p className="text-danger">{errors.invoiceValue}</p>
+          )}
+        </div>
+        )}
           <div className=" mb-5">
-            <div className="mt-5 mb-3">
-              <h4 className="bottom-line d-inline">送貨方式</h4>
-            </div>
-            <div className="row mt-3">
-              <div className="col text-center">
-                <div className="form-check form-check-inline">
-                  <input
-                    type="radio"
-                    className="btn-check"
-                    name="shippingMethod"
-                    id="option6"
-                    value="超商取貨"
-                    onChange={handleInputChange}
-                  />
-                  <label className="btn btn-outline-dark" htmlFor="option6">
-                    超商取貨
-                  </label>
-                </div>
-              </div>
-              <div className="col text-center">
-                <div className="form-check form-check-inline">
-                  <input
-                    type="radio"
-                    className="btn-check"
-                    name="shippingMethod"
-                    id="option7"
-                    value="賣家宅配"
-                    onChange={handleInputChange}
-                  />
-                  <label className="btn btn-outline-dark" htmlFor="option7">
-                    賣家宅配
-                  </label>
-                </div>
-              </div>
-              <div className="col text-center"></div>
-              {errors.shippingMethod && (
-                <p className="text-danger">{errors.shippingMethod}</p>
-              )}
-            </div>
-            <div className="ship711">
-              <div className="mb-3 mt-5">
-                <h4 className="bottom-line d-inline">7-11 運送商店選擇</h4>
-              </div>
-              <button
-                onClick={(e) => {
-                  e.preventDefault()
-                  openWindow()
-                }}
-                className="btn btn-dark mb-3"
-              >
-                選擇門市
-              </button>
-              <br />
-              <div className=" col-12">
-                <div className="col">門市名稱 : </div>
-                <input
-                  type="text"
-                  value={store711.storename}
-                  disabled
-                  className="form-control"
-                  name="shippingAddress"
-                  onChange={handleInputChange}
-                />
-              </div>
-              <br />
-              <div className="col-12">
-                <div className="col">門市地址 : </div>
-                <input
-                  type="text"
-                  value={store711.storeaddress}
-                  disabled
-                  className="form-control"
-                  name="shippingAddress"
-                  onChange={handleInputChange}
-                />
-              </div>
-            </div>
-            <div className="row customer-info">
-              <div className="mb-3 mt-5">
-                <h4 className="bottom-line d-inline">宅配地址</h4>
-              </div>
-              <TWZipCode
-                initPostcode={formData.postcode}
-                onPostcodeChange={handlePostcodeChange}
-                name="TWZipCode"
+          <div className="mt-5 mb-3">
+          <h4 className="bottom-line d-inline">送貨方式</h4>
+        </div>
+        <div className="row mt-3">
+          <div className="col text-center">
+            <div className="form-check form-check-inline">
+              <input
+                type="radio"
+                className="btn-check"
+                name="shippingMethod"
+                id="option6"
+                value="超商取貨"
+                onChange={handleInputChange}
               />
-              <div className="col zipcode_address">
-                <label htmlFor="address">
-                  <h6>詳細地址</h6>
-                </label>
-                <input
-                  type="text"
-                  name="shippingAddress"
-                  value={formData.shippingAddress}
-                  id="address"
-                  className="form-control"
-                  onChange={handleInputChange}
-                />
-              </div>
-              {errors.shippingAddress && (
-                <p className="text-danger">{errors.shippingAddress}</p>
-              )}
+              <label className="btn btn-outline-dark" htmlFor="option6">
+                超商取貨
+              </label>
             </div>
+          </div>
+          <div className="col text-center">
+            <div className="form-check form-check-inline">
+              <input
+                type="radio"
+                className="btn-check"
+                name="shippingMethod"
+                id="option7"
+                value="賣家宅配"
+                onChange={handleInputChange}
+              />
+              <label className="btn btn-outline-dark" htmlFor="option7">
+                賣家宅配
+              </label>
+            </div>
+          </div>
+          <div className="col text-center"></div>
+          {errors.shippingMethod && (
+            <p className="text-danger">{errors.shippingMethod}</p>
+          )}
+        </div>
+        
+        {formData.shippingMethod === '超商取貨' && (
+          <div className="ship711">
+            <div className="mb-3 mt-5">
+              <h4 className="bottom-line d-inline">7-11 運送商店選擇</h4>
+            </div>
+            <button
+              onClick={(e) => {
+                e.preventDefault()
+                openWindow()
+              }}
+              className="btn btn-dark mb-3"
+            >
+              選擇門市
+            </button>
+            <br />
+            <div className="col-12">
+              <div className="col">門市名稱 : </div>
+              <input
+                type="text"
+                value={store711.storename}
+                disabled
+                className="form-control"
+                name="shippingAddress"
+                onChange={handleInputChange}
+              />
+            </div>
+            <br />
+            <div className="col-12">
+              <div className="col">門市地址 : </div>
+              <input
+                type="text"
+                value={store711.storeaddress}
+                disabled
+                className="form-control"
+                name="shippingAddress"
+                onChange={handleInputChange}
+              />
+            </div>
+          </div>
+        )}
+        
+        {formData.shippingMethod === '賣家宅配' && (
+          <div className="row customer-info">
+            <div className="mb-3 mt-5">
+              <h4 className="bottom-line d-inline">宅配地址</h4>
+            </div>
+            <TWZipCode
+              initPostcode={formData.postcode}
+              onPostcodeChange={handlePostcodeChange}
+              name="TWZipCode"
+            />
+            <div className="col zipcode_address">
+              <label htmlFor="address">
+                <h6>詳細地址</h6>
+              </label>
+              <input
+                type="text"
+                name="shippingAddress"
+                value={formData.shippingAddress}
+                id="address"
+                className="form-control"
+                onChange={handleInputChange}
+              />
+            </div>
+            {errors.shippingAddress && (
+              <p className="text-danger">{errors.shippingAddress}</p>
+            )}
+          </div>
+        )}
           </div>
         </div>
       </form>
