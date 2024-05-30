@@ -8,7 +8,6 @@ import Navbar from '@/components/layout/navbar'
 import Footer from '@/components/layout/footer'
 import Preloader from '@/components/layout/preloader'
 
-
 export default function List() {
   const [total, setTotal] = useState(0)
   const [pageCount, setPageCount] = useState(1)
@@ -28,7 +27,6 @@ export default function List() {
     const daysMatch = daysString.match(/\d+/) // 提取文字中的數字
     return daysMatch ? parseInt(daysMatch[0]) : 0 // 將提取的數字轉換為整數
   }
-
 
   const [orderby, setOrderby] = useState({ sort: 'travel_id', order: 'asc' })
 
@@ -104,7 +102,7 @@ export default function List() {
 
   return (
     <>
-    <Preloader />
+      <Preloader />
       <Navbar />
       <main className={styles.itineraryMain}>
         <div className={styles.itineraryDiv}>
@@ -148,6 +146,7 @@ export default function List() {
 
                   <div className={styles.itineraryProductsItem1}>
                     <div className={styles.SliderDiv}>
+                    <span>&nbsp;{days}天以內</span>
                       <input
                         type="range"
                         min={0}
@@ -155,7 +154,6 @@ export default function List() {
                         value={days}
                         onChange={(e) => setDays(extractDays(e.target.value))}
                       />
-                      <span>&nbsp;{days}天</span>
                     </div>
                   </div>
                 </div>
@@ -191,8 +189,11 @@ export default function List() {
                       setTitleLike(e.target.value)
                     }}
                   />
-                  <div>
-                    <button onClick={handleSearch}>搜尋</button>
+                  <div className={styles.searchBtn}>
+                    {/* <button onClick={handleSearch}>搜尋</button> */}
+                    <button onClick={handleSearch} class="btn">
+                      <span>搜尋行程</span>
+                    </button>
                   </div>
                 </div>
               </div>
