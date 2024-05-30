@@ -45,9 +45,20 @@ export default function GroupCart2() {
     // 如果 checkbox 已經勾選，執行訂購完成的相關操作
     toast.success('報名成功')
   }
+
+  // 付款按鈕
+  const handlePay = async () => {
+    try {
+      window.location.href = 'http://localhost:3005/api/ec-group/?amount=${depositAmount}';
+    } catch (error) {
+      console.error('跳轉時出錯:', error);
+    }
+  };
+  
+
   return (
     <>
-    <Preloader />
+      <Preloader />
       <Navbar />
       <main className={styles.GroupCart1}>
         <br />
@@ -366,6 +377,13 @@ export default function GroupCart2() {
                 </div>
               )}
               <div className={styles.agreementDiv}>
+              
+                <div className="m-1">
+                  <button className="btn btn-primary" onClick={handlePay}>
+                    訂金付款
+                  </button>
+                </div>
+                
                 <div className="m-1">
                   <button className="btn btn-primary" onClick={handleFinish}>
                     完成訂購
