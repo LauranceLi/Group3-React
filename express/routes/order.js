@@ -46,6 +46,10 @@ router.post('/', async (req, res) => {
     const paymentStatus = paymentMethod === '貨到付款' ? '未付款' : '已付款'
     const shippingStatus = '未出貨'
     const orderStatus = '已成立'
+    // 更新訂單狀態函式
+    const paymentStatus = paymentMethod === '貨到付款' ? '未付款' : '已付款'
+    const shippingStatus = '未出貨'
+    const orderStatus = '已成立'
 
     // 創建訂單
     await Order.create(
@@ -71,6 +75,9 @@ router.post('/', async (req, res) => {
         payment_status: paymentStatus,
         shipping_status: shippingStatus,
         order_status: orderStatus,
+        payment_status: paymentStatus,
+        shipping_status: shippingStatus,
+        order_status: orderStatus,
         // 其他訂單相關欄位
       },
       { transaction }
@@ -79,7 +86,7 @@ router.post('/', async (req, res) => {
     // 創建訂單詳細資料
     let totalAmount = 0
     for (const item of items) {
-      const { id, name, price, qty } = item
+      const { id, name, title, price, qty } = item
       const itemTotal = price * qty
       totalAmount += itemTotal
 
@@ -88,6 +95,9 @@ router.post('/', async (req, res) => {
           member_id: memberId,
           transaction_id: transactionID,
           product_id: id,
+          product_name: name || title,
+          quantity: qty,
+          unit_price: price,
           product_name: name,
           quantity: qty,
           unit_price: price,
@@ -96,6 +106,7 @@ router.post('/', async (req, res) => {
         { transaction }
       )
     }
+    // 更新
     // 更新
     await Order.update(
       { total_amount: totalAmount },
@@ -143,8 +154,41 @@ router.post('/', async (req, res) => {
       .catch((error) => {
         console.error('Error fetching member points:', error)
       })
+
+    // 使用 Sequelize 查詢特定 member_id 的 points
+    MembersInfo.findOne({
+      attributes: ['points'], // 只選擇 points 欄位
+      where: { member_id: memberId }, // 指定查詢條件
+    })
+      .then(async (memberInfo) => {
+        if (memberInfo) {
+          // 如果找到對應的 memberInfo，則打印 points
+          console.log('Member points:', memberInfo.points)
+
+          // 更新會員的積分，將已使用的積分從總積分中扣除
+          const updatedPoints = memberInfo.points - discountAmount * 300
+
+          // 執行更新操作
+          await MembersInfo.update(
+            { points: updatedPoints },
+            { where: { member_id: memberId } }
+          )
+          res.json({
+            message: memberInfo.points,
+            discountAmount,
+            updatedPoints,
+          })
+          console.log('Member points updated successfully')
+        } else {
+          console.log('Member not found')
+        }
+      })
+      .catch((error) => {
+        console.error('Error fetching member points:', error)
+      })
     // 提交事務
     await transaction.commit()
+    // res.json({ message: '訂單已創建成功' })
     // res.json({ message: '訂單已創建成功' })
   } catch (error) {
     // 回滾事務

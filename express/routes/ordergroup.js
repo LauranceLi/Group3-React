@@ -6,16 +6,18 @@ import { getIdParam } from '#db-helpers/db-tool.js'
 
 // 資料庫使用
 import sequelize from '#configs/db.js'
-const { Ordergroup } = sequelize.models
+const { OrderGroup } = sequelize.models
 
 /* GET home page. */
 // router.get('/', function (req, res, next) {
 //   res.render('index', { title: 'order-group' })
 // })
 
+//http://localhost:3005/api/ordergroup
+
 // GET - 得到所有資料
 router.get('/', async function (req, res) {
-  const order = await Ordergroup.findAll({ logging: console.log })
+  const order = await OrderGroup.findAll({ logging: console.log })
   // 處理如果沒找到資料
 
   // 標準回傳JSON
@@ -27,11 +29,17 @@ router.get('/:id', async function (req, res) {
   // 轉為數字
   const id = getIdParam(req)
 
-  const product = await Ordergroup.findByPk(id, {
+  const product = await OrderGroup.findByPk(id, {
     raw: true, // 只需要資料表中資料
   })
 
   return res.json({ status: 'success', data: { product } })
 })
 
+// POST - 送回資料庫
+// router.post('/ordergroup', async (req, res, next) =>{
+//   const newOrdergroup =req.body
+
+//   const [ordergroup, created] =await Ordergroup.
+// })
 export default router

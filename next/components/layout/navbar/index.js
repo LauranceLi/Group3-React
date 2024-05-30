@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Head from 'next/head'
 import cn from 'classnames'
 import styles from '@/styles/layout/navbar.module.css'
+import Drawer from '@/components/layout/drawer'
 import { ImFacebook2 } from 'react-icons/im'
 import { FaShoppingCart } from 'react-icons/fa'
 import { RiMenuFoldFill } from 'react-icons/ri'
@@ -65,9 +66,9 @@ const Navbar = ({ navItemName = '', navbarControl = '' }) => {
                       </Link>
                     </li>
                     <li className="nav-item">
-                      <a className={styles.navLink} href="services.html">
+                      <Link className={styles.navLink} href="/lectures">
                         旅遊講座
-                      </a>
+                      </Link>
                     </li>
 
                     <li className="nav-item">
@@ -106,12 +107,8 @@ const Navbar = ({ navItemName = '', navbarControl = '' }) => {
                   </div>
 
                   <div className={styles.menuIcon}>
-                    <button type="button" className={styles.menuBtn}>
-                      <RiMenuFoldFill size={25} />
-                    </button>
+                    <Drawer />
                   </div>
-                  {/* Menu Icon */}
-                  {/* <span className="navbar-toggler-icon" id="menuIcon" /> */}
                 </div>
               </div>
             </div>

@@ -17,6 +17,7 @@ export default function CartList() {
       itemsData.push({
         id: item.id,
         name: item.name,
+        title:item.title,
         price: item.price,
         qty: item.qty,
         // 添加其他你需要的物品信息
@@ -45,8 +46,8 @@ export default function CartList() {
         return (
           <div className="travel-info" key={v.id}>
             <div className="travel-saleitem">
-              <img src={`/pics/${v.photos.split(',')[0]}`} alt="" width={150} />
-              <span className="bottom-line m-2">{v.name}</span>
+              {/* <img src={`/pics/${v.photos.split(',')[0]}`} alt="" width={150} /> */}
+              <span className="bottom-line m-2">{v.name}{v.title}</span>
             </div>
             <div className="unit-price text-center">{v.price}</div>
             <div className="unit-price text-center">

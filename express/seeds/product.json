@@ -1,0 +1,33 @@
+[
+{"type":"header","version":"5.2.1","comment":"Export to JSON plugin for PHPMyAdmin"},
+{"type":"database","name":"the_travel_project"},
+{"type":"table","name":"product","database":"the_travel_project","data":
+[
+{"id":"1","picture":"\/product_pics\/01.jpg","product_id":"product_01","product":"旅遊質感行李吊牌","price":"199","type":"旅遊必帶","description":"環保、自然，回到原點、以人為本。在設計上都是簡潔大方、材質上都是能夠重複使用，希望出遊一趟，除了美好的回憶，不再產生對地球不友善的物質或行為。"},
+{"id":"2","picture":"\/product_pics\/02.png","product_id":"product_02","product":"帆布行李束箱帶","price":"249","type":"旅遊必帶","description":"環保、自然，回到原點、以人為本。在設計上都是簡潔大方、材質上都是能夠重複使用，希望出遊一趟，除了美好的回憶，不再產生對地球不友善的物質或行為。"},
+{"id":"3","picture":"\/product_pics\/03.jpg","product_id":"product_03","product":"帆布拉鍊袋","price":"199","type":"旅遊必帶","description":"環保、自然，回到原點、以人為本。在設計上都是簡潔大方、材質上都是能夠重複使用，希望出遊一趟，除了美好的回憶，不再產生對地球不友善的物質或行為。"},
+{"id":"4","picture":"\/product_pics\/04.jpg","product_id":"product_04","product":"男女款滑雪外套","price":"9990","type":"冬季旅遊","description":" 重　　量：937g 防水防風＆透氣透濕 外　層：MOTRANS 　　　【耐水度】10000 mmH2O or higher(JIS L 1092) 　　　【透濕度】8000 g\/㎡ 24h or higher(JIS L1099 B-1) "},
+{"id":"5","picture":"\/product_pics\/05.jpg","product_id":"product_05","product":"防水滑雪手套(併指)","price":"1380","type":"冬季旅遊","description":"拉鍊有膠條防水保護 Primaloft 保暖、快乾、透氣 外層小口袋可放置零錢、票卡等小物手腕掛手繩設計,避免手套脫落遺失硬泡棉可保護手指關節"},
+{"id":"6","picture":"\/product_pics\/06.jpg","product_id":"product_06","product":"機能保暖滑雪襪 ","price":"680","type":"冬季旅遊","description":"台灣自創品牌 - 銀離子纖維吸濕排汗、抗菌除臭、調節溫度 - 脛骨加厚織法、保護腿部肌肉 - 腳背加壓足弓拉提保護 - 兩種尺寸：小 (22cm-25cm) \/ 大 (25.5cm-28.5cm)"},
+{"id":"7","picture":"\/product_pics\/07.png","product_id":"product_07","product":"防水滑雪手套 三指 ","price":"1580","type":"冬季旅遊","description":"拉鍊有膠條防水保護\n- Primaloft 保暖、快乾、透氣\n- 外層小口袋可放置零錢、票卡等小物\n- 手腕掛手繩設計，避免手套脫落遺失\n- 硬泡棉可保護手指關節\n"},
+{"id":"8","picture":"\/product_pics\/08.jpg","product_id":"product_08","product":"鋪棉帽寬衣","price":"1880","type":"冬季旅遊","description":"街頭百搭 素面 加絨 連帽T恤 材質: 純棉 + 聚酯纖維"},
+{"id":"9","picture":"\/product_pics\/09.jpg","product_id":"product_09","product":"強效運動款足墊","price":"2880","type":"保健用品","description":"擁有專利的3DBS動態足弓支撐，提供足弓如拱橋般的支撐。依不同足弓高低設計，硬中帶軟的材質可動態靈活調整，自然回彈又不僵硬，分散足底壓力，降低足部額外的負擔。\n\n"},
+{"id":"10","picture":"\/product_pics\/10.jpg","product_id":"product_10","product":"3C隨身收納包","price":"288","type":"旅遊必帶","description":"雙層空間,告別凌亂,魔術貼開合設計,便攜式手提設計"},
+{"id":"11","picture":"\/product_pics\/11.jpg","product_id":"product_11","product":"真空分裝瓶","price":"30","type":"旅遊必帶","description":"\n產品名稱：真空分裝瓶\n產品材質：AS+PP\n產品款式：乳液瓶 \/ 噴霧瓶\n"},
+{"id":"12","picture":"\/product_pics\/12.jpg","product_id":"product_12","product":"旅行漱口杯","price":"59","type":"旅遊必帶","description":"盥洗收納 超方便 旅行、出差必備體積小 大容量 不佔空間造型簡約 低調時尚多種款式選項顏色 "},
+{"id":"13","picture":"\/product_pics\/13.jpg","product_id":"product_13","product":"多功能護照套","price":"179","type":"旅遊必帶","description":"出國旅行最重要的護照機票 ,等等還找不到收納它們合適的家嗎,怕自己的卡被盜刷提心吊膽嗎,旅遊必備「防盜刷多功能護照套」"},
+{"id":"14","picture":"\/product_pics\/14.jpg","product_id":"product_14","product":"大容量行李箱 ","price":"2990","type":"旅遊必帶","description":"1.側邊金屬包角防護設計，讓行李箱更堅固耐用。\n2.釋放雙手多功能設計:隱藏式杯架、防刮腳墊+購物袋掛鉤、USB充電孔。\n3.分層設計好收納。\n4.TPE靜音雙排萬向輪。\n5.加厚鋁合金拉桿。\n6.三位密碼鎖。 "},
+{"id":"15","picture":"\/product_pics\/15.jpg","product_id":"product_15","product":"行李秤","price":"199","type":"旅遊必帶","description":"整體尺寸：129x43x28mm\n裸重：約95g\n電源：紐扣電池一個\n顯示方式：LCD綠光顯示幕\n單位：kg lb\n最大稱量：50kg"},
+{"id":"16","picture":"\/product_pics\/16.jpeg","product_id":"product_16","product":"隨身藥盒","price":"99","type":"旅遊必帶","description":"產品材質 : 環保PP材質\n產品功能 : 分隔設計 密封儲藏\n產品顏色 : 藍紅色 \/ 黃粉色 \/ 灰白色"},
+{"id":"17","picture":"\/product_pics\/17.jpg","product_id":"product_17","product":"一次性床單","price":"199","type":"旅遊必帶","description":"名稱：一次性旅行用品\n規格：毛巾\\浴巾\\枕套\\床單\\被套\n材質：植物纖維\n特點：加厚加大\\獨立包裝\\植物纖維\n"},
+{"id":"18","picture":"\/product_pics\/18.jpg","product_id":"product_18","product":"真空壓縮袋","price":"69","type":"旅遊必帶","description":"材質； PA+PE材質\n單層厚度； 8絲 \n適用場景；臥室 衣櫃 宿舍 旅行\n風格；現代 簡約 "},
+{"id":"19","picture":"\/product_pics\/19.jpg","product_id":"product_19","product":"盥洗收納包","price":"199","type":"旅遊必帶","description":"掛勾版 盥洗收納  一進飯店或民宿 \n就可以直接把小物通通就定位,網狀的隔層~基本防水的尼龍材質"},
+{"id":"20","picture":"\/product_pics\/20.jpg","product_id":"product_20","product":"大容量登機包","price":"250","type":"旅遊必帶","description":"便攜式手提旅行包\n大容量設計 日常出行物品都能裝下\n側邊網格袋 可放置水杯雨傘等物件\n堅固耐用、承重性強\n前端拉鍊口袋 可放護照、行動電源\n"},
+{"id":"21","picture":"\/product_pics\/21.jpg","product_id":"product_21","product":"簡約化妝包","price":"99","type":"旅遊必帶","description":"超大容量｜外出補妝必備物品一次收齊\n精緻拉環｜質感皮質雙拉環 開關更便利\n防水設計｜防潑水尼龍材質 有效保護內容物\n小巧體積｜旅遊攜帶不佔空間 超好用\n優選材質｜耐磨耐用 不易損壞"},
+{"id":"22","picture":"\/product_pics\/22.jpg","product_id":"product_22","product":"合利EXP ","price":"765","type":"保健用品","description":"保健補品功能\n心臟&血壓, 維生素&礦物質, 營養食品&飲料, 壓力、睡眠及焦慮\n營養成分分類\n維生素B, 維生素E\n產地日本"},
+{"id":"23","picture":"\/product_pics\/23.jpg","product_id":"product_23","product":"緩釋型維他命C","price":"280","type":"保健用品","description":"4種族群加強補充維生素C攝取：\n1.習慣挑食、常吃零食、炸物、燒烤食物的人\n2.抽菸、處在二手煙環境的人。\n3.國民健康署建議孕婦每日多補充10mg維生素C、哺乳中媽媽多40mg維生素C。\n4.生活步調繁忙可額外補充維生素Ｃ。"},
+{"id":"24","picture":"\/product_pics\/24.jpg","product_id":"product_24","product":"日本上網卡","price":"499","type":"旅行必帶","description":"套餐內容  吃到飽不降速\n原生卡依【日本時間】計算， 其他卡片均為【台灣時間】計算，插卡日到當天23:59算第一天，到連續最後一天晚上23:59失效。\n網卡皆支援4G(LTE) 訊號，若地區、手機不支援4G(LTE)，將自動切換3G、2G訊號，皆以當地訊號為主。\n"},
+{"id":"25","picture":"\/product_pics\/25.jpg","product_id":"product_25","product":"多功能行動電源","price":"1780","type":"旅行必帶","description":"QC\/PD3.0雙協議快充 22.5W大功率快速充電\n2種自帶線＋雙口輸出＋磁吸無線充電，最高支援五台設備同時\n充電\n隱藏式手機支架 LED電量顯示 充電狀態顯示 90度旋轉收\n納插頭\n全方位安全機制保護(過充保護、短路保護、電芯保護)\n"}
+]
+}
+]

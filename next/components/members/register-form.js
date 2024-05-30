@@ -1,17 +1,17 @@
 import React, { useState } from 'react'
 import { useRouter } from 'next/router'
+import Swal from 'sweetalert2'
 import styles from '/styles/members/register.module.css'
-import { 
-  validateEmail, 
-  validatePassword, 
-  validatePasswordCheck, 
-  validateName, 
-  validateMobile 
+import {
+  validateEmail,
+  validatePassword,
+  validatePasswordCheck,
+  validateName,
+  validateMobile,
 } from '@/utils/validation'
 import GoogleLogin from './google-login'
 import { ImGoogle2, ImFacebook2 } from 'react-icons/im'
 import { RiEyeFill, RiEyeOffFill } from 'react-icons/ri'
-
 
 const RegisterForm = () => {
   // 密碼可視 / 不可視
@@ -58,8 +58,6 @@ const RegisterForm = () => {
     }
   }
 
-
-
   // 密碼檢查（完成）
   const [pwAvailableClass, setPwAvailableClass] = useState('')
   const [pwAvailableMessage, setPwAvailableMessage] = useState('')
@@ -70,7 +68,8 @@ const RegisterForm = () => {
     setUser({ ...user, [name]: value })
     if (name === 'password' || name === 'passwordCheck') {
       const newPassword = name === 'password' ? value : user.password
-      const confirmPassword = name === 'passwordCheck' ? value : user.passwordCheck
+      const confirmPassword =
+        name === 'passwordCheck' ? value : user.passwordCheck
       const pwResult = validatePassword(newPassword)
       setPwAvailableMessage(pwResult.message)
       setPwAvailableClass(pwResult.className)
@@ -155,6 +154,13 @@ const RegisterForm = () => {
 
     // 有錯誤發生，不送到伺服器去
     if (hasErrors) {
+      Swal.fire({
+        title: "請填寫必要資訊",
+        icon: 'error',
+        text: '星號註記欄位不可為空',
+        confirmButtonText: '重新填寫',
+        confirmButtonColor: '#192a56',
+      })
       return
     }
     // 表單檢查--- END ---
@@ -175,7 +181,49 @@ const RegisterForm = () => {
     if (data.status === 'success') {
       router.push('/members')
     } else {
-      alert(data.message)
+      Swal.fire({
+        title: data.message,
+        icon: data.status,
+        text: '請檢查帳號是否已被使用',
+        confirmButtonText: '重新嘗試',
+        confirmButtonColor: '#192a56',
+      })
+    }
+  }
+
+  // 檢查帳號是否可用
+  const handleEmailCheck = async (e) => {
+    const res = await fetch(
+      'http://localhost:3005/api/members/register/mailCheck',
+      {
+        credentials: 'include', // 設定cookie或是要存取隱私資料時帶cookie到伺服器一定要加
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(user),
+      }
+    )
+
+    const data = await res.json()
+
+    Swal.fire({
+      title: data.message,
+      icon: data.status,
+      // text:'此帳號未被使用',
+      confirmButtonText: '繼續填寫',
+      confirmButtonColor: '#192a56',
+    })
+
+    const className = data.status
+
+    if (data.status === 'success') {
+      setEmailAvailableMessage(data.message)
+      setEmailAvailableClass(styles.success)
+    } else {
+      setEmailAvailableMessage('請使用其他信箱')
+      setEmailAvailableClass(styles.error)
     }
   }
 
@@ -184,7 +232,7 @@ const RegisterForm = () => {
       <div className={`${styles.registerFormContainer} bg-img`}>
         <div className={styles.registerBox}>
           <div className={styles.registerTitle}>
-            <h2>歡迎加入締杉旅遊</h2>
+            <h2>歡迎加入<span className={styles.group3}>締杉旅遊</span></h2>
           </div>
 
           <div className={styles.thirdPartyLogin}>
@@ -199,13 +247,7 @@ const RegisterForm = () => {
                 <ImFacebook2 size={22} />
                 Facebook
               </a>
-              {/* <a
-                href=""
-                className={`${styles.thirdPartyLoginBtn} ${styles.googleIcon}`}
-              >
-                <ImGoogle2 size={22} />
-                Google
-              </a> */}
+
               <GoogleLogin />
             </div>
           </div>
@@ -234,8 +276,12 @@ const RegisterForm = () => {
                 <div
                   className={`${styles.registerItem}  ${styles.error} border-0 `}
                 >
-                  <button type="submit" className={`btn ${styles.checkMail}`}>
-                    驗證信箱
+                  <button
+                    type="button"
+                    className={`btn ${styles.checkMail}`}
+                    onClick={handleEmailCheck}
+                  >
+                    檢查信箱
                   </button>
                 </div>
                 <div className={`${styles.registerItem} ${pwAvailableClass}`}>

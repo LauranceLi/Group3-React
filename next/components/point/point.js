@@ -17,6 +17,7 @@ export default function Point() {
         <span>可用點數: {points}點</span>
       </div>
       <div className="d-flex col-6 m-2">
+      <div className="d-flex col-6 m-2">
         <button
           onClick={handleDecrease}
           disabled={discountAmount <= 0}

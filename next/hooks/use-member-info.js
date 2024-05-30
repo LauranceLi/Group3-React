@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react'
 
 const useMemberInfo = () => {
+  const [memberId, setMemberId] = useState()
   const [avatar, setAvatar] = useState('/images/flowers.jpg')
   const [name, setName] = useState()
   const [birthday, setBirthday] = useState()
@@ -30,6 +31,7 @@ const useMemberInfo = () => {
         const data = await res.json()
 
         if (data.status === 'success') {
+          setMemberId(data.data.member_id)
           setAvatar(data.data.avatar)
           setName(data.data.name)
           setBirthday(data.data.birthday)
@@ -51,6 +53,7 @@ const useMemberInfo = () => {
   }, [])
 
   return {
+    memberId,
     avatar,
     name,
     birthday,
