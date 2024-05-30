@@ -5,6 +5,7 @@ import Form from 'react-bootstrap/Form'
 import styles from '@/styles/itinerary.module.css'
 import Navbar from '@/components/layout/navbar'
 import Footer from '@/components/layout/footer'
+import Preloader from '@/components/layout/preloader'
 import toast from 'react-hot-toast'
 import { useOrder } from '../../hooks/use-order'
 import useOrderAmount from '@/hooks/use-order-amount' // 計算總金額、訂金、尾款
@@ -46,6 +47,7 @@ export default function GroupCart2() {
   }
   return (
     <>
+    <Preloader />
       <Navbar />
       <main className={styles.GroupCart1}>
         <br />
@@ -347,7 +349,16 @@ export default function GroupCart2() {
               </label>
               {showAlert && (
                 <div
-                  style={{ backgroundColor: 'white', color: 'red' }}
+                  style={{
+                    backgroundColor: '	#fff1f1',
+                    color: 'red',
+                    width: '25%',
+                    margin: '0 auto',
+                    padding: '1px',
+                    border: '1px solid red',
+                    borderRadius: '0px',
+                    fontSize: '14px',
+                  }}
                   className="alert"
                   role="alert"
                 >

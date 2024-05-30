@@ -8,10 +8,11 @@ import { CiCircleMinus, CiCirclePlus } from 'react-icons/ci'
 import styles from '@/styles/itinerary.module.css'
 import Navbar from '@/components/layout/navbar'
 import Footer from '@/components/layout/footer'
+import Preloader from '@/components/layout/preloader'
 import useMemberInfo from '@/hooks/use-member-info' // 引入會員資料
 import { useOrderCount } from '../../hooks/use-order-count' // 計算購買數量
 import { useOrder } from '../../hooks/use-order' // context
-import useLocalStorageOrder from '@/hooks/use-localstorage-order'; // localstorage(儲存第一頁的數據)
+import useLocalStorageOrder from '@/hooks/use-localstorage-order' // localstorage(儲存第一頁的數據)
 
 export default function GroupCart() {
   // context
@@ -129,6 +130,7 @@ export default function GroupCart() {
   }
   return (
     <>
+    <Preloader />
       <Navbar />
       <main className={styles.GroupCart1}>
         <br />
@@ -346,23 +348,28 @@ export default function GroupCart() {
             <div className={styles.second2}>
               <div className="row p-2">
                 <div className="col">
+                  <h4 style={{ fontSize: '18px', fontWeight: 600 }}>
+                    訂購須知
+                  </h4>
                   <ul>
-                    <li>
+                    <li className={styles.second2Li}>
                       1.選擇出符合您出發日期的行程，報名後確認行程表與旅遊契約書內容且填寫相關資料，並利用線上付款，完成訂購流程，我們也會
                       mail訂單通知給您。
                     </li>
-                    <li>
+                    <li className={styles.second2Li}>
                       2.詳細付款內容請依照行程內容頁中的付款說明。若您是訂購須立即付款的行程，請立即於線上即時完成
                       全額付款，若逾時未付，本站系統將自動取消訂單，不會保留您的訂位。
                     </li>
-                    <li>
+                    <li className={styles.second2Li}>
                       3.付款完成後，系統會
                       mail封付款成功通知信函給您，經專屬服務人員訂單確認OK後，最晚於出發前三天，提供行程確認單與團體行程確認文件給您，您也可以在訂單查詢中得知(若行程確認單有變更，業務人員會於出發前聯絡您)。
                     </li>
-                    <li>
+                    <li className={styles.second2Li}>
                       4.若有需要『旅行業代收轉付收據』，請通知業務人員郵寄到您指定寄送地址。
                     </li>
-                    <li>5.取消訂單/退貨依照旅遊契約、金流等相關規定辦理。</li>
+                    <li className={styles.second2Li}>
+                      5.取消訂單/退貨依照旅遊契約、金流等相關規定辦理。
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -432,14 +439,22 @@ export default function GroupCart() {
               </label>
               {showAlert && (
                 <div
-                  style={{ backgroundColor: 'white', color: 'red' }}
+                  style={{
+                    backgroundColor: '	#fff1f1',
+                    color: 'red',
+                    width: '40%',
+                    margin: '0 auto',
+                    padding: '1px',
+                    border: '1px solid red',
+                    borderRadius: '0px',
+                    fontSize: '14px',
+                  }}
                   className="alert"
                   role="alert"
                 >
                   請閱讀「訂購須知」、「旅遊契約書」、及「隱私權政策」並勾選按鈕。
                 </div>
               )}
-
               <div className={styles.agreementDiv}>
                 <div className="m-1">
                   <button

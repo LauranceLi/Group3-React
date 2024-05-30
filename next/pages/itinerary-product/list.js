@@ -6,6 +6,8 @@ import Image from 'next/image'
 import styles from '@/styles/itinerary.module.css'
 import Navbar from '@/components/layout/navbar'
 import Footer from '@/components/layout/footer'
+import Preloader from '@/components/layout/preloader'
+
 
 export default function List() {
   const [total, setTotal] = useState(0)
@@ -102,6 +104,7 @@ export default function List() {
 
   return (
     <>
+    <Preloader />
       <Navbar />
       <main className={styles.itineraryMain}>
         <div className={styles.itineraryDiv}>
@@ -120,7 +123,7 @@ export default function List() {
                         type="range"
                         min={0}
                         max={300000}
-                        step={1000}
+                        step={5000}
                         value={priceGte}
                         onChange={(e) => setPriceGte(Number(e.target.value))}
                       />
@@ -131,7 +134,7 @@ export default function List() {
                         type="range"
                         min={0}
                         max={300000}
-                        step={1000}
+                        step={5000}
                         value={priceLte}
                         onChange={(e) => setPriceLte(Number(e.target.value))}
                       />

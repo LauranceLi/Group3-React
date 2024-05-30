@@ -4,11 +4,12 @@ import { Tab, Tabs } from 'react-bootstrap'
 import styles from '@/styles/itinerary.module.css'
 import Navbar from '@/components/layout/navbar'
 import Footer from '@/components/layout/footer'
-
+import Preloader from '@/components/layout/preloader'
 
 function CountryAll() {
   return (
     <>
+    <Preloader />
     <Navbar />
       <main className={styles.itineraryMain2}>
         <div>
