@@ -7,24 +7,41 @@ import Navbar from '@/components/layout/navbar'
 import Footer from '@/components/layout/footer'
 import toast from 'react-hot-toast'
 import { useOrder } from '../../hooks/use-order'
-import  useOrderAmount  from '@/hooks/use-order-amount' // 計算總金額、訂金、尾款
-
+import useOrderAmount from '@/hooks/use-order-amount' // 計算總金額、訂金、尾款
+import { useState } from 'react'
 
 export default function GroupCart2() {
   const { order } = useOrder()
 
-    // 使用鉤子獲取總金額、訂金、尾款
-    const {
-      totalAmount,
-      depositAmount,
-      finalAmount,
-      } = useOrderAmount(order.price, order.adultQuantity, order.childQuantity)
+  // 使用鉤子獲取總金額、訂金、尾款
+  const { totalAmount, depositAmount, finalAmount } = useOrderAmount(
+    order.price,
+    order.adultQuantity,
+    order.childQuantity
+  )
 
-    const adultTotal = order.price * order.adultQuantity  // 計算 單價 * 大人數量後的小計
-    const childTotal = order.price * order.childQuantity  // 計算 單價 * 小孩數量後的小計
+  const adultTotal = order.price * order.adultQuantity // 計算 單價 * 大人數量後的小計
+  const childTotal = order.price * order.childQuantity // 計算 單價 * 小孩數量後的小計
 
+  // 提示需勾選checkbox
+  const [isChecked, setIsChecked] = useState(false)
+  const [showAlert, setShowAlert] = useState(false)
 
-  const handleReset = () => {
+  // 提示需勾選checkbox
+  const handleCheckboxChange = () => {
+    setIsChecked(!isChecked)
+    if (showAlert) {
+      setShowAlert(false)
+    }
+  }
+
+  const handleFinish = async () => {
+    if (!isChecked) {
+      setShowAlert(true)
+      return
+    }
+
+    // 如果 checkbox 已經勾選，執行訂購完成的相關操作
     toast.success('報名成功')
   }
   return (
@@ -227,97 +244,6 @@ export default function GroupCart2() {
               </div>
             </div>
             <div className={styles.orderWrite}>
-              <div className={styles.orderTitle}>
-                <h4 style={{ fontWeight: 600, fontSize: '22px' }}>
-                  填寫旅客資料
-                </h4>
-              </div>
-              <div>
-                <div className={styles.travelInfo2}>
-                  <h6 className={styles.travelSaleItem}>旅客 1</h6>
-                  <div className={styles.unitPrice}>
-                    <button
-                      type="button"
-                      className="btn btn-outline-warning"
-                      style={{ fontWeight: 600, fontSize: '14px' }}
-                    >
-                      新增旅客
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div className="row m-3">
-                <Col>
-                  <label htmlFor="name">中文姓名</label>
-                  <input
-                    type="text"
-                    placeholder="姓名"
-                    className="form-control"
-                  />
-                </Col>
-                <Col>
-                  <label htmlFor="name">英文姓名</label>
-                  <input
-                    type="text"
-                    placeholder="英文姓名(同護照)"
-                    className="form-control"
-                  />
-                </Col>
-                <Col>
-                  <label htmlFor="phone">聯絡電話</label>
-                  <input
-                    type="text"
-                    placeholder="手機號碼"
-                    className="form-control"
-                  />
-                </Col>
-              </div>
-              <Row className="m-3">
-                <Col xs={12} md={4} className="mb-3">
-                  <Form.Group controlId="gender">
-                    <Form.Label>性別</Form.Label>
-                    <Form.Select aria-label="Default select example">
-                      <option>請選擇</option>
-                      <option value="1">男</option>
-                      <option value="2">女</option>
-                    </Form.Select>
-                  </Form.Group>
-                </Col>
-                <Col xs={12} md={4} className="mb-3">
-                  <Form.Group controlId="identity">
-                    <Form.Label>身分證/護照號碼</Form.Label>
-                    <Form.Control type="text" placeholder="身分證/護照號碼" />
-                  </Form.Group>
-                </Col>
-                <Col xs={12} md={4} className="mb-3">
-                  <Form.Group controlId="birthday">
-                    <Form.Label>出生日期</Form.Label>
-                    <Form.Control
-                      type="date"
-                      placeholder=""
-                      style={{ color: 'gray' }}
-                    />
-                  </Form.Group>
-                </Col>
-              </Row>
-              <div className="row m-3">
-                <Col>
-                  <label htmlFor="address">聯絡地址</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="聯絡地址"
-                  />
-                </Col>
-                <Col>
-                  <label htmlFor="note">備註</label>
-                  <input
-                    type="text"
-                    placeholder="備註"
-                    className="form-control"
-                  />
-                </Col>
-              </div>
               <div className={styles.orderTitle3}>
                 <h4 style={{ fontWeight: 600, fontSize: '22px' }}>
                   代收轉付收據
@@ -410,17 +336,27 @@ export default function GroupCart2() {
               </div>
             </div>
             <div className={styles.agreement}>
-              <input type="checkbox" name="agreement" id="agreement" />
+              <input
+                type="checkbox"
+                id="agreeTerms"
+                checked={isChecked}
+                onChange={handleCheckboxChange}
+              />
               <label htmlFor="agreement" className={styles.agreement}>
                 已閱讀並同意「隱私權政策」。
               </label>
+              {showAlert && (
+                <div
+                  style={{ backgroundColor: 'white', color: 'red' }}
+                  className="alert"
+                  role="alert"
+                >
+                  請閱讀「隱私權政策」並勾選按鈕。
+                </div>
+              )}
               <div className={styles.agreementDiv}>
                 <div className="m-1">
-                  <button
-                    type="submit"
-                    className="btn btn-primary"
-                    onClick={handleReset}
-                  >
+                  <button className="btn btn-primary" onClick={handleFinish}>
                     完成訂購
                   </button>
                 </div>
