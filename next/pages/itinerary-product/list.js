@@ -109,13 +109,14 @@ export default function List() {
           <div className="row">
             <div className="col-lg-3">
               <h3 className={styles.itineraryH3}>篩選項目</h3>
-
               <div className={styles.SliderDiv3}>
                 <div className={styles.SliderDiv2}>
                   <div className={styles.itineraryProductsTitle}>價格區間</div>
 
                   <div className={styles.itineraryProductsItem1}>
+
                     <div className={styles.SliderDiv}>
+                    <div className={styles.SliderPrice}>
                       大於 :&nbsp;
                       <input
                         type="range"
@@ -126,7 +127,8 @@ export default function List() {
                         onChange={(e) => setPriceGte(Number(e.target.value))}
                       />
                       <span>&nbsp;{priceGte}元</span>
-                      <br />
+                     </div> 
+                     <div className={styles.SliderPrice}>
                       小於 :&nbsp;
                       <input
                         type="range"
@@ -137,6 +139,8 @@ export default function List() {
                         onChange={(e) => setPriceLte(Number(e.target.value))}
                       />
                       <span>&nbsp;{priceLte}元</span>
+                    </div>  
+
                     </div>
                   </div>
                 </div>
@@ -145,7 +149,7 @@ export default function List() {
                   <div className={styles.itineraryProductsTitle}>天數</div>
 
                   <div className={styles.itineraryProductsItem1}>
-                    <div className={styles.SliderDiv}>
+                    <div className={styles.SliderDiv4}>
                     <span>&nbsp;{days}天以內</span>
                       <input
                         type="range"
@@ -161,7 +165,7 @@ export default function List() {
                 <div className={styles.SliderDiv2}>
                   <div className={styles.itineraryProductsTitle}>旅遊區域</div>
                   <div className={styles.itineraryProductsItem1}>
-                    <div className={styles.SliderDiv}>
+                    <div className={styles.SliderDiv4}>
                       {countryOptions.map((v, i) => {
                         return (
                           <label key={i}>
@@ -180,6 +184,7 @@ export default function List() {
                 </div>
 
                 <div className={styles.SliderDiv2}>
+                <div className={styles.keyWordDiv}>
                   <span className={styles.keyWord}>關鍵字搜尋 :&nbsp;</span>
                   <input
                     type="text"
@@ -189,6 +194,7 @@ export default function List() {
                       setTitleLike(e.target.value)
                     }}
                   />
+                  </div>
                   <div className={styles.searchBtn}>
                     {/* <button onClick={handleSearch}>搜尋</button> */}
                     <button onClick={handleSearch} class="btn">
