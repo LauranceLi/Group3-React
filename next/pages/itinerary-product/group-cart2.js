@@ -45,16 +45,18 @@ export default function GroupCart2() {
     // 如果 checkbox 已經勾選，執行訂購完成的相關操作
     toast.success('報名成功')
   }
-
-  // 付款按鈕
-  const handlePay = async () => {
+  // 付款按鈕，綠界科技
+    // 信用卡測試卡號：4311-9522-2222-2222 安全碼 222
+  const handlePay = async (e) => {
+    e.preventDefault();
+    const updatedFormData = { depositAmount };
     try {
-      window.location.href = 'http://localhost:3005/api/ec-group/?amount=${depositAmount}';
+      window.location.href = `http://localhost:3005/api/ec-group/?amount=${depositAmount}`;
     } catch (error) {
-      console.error('跳轉時出錯:', error);
+      console.error('跳转时出错:', error);
     }
   };
-  
+
 
   return (
     <>
