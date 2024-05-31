@@ -17,17 +17,22 @@ const updateCart = ({ productId, count }) => {
 const ProductDetail = () => {
 
   const {addItem} = useCart()
-  const handleAddToCart = () => {
-    // 调用 addItem 函数，并传递商品详细信息
-    addItem({
-      id: productId, // 商品 ID
-      title, // 商品标题
-      price, // 商品价格
-      // 其他商品信息...
-    });
-    console.log('加入購物車');
 
-    window.alert(`${title} 已加入購物車！`);
+  const handleAddToCart = () => {
+    if (count === 0) {
+      window.alert('購物數量不可為0');
+    } else {
+      // 调用 addItem 函数，并传递商品详细信息
+      addItem({
+        id: title, // 商品 ID
+        title, // 商品标题
+        price, // 商品价格
+        // 其他商品信息...
+      });
+      console.log('加入購物車');
+  
+      window.alert(`${title} 已加入購物車！`);
+    }
   };
 
   const router = useRouter()
