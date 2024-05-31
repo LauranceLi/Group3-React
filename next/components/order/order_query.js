@@ -65,6 +65,7 @@ function OrderQuery() {
             {order.store_address}
           </p>
           <p>下單時間: {new Date(order.created_at).toLocaleString()}</p>
+          <p>付款方式: {order.payment_method}</p>
           <p>
             訂單狀態:
             <span className="m-2">{order.order_status}</span>
