@@ -13,6 +13,10 @@ export default async function (sequelize) {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      category: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
       speaker: {
         type: DataTypes.STRING,
         allowNull: false,

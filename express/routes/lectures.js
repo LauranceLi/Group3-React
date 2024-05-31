@@ -28,7 +28,5 @@ router.get('/', async function (req, res, next) {
 
   res.status(200).json({ status: 'success', data: rows })
 })
-router.get('/:id', function (req, res, next) {
-  res.status(200).json({ message: `讲座介绍` })
-})
+
 export default router
