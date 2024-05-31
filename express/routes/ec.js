@@ -5,7 +5,6 @@ import * as crypto from 'crypto'
 /* GET home page. */
 router.get('/', function (req, res, next) {
   const amount = req.query.amount
-  const itemsName = req.query.items
   //綠界全方位金流技術文件：
   // https://developers.ecpay.com.tw/?p=2856
   // 信用卡測試卡號：4311-9522-2222-2222 安全碼 222

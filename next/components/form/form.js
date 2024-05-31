@@ -14,6 +14,24 @@ const MyFormComponent = () => {
     { autoCloseMins: 3 } // x分鐘沒完成選擇會自動關閉，預設5分鐘。
   )
 
+   // 從 localStorage 中讀取 user
+  //  const user = JSON.parse(localStorage.getItem('user'))
+  //  const memberId = user ? user.memberId : null
+  //  console.log(user)
+  const [memberId, setMemberId] = useState(null);
+  useEffect(() => {
+    // 檢查是否在瀏覽器端
+      // 從 localStorage 中獲取資料
+      const userString = localStorage.getItem('user');
+      if (userString) {
+        // 解析成 JSON 格式
+        const user = JSON.parse(userString);
+        // 獲取 member_id 的值
+        const memberId = user.member_id;
+        console.log(memberId);
+        setMemberId(memberId);
+      } }, []); 
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -38,7 +56,6 @@ const MyFormComponent = () => {
       postcode: postcode,
     })
   }
-
   const updateFormData = (fieldName, value) => {
     setFormData({ ...formData, [fieldName]: value })
   }
@@ -58,7 +75,7 @@ const MyFormComponent = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const updatedFormData = { ...formData, store711, items, discountAmount }
+    const updatedFormData = { ...formData, store711, items, discountAmount,memberId }
     if (validate(updatedFormData)) {
       console.log(updatedFormData)
       if (formData.paymentMethod === '綠界科技') {

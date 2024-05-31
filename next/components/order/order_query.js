@@ -2,16 +2,30 @@ import React, { useEffect, useState } from 'react'
 
 function OrderQuery() {
   const [orderData, setOrderData] = useState({ orders: [], orderDetails: [] })
-  // const memberId = localStorage.getItem('member_id'); // 从本地存储中获取 member_id
-  const memberId = '20150221008' // 替换成你要查詢的會員 ID
+  // const memberId = '20150221008' // 替换成你要查詢的會員 ID
+  const [memberId, setMemberId] = useState(null);
+  useEffect(() => {
+    // 檢查是否在瀏覽器端
+      // 從 localStorage 中獲取資料
+      const userString = localStorage.getItem('user');
+      if (userString) {
+        // 解析成 JSON 格式
+        const user = JSON.parse(userString);
+        // 獲取 member_id 的值
+        const memberId = user.member_id;
+        console.log(memberId);
+        setMemberId(memberId);
+      } }, []); 
 
   useEffect(() => {
-    fetch(`http://localhost:3005/api/order_query/20150221008`)
-      .then((response) => response.json())
-      .then((data) => {
-        setOrderData(data)
-      })
-      .catch((error) => console.error('Error fetching order data:', error))
+    if (memberId) {
+      fetch(`http://localhost:3005/api/order_query?memberId=${memberId}`)
+        .then((response) => response.json())
+        .then((data) => {
+          setOrderData(data)
+        })
+        .catch((error) => console.error('Error fetching order data:', error))
+    }
   }, [memberId])
 
   // 組合訂單和訂單詳情
