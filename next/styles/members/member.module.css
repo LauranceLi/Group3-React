@@ -34,7 +34,7 @@
 }
 
 .memberContainer {
-  width: 90%;
+  width: 100%;
   height: auto;
   display: flex;
 }
@@ -303,6 +303,7 @@
 }
 
 .imgContainer {
+
   width: 8rem; 
   height: 8rem;
   overflow: hidden; 
@@ -351,10 +352,14 @@
   align-items: center;
   background-color: var(--primary-color);
 }
+
+.textContainer p {
+  margin-bottom: 0.2rem;
+}
 .signInBtn {
   color:var(--info-color);
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   width: 70%;
   height: 2.2rem;

@@ -11,25 +11,27 @@ import LectureCard from '@/components/lecture/lecture-card'
 import useFetchLectures from '@/hooks/use-fetch-lectures'
 
 export default function LectureList({ limit }) {
-  const [filteredLectures, setFilteredLectures] = useState([])
-  const [category, setCategory] = useState('')
-  const allLectures = useFetchLectures()
+  const [filteredLectures, setFilteredLectures] = useState([]);
+  const [category, setCategory] = useState('');
+  const { lectures: allLectures, loading } = useFetchLectures(); // Destructuring the returned object
 
   useEffect(() => {
-    if (category) {
-      setFilteredLectures(
-        allLectures.filter((lecture) => lecture.category === category)
-      )
-    } else {
-      setFilteredLectures(allLectures)
+    if (!loading) { // Ensure lectures are loaded before filtering
+      if (category) {
+        setFilteredLectures(
+          allLectures.filter((lecture) => lecture.category === category)
+        );
+      } else {
+        setFilteredLectures(allLectures);
+      }
     }
-  }, [category, allLectures])
+  }, [category, allLectures, loading]); // Include loading state in dependency array
 
   const handleSelect = (selectedCategory) => {
-    setCategory(selectedCategory)
-  }
+    setCategory(selectedCategory);
+  };
 
-  const results = limit ? filteredLectures.slice(0, limit) : filteredLectures
+  const results = limit ? filteredLectures.slice(0, limit) : filteredLectures;
 
   return (
     <>

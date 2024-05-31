@@ -12,23 +12,30 @@ import { FaRegThumbsUp } from 'react-icons/fa'
 import OrderQueryNew from '../order/order_query_new'
 
 export default function MemberCenter() {
-  const { lectures, loading } = useFetchLectures()
-  const { points, tag } = useMemberInfo()
-  const [recommend, setRecommend] = useState([])
+  const { lectures, loading } = useFetchLectures();
+  const { points, tag } = useMemberInfo();
+  const [recommend, setRecommend] = useState([]);
+  const [dataLoaded, setDataLoaded] = useState(false); // 添加一个状态来表示数据是否已加载完成
 
   useEffect(() => {
-    if (!loading) {
+    if (!loading && lectures.length > 0) {
       if (tag) {
         const recommendedLectures = lectures.filter(
           (lecture) => lecture.category === tag
-        )
-        setRecommend(recommendedLectures.slice(0, 1))
+        );
+        setRecommend(recommendedLectures.slice(0, 1));
       } else {
-        setRecommend(lectures.slice(0, 1))
+        setRecommend(lectures.slice(0, 1));
       }
+      setDataLoaded(true); // 设置数据已加载完成
     }
-  }, [lectures, loading])
-console.log(lectures);
+  }, [lectures, loading, tag]);
+
+  // 只有在数据加载完成后才渲染相关内容
+  if (!dataLoaded) {
+    return <div>Loading...</div>;
+  }
+
 
 
   return (
@@ -54,7 +61,7 @@ console.log(lectures);
               <div className={styles.btnCountainer}>
                 <button
                   className={styles.infoBtn}
-                  onClick={showInfo}
+                  // onClick={showInfo}
                   type="button"
                 >
                   <BsInfoCircle size={23} />
