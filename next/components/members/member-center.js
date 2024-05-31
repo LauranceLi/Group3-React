@@ -97,6 +97,7 @@ export default function MemberCenter() {
       <div className={styles.orderInfo}>
         <div className={styles.memberItem}>
           <h5>行程預定</h5>
+          <p>暫無預定行程</p>
         </div>
       </div>
       <div className={styles.itineraryInfo}>
