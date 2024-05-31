@@ -2,7 +2,7 @@ import express from 'express'
 const router = express.Router()
 import 'dotenv/config.js'
 import sequelize from '#configs/db.js'
-const { Cart, MembersInfo } = sequelize.models
+const { MembersInfo } = sequelize.models
 
 // 這是處理購物車頁面的端點，接收使用者的 member_id 並返回相應的會員資訊
 router.get('/', async (req, res) => {

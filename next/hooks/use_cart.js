@@ -103,7 +103,7 @@ export function CartProvider({ children }) {
               // 可以顯示錯誤消息給用戶
             });
         }
-      }, [memberId]);
+      }, [memberId]);  //注意 如果有切換帳號的動作 在購物車頁面要先重整才會顯示切換帳號之後的積分狀態
 
   // 處理用戶輸入想要折扣的金額
   const handleDiscountChange = (event) => {
