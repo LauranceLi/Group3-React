@@ -13,6 +13,7 @@ import Head from 'next/head'
 import Header from '../../components/layout/head'
 import Footer from '../../components/layout/footer'
 import Navbar from '@/components/layout/navbar'
+import Preloader from '@/components/layout/preloader'
 const FaQComponent = ({ options, setSearch }) => {
   const [activeIndex, setActiveIndex] = useState(null)
 
@@ -341,8 +342,8 @@ const Product = () => {
 
   return (
     <>
+      <Preloader />
       <Navbar />
-
       <Header />
       <Head>
         <link
