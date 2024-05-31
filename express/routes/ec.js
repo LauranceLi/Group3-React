@@ -28,7 +28,7 @@ router.get('/', function (req, res, next) {
   const stage = isStage ? '-stage' : ''
   const algorithm = 'sha256'
   const digest = 'hex'
-  const APIURL = `https://payment${stage}.ecpay.com.tw//Cashier/AioCheckOut/V5`
+  const APIURL = `https://payment${stage}.ecpay.com.tw/Cashier/AioCheckOut/V5`
   const MerchantTradeNo = `od${new Date().getFullYear()}${(
     new Date().getMonth() + 1
   )
@@ -47,21 +47,14 @@ router.get('/', function (req, res, next) {
     .toString()
     .padStart(2, '0')}${new Date().getMilliseconds().toString().padStart(2)}`
 
-  const MerchantTradeDate = new Date().toLocaleDateString('zh-TW', {
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-    hour: '2-digit',
-    minute: '2-digit',
-    second: '2-digit',
-    hour12: false,
-  })
+  const padZero = (num) => (num < 10 ? `0${num}` : num)
+  const MerchantTradeDate = `${new Date().getFullYear()}/${padZero(new Date().getMonth() + 1)}/${padZero(new Date().getDate())} ${padZero(new Date().getHours())}:${padZero(new Date().getMinutes())}:${padZero(new Date().getSeconds())}`
 
   //三、計算 CheckMacValue 之前
   let ParamsBeforeCMV = {
     MerchantID: MerchantID,
     MerchantTradeNo: MerchantTradeNo,
-    MerchantTradeDate: MerchantTradeDate.toString(),
+    MerchantTradeDate: MerchantTradeDate,
     PaymentType: 'aio',
     EncryptType: 1,
     TotalAmount: TotalAmount,
@@ -69,12 +62,11 @@ router.get('/', function (req, res, next) {
     ItemName: ItemName,
     ReturnURL: ReturnURL,
     ChoosePayment: ChoosePayment,
-    OrderResultURL,
+    OrderResultURL: OrderResultURL,
   }
 
   //四、計算 CheckMacValue
   function CheckMacValueGen(parameters, algorithm, digest) {
-    // const crypto = require('crypto')
     let Step0
 
     Step0 = Object.entries(parameters)
@@ -142,29 +134,6 @@ router.get('/', function (req, res, next) {
   `
 
   res.send(htmlContent)
-
-  //   const htmlContent = `
-  //   <!DOCTYPE html>
-  //   <html>
-  //   <head>
-  //       <title></title>
-  //   </head>
-  //   <body>
-  //       <form method="post" action="${APIURL}">
-  //   ${inputs}
-  //   <input type="submit" value="送出參數" style="display:none">
-  //       </form>
-  //   <script>
-  //     document.forms[0].submit();
-  //   </script>
-  //   </body>
-  //   </html>
-  //   `
-
-  //   res.send(htmlContent)
-
-  // 叫react送form的作法
-  //res.json({ htmlContent })
 })
 
 export default router

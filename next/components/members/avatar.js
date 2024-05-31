@@ -7,7 +7,7 @@ function Avatar({ width, height }) {
   const { avatar } = useMemberInfo()
 
   if (!avatar) {
-    setAvatar('/images/flowers.jpg')
+    setAvatar('/images/forest.jpg')
   }
 
   return (
