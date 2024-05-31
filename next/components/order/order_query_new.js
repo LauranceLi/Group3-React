@@ -58,7 +58,7 @@ function OrderQueryNew() {
               </div>
             ))}
           </div> */}
-          <div className="d-flex">
+          <div className="d-flex mt-2">
             <p>訂單金額: {latestOrder.net_total}</p>
           </div>
           <p>

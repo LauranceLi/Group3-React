@@ -101,10 +101,12 @@ export default function MemberCenter() {
       </div>
       <div className={styles.itineraryInfo}>
         <div className={styles.memberItem}>
-          <Link href="/cart/order_query" title="購物車">
+          <Link href="/cart/order_query" title="訂單詳細">
             <h5>商城訂單</h5>
-          </Link>
+          <div className="mt-3">
           <OrderQueryNew />
+          </div>
+          </Link>
         </div>
       </div>
     </>
