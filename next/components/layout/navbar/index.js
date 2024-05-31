@@ -12,21 +12,6 @@ import { VscSignOut } from 'react-icons/vsc'
 const Navbar = ({ navItemName = '', navbarControl = '' }) => {
   const [isSticky, setIsSticky] = useState(true)
 
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     if (window.scrollY > 0) {
-  //       setIsSticky(true)
-  //     } else {
-  //       setIsSticky(false)
-  //     }
-  //   }
-
-  //   window.addEventListener('scroll', handleScroll)
-
-  //   return () => {
-  //     window.removeEventListener('scroll', handleScroll)
-  //   }
-  // }, [])
   return (
     <>
       <Head>
@@ -53,9 +38,9 @@ const Navbar = ({ navItemName = '', navbarControl = '' }) => {
                 <nav className={styles.rowNav}>
                   <ul>
                     <li className="nav-item">
-                      <a className={styles.navLink} href="index.html">
+                      <Link className={styles.navLink} href="/">
                         關於締杉
-                      </a>
+                      </Link>
                     </li>
                     <li className="nav-item">
                       <Link
