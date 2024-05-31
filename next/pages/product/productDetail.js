@@ -5,14 +5,31 @@ import Head from 'next/head'
 import Header from '../../components/layout/head'
 import Footer from '../../components/layout/footer'
 import Navbar from '@/components/layout/navbar'
+import { useCart } from '@/hooks/use_cart'
+
 const updateCart = ({ productId, count }) => {
   let cart = localStorage.getItem('cart')
-    ? JSON.parse(localStorage.getItem('cart'))
-    : {}
+  ? JSON.parse(localStorage.getItem('cart'))
+  : {}
   cart[productId] = count
   localStorage.setItem('cart', JSON.stringify(cart))
 }
 const ProductDetail = () => {
+
+  const {addItem} = useCart()
+  const handleAddToCart = () => {
+    // 调用 addItem 函数，并传递商品详细信息
+    addItem({
+      id: productId, // 商品 ID
+      title, // 商品标题
+      price, // 商品价格
+      // 其他商品信息...
+    });
+    console.log('加入購物車');
+
+    window.alert(`${title} 已加入購物車！`);
+  };
+
   const router = useRouter()
 
   const { query } = router
@@ -86,7 +103,9 @@ const ProductDetail = () => {
           >
             <div>
               <span className="pageRow" style={{ display: 'flex' }}>
+                <button onClick={handleAddToCart}>
                 <i className="fa-solid fa-2x fa-cart-shopping"></i>{' '}
+                </button>
                 <span
                   style={{ fontSize: 28, marginLeft: 15, fontWeight: 'bold' }}
                 >
