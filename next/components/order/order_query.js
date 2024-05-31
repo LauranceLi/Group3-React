@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
-
+import Navbar from '../layout/navbar'
+import Footer from '../layout/footer'
 function OrderQuery() {
   const [orderData, setOrderData] = useState({ orders: [], orderDetails: [] })
   // const memberId = localStorage.getItem('member_id'); // 从本地存储中获取 member_id
@@ -28,6 +29,7 @@ function OrderQuery() {
   )
 
   return (
+    <>
     <div>
       {/* <h2>Orders and Order Details for Member {memberId}</h2> */}
       {sortedOrders.map((order) => (
@@ -76,6 +78,7 @@ function OrderQuery() {
         </div>
       ))}
     </div>
+    </>
   )
 }
 

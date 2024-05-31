@@ -9,31 +9,32 @@ import { FaStar } from 'react-icons/fa'
 import { BsFillPersonVcardFill } from 'react-icons/bs'
 import { BsInfoCircle } from 'react-icons/bs'
 import { FaRegThumbsUp } from 'react-icons/fa'
+import { BsPersonFillGear } from 'react-icons/bs'
 import OrderQueryNew from '../order/order_query_new'
 
 export default function MemberCenter() {
-  const { lectures, loading } = useFetchLectures();
-  const { points, tag } = useMemberInfo();
-  const [recommend, setRecommend] = useState([]);
-  const [dataLoaded, setDataLoaded] = useState(false); // 添加一个状态来表示数据是否已加载完成
+  const { lectures, loading } = useFetchLectures()
+  const { points, tag } = useMemberInfo()
+  const [recommend, setRecommend] = useState([])
+  const [dataLoaded, setDataLoaded] = useState(false) // 添加一个状态来表示数据是否已加载完成
 
   useEffect(() => {
     if (!loading && lectures.length > 0) {
       if (tag) {
         const recommendedLectures = lectures.filter(
           (lecture) => lecture.category === tag
-        );
-        setRecommend(recommendedLectures.slice(0, 1));
+        )
+        setRecommend(recommendedLectures.slice(0, 1))
       } else {
-        setRecommend(lectures.slice(0, 1));
+        setRecommend(lectures.slice(0, 1))
       }
-      setDataLoaded(true); // 设置数据已加载完成
+      setDataLoaded(true) // 设置数据已加载完成
     }
-  }, [lectures, loading, tag]);
+  }, [lectures, loading, tag])
 
   // 只有在数据加载完成后才渲染相关内容
   if (!dataLoaded) {
-    return <div>Loading...</div>;
+    return <div>Loading...</div>
   }
 
   const showInfo = () => {
@@ -43,11 +44,10 @@ export default function MemberCenter() {
       imageUrl: `images/lectures/${recommend[0].img_id}.jpg`,
       imageWidth: 450,
       imageAlt: 'Custom image',
-      confirmButtonColor: '#192a56',confirmButtonText: '了解',
+      confirmButtonColor: '#192a56',
+      confirmButtonText: '了解',
     })
   }
-
-
 
   return (
     <>
@@ -103,10 +103,11 @@ export default function MemberCenter() {
       <div className={styles.itineraryInfo}>
         <div className={styles.memberItem}>
           <Link href="/cart/order_query" title="訂單詳細">
+            <Link href="/cart/order_query" title="點擊查詢訂單詳情" />
             <h5>商城訂單</h5>
-          <div className="mt-3">
-          <OrderQueryNew />
-          </div>
+            <div className="mt-3">
+              <OrderQueryNew />
+            </div>
           </Link>
         </div>
       </div>
