@@ -68,7 +68,7 @@ function OrderQuery() {
             ))}
           </div>
           <div className="d-flex">
-            <p>折扣後金額: {order.net_total}</p>
+            <p>訂單金額: {order.net_total}</p>
           </div>
           <p>
             送貨地址:
