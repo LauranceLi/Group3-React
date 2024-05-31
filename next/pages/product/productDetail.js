@@ -25,8 +25,10 @@ const ProductDetail = () => {
       // 调用 addItem 函数，并传递商品详细信息
       addItem({
         id: title, // 商品 ID
-        title, // 商品标题
-        price, // 商品价格
+        name:title, // 商品标题
+        price:price, // 商品价格
+        number:count, // 商品数量
+        
         // 其他商品信息...
       });
       console.log('加入購物車');
