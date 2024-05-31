@@ -145,7 +145,7 @@ router.post('/', async (req, res) => {
       })
     // 提交事務
     await transaction.commit()
-    // res.json({ message: '訂單已創建成功' })
+    res.json({ message: '訂單已創建成功' })
   } catch (error) {
     // 回滾事務
     await transaction.rollback()
