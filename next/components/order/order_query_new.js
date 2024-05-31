@@ -41,11 +41,9 @@ function OrderQueryNew() {
     <div>
       {latestOrder ? (
         <div key={latestOrder.transaction_id}>
-        <div className="mt-2 mb-2">
-          <h5 className="bottom-line d-inline">
+          <p>
             交易編號: {latestOrder.transaction_id}
-          </h5>
-        </div>
+          </p>
           {/* <div>
             <div className="d-flex">
               <div className="travel-saleitem">商品名稱</div>
