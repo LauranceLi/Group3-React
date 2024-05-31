@@ -45,8 +45,8 @@ export default function GroupCart2() {
     // 如果 checkbox 已經勾選，執行訂購完成的相關操作
     toast.success('報名成功')
   }
-  // 付款按鈕，綠界科技
-    // 信用卡測試卡號：4311-9522-2222-2222 安全碼 222
+  // 付款按鈕，連接綠界科技
+  // 信用卡測試卡號：4311-9522-2222-2222 安全碼 222
   const handlePay = async (e) => {
     e.preventDefault();
     const updatedFormData = { depositAmount };
@@ -381,11 +381,10 @@ export default function GroupCart2() {
               <div className={styles.agreementDiv}>
               
                 <div className="m-1">
-                  <button className="btn btn-primary" onClick={handlePay}>
+                  <button className="btn btn-outline-success" onClick={handlePay}>
                     訂金付款
                   </button>
                 </div>
-                
                 <div className="m-1">
                   <button className="btn btn-primary" onClick={handleFinish}>
                     完成訂購
