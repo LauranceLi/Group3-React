@@ -70,7 +70,7 @@ export function CartProvider({ children }) {
         const memberId = user.member_id;
         console.log(memberId);
         setMemberId(memberId);
-      } }, []); 
+      } }, [memberId]); 
 
       useEffect(() => {
         if (memberId) {
