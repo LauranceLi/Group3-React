@@ -36,6 +36,17 @@ export default function MemberCenter() {
     return <div>Loading...</div>;
   }
 
+  const showInfo = () => {
+    Swal.fire({
+      title: recommend[0].title,
+      text: recommend[0].introduction,
+      imageUrl: `images/lectures/${recommend[0].img_id}.jpg`,
+      imageWidth: 450,
+      imageAlt: 'Custom image',
+      confirmButtonColor: '#192a56',confirmButtonText: '了解',
+    })
+  }
+
 
 
   return (
@@ -61,7 +72,7 @@ export default function MemberCenter() {
               <div className={styles.btnCountainer}>
                 <button
                   className={styles.infoBtn}
-                  // onClick={showInfo}
+                  onClick={showInfo}
                   type="button"
                 >
                   <BsInfoCircle size={23} />
