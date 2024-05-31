@@ -1,19 +1,24 @@
-
+import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 import useMemberInfo from '@/hooks/use-member-info'
 import styles from '@/styles/members/login.module.css'
 
 function Avatar({ width, height }) {
   const { avatar } = useMemberInfo()
+  const [showAvatar, setShowAvatar] = useState('')
 
-  if (!avatar) {
-    setAvatar('/images/forest.jpg')
-  }
+  useEffect(() => {
+    if (!avatar) {
+      setShowAvatar('/images/forest.jpg')
+    } else {
+      setShowAvatar(avatar)
+    }
+  })
 
   return (
     <div className={styles.avatarContainer}>
       <div className={styles.avatar} style={{ width: width, height: height }}>
-        <Image src={avatar} alt="Avatar" layout="fill" objectFit="cover" />
+        <Image src={showAvatar} alt="Avatar" layout="fill" objectFit="cover" />
       </div>
     </div>
   )

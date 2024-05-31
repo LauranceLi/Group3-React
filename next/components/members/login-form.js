@@ -97,6 +97,11 @@ const LoginForm = () => {
     }
   }
 
+  const handleBlur = () => {
+    
+
+  }
+
 
 
   return (
@@ -116,6 +121,7 @@ const LoginForm = () => {
                   type="text"
                   placeholder="請填入信箱"
                   onChange={handleFieldChange}
+                  onBlur={handleBlur}
                 />
               </div>
               <div className={styles.loginItem}>
