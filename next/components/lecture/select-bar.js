@@ -13,18 +13,21 @@ export default function SelectBar({ handleSelect }) {
         </button>
         <button
           className={styles.selectBtn}
+          value='中南美洲'
           onClick={() => handleSelect('中南美洲')}
         >
           中南美洲
         </button>
         <button
           className={styles.selectBtn}
+          value='歐洲'
           onClick={() => handleSelect('歐洲')}
         >
           歐洲
         </button>
         <button
           className={styles.selectBtn}
+          value='日本'
           onClick={() => handleSelect('日本')}
         >
           日本
