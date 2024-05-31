@@ -9,7 +9,7 @@ import imgSrc from '../../public/images/services.jpg'
 import { useNavigate } from 'react-router-dom'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
-// import Slider from './slider'
+
 import Header from '../../components/layout/head'
 import Footer from '../../components/layout/footer'
 import Navbar from '@/components/layout/navbar'
