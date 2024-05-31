@@ -34,7 +34,7 @@ export default function Point() {
             min="0"
             step="10"
             disabled={true}
-            className="form-control text-center"
+            className="form-control text-center  col-5"
           />
           <button
             onClick={handleIncrease}

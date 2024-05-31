@@ -2,31 +2,31 @@ import express from 'express'
 const router = express.Router()
 import 'dotenv/config.js'
 import sequelize from '#configs/db.js'
-const { Cart } = sequelize.models
+const { Cart, MembersInfo } = sequelize.models
 
-router.post('/', async (req, res) => {
-  console.log('原始請求數據:', req.body)
-  const { items } = req.body // 獲取items數組
-  console.log(items)
+router.get('/:member_id', async (req, res) => {
   try {
-    // 假設 member_id 是已知的，這裡我們假設為 '20150221008'
-    const memberId = '20150221008'
+    // 從路由參數中獲取 member_id
+    const { member_id } = req.params
 
-    for (const item of items) {
-      const { id, name, price, qty } = item
+    // 在 members_info 資料表中查詢是否存在對應的 member_id
+    const memberInfo = await MembersInfo.findOne({
+      where: {
+        member_id: member_id,
+      },
+    })
 
-      await Cart.create({
-        member_id: memberId,
-        product_id: id,
-        product_name: name,
-        quantity: price,
-        unit_price: qty,
-      })
+    if (memberInfo) {
+      // 如果存在對應的 member_id，返回成功狀態碼和找到的會員資訊
+      res.status(200).json({ message: '會員存在', memberInfo })
+    } else {
+      // 如果不存在對應的 member_id，返回失敗狀態碼和相應訊息
+      res.status(404).json({ message: '會員不存在' })
     }
-    res.json({ message: '已放入購物車', formData: req.body })
   } catch (error) {
-    console.error('提交表單時出錯:', error)
-    res.status(500).json({ message: '提交表單時出錯', error })
+    console.error('查詢會員時出錯:', error)
+    // 返回內部伺服器錯誤狀態碼和相應訊息
+    res.status(500).json({ message: '內部伺服器錯誤', error })
   }
 })
 
