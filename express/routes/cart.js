@@ -2,12 +2,13 @@ import express from 'express'
 const router = express.Router()
 import 'dotenv/config.js'
 import sequelize from '#configs/db.js'
-const { Cart, MembersInfo } = sequelize.models
+const { MembersInfo } = sequelize.models
 
-router.get('/:member_id', async (req, res) => {
+// 這是處理購物車頁面的端點，接收使用者的 member_id 並返回相應的會員資訊
+router.get('/', async (req, res) => {
   try {
-    // 從路由參數中獲取 member_id
-    const { member_id } = req.params
+    // 從請求查詢參數中獲取 member_id
+    const member_id = req.query.member_id
 
     // 在 members_info 資料表中查詢是否存在對應的 member_id
     const memberInfo = await MembersInfo.findOne({
