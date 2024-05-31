@@ -13,6 +13,9 @@ import GoogleLogin from './google-login'
 import { ImGoogle2, ImFacebook2 } from 'react-icons/im'
 import { RiEyeFill, RiEyeOffFill } from 'react-icons/ri'
 
+// 開發用
+import TestBtn from '@/components/test/testBtn'
+
 const RegisterForm = () => {
   // 密碼可視 / 不可視
   const router = useRouter()
@@ -155,7 +158,7 @@ const RegisterForm = () => {
     // 有錯誤發生，不送到伺服器去
     if (hasErrors) {
       Swal.fire({
-        title: "請填寫必要資訊",
+        title: '請填寫必要資訊',
         icon: 'error',
         text: '星號註記欄位不可為空',
         confirmButtonText: '重新填寫',
@@ -227,178 +230,210 @@ const RegisterForm = () => {
     }
   }
 
+  const emailError =() => {
+    setUser({
+      email: 'group3@gmail.com',
+      password: 'a12345678',
+      passwordCheck: 'a12345678',
+      name: '新使用者',
+      mobile: '0988125478',
+    })
+  }
+
+  const registerInput = () => {
+    setUser({
+      email: 'newUser@gmail.com',
+      password: 'a12345678',
+      passwordCheck: 'a12345678',
+      name: '新使用者',
+      mobile: '0988125478',
+    })
+  }
+
   return (
-    <main>
-      <div className={`${styles.registerFormContainer} bg-img`}>
-        <div className={styles.registerBox}>
-          <div className={styles.registerTitle}>
-            <h2>歡迎加入<span className={styles.group3}>締杉旅遊</span></h2>
-          </div>
+    <>
+      <TestBtn testInput_4={registerInput} testInput_7={emailError} />
+      <main>
+        <div className={`${styles.registerFormContainer} bg-img`}>
+          <div className={styles.registerBox}>
+            <div className={styles.registerTitle}>
+              <h2>
+                歡迎加入<span className={styles.group3}>締杉旅遊</span>
+              </h2>
+            </div>
 
-          <div className={styles.thirdPartyLogin}>
-            <h5>其他方式</h5>
-            <div
-              className={`${styles.registerItem} ${styles.thirdPartyLoginBtns}  border-0 justify-content-start`}
-            >
-              <a
-                href=""
-                className={`${styles.thirdPartyLoginBtn} ${styles.facebookIcon}`}
+            <div className={styles.thirdPartyLogin}>
+              <h5>其他方式</h5>
+              <div
+                className={`${styles.registerItem} ${styles.thirdPartyLoginBtns}  border-0 justify-content-start`}
               >
-                <ImFacebook2 size={22} />
-                Facebook
-              </a>
-
-              <GoogleLogin />
-            </div>
-          </div>
-
-          <form onSubmit={handleSubmit} className={styles.registerForm}>
-            <h5>註冊</h5>
-            <div className={styles.middleBox}>
-              <div className={styles.leftBox}>
-                <div
-                  className={`${styles.registerItem} ${emailAvailableClass}`}
+                <a
+                  href=""
+                  className={`${styles.thirdPartyLoginBtn} ${styles.facebookIcon}`}
                 >
-                  <label htmlFor="email">
-                    帳號<span className={styles.star}>*</span>
-                  </label>
+                  <ImFacebook2 size={22} />
+                  Facebook
+                </a>
 
-                  <input
-                    className={styles.registerInput}
-                    name="email"
-                    type="email"
-                    id="email"
-                    placeholder="請填入信箱"
-                    onChange={handleEmailChange}
-                  />
-                  <p>{emailAvailableMessage}</p>
-                </div>
-                <div
-                  className={`${styles.registerItem}  ${styles.error} border-0 `}
-                >
-                  <button
-                    type="button"
-                    className={`btn ${styles.checkMail}`}
-                    onClick={handleEmailCheck}
-                  >
-                    檢查信箱
-                  </button>
-                </div>
-                <div className={`${styles.registerItem} ${pwAvailableClass}`}>
-                  <label htmlFor="password">
-                    密碼<span className={styles.star}>*</span>
-                  </label>
-                  <input
-                    className={styles.registerInput}
-                    name="password"
-                    type={IsVisible ? 'text' : 'password'}
-                    id="password"
-                    placeholder="請輸入密碼"
-                    onChange={handlePasswordChange}
-                  />
-                  <button
-                    className={styles.eyeIcon}
-                    type="button"
-                    onClick={toggleVisibility}
-                  >
-                    {IsVisible ? (
-                      <RiEyeFill size={18} />
-                    ) : (
-                      <RiEyeOffFill size={18} />
-                    )}
-                  </button>
-                  <p>{pwAvailableMessage}</p>
-                </div>
-
-                <div className={`${styles.registerItem} ${pwSameClass}`}>
-                  <label htmlFor="passwordAgain">確認密碼</label>
-                  <input
-                    className={styles.registerInput}
-                    name="passwordCheck"
-                    type={IsVisibleCheck ? 'text' : 'password'}
-                    id="passwordAgain"
-                    placeholder="請再次確認密碼"
-                    onChange={handlePasswordChange}
-                  />
-                  <button
-                    className={styles.eyeIcon}
-                    type="button"
-                    onClick={toggleVisibilityCheck}
-                  >
-                    {IsVisibleCheck ? (
-                      <RiEyeFill size={18} />
-                    ) : (
-                      <RiEyeOffFill size={18} />
-                    )}
-                  </button>
-                  <p className="checkError">{pwSameMessage}</p>
-                </div>
+                <GoogleLogin />
               </div>
-              <div className={styles.rightBox}>
-                <div className={`${styles.registerItem} ${nameAvailableClass}`}>
-                  <label htmlFor="name">
-                    姓名<span className={styles.star}>*</span>
-                  </label>
-                  <input
-                    className={styles.registerInput}
-                    name="name"
-                    type="text"
-                    id="name"
-                    placeholder="請輸入英文或中文姓名"
-                    onChange={handleNameChange}
-                  />
-                  <p>{nameAvailableMessage}</p>
-                </div>
-                <div
-                  className={`${styles.registerItem} ${mobileAvailableClass}`}
-                >
-                  <label htmlFor="mobile">
-                    手機<span className={styles.star}>*</span>
-                  </label>
-                  <input
-                    className={styles.registerInput}
-                    name="mobile"
-                    type="mobile"
-                    id="mobile"
-                    placeholder="ex: 0988123456"
-                    onChange={handleMobileChange}
-                  />
-                  <p>{mobileAvailableMessage}</p>
-                </div>
-                <div className={styles.registerItem}>
-                  <label htmlFor="interest">興趣主題</label>
-                  <select name="interest" className={styles.interestSelect}>
-                    <option
-                      className={styles.interestOption}
-                      value="south-america"
+            </div>
+
+            <form onSubmit={handleSubmit} className={styles.registerForm}>
+              <h5>註冊</h5>
+              <div className={styles.middleBox}>
+                <div className={styles.leftBox}>
+                  <div
+                    className={`${styles.registerItem} ${emailAvailableClass}`}
+                  >
+                    <label htmlFor="email">
+                      帳號<span className={styles.star}>*</span>
+                    </label>
+
+                    <input
+                      className={styles.registerInput}
+                      name="email"
+                      value={user.email}
+                      type="email"
+                      id="email"
+                      placeholder="請填入信箱"
+                      onChange={handleEmailChange}
+                    />
+                    <p>{emailAvailableMessage}</p>
+                  </div>
+                  <div
+                    className={`${styles.registerItem}  ${styles.error} border-0 `}
+                  >
+                    <button
+                      type="button"
+                      className={`btn ${styles.checkMail}`}
+                      onClick={handleEmailCheck}
                     >
-                      中南美洲
-                    </option>
-                    <option className={styles.interestOption} value="japan">
-                      日本
-                    </option>
-                    <option className={styles.interestOption} value="europe">
-                      歐洲
-                    </option>
-                  </select>
-                </div>
+                      檢查信箱
+                    </button>
+                  </div>
+                  <div className={`${styles.registerItem} ${pwAvailableClass}`}>
+                    <label htmlFor="password">
+                      密碼<span className={styles.star}>*</span>
+                    </label>
+                    <input
+                      className={styles.registerInput}
+                      name="password"
+                      value={user.password}
+                      type={IsVisible ? 'text' : 'password'}
+                      id="password"
+                      placeholder="請輸入密碼"
+                      onChange={handlePasswordChange}
+                    />
+                    <button
+                      className={styles.eyeIcon}
+                      type="button"
+                      onClick={toggleVisibility}
+                    >
+                      {IsVisible ? (
+                        <RiEyeFill size={18} />
+                      ) : (
+                        <RiEyeOffFill size={18} />
+                      )}
+                    </button>
+                    <p>{pwAvailableMessage}</p>
+                  </div>
 
-                <div
-                  className={`${styles.registerItem} border-0 d-flex align-items-end`}
-                >
-                  <button
-                    type="submit"
-                    className={`btn sonar-btn  ${styles.registerBtn}`}
+                  <div className={`${styles.registerItem} ${pwSameClass}`}>
+                    <label htmlFor="passwordAgain">確認密碼</label>
+                    <input
+                      className={styles.registerInput}
+                      name="passwordCheck"
+                      value={user.password}
+                      type={IsVisibleCheck ? 'text' : 'password'}
+                      id="passwordAgain"
+                      placeholder="請再次確認密碼"
+                      onChange={handlePasswordChange}
+                    />
+                    <button
+                      className={styles.eyeIcon}
+                      type="button"
+                      onClick={toggleVisibilityCheck}
+                    >
+                      {IsVisibleCheck ? (
+                        <RiEyeFill size={18} />
+                      ) : (
+                        <RiEyeOffFill size={18} />
+                      )}
+                    </button>
+                    <p className="checkError">{pwSameMessage}</p>
+                  </div>
+                </div>
+                <div className={styles.rightBox}>
+                  <div
+                    className={`${styles.registerItem} ${nameAvailableClass}`}
                   >
-                    註冊
-                  </button>
+                    <label htmlFor="name">
+                      姓名<span className={styles.star}>*</span>
+                    </label>
+                    <input
+                      className={styles.registerInput}
+                      name="name"
+                      value={user.name}
+                      type="text"
+                      id="name"
+                      placeholder="請輸入英文或中文姓名"
+                      onChange={handleNameChange}
+                    />
+                    <p>{nameAvailableMessage}</p>
+                  </div>
+                  <div
+                    className={`${styles.registerItem} ${mobileAvailableClass}`}
+                  >
+                    <label htmlFor="mobile">
+                      手機<span className={styles.star}>*</span>
+                    </label>
+                    <input
+                      className={styles.registerInput}
+                      name="mobile"
+                      value={user.mobile}
+                      type="mobile"
+                      id="mobile"
+                      placeholder="ex: 0988123456"
+                      onChange={handleMobileChange}
+                    />
+                    <p>{mobileAvailableMessage}</p>
+                  </div>
+                  <div className={styles.registerItem}>
+                    <label htmlFor="interest">興趣主題</label>
+                    <select name="interest" className={styles.interestSelect}>
+                      <option
+                        className={styles.interestOption}
+                        value="south-america"
+                      >
+                        中南美洲
+                      </option>
+                      <option className={styles.interestOption} value="japan">
+                        日本
+                      </option>
+                      <option className={styles.interestOption} value="europe">
+                        歐洲
+                      </option>
+                    </select>
+                  </div>
+
+                  <div
+                    className={`${styles.registerItem} border-0 d-flex align-items-end`}
+                  >
+                    <button
+                      type="submit"
+                      className={`btn sonar-btn  ${styles.registerBtn}`}
+                    >
+                      註冊
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          </form>
+            </form>
+          </div>
         </div>
-      </div>
-    </main>
+      </main>
+    </>
   )
 }
 

@@ -17,6 +17,10 @@ import 'react-datepicker/dist/react-datepicker.css'
 
 import { BsPersonFillGear } from 'react-icons/bs'
 
+
+// 開發用
+import TestBtn from '@/components/test/testBtn'
+
 export default function ProfileEdit() {
   const {
     name,
@@ -235,8 +239,24 @@ export default function ProfileEdit() {
     }
   }
 
+  const newUserInfoInput = () => {
+    setUser({ 
+      name:'新使用者',
+      email:'newUser@gmail.com',
+      firstName: 'User',
+      lastName: 'New',
+      birthday: '2024-06-07',
+      address: '苗栗縣苑裡鎮興華街25號',
+      mobile: '0964521456',
+      idNum: 'A123456789',
+      tag:'歐洲',
+      points: 0,})
+  }
+
+
   return (
     <>
+    <TestBtn testInput_6={newUserInfoInput}/>
       <main className={styles.memberMain}>
         <div className={styles.memberContainer}>
           <div className={styles.memberBox}>

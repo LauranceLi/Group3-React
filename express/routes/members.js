@@ -179,7 +179,7 @@ router.post('/login', async function (req, res, next) {
 
   // 沒找到
   if (rows.length === 0) {
-    return res.json({ status: 'error', message: `帳號不存在` })
+    return res.json({ status: 'error', message: `此帳號不存在` })
   }
 
   // 驗証密碼
