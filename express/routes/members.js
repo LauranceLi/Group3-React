@@ -391,6 +391,4 @@ router.post('/register/mailCheck', async (req, res) => {
   }
 })
 
-
-
 export default router
