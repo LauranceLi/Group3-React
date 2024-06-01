@@ -3,6 +3,7 @@ import { createContext, useState, useContext, useEffect } from 'react'
 const CartContext = createContext(null)
 
 export function CartProvider({ children }) {
+  
   const [items, setItems] = useState([])
   // 从 localStorage 恢复购物车状态
   useEffect(() => {
@@ -40,12 +41,31 @@ export function CartProvider({ children }) {
     })
     setItems(nextItems)
   }
-  const addItem = (product) => {
+  //原本的版本
+  // const addItem = (product) => {
+  //   const foundIndex = items.findIndex((v) => v.id === product.id)
+  //   if (foundIndex > -1) {
+  //     increaseItem(product.id)
+  //   } else {
+  //     const newItem = { ...product, qty: 1 }
+  //     const nextItems = [newItem, ...items]
+  //     setItems(nextItems)
+  //   }
+  // }
+
+  //測試修改過後的版本(經測試可以使用)
+  const addItem = (product, quantity = 1) => {
     const foundIndex = items.findIndex((v) => v.id === product.id)
     if (foundIndex > -1) {
-      increaseItem(product.id)
+      // 如果商品已存在於購物車，增加其數量
+      const nextItems = items.map((v) => {
+        if (v.id === product.id) return { ...v, qty: v.qty + quantity }
+        else return v
+      })
+      setItems(nextItems)
     } else {
-      const newItem = { ...product, qty: 1 }
+      // 如果商品不存在於購物車，新增商品並設置其數量
+      const newItem = { ...product, qty: quantity }
       const nextItems = [newItem, ...items]
       setItems(nextItems)
     }
@@ -137,6 +157,23 @@ export function CartProvider({ children }) {
     setFinalAmount(finalAmount)
   }, [totalPrice, discountAmount])
 
+
+  const setItemQuantity = (id, quantity) => {
+    const foundIndex = items.findIndex((v) => v.id === id);
+    if (foundIndex > -1) {
+      const nextItems = items.map((v) => {
+        if (v.id === id) return { ...v, qty: quantity };
+        else return v;
+      });
+      setItems(nextItems);
+    } else {
+      const product = items.find((v) => v.id === id);
+      const newItem = { ...product, qty: quantity };
+      const nextItems = [newItem, ...items];
+      setItems(nextItems);
+    }
+  };
+
   return (
     <CartContext.Provider
       value={{
@@ -154,6 +191,7 @@ export function CartProvider({ children }) {
         handleIncrease, //增加使用的積分
         handleDecrease, //減少使用的積分
         finalAmount, //扣除積分後的金額
+        setItemQuantity,
       }}
     >
       {children}
