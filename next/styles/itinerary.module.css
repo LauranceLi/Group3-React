@@ -591,7 +591,7 @@
 }
 .SliderPrice {
   width: auto;
-  padding: 20px;
+  padding: 1.25rem;
   margin-left: .3125rem;
 }
 .SliderDiv4 {
@@ -897,6 +897,17 @@ margin-top: 1.25rem;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+@media only screen and (min-width: 992px) and (max-width: 1520px) {
+  .SliderPrice {
+    padding: 0px;
+    margin-left: .9375rem;
+  }
+  .itineraryProductsItem1 input {
+    width: 85%;
+    margin-left: 0;
+    margin-right: 0;
+  }
 }
 /* 平板 */
 @media only screen and (min-width: 768px) and (max-width: 991px) {

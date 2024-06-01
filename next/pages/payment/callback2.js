@@ -16,8 +16,8 @@ export default function Callback2() {
       <Navbar />
       <div className="contianer text-center view">
         <div className={styles.callBack2}>
-          <IoCheckmarkCircle size={30} />
-          <h4>訂金付款已成功，感謝你的購買。</h4>
+          <IoCheckmarkCircle size={42} />
+          <h4 style={{ marginTop: '10px' }}>訂金付款已成功，感謝您的購買。</h4>
         </div>
         <Link href="/itinerary-product/list">
             <button type="button" className="btn btn-outline-dark m-3 col-2">
