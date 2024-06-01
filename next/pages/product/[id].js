@@ -75,7 +75,7 @@ const ProductDetails = () => {
                 </button>
               </div>
             </div>
-            <p>庫存: {product.stock}</p>
+            <p>庫存: {product.stock-quantity}</p>
           </div>
         </div>
         <div className="mt-5 mb-3">
