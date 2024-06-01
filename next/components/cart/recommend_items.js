@@ -1,8 +1,16 @@
 import React from 'react'
+import { useRouter } from 'next/router'
 import products from '@/data/Product.json'
 import { useCart } from '@/hooks/use_cart'
+
 export default function RecommendItems() {
   const { addItem } = useCart()
+  const router = useRouter()
+
+  const handleViewDetails = (id) => {
+    router.push(`/product/${id}`)
+  }
+
   return (
     <>
       {products
@@ -23,7 +31,7 @@ export default function RecommendItems() {
                   {v.price}
                 </h5>
               </div>
-              <div className="m-3">
+              <div className="m-3 d-flex justify-content-evenly">
                 <button
                   onClick={() => {
                     addItem(v)
@@ -31,6 +39,12 @@ export default function RecommendItems() {
                   className="btn btn-warning"
                 >
                   加入購物車
+                </button>
+                <button
+                  onClick={() => handleViewDetails(v.id)}
+                  className="btn btn-outline-dark"
+                >
+                  商品詳細
                 </button>
               </div>
             </div>

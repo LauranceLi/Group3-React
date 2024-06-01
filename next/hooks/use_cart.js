@@ -16,6 +16,7 @@ export function CartProvider({ children }) {
   useEffect(() => {
     localStorage.setItem('cartItems', JSON.stringify(items))
   }, [items])
+
   const increaseItem = (id) => {
     const nextItems = items.map((v, i) => {
       if (v.id === id) return { ...v, qty: v.qty + 1 }
@@ -57,30 +58,52 @@ export function CartProvider({ children }) {
   const [points, setPoints] = useState(0)
   const [discountAmount, setDiscountAmount] = useState(0)
   const [finalAmount, setFinalAmount] = useState(0)
-
+  const [memberId, setMemberId] = useState(null);
   useEffect(() => {
-    const memberId = '20150221008'
-    // 從後端獲取會員積分信息
-    fetch(`http://localhost:3005/api/points?member_id=${memberId}`)
-      .then((response) => response.json())
-      .then((data) => {
-        // 獲取積分並將其存儲在狀態中
-        if (Array.isArray(data) && data.length > 0) {
-          // 確保返回的數據不是空數組
-          const totalPoints = data.reduce(
-            (accumulator, current) => accumulator + current.points,
-            0
-          )
-          setPoints(totalPoints) // 將所有積分相加並存儲在狀態中
+    // 檢查是否在瀏覽器端
+      // 從 localStorage 中獲取資料
+      const userString = localStorage.getItem('user');
+      if (userString) {
+        // 解析成 JSON 格式
+        const user = JSON.parse(userString);
+        // 獲取 member_id 的值
+        const memberId = user.member_id;
+        console.log(memberId);
+        setMemberId(memberId);
+      } }, [memberId]); 
 
-          // 計算可以折扣的金額
-          const discount = Math.min(Math.floor(totalPoints / 300), 100) // 滿300點換成1元，最多折扣100元
-          setDiscountAmount(discount) // 存儲折扣金額
-          console.log(totalPoints)
+      useEffect(() => {
+        if (memberId) {
+          // 從後端獲取會員積分信息
+          fetch(`http://localhost:3005/api/points?member_id=${memberId}`)
+            .then((response) => {
+              if (!response.ok) {
+                throw new Error('Network response was not ok');
+              }
+              return response.json();
+            })
+            .then((data) => {
+              // 獲取積分並將其存儲在狀態中
+              if (Array.isArray(data) && data.length > 0) {
+                // 確保返回的數據不是空數組
+                const totalPoints = data.reduce(
+                  (accumulator, current) => accumulator + current.points,
+                  0
+                )
+                setPoints(totalPoints) // 將所有積分相加並存儲在狀態中
+      
+                // 計算可以折扣的金額
+                const discount = Math.min(Math.floor(totalPoints / 300), 100); // 滿300點換成1元，最多折扣100元
+                setDiscountAmount(discount); // 存儲折扣金額
+                console.log(totalPoints)
+              }
+            })
+            .catch((error) => {
+              console.error('Error fetching member points:', error);
+              // 可以顯示錯誤消息給用戶
+            });
         }
-      })
-      .catch((error) => console.error('Error fetching member points:', error))
-  }, [])
+      }, [memberId]);  //注意 如果有切換帳號的動作 在購物車頁面要先重整才會顯示切換帳號之後的積分狀態
 
   // 處理用戶輸入想要折扣的金額
   const handleDiscountChange = (event) => {

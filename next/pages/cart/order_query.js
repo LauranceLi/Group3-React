@@ -5,14 +5,14 @@ import Footer from '@/components/layout/footer'
 export default function Test() {
   return (
     <>
-    <Navbar />
-    <div className="container">
-      <div className="mb-5">
-        <h4 className="bottom-line d-inline">訂單查詢</h4>
+      <Navbar />
+      <div className="container">
+        <div className="mb-5">
+          <h4 className="bottom-line d-inline">訂單查詢</h4>
+        </div>
+        <OrderQuery />
       </div>
-      <OrderQuery />
-    </div>
-    <Footer />
+      <Footer />
     </>
   )
 }

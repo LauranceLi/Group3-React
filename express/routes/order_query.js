@@ -4,10 +4,11 @@ const { Order, OrderDetail } = sequelize.models
 
 const router = express.Router()
 
-router.get('/:memberId', async (req, res) => {
+router.get('/', async (req, res) => {
   const { memberId } = req.params
   console.log(memberId)
   try {
+    const { memberId } = req.query
     // 查找 Orders
     const orders = await Order.findAll({
       where: { member_id: memberId },

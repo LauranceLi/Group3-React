@@ -14,6 +14,24 @@ const MyFormComponent = () => {
     { autoCloseMins: 3 } // x分鐘沒完成選擇會自動關閉，預設5分鐘。
   )
 
+   // 從 localStorage 中讀取 user
+  //  const user = JSON.parse(localStorage.getItem('user'))
+  //  const memberId = user ? user.memberId : null
+  //  console.log(user)
+  const [memberId, setMemberId] = useState(null);
+  useEffect(() => {
+    // 檢查是否在瀏覽器端
+      // 從 localStorage 中獲取資料
+      const userString = localStorage.getItem('user');
+      if (userString) {
+        // 解析成 JSON 格式
+        const user = JSON.parse(userString);
+        // 獲取 member_id 的值
+        const memberId = user.member_id;
+        console.log(memberId);
+        setMemberId(memberId);
+      } }, []); 
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -38,7 +56,6 @@ const MyFormComponent = () => {
       postcode: postcode,
     })
   }
-
   const updateFormData = (fieldName, value) => {
     setFormData({ ...formData, [fieldName]: value })
   }
@@ -58,11 +75,15 @@ const MyFormComponent = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const updatedFormData = { ...formData, store711, items, discountAmount }
+    const updatedFormData = { ...formData, store711, items, discountAmount,memberId }
     if (validate(updatedFormData)) {
       console.log(updatedFormData)
       if (formData.paymentMethod === '綠界科技') {
         window.location.href = `http://localhost:3005/api/ec/?amount=${finalAmount}`
+        // 清空 localStorage 中的购物车数据
+        localStorage.removeItem('cartItems')
+        // 清空购物车状态
+        setItems([])
       }
       try {
         const res = await fetch('http://localhost:3005/api/order', {
@@ -75,6 +96,8 @@ const MyFormComponent = () => {
         })
         const data = await res.json()
         console.log('後端返回的數據:', data)
+        // 使用 orderId 執行跳轉到 /payment/callback 页面
+        window.location.href = `http://localhost:3000/payment/callback`
         // 清空 localStorage 中的购物车数据
         localStorage.removeItem('cartItems')
         // 清空购物车状态
@@ -101,6 +124,7 @@ const MyFormComponent = () => {
         </div>
         <button
           type="button"
+          className="btn btn-warning"
           onClick={() => {
             // 重置需要自行設定回初始化值
             setFormData({
@@ -114,7 +138,7 @@ const MyFormComponent = () => {
             })
           }}
         >
-          一鍵填入
+          快速輸入
         </button>
         <div className="row customer-info">
           <div className="col m-2">

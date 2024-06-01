@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
-
 import Link from 'next/link'
+import Swal from 'sweetalert2'
 import { useRouter } from 'next/router'
 import styles from '@/styles/members/login.module.css'
 import Avatar from './avatar'
@@ -11,6 +11,9 @@ import { ImFacebook2 } from 'react-icons/im'
 import { RiEyeFill } from 'react-icons/ri'
 import { RiEyeOffFill } from 'react-icons/ri'
 import { GiCommercialAirplane } from 'react-icons/gi'
+
+// 開發用
+import TestBtn from '@/components/test/testBtn'
 
 // 解析accessToken用的函式
 const parseJwt = (token) => {
@@ -91,16 +94,44 @@ const LoginForm = () => {
     if (data.status === 'success') {
       const returnUser = parseJwt(data.data.accessToken)
       localStorage.setItem('user', JSON.stringify(returnUser))
+
       router.push('/members')
     } else {
-      alert(data.message)
+      Swal.fire({
+        title: ' 登入失敗',
+        icon: data.status,
+        text: data.message,
+        confirmButtonText: '重新嘗試',
+        confirmButtonColor: '#192a56',
+      })
     }
   }
 
+  const handleBlur = () => {}
 
+  const emailErrorInput = () => {
+    setUser({ email: 'emailError@gmail.com', password: '123456' })
+  }
+
+  const passwordErrorInput = () => {
+    setUser({ email: 'group3@gmail.com', password: 'passwordError' })
+  }
+
+  const successInput = () => {
+    setUser({ email: 'group3@gmail.com', password: '123456' })
+  }
+  const newUserInput = () => {
+    setUser({ email: 'newUser@gmail.com', password: 'a12345678' })
+  }
 
   return (
     <>
+      <TestBtn
+        testInput_1={emailErrorInput}
+        testInput_2={passwordErrorInput}
+        testInput_3={successInput}
+        testInput_5={newUserInput}
+      />
       <main>
         <div className={`${styles.loginFormContainer} bgImg`}>
           <div className={styles.leftBox}>
@@ -116,6 +147,7 @@ const LoginForm = () => {
                   type="text"
                   placeholder="請填入信箱"
                   onChange={handleFieldChange}
+                  onBlur={handleBlur}
                 />
               </div>
               <div className={styles.loginItem}>

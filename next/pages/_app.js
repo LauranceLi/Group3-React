@@ -7,6 +7,7 @@ import { Toaster } from 'react-hot-toast'
 
 import 'bootstrap/dist/css/bootstrap.css'
 import '/styles/cart/cart.css'
+import '/styles/test.css'
 import { CartProvider } from '@/hooks/use_cart'
 import { OrderProvider } from '@/hooks/use-order'
 

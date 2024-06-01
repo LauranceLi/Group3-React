@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useRef} from 'react'
 import Link from 'next/link'
 import Swal from 'sweetalert2'
 import styles from '@/styles/lectures/lectures.module.css'
@@ -27,11 +27,36 @@ export default function LectureCard({ title, country, date, place, img, introduc
       confirmButtonColor: '#192a56',confirmButtonText: '了解',
     })
   }
+
+  const cardRef = useRef(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add(styles.show)
+          }
+        })
+      },
+      { threshold: 0.1 } // 當 10% 卡片進入視口時觸發
+    )
+
+    if (cardRef.current) {
+      observer.observe(cardRef.current)
+    }
+
+    return () => {
+      if (cardRef.current) {
+        observer.unobserve(cardRef.current)
+      }
+    }
+  }, [])
   return (
     <>
       <div
         className={`col-12 col-sm-6 col-lg-3  southAmerica wow fadeInUpBig ${styles.lecture_item}`}
-        data-wow-delay="300ms"
+        ref={cardRef}
       >
         <div className={styles.lectureContent}>
           <div className={styles.imgContainer}>

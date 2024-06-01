@@ -6,6 +6,7 @@ const router = express.Router()
 
 router.post('/', async (req, res) => {
   const {
+    memberId,
     name,
     email,
     mobile,
@@ -41,7 +42,7 @@ router.post('/', async (req, res) => {
 
   try {
     // 假設 member_id 是已知的，這裡我們假設為 '20150221008'
-    const memberId = '20150221008'
+    // const memberId = '20150221008'
     // 更新訂單狀態函式
     const paymentStatus = paymentMethod === '貨到付款' ? '未付款' : '已付款'
     const shippingStatus = '未出貨'
@@ -145,7 +146,7 @@ router.post('/', async (req, res) => {
       })
     // 提交事務
     await transaction.commit()
-    // res.json({ message: '訂單已創建成功' })
+    res.json({ message: '訂單已創建成功' })
   } catch (error) {
     // 回滾事務
     await transaction.rollback()

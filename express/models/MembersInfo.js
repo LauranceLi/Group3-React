@@ -35,6 +35,7 @@ export default async function (sequelize) {
       points: {
         type: DataTypes.INTEGER,
         allowNull: true,
+        defaultValue: 0,
       },
       tag: {
         type: DataTypes.STRING,

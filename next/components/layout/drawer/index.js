@@ -22,24 +22,24 @@ function OffCanvasExample({ name, ...props }) {
         {...props}
         className={styles.drawerContainer}
       >
-        <Offcanvas.Header closeButton>
-          <Offcanvas.Title>Offcanvas</Offcanvas.Title>
+        <Offcanvas.Header closeButton className={styles.drawerHeader}>
+          <Offcanvas.Title className={styles.drawerTitle}>締杉旅遊</Offcanvas.Title>
         </Offcanvas.Header>
-        <Offcanvas.Body>
-          <Link href="/" className={styles.navLink}>
-            締杉旅遊
+        <Offcanvas.Body className={styles.drawerNav}>
+          <Link href="/" className={`${styles.navLink} ${styles.drawerLink}`}>
+          關於締杉
           </Link>
-          <Link href="/itinerary/country-all" className={styles.navLink}>
+          <Link href="/itinerary/country-all" className={`${styles.navLink} ${styles.drawerLink}`}>
             各國行程
           </Link>
-          <Link href="/lectures" className={styles.navLink}>
+          <Link href="/lectures" className={`${styles.navLink} ${styles.drawerLink}`}>
             旅遊講座
           </Link>
-          <Link href="/product/product" className={styles.navLink}>
+          <Link href="/product/product" className={`${styles.navLink} ${styles.drawerLink}`}>
           締杉商城
           </Link>
-          <Link href="/" className={styles.navLink}>優惠活動</Link>
-          <Link href="/members" className={styles.navLink}>
+          <Link href="/" className={`${styles.navLink} ${styles.drawerLink}`}>優惠活動</Link>
+          <Link href="/members" className={`${styles.navLink} ${styles.drawerLink}`}>
             締杉會員
           </Link>
         </Offcanvas.Body>
