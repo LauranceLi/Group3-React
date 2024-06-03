@@ -158,22 +158,6 @@ export function CartProvider({ children }) {
   }, [totalPrice, discountAmount])
 
 
-  const setItemQuantity = (id, quantity) => {
-    const foundIndex = items.findIndex((v) => v.id === id);
-    if (foundIndex > -1) {
-      const nextItems = items.map((v) => {
-        if (v.id === id) return { ...v, qty: quantity };
-        else return v;
-      });
-      setItems(nextItems);
-    } else {
-      const product = items.find((v) => v.id === id);
-      const newItem = { ...product, qty: quantity };
-      const nextItems = [newItem, ...items];
-      setItems(nextItems);
-    }
-  };
-
   return (
     <CartContext.Provider
       value={{
@@ -191,7 +175,6 @@ export function CartProvider({ children }) {
         handleIncrease, //增加使用的積分
         handleDecrease, //減少使用的積分
         finalAmount, //扣除積分後的金額
-        setItemQuantity,
       }}
     >
       {children}
