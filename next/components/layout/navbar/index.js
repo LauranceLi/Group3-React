@@ -79,11 +79,11 @@ const Navbar = ({ navItemName = '', navbarControl = '' }) => {
                 >
                   {/* Header Social Area */}
                   <div className={styles.icons}>
-                    <Link href="/cart/cart" title="購物車">
-                      <FaShoppingCart size={25} />
+                    <Link href="/cart/cart" title="購物車" >
+                      <FaShoppingCart size={25} className={styles.facebookIcon} />
                       <span>
                         {cartItemCount > 0 && (
-                          <span className="cart-badge">{cartItemCount}</span>
+                          <span  className={styles.navLink}>{cartItemCount}</span>
                         )}
                       </span>
                     </Link>
