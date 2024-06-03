@@ -1,5 +1,7 @@
 import React from 'react'
 import styles from '@/styles/search.module.css'
+import { FaAngleDoubleRight } from "react-icons/fa";
+
 
 export default function ItineraryProducts() {
   const updateDestinationOptions = () => {
@@ -170,11 +172,8 @@ export default function ItineraryProducts() {
                 className={styles.searchButton}
                 type="button"
               >
-                開始探索
-                <i
-                  className="fa-solid fa-angles-right fa-fade"
-                  style={{ color: '#ffffff' }}
-                ></i>
+                開始探索&nbsp;
+                <FaAngleDoubleRight  style={{ color: '#ffffff' }} />
               </a>
             </div>
           </div>

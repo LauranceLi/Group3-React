@@ -1,13 +1,13 @@
 /* Search區塊 */
 .SearchBAR {
   display: flex;
-  background-image: url('/images/search-image2.png');
+  background-image: url('../public/images/search-1.png');
   background-size: cover;
   background-position: center;
   height: 240px;
   align-items: center;
   margin-top: 1rem;
-  margin-bottom: 1rem;
+  /* margin-bottom: 5rem; */
 }
 
 .SearchContainer {
@@ -16,6 +16,8 @@
   flex-wrap: wrap;
   width: 100%;
   margin-left: 7.2rem;
+  font-family: 'Noto Sans TC', '微軟正黑體', sans-serif;
+  color: #192a56;
 }
 
 .formGroup {
@@ -26,7 +28,7 @@
 .formGroup2 {
   margin-right: 20px;
   margin-left: 20px;
-  margin-top: 7px;
+  /* margin-top: 7px; */
 }
 .formGroup label {
   min-width: 150px;
@@ -51,7 +53,7 @@
 .datepicker .formField2 {
   display: flex;
   align-items: center;
-  margin-top: -0.1563rem;
+  margin-top: .25rem;
 }
 .datepicker .formField2 .datepickerDash {
   margin: 0 5px;
@@ -79,7 +81,7 @@
   border: 1px solid #ced4da;
   border-radius: 5px;
   background-position: center;
-  background-color: #1a88e2;
+  background-color: #ffb534;
   color: #ffffff;
   font-size: 1rem;
   font-weight: bold;
@@ -92,9 +94,10 @@
 }
 .searchButton:hover {
   color: #ffffff;
-  background: #47a7f5 radial-gradient(circle, transparent 1%, #47a7f5 1%)
+  background: #ffc107 radial-gradient(circle, transparent 1%, #ffc107 1%)
     center/15000%;
   font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 .searchButton:active {
   background-color: #6eb9f7;
@@ -111,6 +114,7 @@
   align-items: center;
   justify-content: center;
 }
+
 /* Search區塊-平板*/
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .SearchBAR {

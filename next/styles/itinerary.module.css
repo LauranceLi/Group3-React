@@ -467,6 +467,8 @@
 .viewTextScroll {
   height: 12.5rem;
   overflow: auto;
+  font-family: Helvetica, 微軟正黑體, Arial, sans-serif;
+  font-size: 16px;
 }
 .agreement {
   text-align: center;
@@ -490,11 +492,15 @@
   color: #1a88e2;
   margin-top: .625rem;
 }
-
 .second2Li {
   margin-bottom: .625rem; 
 }
-
+.callBack2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10.5rem;
+}
 @media only screen and (max-width: 767px) {
   .GroupCartSection {
     width: 100%;
@@ -576,8 +582,25 @@
 }
 .SliderDiv {
   font-family: 'Noto Sans TC', '微軟正黑體', sans-serif;
+  /* padding: 1.25rem; */
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+
+}
+.SliderPrice {
+  width: auto;
+  padding: 1.25rem;
+  margin-left: .3125rem;
+}
+.SliderDiv4 {
+  font-family: 'Noto Sans TC', '微軟正黑體', sans-serif;
   padding: 1.25rem;
   background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
 }
 .itineraryProductsItem1 input {
   margin-top: 10px;
@@ -796,7 +819,7 @@
 .searchBtn {
   display: flex;
   justify-content: center;
-  margin-top: 1.5rem;
+  margin-top: 2.5rem;
 }
 .SliderDiv2 button,
 .SliderDiv2 button:focus {
@@ -870,6 +893,22 @@ align-items: flex-end;
 margin-right: 1.25rem;
 margin-top: 1.25rem;
 }
+.keyWordDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media only screen and (min-width: 992px) and (max-width: 1520px) {
+  .SliderPrice {
+    padding: 0px;
+    margin-left: .9375rem;
+  }
+  .itineraryProductsItem1 input {
+    width: 85%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
 /* 平板 */
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .itineraryMain {
@@ -908,6 +947,10 @@ margin-top: 1.25rem;
     align-items: center;
     justify-content: center;
   }
+  .SliderPrice {
+    padding: 0px;
+    margin-left: 10px;
+  }
 }
 
 @media only screen and (max-width: 767px) {
@@ -942,6 +985,11 @@ margin-top: 1.25rem;
   }
   .SliderDiv2 button {
     margin-bottom: 2.5rem;
+  }
+  .SliderPrice {
+    padding: 0;
+    margin-left: 0;
+    font-size: 16px;
   }
 }
 /* itinerary_products區塊 (END) */
