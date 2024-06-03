@@ -10,15 +10,15 @@ import { useState, useEffect } from 'react'
 const ProductDetails = () => {
   const router = useRouter()
   const { id } = router.query
-  const { addItem, decreaseItem, increaseItem, cart } = useCart()
+  const { addItem, setItemQuantity, cart } = useCart()
   const product = products.find((p) => p.id === parseInt(id))
 
-  const [quantity, setQuantity] = useState(0)
+  const [quantity, setQuantity] = useState(1)
 
   useEffect(() => {
     if (product && cart) {
       const cartItem = cart.find((item) => item.id === product.id)
-      setQuantity(cartItem ? cartItem.qty : 0)
+      setQuantity(cartItem ? cartItem.qty : 1) // 修改初始值為1
     }
   }, [product, cart])
 
@@ -27,15 +27,16 @@ const ProductDetails = () => {
   }
 
   const handleIncrease = () => {
-    increaseItem(product.id)
-    setQuantity(quantity + 1)
+    setQuantity(prevQuantity => prevQuantity + 1)
   }
 
   const handleDecrease = () => {
-    if (quantity > 0) {
-      decreaseItem(product.id)
-      setQuantity(quantity - 1)
-    }
+    setQuantity(prevQuantity => Math.max(prevQuantity - 1, 1)) // 確保數量不小於1
+  }
+
+  const handleAddToCart = () => {
+    addItem(product, quantity) // 傳遞商品和數量
+    // 顯示加入購物車成功的提示或其他處理
   }
 
   return (
@@ -67,17 +68,14 @@ const ProductDetails = () => {
               </div>
               <div className="ms-3">
                 <button
-                  onClick={() => {
-                    addItem(product)
-                    setQuantity(quantity + 1)
-                  }}
+                  onClick={handleAddToCart}
                   className="btn btn-warning"
                 >
                   加入購物車
                 </button>
               </div>
             </div>
-            <p>庫存: {product.stock}</p>
+            <p>庫存: {product.stock-quantity}</p>
           </div>
         </div>
         <div className="mt-5 mb-3">
