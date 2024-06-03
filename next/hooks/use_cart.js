@@ -157,6 +157,13 @@ export function CartProvider({ children }) {
     setFinalAmount(finalAmount)
   }, [totalPrice, discountAmount])
 
+  const [cartItemCount, setCartItemCount] = useState(0); // 新增用於跟踪商品數量的狀態
+
+  // 在購物車中添加商品時更新商品種類數量
+  useEffect(() => {
+    const uniqueItems = new Set(items.map(item => item.id));
+    setCartItemCount(uniqueItems.size);
+  }, [items]);
 
   return (
     <CartContext.Provider
@@ -175,6 +182,7 @@ export function CartProvider({ children }) {
         handleIncrease, //增加使用的積分
         handleDecrease, //減少使用的積分
         finalAmount, //扣除積分後的金額
+        cartItemCount,
       }}
     >
       {children}

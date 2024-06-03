@@ -8,9 +8,10 @@ import { ImFacebook2 } from 'react-icons/im'
 import { FaShoppingCart } from 'react-icons/fa'
 import { RiMenuFoldFill } from 'react-icons/ri'
 import { VscSignOut } from 'react-icons/vsc'
-
+import { useCart } from '@/hooks/use_cart'
 const Navbar = ({ navItemName = '', navbarControl = '' }) => {
   const [isSticky, setIsSticky] = useState(true)
+  const {cartItemCount} =useCart()
 
   return (
     <>
@@ -80,6 +81,11 @@ const Navbar = ({ navItemName = '', navbarControl = '' }) => {
                   <div className={styles.icons}>
                     <Link href="/cart/cart" title="購物車">
                       <FaShoppingCart size={25} />
+                      <span>
+                        {cartItemCount > 0 && (
+                          <span className="cart-badge">{cartItemCount}</span>
+                        )}
+                      </span>
                     </Link>
 
                     <Link href="#" title="Facebook">
