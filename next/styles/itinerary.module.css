@@ -587,12 +587,11 @@
   display: flex;
   align-items: center;
   justify-content: center; 
-
 }
 .SliderPrice {
   width: auto;
-  padding: 1.25rem;
-  margin-left: .3125rem;
+  /* padding: 1.25rem; */
+  margin-left: 2rem;
 }
 .SliderDiv4 {
   font-family: 'Noto Sans TC', '微軟正黑體', sans-serif;
@@ -951,6 +950,9 @@ margin-top: 1.25rem;
     padding: 0px;
     margin-left: 10px;
   }
+  .searchBtn {
+    margin-top: 1rem;
+  } 
 }
 
 @media only screen and (max-width: 767px) {
@@ -980,17 +982,17 @@ margin-top: 1.25rem;
     height: 1.625rem;
   }
 
-  .SliderDiv input{
-    padding-left: 1.875rem;
-  }
   .SliderDiv2 button {
     margin-bottom: 2.5rem;
   }
   .SliderPrice {
     padding: 0;
-    margin-left: 0;
+    margin-left: 15px;
     font-size: 16px;
   }
+  .itineraryH3 {
+    font-size: 22px;
+  }  
 }
 /* itinerary_products區塊 (END) */
 
