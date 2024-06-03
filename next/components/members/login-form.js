@@ -24,6 +24,7 @@ const parseJwt = (token) => {
 
 const LoginForm = () => {
   const router = useRouter()
+  const [avatarUrl, setAvatarUrl] = useState('/images/forest.jpg')
   const [IsVisible, setIsVisible] = useState(false)
   const toggleVisibility = () => {
     setIsVisible(!IsVisible)
@@ -43,6 +44,7 @@ const LoginForm = () => {
   const handleFieldChange = (e) => {
     // 可以利用e.target觀察目前是在輸入或操作哪個欄位上
     setUser({ ...user, [e.target.name]: e.target.value })
+    
   }
 
   // 表單送出事件處理函式
@@ -90,11 +92,12 @@ const LoginForm = () => {
     })
 
     const data = await res.json()
+    
 
     if (data.status === 'success') {
       const returnUser = parseJwt(data.data.accessToken)
       localStorage.setItem('user', JSON.stringify(returnUser))
-
+      
       router.push('/members')
     } else {
       Swal.fire({
@@ -135,7 +138,7 @@ const LoginForm = () => {
       <main>
         <div className={`${styles.loginFormContainer} bgImg`}>
           <div className={styles.leftBox}>
-            <Avatar width={'12rem'} height={'12rem'} />
+            <Avatar width={'12rem'} height={'12rem'} avatarUrl={avatarUrl}/>
             <form onSubmit={handleSubmit} className={styles.loginForm}>
               <h5>會員登入</h5>
               <div className={styles.loginItem}>
@@ -198,13 +201,13 @@ const LoginForm = () => {
             <div className={styles.thirdPartyLogin}>
               <h5>其他登入方式</h5>
               <div className={`${styles.loginItem} border-0`}>
-                <buttom
+                {/* <buttom
                   type="button"
                   className={`${styles.thirdPartyLoginBtn} `}
                 >
                   <ImFacebook2 size={22} className={styles.facebookIcon} />
                   Facebook
-                </buttom>
+                </buttom> */}
 
                 <GoogleLogin />
               </div>

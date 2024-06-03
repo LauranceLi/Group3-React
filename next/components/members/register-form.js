@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Swal from 'sweetalert2'
 import styles from '/styles/members/register.module.css'
@@ -182,7 +182,30 @@ const RegisterForm = () => {
     const data = await res.json()
 
     if (data.status === 'success') {
-      router.push('/members')
+      let timerInterval
+      const totalSeconds = 3
+      let remainingSeconds = totalSeconds
+
+      Swal.fire({
+        title: '歡迎加入締杉旅遊',
+        icon: data.status,
+        html: `即將在 <strong>${remainingSeconds}</strong> 秒後自動跳轉`,
+        showConfirmButton: false,
+        timer: totalSeconds * 1000,
+        didOpen: () => {
+          timerInterval = setInterval(() => {
+            remainingSeconds--
+            Swal.update({
+              html: `即將在 <strong>${remainingSeconds}</strong> 秒後自動跳轉`,
+            })
+          }, 1000)
+        },
+        willClose: () => {
+          clearInterval(timerInterval)
+        },
+      }).then(() => {
+        router.push('/members')
+      })
     } else {
       Swal.fire({
         title: data.message,
@@ -230,7 +253,7 @@ const RegisterForm = () => {
     }
   }
 
-  const emailError =() => {
+  const emailError = () => {
     setUser({
       email: 'group3@gmail.com',
       password: 'a12345678',
@@ -344,7 +367,7 @@ const RegisterForm = () => {
                     <input
                       className={styles.registerInput}
                       name="passwordCheck"
-                      value={user.password}
+                      value={user.passwordCheck}
                       type={IsVisibleCheck ? 'text' : 'password'}
                       id="passwordAgain"
                       placeholder="請再次確認密碼"

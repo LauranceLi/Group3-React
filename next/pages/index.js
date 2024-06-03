@@ -26,7 +26,7 @@ export default function Home() {
 
       <Navbar />
       <Slider />
-      <LectureList category={category} limit={6} />
+      <LectureList category={category} limit={8} />
       <Search />
       <ItineraryCard />
       <Footer />

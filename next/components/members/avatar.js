@@ -3,13 +3,14 @@ import Image from 'next/image'
 import useMemberInfo from '@/hooks/use-member-info'
 import styles from '@/styles/members/login.module.css'
 
-function Avatar({ width, height }) {
+function Avatar({ width, height, avatarUrl }) {
   const { avatar } = useMemberInfo()
   const [showAvatar, setShowAvatar] = useState('')
 
   useEffect(() => {
     if (!avatar) {
       setShowAvatar('/images/forest.jpg')
+      // setShowAvatar(avatarUrl)
     } else {
       setShowAvatar(avatar)
     }
