@@ -11,6 +11,7 @@ import { ImFacebook2 } from 'react-icons/im'
 import { RiEyeFill } from 'react-icons/ri'
 import { RiEyeOffFill } from 'react-icons/ri'
 import { GiCommercialAirplane } from 'react-icons/gi'
+import useMemberInfo from '@/hooks/use-member-info'
 
 // 開發用
 import TestBtn from '@/components/test/testBtn'
@@ -44,7 +45,6 @@ const LoginForm = () => {
   const handleFieldChange = (e) => {
     // 可以利用e.target觀察目前是在輸入或操作哪個欄位上
     setUser({ ...user, [e.target.name]: e.target.value })
-    
   }
 
   // 表單送出事件處理函式
@@ -92,12 +92,11 @@ const LoginForm = () => {
     })
 
     const data = await res.json()
-    
 
     if (data.status === 'success') {
       const returnUser = parseJwt(data.data.accessToken)
       localStorage.setItem('user', JSON.stringify(returnUser))
-      
+
       router.push('/members')
     } else {
       Swal.fire({
@@ -110,7 +109,20 @@ const LoginForm = () => {
     }
   }
 
-  const handleBlur = () => {}
+  const handleBlur = async () => {
+    const res = await fetch('http://localhost:3005/api/members/login-avatar', {
+      credentials: 'include', // 設定cookie或是要存取隱私資料時帶cookie到伺服器一定要加
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(user),
+    })
+
+    const data = await res.json()
+    setAvatarUrl(data.avatar)
+  }
 
   const emailErrorInput = () => {
     setUser({ email: 'emailError@gmail.com', password: '123456' })
@@ -138,7 +150,7 @@ const LoginForm = () => {
       <main>
         <div className={`${styles.loginFormContainer} bgImg`}>
           <div className={styles.leftBox}>
-            <Avatar width={'12rem'} height={'12rem'} avatarUrl={avatarUrl}/>
+            <Avatar width={'12rem'} height={'12rem'} avatarUrl={avatarUrl} />
             <form onSubmit={handleSubmit} className={styles.loginForm}>
               <h5>會員登入</h5>
               <div className={styles.loginItem}>
