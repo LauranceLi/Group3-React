@@ -6,54 +6,41 @@ import Header from '../../components/layout/head'
 import Footer from '../../components/layout/footer'
 import Navbar from '@/components/layout/navbar'
 import { useCart } from '@/hooks/use_cart'
+import Swal from 'sweetalert2'
 
 
-const updateCart = ({ productId, count }) => {
-  let cart = localStorage.getItem('cart')
-    ? JSON.parse(localStorage.getItem('cart'))
-    : {}
-    ? JSON.parse(localStorage.getItem('cart'))
-    : {}
-  cart[productId] = count
-  localStorage.setItem('cart', JSON.stringify(cart))
-}
 const ProductDetail = () => {
-  const { addItem } = useCart()
-
-  const handleAddToCart = () => {
-    if (count === 0) {
-      window.alert('購物數量不可為0')
-    } else {
-      // 调用 addItem 函数，并传递商品详细信息
-      addItem({
-        id: title, // 商品 ID
-        name: title, // 商品标题
-        price: price, // 商品价格
-        number: count, // 商品数量
-
-        // 其他商品信息...
-      })
-      console.log('加入購物車')
-
-      window.alert(`${title} 已加入購物車！`)
-    }
-  }
-
   const router = useRouter()
-
   const { query } = router
   if (!query) router.push('/product')
   const { title, src, type, desc, productId, price } = query || {}
-  const [cart, setCart] = useState(undefined)
-  const [count, setCount] = useState(0)
   const [btnHover, setBtnHover] = useState(false)
-  useEffect(() => {
-    let cart = localStorage.getItem('cart')
-      ? JSON.parse(localStorage.getItem('cart'))
-      : {}
-    setCart(cart)
-    setCount(cart[productId] ? cart[productId] : 0)
-  }, [])
+
+  const [quantity, setQuantity] = useState(1)
+  const {addItem} = useCart()
+
+  const handleAddToCart = () => {
+    // addItem(product, quantity) // 傳遞商品和數量
+    addItem({
+      id: title, // 商品 ID
+      name:title, // 商品标题
+      price:price, // 商品价格
+      quantity:quantity
+      // 其他商品信息...
+    });
+        Swal.fire({
+      title:"成功加入購物車",
+      icon:"success",
+      confirmButtonColor:"#192a56"
+    })
+  }
+  const handleIncrease = () => {
+    setQuantity(prevQuantity => prevQuantity + 1)
+  }
+
+  const handleDecrease = () => {
+    setQuantity(prevQuantity => Math.max(prevQuantity - 1, 1)) // 確保數量不小於1
+  }
   return (
     <>
       <Navbar />
@@ -112,23 +99,15 @@ const ProductDetail = () => {
           >
             <div>
               <span className="pageRow" style={{ display: 'flex' }}>
-                <button onClick={handleAddToCart}>
-                  <button onClick={handleAddToCart}>
-                    <i className="fa-solid fa-2x fa-cart-shopping"></i>{' '}
-                  </button>
+                <button onClick={handleAddToCart} className="btn btn-warning">
+                  <i className="fa-solid fa-2x fa-cart-shopping"></i>{' '}
                 </button>
                 <span
                   style={{ fontSize: 28, marginLeft: 15, fontWeight: 'bold' }}
                 >
                   <div
                     className={`btn-page ${btnHover == 1 ? 'btn-page-h' : ''}`}
-                    onClick={() => {
-                      if (count > 0) {
-                        setCount((pre) => pre - 1)
-                        updateCart({ count: count - 1, productId })
-                      }
-                      setBtnHover(false)
-                    }}
+                    onClick={handleDecrease}
                     onMouseEnter={() => setBtnHover(1)}
                     onMouseLeave={() => setBtnHover(false)}
                   >
@@ -140,11 +119,7 @@ const ProductDetail = () => {
                   </div>
                   <div
                     className={`btn-page ${btnHover == 2 ? 'btn-page-h' : ''}`}
-                    onClick={() => {
-                      setCount((pre) => pre + 1)
-                      updateCart({ count: count + 1, productId })
-                      setBtnHover(false)
-                    }}
+                    onClick={handleIncrease}
                     onMouseEnter={() => setBtnHover(2)}
                     onMouseLeave={() => setBtnHover(false)}
                   >
@@ -155,8 +130,8 @@ const ProductDetail = () => {
                     ></i>
                   </div>
                   <div style={{ margin: 10 }}>
-                    <span>{`共 ${count} 件 `}</span>
-                    <span>價格:{price * count}</span>
+                    <span>價格:{price}</span>
+                    <span>數量:{quantity}</span>
                   </div>
                 </span>
               </span>

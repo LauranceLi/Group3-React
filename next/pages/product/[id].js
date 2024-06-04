@@ -6,6 +6,7 @@ import { useCart } from '@/hooks/use_cart'
 import SquareMinus from '@/components/icons/square_minus'
 import SquarePlus from '@/components/icons/square_plus'
 import { useState, useEffect } from 'react'
+import Swal from 'sweetalert2'
 
 const ProductDetails = () => {
   const router = useRouter()
@@ -36,6 +37,11 @@ const ProductDetails = () => {
 
   const handleAddToCart = () => {
     addItem(product, quantity) // 傳遞商品和數量
+    Swal.fire({
+      title:"成功加入購物車",
+      icon:"success",
+      confirmButtonColor:"#192a56"
+    })
     // 顯示加入購物車成功的提示或其他處理
   }
 
