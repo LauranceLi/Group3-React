@@ -7,7 +7,6 @@ import Footer from '../../components/layout/footer'
 import Navbar from '@/components/layout/navbar'
 import { useCart } from '@/hooks/use_cart'
 
-import { useCart } from '@/hooks/use_cart'
 
 const updateCart = ({ productId, count }) => {
   let cart = localStorage.getItem('cart')
