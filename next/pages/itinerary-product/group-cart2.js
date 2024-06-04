@@ -48,15 +48,14 @@ export default function GroupCart2() {
   // 付款按鈕，連接綠界科技
   // 信用卡測試卡號：4311-9522-2222-2222 安全碼 222
   const handlePay = async (e) => {
-    e.preventDefault();
-    const updatedFormData = { depositAmount };
+    e.preventDefault()
+    const updatedFormData = { depositAmount }
     try {
-      window.location.href = `http://localhost:3005/api/ec-group/?amount=${depositAmount}`;
+      window.location.href = `http://localhost:3005/api/ec-group/?amount=${depositAmount}`
     } catch (error) {
-      console.error('跳转时出错:', error);
+      console.error('跳轉時出錯:', error)
     }
-  };
-
+  }
 
   return (
     <>
@@ -89,6 +88,12 @@ export default function GroupCart2() {
                         id="name"
                         className="form-control"
                         value={order.name}
+                        style={{
+                          color: '#273140',
+                          fontWeight: 'bold',
+                          backgroundColor: 'rgba(173, 216, 230, 0.2)',
+                          border: '1px solid lightgray',
+                        }}
                       />
                     </div>
                     <div className="col m-2">
@@ -101,6 +106,12 @@ export default function GroupCart2() {
                         id="email"
                         className="form-control"
                         value={order.email}
+                        style={{
+                          color: '#273140',
+                          fontWeight: 'bold',
+                          backgroundColor: 'rgba(173, 216, 230, 0.2)',
+                          border: '1px solid lightgray',
+                        }}
                       />
                     </div>
                     <div className="col m-2">
@@ -113,6 +124,12 @@ export default function GroupCart2() {
                         id="mobile"
                         className="form-control"
                         value={order.mobile}
+                        style={{
+                          color: '#273140',
+                          fontWeight: 'bold',
+                          backgroundColor: 'rgba(173, 216, 230, 0.2)',
+                          border: '1px solid lightgray',
+                        }}
                       />
                     </div>
                   </div>
@@ -379,9 +396,11 @@ export default function GroupCart2() {
                 </div>
               )}
               <div className={styles.agreementDiv}>
-              
                 <div className="m-1">
-                  <button className="btn btn-outline-success" onClick={handlePay}>
+                  <button
+                    className="btn btn-outline-success"
+                    onClick={handlePay}
+                  >
                     訂金付款
                   </button>
                 </div>

@@ -130,7 +130,7 @@ export default function GroupCart() {
   }
   return (
     <>
-    <Preloader />
+      <Preloader />
       <Navbar />
       <main className={styles.GroupCart1}>
         <br />
@@ -157,6 +157,12 @@ export default function GroupCart() {
                     id="name"
                     className="form-control"
                     value={name}
+                    style={{
+                      color: '#273140',
+                      fontWeight: 'bold',
+                      backgroundColor: 'rgba(173, 216, 230, 0.2)', 
+                      border: '1px solid lightgray' 
+                    }}
                   />
                 </div>
                 <div className="col m-2">
@@ -169,6 +175,12 @@ export default function GroupCart() {
                     id="email"
                     className="form-control"
                     value={email}
+                    style={{
+                      color: '#273140',
+                      fontWeight: 'bold',
+                      backgroundColor: 'rgba(173, 216, 230, 0.2)', 
+                      border: '1px solid lightgray' 
+                    }}
                   />
                 </div>
                 <div className="col m-2">
@@ -181,6 +193,12 @@ export default function GroupCart() {
                     id="mobile"
                     className="form-control"
                     value={mobile}
+                    style={{
+                      color: '#273140',
+                      fontWeight: 'bold',
+                      backgroundColor: 'rgba(173, 216, 230, 0.2)', 
+                      border: '1px solid lightgray' 
+                    }}
                   />
                 </div>
               </div>
