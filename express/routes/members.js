@@ -207,6 +207,19 @@ router.post('/login', async function (req, res, next) {
   return res.json({ status: 'success', data: { accessToken } })
 })
 
+router.post('/login-avatar', async function (req, res, next) {
+  const loginUser = req.body
+  const [rows] = await db.query('SELECT * FROM members WHERE email = ?', [
+    loginUser.email,
+  ])
+
+  if (rows.length === 0) {
+    return res.json({ status: 'error', data: null })
+  } else {
+    return res.json({ status: 'success', data: rows[0].avatar })
+  }
+})
+
 // 登出（完成）
 router.post('/logout', async (req, res, next) => {
   // 清除瀏覽器對應cookie

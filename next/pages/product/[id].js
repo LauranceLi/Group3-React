@@ -10,7 +10,7 @@ import { useState, useEffect } from 'react'
 const ProductDetails = () => {
   const router = useRouter()
   const { id } = router.query
-  const { addItem, setItemQuantity, cart } = useCart()
+  const { addItem,  cart } = useCart()
   const product = products.find((p) => p.id === parseInt(id))
 
   const [quantity, setQuantity] = useState(1)

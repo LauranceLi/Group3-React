@@ -11,6 +11,7 @@ import ItineraryCard from '@/components/itinerary/itinerary-card'
 import LectureList from '@/components/lecture/lecture-list'
 import SelectBar from '@/components/lecture/select-bar'
 
+
 import Drawer from '@/components/layout/drawer'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -26,7 +27,7 @@ export default function Home() {
 
       <Navbar />
       <Slider />
-      <LectureList category={category} limit={6} />
+      <LectureList category={category} limit={8} />
       <Search />
       <ItineraryCard />
       <Footer />

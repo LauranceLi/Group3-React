@@ -157,22 +157,13 @@ export function CartProvider({ children }) {
     setFinalAmount(finalAmount)
   }, [totalPrice, discountAmount])
 
+  const [cartItemCount, setCartItemCount] = useState(0); // 新增用於跟踪商品數量的狀態
 
-  const setItemQuantity = (id, quantity) => {
-    const foundIndex = items.findIndex((v) => v.id === id);
-    if (foundIndex > -1) {
-      const nextItems = items.map((v) => {
-        if (v.id === id) return { ...v, qty: quantity };
-        else return v;
-      });
-      setItems(nextItems);
-    } else {
-      const product = items.find((v) => v.id === id);
-      const newItem = { ...product, qty: quantity };
-      const nextItems = [newItem, ...items];
-      setItems(nextItems);
-    }
-  };
+  // 在購物車中添加商品時更新商品種類數量
+  useEffect(() => {
+    const uniqueItems = new Set(items.map(item => item.id));
+    setCartItemCount(uniqueItems.size);
+  }, [items]);
 
   return (
     <CartContext.Provider
@@ -191,7 +182,7 @@ export function CartProvider({ children }) {
         handleIncrease, //增加使用的積分
         handleDecrease, //減少使用的積分
         finalAmount, //扣除積分後的金額
-        setItemQuantity,
+        cartItemCount,
       }}
     >
       {children}

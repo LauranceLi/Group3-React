@@ -12,10 +12,9 @@ export default function Cart() {
       const user = JSON.parse(localStorage.getItem('user'));
       if (!user || !user.member_id) {
         // 如果 localStorage 中沒有 user 物件或者 member_id 屬性不存在，執行相應的操作，比如重新導向到登入頁面
-        window.location.href = '/members/login'; // 這是一個簡單的重新導向示例
+        return window.location.href = '/members/login'; // 這是一個簡單的重新導向示例
         // 或者根據你的業務邏輯顯示一個提示訊息
-        alert('請先登入');
-        return;
+        // alert('請先登入');
       }
   
       // 提取 member_id 並存儲在變數中
@@ -27,7 +26,7 @@ export default function Cart() {
         if (response.ok) {
           // 如果 member_id 存在於資料庫中，則繼續執行相應的操作
           const data = await response.json();
-          console.log('Member exists in database:', data.memberInfo);
+          // console.log('Member exists in database:', data.memberInfo);
           // 在這裡你可以根據後端返回的資料做相應的處理
         } else {
           // 如果 member_id 不存在於資料庫中，執行相應的操作，比如重新導向到登入頁面或提示訊息
@@ -48,7 +47,6 @@ export default function Cart() {
     <>
       <>
         <Navbar />
-        {/* <Link href="/product/product_list">返回商城</Link> */}
         <div className="container">
           <h2 className="bottom-line d-inline">我的購物車</h2>
           <div className="second">

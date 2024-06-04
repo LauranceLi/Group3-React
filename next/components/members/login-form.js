@@ -11,6 +11,7 @@ import { ImFacebook2 } from 'react-icons/im'
 import { RiEyeFill } from 'react-icons/ri'
 import { RiEyeOffFill } from 'react-icons/ri'
 import { GiCommercialAirplane } from 'react-icons/gi'
+import useMemberInfo from '@/hooks/use-member-info'
 
 // 開發用
 import TestBtn from '@/components/test/testBtn'
@@ -24,6 +25,7 @@ const parseJwt = (token) => {
 
 const LoginForm = () => {
   const router = useRouter()
+  const [avatarUrl, setAvatarUrl] = useState('/images/forest.jpg')
   const [IsVisible, setIsVisible] = useState(false)
   const toggleVisibility = () => {
     setIsVisible(!IsVisible)
@@ -107,7 +109,20 @@ const LoginForm = () => {
     }
   }
 
-  const handleBlur = () => {}
+  const handleBlur = async () => {
+    const res = await fetch('http://localhost:3005/api/members/login-avatar', {
+      credentials: 'include', // 設定cookie或是要存取隱私資料時帶cookie到伺服器一定要加
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(user),
+    })
+
+    const data = await res.json()
+    setAvatarUrl(data.avatar)
+  }
 
   const emailErrorInput = () => {
     setUser({ email: 'emailError@gmail.com', password: '123456' })
@@ -135,7 +150,7 @@ const LoginForm = () => {
       <main>
         <div className={`${styles.loginFormContainer} bgImg`}>
           <div className={styles.leftBox}>
-            <Avatar width={'12rem'} height={'12rem'} />
+            <Avatar width={'12rem'} height={'12rem'} avatarUrl={avatarUrl} />
             <form onSubmit={handleSubmit} className={styles.loginForm}>
               <h5>會員登入</h5>
               <div className={styles.loginItem}>
@@ -198,13 +213,13 @@ const LoginForm = () => {
             <div className={styles.thirdPartyLogin}>
               <h5>其他登入方式</h5>
               <div className={`${styles.loginItem} border-0`}>
-                <buttom
+                {/* <buttom
                   type="button"
                   className={`${styles.thirdPartyLoginBtn} `}
                 >
                   <ImFacebook2 size={22} className={styles.facebookIcon} />
                   Facebook
-                </buttom>
+                </buttom> */}
 
                 <GoogleLogin />
               </div>
@@ -222,6 +237,7 @@ const LoginForm = () => {
               <h2>締杉旅遊 邀您領略，四季遞嬗。</h2>
             </div>
             <div className={styles.contact}>
+            <Link href="/contact">
               <button className={`${styles.contactBtn}`}>
                 <div>
                   <span>
@@ -230,6 +246,7 @@ const LoginForm = () => {
                   <span>聯絡我們</span>
                 </div>
               </button>
+            </Link>
             </div>
           </div>
         </div>
