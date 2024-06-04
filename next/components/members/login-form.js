@@ -225,6 +225,7 @@ const LoginForm = () => {
               <h2>締杉旅遊 邀您領略，四季遞嬗。</h2>
             </div>
             <div className={styles.contact}>
+            <Link href="/contact">
               <button className={`${styles.contactBtn}`}>
                 <div>
                   <span>
@@ -233,6 +234,7 @@ const LoginForm = () => {
                   <span>聯絡我們</span>
                 </div>
               </button>
+            </Link>
             </div>
           </div>
         </div>
