@@ -47,7 +47,7 @@ export default function CartList() {
           <div className="travel-info" key={v.id}>
             <div className="travel-saleitem">
               {/* <img src={`/pics/${v.photos.split(',')[0]}`} alt="" width={150} /> */}
-              <span className="bottom-line m-2">{v.name}{v.title}</span>
+              <span className="bottom-line m-2">{v.name}</span>
             </div>
             <div className="unit-price text-center">{v.price}</div>
             <div className="unit-price text-center">
