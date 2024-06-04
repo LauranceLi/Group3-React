@@ -290,8 +290,19 @@
   background-color: transparent;
 }
 
+@media only screen and (max-width: 1440px){
+  .offerInfo {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .divider {
+    display: none;
+  }
+}
+
 .memberItem {
   display: flex;
+  width: 100%;
   flex-direction: column;
   padding: 0.5rem 1rem;
   height: 100%;
@@ -334,6 +345,8 @@
   margin: 1rem;
   width: 50%;
 }
+
+
 
 .btnCountainer {
   display: flex;
@@ -415,23 +428,45 @@
   align-items: center;
   width: 100%;
   height: 100%;
+  padding: 1.5rem;
 }
 .remainPointsIcon {
   color: var(--primary-color);
   margin-right: 1rem;
 }
-
+@media only screen and (max-width: 1440px){
+  .recommendLecture,
+  .remainPointsBox,
+  .memberItem {
+    width: 100%;
+  }
+  .divider {
+    display: none;
+  }
+}
 @media only screen and (max-width: 576px) {
   .offerInfo {
     height: auto;
   }
+  .recommenItem {
+    flex-direction: column;
+    
+  }
+  .textContainer {
+    width: 100%;
+  }
 
-  .remainPointsBox,
+  .recommenItem:first-child{
+    justify-content: center;
+    align-self: center;
+  }
+
+  /* .remainPointsBox,
   .recommendLecture {
     height: 10rem;
     padding: 0.5rem;
     width: 50%;
-  }
+  } */
 
   .remainPointsBox .bottomBox {
     height: auto;

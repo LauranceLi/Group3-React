@@ -14,9 +14,57 @@ import OrderQueryNew from '../order/order_query_new'
 
 export default function MemberCenter() {
   const { lectures, loading } = useFetchLectures()
-  const { points, tag } = useMemberInfo()
+  const { points, tag, email, mobile, name } = useMemberInfo()
   const [recommend, setRecommend] = useState([])
   const [dataLoaded, setDataLoaded] = useState(false) // 添加一个状态来表示数据是否已加载完成
+  const signUpName = name ? `value=${name}` : ``
+  const signUpEmail = email ? `value=${email}` : ``
+  const signUpMobile = mobile ? `value=${mobile}` : ``
+  const signUpBtn = () => {
+    Swal.fire({
+      title: '請填寫報名訊息',
+      html:
+        `<input id="swal-input1" class="swal2-input" placeholder="姓名" ${signUpName}>` +
+        `<input id="swal-input2" class="swal2-input" placeholder="信箱" ${signUpEmail}>` +
+        `<input id="swal-input3" class="swal2-input" placeholder="手機" ${signUpMobile}>`,
+      inputAttributes: {
+        autocapitalize: 'off',
+      },
+      showCancelButton: true,
+      confirmButtonText: '確認報名',
+      confirmButtonColor: '#192a56',
+      cancelButtonText:'取消',
+      showLoaderOnConfirm: true,
+      preConfirm: async (login) => {
+        try {
+          const githubUrl = `
+            https://api.github.com/users/${login}
+          `
+          const response = await fetch(githubUrl)
+          if (!response.ok) {
+            return Swal.showValidationMessage(`
+              ${JSON.stringify(await response.json())}
+            `)
+          }
+          return response.json()
+        } catch (error) {
+          Swal.showValidationMessage(`
+            Request failed: ${error}
+          `)
+        }
+      },
+      allowOutsideClick: () => !Swal.isLoading(),
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: `報名成功`,
+          icon: 'success',
+          confirmButtonText: '了解',
+          confirmButtonColor: '#192a56',
+        })
+      }
+    })
+  }
 
   useEffect(() => {
     if (!loading && lectures.length > 0) {
@@ -77,7 +125,11 @@ export default function MemberCenter() {
                 >
                   <BsInfoCircle size={23} />
                 </button>
-                <button className={styles.signInBtn} type="button">
+                <button
+                  className={styles.signInBtn}
+                  type="button"
+                  onClick={signUpBtn}
+                >
                   <FaRegThumbsUp size={23} />
                   報名參加
                 </button>
