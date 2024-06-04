@@ -290,7 +290,7 @@
   background-color: transparent;
 }
 
-@media only screen and (max-width: 1440px){
+@media only screen and (max-width: 1440px) {
   .offerInfo {
     flex-direction: column;
     align-items: flex-start;
@@ -314,31 +314,29 @@
 }
 
 .imgContainer {
-
-  width: 8rem; 
+  width: 8rem;
   height: 8rem;
-  overflow: hidden; 
-  position: relative; 
-  margin:0.5rem; 
+  overflow: hidden;
+  position: relative;
+  margin: 0.5rem;
 }
 
 .imgContainer img {
-  width: auto; 
-  height: auto; 
+  width: auto;
+  height: auto;
   max-width: 15rem;
   max-height: 15rem;
-  object-fit: cover; 
-  object-position: center; 
-  position: absolute; 
-  
+  object-fit: cover;
+  object-position: center;
+  position: absolute;
+
   top: 50%;
-  left: 50%; 
-  transform: translate(-50%, -50%); 
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .recommendLecture {
   width: 60%;
-  
 }
 
 .textContainer {
@@ -346,15 +344,13 @@
   width: 50%;
 }
 
-
-
 .btnCountainer {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.infoBtn{
+.infoBtn {
   width: 2.2rem;
   height: 2.2rem;
   border: 0;
@@ -370,7 +366,7 @@
   margin-bottom: 0.2rem;
 }
 .signInBtn {
-  color:var(--info-color);
+  color: var(--info-color);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -434,7 +430,7 @@
   color: var(--primary-color);
   margin-right: 1rem;
 }
-@media only screen and (max-width: 1440px){
+@media only screen and (max-width: 1440px) {
   .recommendLecture,
   .remainPointsBox,
   .memberItem {
@@ -450,13 +446,12 @@
   }
   .recommenItem {
     flex-direction: column;
-    
   }
   .textContainer {
     width: 100%;
   }
 
-  .recommenItem:first-child{
+  .recommenItem:first-child {
     justify-content: center;
     align-self: center;
   }
@@ -595,8 +590,6 @@
   color: white;
 }
 
-
-
 .editItem {
   display: flex;
   justify-content: flex-start;
@@ -712,7 +705,23 @@
   border: 0;
   color: white;
 }
-.react-datepicker-wrapper input{
+.react-datepicker-wrapper input {
   background-color: transparent;
 }
 /* editList End */
+
+.changAvatarBtn {
+  background-color: transparent;
+  border: 0;
+  width: 2rem;
+  height: 2rem;
+  color: white;
+  display: flex;
+  
+  align-items: center;
+}
+
+.nameBox {
+  display: flex;
+  align-items: center;
+}
