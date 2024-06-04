@@ -56,13 +56,13 @@ const ProductDetails = () => {
               價格: <span>{product.price}</span>
             </h5>
             <div className="d-flex">
-              <span>購買數量:</span>
-              <div className="unit-price text-center">
-                <button onClick={handleDecrease} className="no-border">
+              <span>購買數量 : </span>
+              <div className="ms-2">
+                <button onClick={handleDecrease} className="no-border btn">
                   <SquareMinus />
                 </button>
                 <span className="number">{quantity}</span>
-                <button onClick={handleIncrease} className="no-border">
+                <button onClick={handleIncrease} className="no-border btn">
                   <SquarePlus />
                 </button>
               </div>
