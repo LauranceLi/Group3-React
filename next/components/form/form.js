@@ -302,6 +302,7 @@ const MyFormComponent = () => {
                 </label>
               </div>
             </div>
+            <div className="col text-center"></div>
             {errors.invoiceType && (
               <p className="text-danger">{errors.invoiceType}</p>
             )}
