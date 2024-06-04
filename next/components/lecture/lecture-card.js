@@ -1,11 +1,74 @@
-import React, {useEffect, useRef} from 'react'
+import React, { useEffect, useRef } from 'react'
 import Link from 'next/link'
 import Swal from 'sweetalert2'
+import useMemberInfo from '@/hooks/use-member-info'
 import styles from '@/styles/lectures/lectures.module.css'
 import { PiChalkboardTeacherFill } from 'react-icons/pi'
 import { BsInfoCircle } from 'react-icons/bs'
 
-export default function LectureCard({ title, country, date, place, img, introduction, time }) {
+export default function LectureCard({
+  title,
+  country,
+  date,
+  place,
+  img,
+  introduction,
+  time,
+}) {
+  const { email, mobile, name } = useMemberInfo()
+
+  const signUpName = name ? `value=${name}` : ``
+  const signUpEmail = email ? `value=${email}` : ``
+  const signUpMobile = mobile ? `value=${mobile}` : ``
+  const signUpBtn = () => {
+    Swal.fire({
+      title: '請填寫報名訊息',
+      html:
+        `<input id="swal-input1" class="swal2-input" placeholder="姓名" ${signUpName}>` +
+        `<input id="swal-input2" class="swal2-input" placeholder="信箱" ${signUpEmail}>` +
+        `<input id="swal-input3" class="swal2-input" placeholder="手機" ${signUpMobile}>`,
+      inputAttributes: {
+        autocapitalize: 'off',
+      },
+      showCancelButton: true,
+      confirmButtonText: '確認報名',
+      confirmButtonColor: '#192a56',
+      cancelButtonText:'取消',
+      showLoaderOnConfirm: true,
+      preConfirm: async (login) => {
+        try {
+          const githubUrl = `
+            https://api.github.com/users/${login}
+          `
+          const response = await fetch(githubUrl)
+          if (!response.ok) {
+            return Swal.showValidationMessage(`
+              ${JSON.stringify(await response.json())}
+            `)
+          }
+          return response.json()
+        } catch (error) {
+          Swal.showValidationMessage(`
+            Request failed: ${error}
+          `)
+        }
+      },
+      allowOutsideClick: () => !Swal.isLoading(),
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: `報名成功`,
+          icon: 'success',
+          confirmButtonText: '了解',
+          confirmButtonColor: '#192a56',
+        })
+      }
+    })
+  }
+
+
+
+
   const showInfo = () => {
     Swal.fire({
       title: title,
@@ -13,7 +76,8 @@ export default function LectureCard({ title, country, date, place, img, introduc
       imageUrl: `images/lectures/${img}.jpg`,
       imageWidth: 450,
       imageAlt: 'Custom image',
-      confirmButtonColor: '#192a56',confirmButtonText: '了解',
+      confirmButtonColor: '#192a56',
+      confirmButtonText: '了解',
     })
   }
 
@@ -24,9 +88,11 @@ export default function LectureCard({ title, country, date, place, img, introduc
       imageUrl: `images/lectures/${img}.jpg`,
       imageWidth: 450,
       imageAlt: 'Custom image',
-      confirmButtonColor: '#192a56',confirmButtonText: '了解',
+      confirmButtonColor: '#192a56',
+      confirmButtonText: '了解',
     })
   }
+
 
   const cardRef = useRef(null)
 
@@ -80,12 +146,12 @@ export default function LectureCard({ title, country, date, place, img, introduc
             <h1>{time}</h1>
             <h6>{place}</h6>
           </div>
-          <Link className={styles.signUpformBtn} href="#">
+          <button className={styles.signUpformBtn} href="" onClick={signUpBtn}>
             <div>
               <span>點此報名</span>
               <span>免費參加</span>
             </div>
-          </Link>
+          </button>
         </div>
       </div>
     </>
