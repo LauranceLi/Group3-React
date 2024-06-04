@@ -3,29 +3,16 @@ import Link from 'next/link'
 import Head from 'next/head'
 import cn from 'classnames'
 import styles from '@/styles/layout/navbar.module.css'
+import Drawer from '@/components/layout/drawer'
 import { ImFacebook2 } from 'react-icons/im'
 import { FaShoppingCart } from 'react-icons/fa'
 import { RiMenuFoldFill } from 'react-icons/ri'
 import { VscSignOut } from 'react-icons/vsc'
-
+import { useCart } from '@/hooks/use_cart'
 const Navbar = ({ navItemName = '', navbarControl = '' }) => {
   const [isSticky, setIsSticky] = useState(true)
+  const {cartItemCount} =useCart()
 
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     if (window.scrollY > 0) {
-  //       setIsSticky(true)
-  //     } else {
-  //       setIsSticky(false)
-  //     }
-  //   }
-
-  //   window.addEventListener('scroll', handleScroll)
-
-  //   return () => {
-  //     window.removeEventListener('scroll', handleScroll)
-  //   }
-  // }, [])
   return (
     <>
       <Head>
@@ -52,9 +39,9 @@ const Navbar = ({ navItemName = '', navbarControl = '' }) => {
                 <nav className={styles.rowNav}>
                   <ul>
                     <li className="nav-item">
-                      <a className={styles.navLink} href="index.html">
+                      <Link className={styles.navLink} href="/">
                         關於締杉
-                      </a>
+                      </Link>
                     </li>
                     <li className="nav-item">
                       <Link
@@ -92,8 +79,13 @@ const Navbar = ({ navItemName = '', navbarControl = '' }) => {
                 >
                   {/* Header Social Area */}
                   <div className={styles.icons}>
-                    <Link href="/cart/cart" title="購物車">
-                      <FaShoppingCart size={25} />
+                    <Link href="/cart/cart" title="購物車" >
+                      <FaShoppingCart size={25} className={styles.facebookIcon} />
+                      <span>
+                        {cartItemCount > 0 && (
+                          <span  className={styles.navLink}>{cartItemCount}</span>
+                        )}
+                      </span>
                     </Link>
 
                     <Link href="#" title="Facebook">
@@ -106,12 +98,8 @@ const Navbar = ({ navItemName = '', navbarControl = '' }) => {
                   </div>
 
                   <div className={styles.menuIcon}>
-                    <button type="button" className={styles.menuBtn}>
-                      <RiMenuFoldFill size={25} />
-                    </button>
+                    <Drawer />
                   </div>
-                  {/* Menu Icon */}
-                  {/* <span className="navbar-toggler-icon" id="menuIcon" /> */}
                 </div>
               </div>
             </div>

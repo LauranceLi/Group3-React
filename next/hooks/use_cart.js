@@ -3,6 +3,7 @@ import { createContext, useState, useContext, useEffect } from 'react'
 const CartContext = createContext(null)
 
 export function CartProvider({ children }) {
+  
   const [items, setItems] = useState([])
   // 从 localStorage 恢复购物车状态
   useEffect(() => {
@@ -16,6 +17,7 @@ export function CartProvider({ children }) {
   useEffect(() => {
     localStorage.setItem('cartItems', JSON.stringify(items))
   }, [items])
+
   const increaseItem = (id) => {
     const nextItems = items.map((v, i) => {
       if (v.id === id) return { ...v, qty: v.qty + 1 }
@@ -39,12 +41,31 @@ export function CartProvider({ children }) {
     })
     setItems(nextItems)
   }
-  const addItem = (product) => {
+  //原本的版本
+  // const addItem = (product) => {
+  //   const foundIndex = items.findIndex((v) => v.id === product.id)
+  //   if (foundIndex > -1) {
+  //     increaseItem(product.id)
+  //   } else {
+  //     const newItem = { ...product, qty: 1 }
+  //     const nextItems = [newItem, ...items]
+  //     setItems(nextItems)
+  //   }
+  // }
+
+  //測試修改過後的版本(經測試可以使用)
+  const addItem = (product, quantity = 1) => {
     const foundIndex = items.findIndex((v) => v.id === product.id)
     if (foundIndex > -1) {
-      increaseItem(product.id)
+      // 如果商品已存在於購物車，增加其數量
+      const nextItems = items.map((v) => {
+        if (v.id === product.id) return { ...v, qty: v.qty + quantity }
+        else return v
+      })
+      setItems(nextItems)
     } else {
-      const newItem = { ...product, qty: 1 }
+      // 如果商品不存在於購物車，新增商品並設置其數量
+      const newItem = { ...product, qty: quantity }
       const nextItems = [newItem, ...items]
       setItems(nextItems)
     }
@@ -57,30 +78,52 @@ export function CartProvider({ children }) {
   const [points, setPoints] = useState(0)
   const [discountAmount, setDiscountAmount] = useState(0)
   const [finalAmount, setFinalAmount] = useState(0)
-
+  const [memberId, setMemberId] = useState(null);
   useEffect(() => {
-    const memberId = '20150221008'
-    // 從後端獲取會員積分信息
-    fetch(`http://localhost:3005/api/points?member_id=${memberId}`)
-      .then((response) => response.json())
-      .then((data) => {
-        // 獲取積分並將其存儲在狀態中
-        if (Array.isArray(data) && data.length > 0) {
-          // 確保返回的數據不是空數組
-          const totalPoints = data.reduce(
-            (accumulator, current) => accumulator + current.points,
-            0
-          )
-          setPoints(totalPoints) // 將所有積分相加並存儲在狀態中
+    // 檢查是否在瀏覽器端
+      // 從 localStorage 中獲取資料
+      const userString = localStorage.getItem('user');
+      if (userString) {
+        // 解析成 JSON 格式
+        const user = JSON.parse(userString);
+        // 獲取 member_id 的值
+        const memberId = user.member_id;
+        console.log(memberId);
+        setMemberId(memberId);
+      } }, [memberId]); 
 
-          // 計算可以折扣的金額
-          const discount = Math.min(Math.floor(totalPoints / 300), 100) // 滿300點換成1元，最多折扣100元
-          setDiscountAmount(discount) // 存儲折扣金額
-          console.log(totalPoints)
+      useEffect(() => {
+        if (memberId) {
+          // 從後端獲取會員積分信息
+          fetch(`http://localhost:3005/api/points?member_id=${memberId}`)
+            .then((response) => {
+              if (!response.ok) {
+                throw new Error('Network response was not ok');
+              }
+              return response.json();
+            })
+            .then((data) => {
+              // 獲取積分並將其存儲在狀態中
+              if (Array.isArray(data) && data.length > 0) {
+                // 確保返回的數據不是空數組
+                const totalPoints = data.reduce(
+                  (accumulator, current) => accumulator + current.points,
+                  0
+                )
+                setPoints(totalPoints) // 將所有積分相加並存儲在狀態中
+      
+                // 計算可以折扣的金額
+                const discount = Math.min(Math.floor(totalPoints / 300), 100); // 滿300點換成1元，最多折扣100元
+                setDiscountAmount(discount); // 存儲折扣金額
+                console.log(totalPoints)
+              }
+            })
+            .catch((error) => {
+              console.error('Error fetching member points:', error);
+              // 可以顯示錯誤消息給用戶
+            });
         }
-      })
-      .catch((error) => console.error('Error fetching member points:', error))
-  }, [])
+      }, [memberId]);  //注意 如果有切換帳號的動作 在購物車頁面要先重整才會顯示切換帳號之後的積分狀態
 
   // 處理用戶輸入想要折扣的金額
   const handleDiscountChange = (event) => {
@@ -114,6 +157,14 @@ export function CartProvider({ children }) {
     setFinalAmount(finalAmount)
   }, [totalPrice, discountAmount])
 
+  const [cartItemCount, setCartItemCount] = useState(0); // 新增用於跟踪商品數量的狀態
+
+  // 在購物車中添加商品時更新商品種類數量
+  useEffect(() => {
+    const uniqueItems = new Set(items.map(item => item.id));
+    setCartItemCount(uniqueItems.size);
+  }, [items]);
+
   return (
     <CartContext.Provider
       value={{
@@ -131,6 +182,7 @@ export function CartProvider({ children }) {
         handleIncrease, //增加使用的積分
         handleDecrease, //減少使用的積分
         finalAmount, //扣除積分後的金額
+        cartItemCount,
       }}
     >
       {children}

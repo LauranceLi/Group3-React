@@ -4,16 +4,16 @@
 }
 
 @media only screen and (max-width: 576px) {
-.nav {
-  height: 100%;
-  justify-content: flex-end;
-}
+  .nav {
+    height: 100%;
+    justify-content: flex-end;
+  }
 }
 
 .nav a {
   display: flex;
   color: white;
-  padding: 0.7rem;
+  padding: 0.5rem;
   font-size: 1.2rem;
 }
 
@@ -32,7 +32,7 @@
   height: 4.5rem;
 }
 
-@media only screen and (max-width: 991px) {
+@media only screen and (max-width: 1200px) {
   .logoBox {
     display: none;
   }
@@ -57,6 +57,7 @@
 
 .logoText {
   position: absolute;
+  font-size: 1.8rem;
   top: 5%;
 }
 
@@ -193,22 +194,28 @@
 .rowNav ul {
   display: flex;
 }
+.drawerBtn {
+  display: none;
+}
 
 @media only screen and (max-width: 576px) {
   .rowNav {
     display: none;
   }
+  .drawerBtn {
+    display: flex;
+  }
 }
 
 .navLink {
-  position: relative;/* Add this line */
-  text-decoration:none;
+  position: relative; /* Add this line */
+  text-decoration: none;
 }
 
 .navLink:after {
   width: 0%;
   content: '';
-  text-decoration:none;
+  text-decoration: none;
 }
 
 .navLink:hover::after {
@@ -219,12 +226,12 @@
   bottom: 5px;
   left: 0;
   transition: all 0.3s linear;
-  text-decoration:none;
+  text-decoration: none;
 }
 
 @media only screen and (max-width: 767px) {
   .navLink {
-    max-width: 4.5rem;
+    max-width: 4.7rem;
     display: flex;
     text-align: center;
   }
@@ -233,9 +240,6 @@
 .icons {
   display: flex;
   align-items: center;
-}
-.icons a {
-  padding: 0 0.3rem;
 }
 
 .facebookIcon:hover {
@@ -360,7 +364,6 @@
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-
 .menuBtn {
   display: none;
 }
@@ -374,7 +377,6 @@
   border-radius: 0;
   cursor: pointer;
   outline: none;
-
 }
 
 @media only screen and (max-width: 576px) {
@@ -382,3 +384,47 @@
     display: flex;
   }
 }
+
+.drawerContainer {
+  background-color: var(--primary-color);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.drawerBtn {
+  background-color: transparent !important;
+  border: 0;
+  padding: 0.8rem;
+}
+
+.drawerHeader{
+  display: flex;
+  flex-direction: column !important;
+  align-items: center !important;
+}
+
+.drawerTitle {
+
+  color: white;
+  font-size:2rem;
+}
+.drawerLink {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100% ;
+  max-width: none;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 500;
+  padding: 1.5rem;
+}
+
+.drawerNav {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+

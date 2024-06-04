@@ -18,8 +18,6 @@ const Login = () => {
     <>
       <Preloader />
       <Navbar
-        navItemName={styles.navItemControl}
-        navbarControl={styles.navbarControl}
       />
       <LoginForm />
     </>

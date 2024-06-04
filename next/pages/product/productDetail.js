@@ -7,8 +7,12 @@ import Footer from '../../components/layout/footer'
 import Navbar from '@/components/layout/navbar'
 import { useCart } from '@/hooks/use_cart'
 
+import { useCart } from '@/hooks/use_cart'
+
 const updateCart = ({ productId, count }) => {
   let cart = localStorage.getItem('cart')
+  ? JSON.parse(localStorage.getItem('cart'))
+  : {}
   ? JSON.parse(localStorage.getItem('cart'))
   : {}
   cart[productId] = count
@@ -111,7 +115,9 @@ const ProductDetail = () => {
             <div>
               <span className="pageRow" style={{ display: 'flex' }}>
                 <button onClick={handleAddToCart}>
+                <button onClick={handleAddToCart}>
                 <i className="fa-solid fa-2x fa-cart-shopping"></i>{' '}
+                </button>
                 </button>
                 <span
                   style={{ fontSize: 28, marginLeft: 15, fontWeight: 'bold' }}

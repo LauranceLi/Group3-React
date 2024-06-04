@@ -14,6 +14,24 @@ const MyFormComponent = () => {
     { autoCloseMins: 3 } // x分鐘沒完成選擇會自動關閉，預設5分鐘。
   )
 
+   // 從 localStorage 中讀取 user
+  //  const user = JSON.parse(localStorage.getItem('user'))
+  //  const memberId = user ? user.memberId : null
+  //  console.log(user)
+  const [memberId, setMemberId] = useState(null);
+  useEffect(() => {
+    // 檢查是否在瀏覽器端
+      // 從 localStorage 中獲取資料
+      const userString = localStorage.getItem('user');
+      if (userString) {
+        // 解析成 JSON 格式
+        const user = JSON.parse(userString);
+        // 獲取 member_id 的值
+        const memberId = user.member_id;
+        console.log(memberId);
+        setMemberId(memberId);
+      } }, []); 
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -38,7 +56,6 @@ const MyFormComponent = () => {
       postcode: postcode,
     })
   }
-
   const updateFormData = (fieldName, value) => {
     setFormData({ ...formData, [fieldName]: value })
   }
@@ -58,11 +75,15 @@ const MyFormComponent = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const updatedFormData = { ...formData, store711, items, discountAmount }
+    const updatedFormData = { ...formData, store711, items, discountAmount,memberId }
     if (validate(updatedFormData)) {
       console.log(updatedFormData)
       if (formData.paymentMethod === '綠界科技') {
         window.location.href = `http://localhost:3005/api/ec/?amount=${finalAmount}`
+        // 清空 localStorage 中的购物车数据
+        localStorage.removeItem('cartItems')
+        // 清空购物车状态
+        setItems([])
       }
       try {
         const res = await fetch('http://localhost:3005/api/order', {
@@ -75,6 +96,8 @@ const MyFormComponent = () => {
         })
         const data = await res.json()
         console.log('後端返回的數據:', data)
+        // 使用 orderId 執行跳轉到 /payment/callback 页面
+        window.location.href = `http://localhost:3000/payment/callback`
         // 清空 localStorage 中的购物车数据
         localStorage.removeItem('cartItems')
         // 清空购物车状态
@@ -94,31 +117,28 @@ const MyFormComponent = () => {
 
   return (
     <>
-      <form>
+          <form>
         <CheckoutList />
         <div className="mb-3">
           <h4 className="bottom-line d-inline">填寫訂購人資料</h4>
         </div>
         <button
           type="button"
+          className="btn btn-warning"
           onClick={() => {
             // 重置需要自行設定回初始化值
             setFormData({
-              name: '榮恩',
-              email: 'ron@test.com',
-              mobile: '0910123123',
-              recipientName: '榮恩',
-              recipientMobile: '0910123123',
-              // paymentMethod: '綠界科技', //type='radio'
-              // invoiceType: '電子載具', //type='radio'
-              invoiceValue: '/2345678',
-              // shippingMethod: '賣家宅配', //type='radio'
-              shippingAddress: 'cc',
+              name: 'Group3',
+              email: 'group3@gmail.com',
+              mobile: '0970265836',
+              recipientName: 'Group3',
+              recipientMobile: '0970265836',
+              shippingAddress:'南台路96號23樓',
               agreement: true,
             })
           }}
         >
-          一鍵填入
+          快速輸入
         </button>
         <div className="row customer-info">
           <div className="col m-2">
@@ -286,41 +306,46 @@ const MyFormComponent = () => {
               <p className="text-danger">{errors.invoiceType}</p>
             )}
           </div>
-          <div className="ship711">
-            <div className="mb-3 mt-5">
-              <h4 className="bottom-line d-inline">輸入載具號碼</h4>
+          {formData.invoiceType === '電子載具' && (
+            <div className="ship711">
+              <div className="mb-3 mt-5">
+                <h4 className="bottom-line d-inline">輸入載具號碼</h4>
+              </div>
+              <div className="col-12">
+                <div className="col">載具 : </div>
+                <input
+                  type="text"
+                  className="form-control"
+                  name="invoiceValue"
+                  value={formData.invoiceValue}
+                  onChange={handleInputChange}
+                />
+              </div>
+              {errors.invoiceValue && (
+                <p className="text-danger">{errors.invoiceValue}</p>
+              )}
             </div>
-            <div className="col-12">
-              <div className="col">載具 : </div>
-              <input
-                type="text"
-                className="form-control"
-                name="invoiceValue"
-                value={formData.invoiceValue}
-                onChange={handleInputChange}
-              />
+          )}
+          {formData.invoiceType === '三聯發票' && (
+            <div className="ship711">
+              <div className="mb-3 mt-5">
+                <h4 className="bottom-line d-inline">輸入統編號碼</h4>
+              </div>
+              <div className="col-12">
+                <div className="col">統編 : </div>
+                <input
+                  type="text"
+                  className="form-control"
+                  name="invoiceValue"
+                  value={formData.invoiceValue}
+                  onChange={handleInputChange}
+                />
+              </div>
+              {errors.invoiceValue && (
+                <p className="text-danger">{errors.invoiceValue}</p>
+              )}
             </div>
-            {errors.invoiceValue && (
-              <p className="text-danger">{errors.invoiceValue}</p>
-            )}
-          </div>
-          <div className="ship711">
-            <div className="mb-3 mt-5">
-              <h4 className="bottom-line d-inline">輸入統編號碼</h4>
-            </div>
-            <div className="col-12">
-              <div className="col">統編 : </div>
-              <input
-                type="text"
-                className="form-control"
-                name="invoiceValue"
-                onChange={handleInputChange}
-              />
-            </div>
-            {errors.invoiceValue && (
-              <p className="text-danger">{errors.invoiceValue}</p>
-            )}
-          </div>
+          )}
           <div className=" mb-5">
             <div className="mt-5 mb-3">
               <h4 className="bottom-line d-inline">送貨方式</h4>
@@ -361,70 +386,76 @@ const MyFormComponent = () => {
                 <p className="text-danger">{errors.shippingMethod}</p>
               )}
             </div>
-            <div className="ship711">
-              <div className="mb-3 mt-5">
-                <h4 className="bottom-line d-inline">7-11 運送商店選擇</h4>
+
+            {formData.shippingMethod === '超商取貨' && (
+              <div className="ship711">
+                <div className="mb-3 mt-5">
+                  <h4 className="bottom-line d-inline">7-11 運送商店選擇</h4>
+                </div>
+                <button
+                  onClick={(e) => {
+                    e.preventDefault()
+                    openWindow()
+                  }}
+                  className="btn btn-dark mb-3"
+                >
+                  選擇門市
+                </button>
+                <br />
+                <div className="col-12">
+                  <div className="col">門市名稱 : </div>
+                  <input
+                    type="text"
+                    value={store711.storename}
+                    disabled
+                    className="form-control"
+                    name="shippingAddress"
+                    onChange={handleInputChange}
+                  />
+                </div>
+                <br />
+                <div className="col-12">
+                  <div className="col">門市地址 : </div>
+                  <input
+                    type="text"
+                    value={store711.storeaddress}
+                    disabled
+                    className="form-control"
+                    name="shippingAddress"
+                    onChange={handleInputChange}
+                  />
+                </div>
               </div>
-              <button
-                onClick={(e) => {
-                  e.preventDefault()
-                  openWindow()
-                }}
-                className="btn btn-dark mb-3"
-              >
-                選擇門市
-              </button>
-              <br />
-              <div className=" col-12">
-                <div className="col">門市名稱 : </div>
-                <input
-                  type="text"
-                  value={store711.storename}
-                  disabled
-                  className="form-control"
-                  name="shippingAddress"
-                  onChange={handleInputChange}
+            )}
+
+            {formData.shippingMethod === '賣家宅配' && (
+              <div className="row customer-info">
+                <div className="mb-3 mt-5">
+                  <h4 className="bottom-line d-inline">宅配地址</h4>
+                </div>
+                <TWZipCode
+                  initPostcode={formData.postcode}
+                  onPostcodeChange={handlePostcodeChange}
+                  name="TWZipCode"
                 />
+                <div className="col zipcode_address">
+                  <label htmlFor="address">
+                    <h6>詳細地址</h6>
+                  </label>
+                  <input
+                    type="text"
+                    name="shippingAddress"
+                    value={formData.shippingAddress}
+                    id="address"
+                    className="form-control"
+                    onChange={handleInputChange}
+                  />
+                </div>
+                {errors.shippingAddress && (
+                  <p className="text-danger">{errors.shippingAddress}</p>
+                )}
               </div>
-              <br />
-              <div className="col-12">
-                <div className="col">門市地址 : </div>
-                <input
-                  type="text"
-                  value={store711.storeaddress}
-                  disabled
-                  className="form-control"
-                  name="shippingAddress"
-                  onChange={handleInputChange}
-                />
-              </div>
-            </div>
-            <div className="row customer-info">
-              <div className="mb-3 mt-5">
-                <h4 className="bottom-line d-inline">宅配地址</h4>
-              </div>
-              <TWZipCode
-                initPostcode={formData.postcode}
-                onPostcodeChange={handlePostcodeChange}
-                name="TWZipCode"
-              />
-              <div className="col zipcode_address">
-                <label htmlFor="address">
-                  <h6>詳細地址</h6>
-                </label>
-                <input
-                  type="text"
-                  name="shippingAddress"
-                  value={formData.shippingAddress}
-                  id="address"
-                  className="form-control"
-                  onChange={handleInputChange}
-                />
-              </div>
-              {errors.shippingAddress && (
-                <p className="text-danger">{errors.shippingAddress}</p>
-              )}
-            </div>
+            )}
           </div>
         </div>
       </form>

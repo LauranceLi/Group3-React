@@ -1,6 +1,5 @@
 [
   {
-    "order_group_id": 1,
     "travel_id": 6,
     "amount": 295000,
     "deposit": 59000,
@@ -10,7 +9,6 @@
     "member_id": "20150221008"
   },
   {
-    "order_group_id": 2,
     "travel_id": 7,
     "amount": 79900,
     "deposit": 16000,

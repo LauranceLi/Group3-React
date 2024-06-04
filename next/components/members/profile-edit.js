@@ -14,15 +14,14 @@ import {
 } from '@/utils/validation'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
-import { FaShieldAlt } from 'react-icons/fa'
-import { VscSignOut } from 'react-icons/vsc'
-import { FaStar } from 'react-icons/fa'
-import { BsFillPersonVcardFill } from 'react-icons/bs'
-import { BsPersonFillGear } from 'react-icons/bs'
-import { stripLow } from 'validator'
-import { set } from 'lodash'
 
-export default function profileEdit() {
+import { BsPersonFillGear } from 'react-icons/bs'
+
+
+// 開發用
+import TestBtn from '@/components/test/testBtn'
+
+export default function ProfileEdit() {
   const {
     name,
     email,
@@ -61,7 +60,7 @@ export default function profileEdit() {
     mobile: '',
     idNum: '',
     points: 0,
-    tag:''
+    tag: '',
   })
 
   useEffect(() => {
@@ -81,8 +80,7 @@ export default function profileEdit() {
   }, [name])
 
   const router = useRouter()
-  const [startDate, setStartDate] = useState();
-
+  const [startDate, setStartDate] = useState()
 
   // 表單資料檢查 - 姓名（OK）、手機（OK）、護照姓名（OK）、身分證字號（OK）
 
@@ -150,23 +148,22 @@ export default function profileEdit() {
   }
   //生日（完成）
   const handleBirthdayChange = (date) => {
-    setUser({...user, birthday: date })
+    setUser({ ...user, birthday: date })
     setStartDate(date)
   }
 
   // tag
   const handleTagChange = (e) => {
     const { name, value } = e.target
-    setUser({...user, [name]: value })
+    setUser({ ...user, [name]: value })
   }
 
   //  地址
 
   const handleAddressChange = (e) => {
     const { name, value } = e.target
-    setUser({...user, [name]: value })
+    setUser({ ...user, [name]: value })
   }
-
 
   // 阻擋表單（）
   const handleSubmit = async (e) => {
@@ -220,7 +217,7 @@ export default function profileEdit() {
       return
     }
     // 表單檢查--- END ---
-console.log(user);
+    console.log(user)
     // 檢查沒問題後再送到伺服器
     const res = await fetch('http://localhost:3005/api/members/profile_edit', {
       credentials: 'include', // 設定cookie或是要存取隱私資料時帶cookie到伺服器一定要加
@@ -235,15 +232,31 @@ console.log(user);
     const data = await res.json()
 
     if (data.status === 'success') {
-      console.log(data);
+      console.log(data)
       router.push('/members/profile')
     } else {
       alert(data.message)
     }
   }
 
+  const newUserInfoInput = () => {
+    setUser({ 
+      name:'新使用者',
+      email:'newUser@gmail.com',
+      firstName: 'User',
+      lastName: 'New',
+      birthday: '2024-06-07',
+      address: '苗栗縣苑裡鎮興華街25號',
+      mobile: '0964521456',
+      idNum: 'A123456789',
+      tag:'歐洲',
+      points: 0,})
+  }
+
+
   return (
     <>
+    <TestBtn testInput_6={newUserInfoInput}/>
       <main className={styles.memberMain}>
         <div className={styles.memberContainer}>
           <div className={styles.memberBox}>
@@ -378,11 +391,15 @@ console.log(user);
                       yearDropdownItemNumber={50}
                       scrollableYearDropdown
                     />
-
                   </div>
                   <div className={styles.editItem}>
                     <label htmlFor="tag">興趣主題</label>
-                    <select name="tag" className={styles.interestSelect} value={user.tag} onChange={handleTagChange}>
+                    <select
+                      name="tag"
+                      className={styles.interestSelect}
+                      value={user.tag}
+                      onChange={handleTagChange}
+                    >
                       <option
                         className={styles.interestOption}
                         value="中南美洲"

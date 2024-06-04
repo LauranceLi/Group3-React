@@ -31,41 +31,75 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover; /* 确保图片覆盖容器，并保持纵横比 */
+}
+.image-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.swiper-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 確保圖片覆蓋容器，並保持縱橫比 */
   display: block;
 }
 
-.overlay {
+.image-container::after {
+  content: '';
   position: absolute;
-  bottom: -100%; /* 初始状态下在图片外部 */
+  top: 0;
   left: 0;
   right: 0;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* 黑色，透明度50% */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: bottom 0.3s ease-in-out; /* 添加动画效果 */
-  color: #fff; /* 文字颜色 */
+  bottom: 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.3) 80%,rgba(0, 0, 0, 0.7) 100%); /* 半透明黑色濾鏡 */
+  pointer-events: none; /* 確保濾鏡不影響其他元素的互動 */
 }
 
-.overlay-text {
-  width: 100%;
-  font-weight: bold; /* 加粗 */
-  color: #fff; /* 文字颜色 */
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-self: end;
-  padding: 0.5rem 1.5rem;
+
+
+
+.slide-content h3,
+.slide-content p,
+.slide-content .hr {
+  position: absolute;
+  color: white;
+  margin: 1rem 3rem;
+  transition:  0.3s ease-in-out; /* 添加动画效果 */
+  height: 5rem;
+
+}
+.slide-content h3{
+    bottom: 10%;
 }
 
-.overlay-text p {
+.slide-content .hr {
+  bottom: 15%;
+  width: 35%;
+  height: 2px;
+  background-color: white;
+}
+
+.slide-content p {
+  position: absolute;
   color: white;
   font-size: 1rem;
+  bottom: -20%;
 }
 
-.slide-content:hover .overlay {
-  bottom: 0; /* hover时覆盖层上移 */
+
+.slide-content:hover h3 {
+  bottom: 26%;
+  transition: bottom  0.3 ease-in-out; /* 添加动画效果 */
+}
+.slide-content:hover .hr {
+  bottom: 31%;
+  transition: bottom  0.4s ease-in-out; /* 添加动画效果 */
+}
+.slide-content:hover p {
+  bottom:12%;
+  transition: bottom  0.5s ease-in-out; /* 添加动画效果 */
 }
 
 @media (max-width: 768px) {
@@ -74,16 +108,14 @@ body {
   }
 }
 
-
 .swiper-pagination-bullet-active {
   /* 当前激活的分页器按钮的样式 */
   background-color: var(--primary-color) !important; /* 修改背景颜色 */
 }
 
-
 .swiper-pagination-bullet-active,
 .swiper-pagination-bullet {
   /* 当前激活的分页器按钮的样式 */
-  width:0.7rem !important; /* 设置激活按钮宽度 */
+  width: 0.7rem !important; /* 设置激活按钮宽度 */
   height: 0.7rem !important; /* 设置激活按钮高度 */
 }

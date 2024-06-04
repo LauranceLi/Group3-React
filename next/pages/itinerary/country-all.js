@@ -1,15 +1,30 @@
-import React from 'react'
+import React ,{useState,useEffect}from 'react'
 import Image from 'next/image'
 import { Tab, Tabs } from 'react-bootstrap'
 import styles from '@/styles/itinerary.module.css'
 import Navbar from '@/components/layout/navbar'
 import Footer from '@/components/layout/footer'
-
+import Preloader from '@/components/layout/preloader'
+import Banner from '@/components/layout/banner'
 
 function CountryAll() {
+  const [imgUrl, setImgUrl] = useState('')
+  const [title, setTitle] = useState('')
+  const [text, setText] = useState('')
+
+  useEffect(() => {
+    setImgUrl('/images/lectures/4.jpg')
+    setTitle('各國行程')
+    setText(
+      '探索中南美洲、歐洲和日本，體驗三個令人難忘的旅遊目的地。您將漫步於南美的雄偉山脈，沉浸在歐洲古城的文化氛圍中，並在日本現代化城市中感受繁華生活。每個地方都有其獨特之處，無論是古老的建築、悠久的歷史，還是現代的科技，都會為您的旅程增添色彩。'
+    )
+  }, [])
+
   return (
     <>
-    <Navbar />
+      <Preloader />
+      <Navbar />
+      <Banner imgUrl={imgUrl} title={title} text={text} />
       <main className={styles.itineraryMain2}>
         <div>
           <h2 className={styles.itineraryCountryH2}>各國行程</h2>
