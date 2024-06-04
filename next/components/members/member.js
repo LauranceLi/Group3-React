@@ -1,13 +1,12 @@
 import React from 'react'
 import styles from '@/styles/members/member.module.css'
-import useMemberInfo from '@/hooks/use-member-info';
+import useMemberInfo from '@/hooks/use-member-info'
 import Avatar from '@/components/members/avatar'
 import MemberCenter from '@/components/members/member-center'
 import ActionList from '@/components/members/action-list'
-
+import ChangAvatar from './change-avatar'
 export default function Member() {
-
-const { name } = useMemberInfo()
+  const { name } = useMemberInfo()
   return (
     <main className={styles.memberMain}>
       <div className={styles.memberContainer}>
@@ -15,7 +14,10 @@ const { name } = useMemberInfo()
           <div className={styles.leftBox}>
             <div className="member">
               <Avatar width={'9rem'} height={'9rem'} />
-              <h2>{name}</h2>
+              <div className={styles.nameBox}>
+                <h2>{name} </h2>
+                <ChangAvatar />
+              </div>
             </div>
             <ActionList className={styles.actionColumn} />
           </div>
