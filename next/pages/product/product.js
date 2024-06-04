@@ -14,8 +14,12 @@ import Header from '../../components/layout/head'
 import Footer from '../../components/layout/footer'
 import Navbar from '@/components/layout/navbar'
 import Preloader from '@/components/layout/preloader'
+import Banner from '@/components/layout/banner'
 const FaQComponent = ({ options, setSearch }) => {
   const [activeIndex, setActiveIndex] = useState(null)
+
+  
+
 
   const toggleAnswer = (index) => {
     setActiveIndex(activeIndex === index ? null : index)
@@ -340,10 +344,24 @@ const Product = () => {
     setProductFilter(data)
   }, [searchText])
 
+
+  const [imgUrl, setImgUrl] = useState('')
+  const [title, setTitle] = useState('')
+  const [text, setText] = useState('')
+
+  useEffect(() => {
+    setImgUrl('/images/lectures/15.jpg')
+    setTitle('締杉商城')
+    setText(
+      '探索世界，從締杉開始！我們為您準備了最新、最全的旅行裝備與周邊產品，讓每一次旅行都變得更舒適、更愉快。不論您是計劃登山、海灘度假，還是城市探索，讓締杉守護您的旅行夢！'
+    )
+  }, [])
+
   return (
     <>
       <Preloader />
       <Navbar />
+      <Banner imgUrl={imgUrl} title={title} text={text} />
       <Header />
       <Head>
         <link
