@@ -265,7 +265,7 @@ const RegisterForm = () => {
 
   const registerInput = () => {
     setUser({
-      email: 'newUser@gmail.com',
+      email: 'newAccount@gmail.com',
       password: 'a12345678',
       passwordCheck: 'a12345678',
       name: '新使用者',
