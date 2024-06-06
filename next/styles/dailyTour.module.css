@@ -95,9 +95,9 @@
   align-items: center;
   flex-wrap: wrap;
   height: 12.0625rem;
-  margin: 20px 50px;
+  margin: 20px 55px;
   max-width: 1080px;
-  background-color: #f9f8f3;
+  background-color: #f4f6f8;
   border-radius: 5px;
   outline: #dee1e7 solid 0.8px;
 }
@@ -130,6 +130,10 @@
   text-align: center;
   margin-right: 30px;
 }
+.dailyTourItem p {
+  font-size: 16px;
+  color: var(--balck-color);
+}
 
 .dailyTourItem2 {
   text-align: center;
@@ -155,6 +159,9 @@
 }
 .chargeBoxBed {
   color: #2a3040;
+}
+.chargeBox p {
+  font-weight: 500;
 }
 /* itinerary_sign_up 區塊-平板 */
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -368,7 +375,7 @@
   .chargeBox {
     width: 330px;
     /* height: 12.5rem; */
-    margin-left: 25px;
+    margin-left: 20px;
     font-size: 15px;
   }
 
