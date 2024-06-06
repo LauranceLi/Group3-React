@@ -290,13 +290,13 @@ const RegisterForm = () => {
               <div
                 className={`${styles.registerItem} ${styles.thirdPartyLoginBtns}  border-0 justify-content-start`}
               >
-                <a
+                {/* <a
                   href=""
                   className={`${styles.thirdPartyLoginBtn} ${styles.facebookIcon}`}
                 >
                   <ImFacebook2 size={22} />
                   Facebook
-                </a>
+                </a> */}
 
                 <GoogleLogin />
               </div>

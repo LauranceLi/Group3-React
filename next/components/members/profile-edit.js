@@ -242,7 +242,7 @@ export default function ProfileEdit() {
   const newUserInfoInput = () => {
     setUser({ 
       name:'新使用者',
-      email:'newUser@gmail.com',
+      email:'newAccount@gmail.com',
       firstName: 'User',
       lastName: 'New',
       birthday: '2024-06-07',

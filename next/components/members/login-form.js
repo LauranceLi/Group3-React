@@ -136,7 +136,7 @@ const LoginForm = () => {
     setUser({ email: 'group3@gmail.com', password: '123456' })
   }
   const newUserInput = () => {
-    setUser({ email: 'newUser@gmail.com', password: 'a12345678' })
+    setUser({ email: 'newAccount@gmail.com', password: 'a12345678' })
   }
 
   return (
