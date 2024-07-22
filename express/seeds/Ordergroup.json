@@ -1,0 +1,20 @@
+[
+  {
+    "travel_id": 6,
+    "amount": 295000,
+    "deposit": 59000,
+    "deposit_date": "2024-08-12",
+    "final_payment": 236000,
+    "final_payment_date": "2024-08-31",
+    "member_id": "20150221008"
+  },
+  {
+    "travel_id": 7,
+    "amount": 79900,
+    "deposit": 16000,
+    "deposit_date": "2024-07-12",
+    "final_payment": 63900,
+    "final_payment_date": "2024-07-12",
+    "member_id": "20150614030"
+  }
+]

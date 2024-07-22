@@ -1,23 +1,36 @@
-import React from 'react'
-import Link from 'next/link'
-import LoginForm from '../components/members/login-form'
+import React, { useState } from 'react'
+import Head from 'next/head'
+import { Inter } from 'next/font/google'
+import styles from '@/styles/members/login.module.css'
+import Slider from '@/components/slider'
+import Preloader from '@/components/layout/preloader'
 import Navbar from '@/components/layout/navbar'
+import Footer from '@/components/layout/footer'
+import Search from '@/components/search/search'
+import ItineraryCard from '@/components/itinerary/itinerary-card'
+import LectureList from '@/components/lecture/lecture-list'
+import SelectBar from '@/components/lecture/select-bar'
 
-const HomePage = () => {
+
+import Drawer from '@/components/layout/drawer'
+
+const inter = Inter({ subsets: ['latin'] })
+
+export default function Home() {
+  const [category, setCategory] = useState('')
+  const handleSelect = (states) => {
+    setCategory(states)
+  }
   return (
-    <React.StrictMode>
+    <>
+      <Preloader />
 
-    <Navbar />
-      <h1>首頁</h1>
-      <Link href="/members/login" style={{ fontSize: '20px' }}>
-        登入頁面
-      </Link>
-      <br />
-      <Link href="/members/register" style={{ fontSize: '20px' }}>
-        註冊頁面
-      </Link>
-    </React.StrictMode>
+      <Navbar />
+      <Slider />
+      <LectureList category={category} limit={8} />
+      <Search />
+      <ItineraryCard />
+      <Footer />
+    </>
   )
 }
-
-export default HomePage

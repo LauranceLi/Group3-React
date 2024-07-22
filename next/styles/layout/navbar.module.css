@@ -4,16 +4,16 @@
 }
 
 @media only screen and (max-width: 576px) {
-.nav {
-  height: 100%;
-  justify-content: flex-end;
-}
+  .nav {
+    height: 100%;
+    justify-content: flex-end;
+  }
 }
 
 .nav a {
   display: flex;
   color: white;
-  padding: 0.7rem;
+  padding: 0.5rem;
   font-size: 1.2rem;
 }
 
@@ -28,11 +28,11 @@
 .logoBox {
   display: flex;
   justify-content: center;
-  padding: 1.3rem;
-  height: 6.5rem;
+  padding: 0.8rem;
+  height: 4.5rem;
 }
 
-@media only screen and (max-width: 991px) {
+@media only screen and (max-width: 1200px) {
   .logoBox {
     display: none;
   }
@@ -40,6 +40,7 @@
 
 .logoBox a {
   color: white;
+  padding-bottom: 1rem;
   font-size: 1.7rem;
   font-weight: 500;
 }
@@ -54,12 +55,18 @@
   justify-content: center;
 }
 
+.logoText {
+  position: absolute;
+  font-size: 1.8rem;
+  top: 5%;
+}
+
 /* logo動畫 start*/
 .logo,
 .logo:focus,
 .logo:hover {
   position: relative;
-  min-width: 200px;
+  min-width: 11.5rem;
   border: 1px solid #ffffff;
   color: #ffffff;
   font-size: 1rem;
@@ -69,7 +76,7 @@
   text-transform: uppercase;
   -webkit-font-smoothing: antialiased;
 }
-.logo span:nth-child(1),
+.logo span:nth-child(5),
 .logo span:nth-child(2),
 .logo span:nth-child(3),
 .logo span:nth-child(4) {
@@ -78,22 +85,22 @@
   position: absolute;
   background-color: #ffffff;
 }
-.logo span:nth-child(1) {
+.logo span:nth-child(2) {
   width: 1px;
   left: 0;
   bottom: 0;
 }
-.logo span:nth-child(2) {
+.logo span:nth-child(3) {
   height: 1px;
   left: 0;
   top: 0;
 }
-.logo span:nth-child(3) {
+.logo span:nth-child(4) {
   width: 1px;
   right: 0;
   top: 0;
 }
-.logo span:nth-child(4) {
+.logo span:nth-child(5) {
   height: 1px;
   right: 0;
   bottom: 0;
@@ -101,16 +108,16 @@
 .logo:hover {
   border: none;
 }
-.logo:hover span:nth-child(1) {
+.logo:hover span:nth-child(2) {
   animation: move1 1500ms infinite ease;
 }
-.logo:hover span:nth-child(2) {
+.logo:hover span:nth-child(3) {
   animation: move2 1500ms infinite ease;
 }
-.logo:hover span:nth-child(3) {
+.logo:hover span:nth-child(4) {
   animation: move3 1500ms infinite ease;
 }
-.logo:hover span:nth-child(4) {
+.logo:hover span:nth-child(5) {
   animation: move4 1500ms infinite ease;
 }
 @keyframes move1 {
@@ -187,35 +194,44 @@
 .rowNav ul {
   display: flex;
 }
+.drawerBtn {
+  display: none;
+}
 
 @media only screen and (max-width: 576px) {
   .rowNav {
     display: none;
   }
+  .drawerBtn {
+    display: flex;
+  }
 }
 
 .navLink {
   position: relative; /* Add this line */
+  text-decoration: none;
 }
 
 .navLink:after {
   width: 0%;
   content: '';
+  text-decoration: none;
 }
 
 .navLink:hover::after {
   width: 100%;
-  height: 3px;
+  height: 2px;
   background-color: #ffffff;
   position: absolute;
-  bottom: 0;
+  bottom: 5px;
   left: 0;
   transition: all 0.3s linear;
+  text-decoration: none;
 }
 
 @media only screen and (max-width: 767px) {
   .navLink {
-    max-width: 4.5rem;
+    max-width: 4.7rem;
     display: flex;
     text-align: center;
   }
@@ -224,9 +240,6 @@
 .icons {
   display: flex;
   align-items: center;
-}
-.icons a {
-  padding: 0 0.3rem;
 }
 
 .facebookIcon:hover {
@@ -347,9 +360,9 @@
 }
 
 .sticky {
-  background-color: var(--primary-color-75);
+  background-color: var(--primary-color);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
-
 
 .menuBtn {
   display: none;
@@ -364,7 +377,6 @@
   border-radius: 0;
   cursor: pointer;
   outline: none;
-
 }
 
 @media only screen and (max-width: 576px) {
@@ -372,3 +384,47 @@
     display: flex;
   }
 }
+
+.drawerContainer {
+  background-color: var(--primary-color);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.drawerBtn {
+  background-color: transparent !important;
+  border: 0;
+  padding: 0.8rem;
+}
+
+.drawerHeader{
+  display: flex;
+  flex-direction: column !important;
+  align-items: center !important;
+}
+
+.drawerTitle {
+
+  color: white;
+  font-size:2rem;
+}
+.drawerLink {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100% ;
+  max-width: none;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 500;
+  padding: 1.5rem;
+}
+
+.drawerNav {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+

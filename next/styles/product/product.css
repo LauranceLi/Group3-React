@@ -1,0 +1,273 @@
+.mainColor {
+  background-color: #ffb534;
+}
+.searchIcon {
+  flex: 0.1;
+  padding: 5px 10px;
+  background-color: #ffb534;
+  border-top-right-radius: 0.35rem;
+  border-bottom-right-radius: 0.35rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.icons:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+.input::placeholder {
+  color: gray; /* Sets the color of the placeholder text */
+  font-weight: bold;
+  font-size: 12px; /* Sets the font size of the placeholder text */
+  padding-left: 5px;
+}
+.input {
+  height: 28px;
+  padding-left: 5px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border: none;
+  outline: none;
+}
+.leftBar {
+  height: 100vh;
+  margin-left: 30;
+  width: 180;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.faq-container {
+  width: 100%;
+  min-width: 200px;
+  background-color: #ffb534;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  color: white;
+}
+
+.faq-item {
+  padding: 10px;
+  border-bottom: 1px solid #e0e0e0;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.faq-item:last-child {
+  border-bottom: none;
+}
+
+.faq-question {
+  font-size: 14px;
+  font-weight: 700;
+  padding-bottom: 3px;
+  padding-top: 3px;
+  text-align: center;
+  width: 100%;
+}
+
+.faq-answer {
+  font-size: 14px;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+  text-align: left;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.faq-answer.active {
+  border-bottom: 1px solid #e0e0e0;
+  max-height: 500px;
+  padding: 15px;
+}
+
+.icon-container i {
+  font-size: 14px;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+
+.icon-container i.active {
+  transform: rotate(90deg);
+}
+.catOptions {
+  font-weight: bold;
+  text-align: center;
+}
+.catOptions:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  color: black;
+}
+.card {
+  width: 300px;
+  height: 250px;
+  max-width: 300px;
+  margin: 20px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+.card img {
+  width: 100%; /* Make the image fill the width of the container */
+  height: 100%;
+
+  object-fit: cover;
+  border-radius: 0.35rem;
+}
+.card img:hover {
+  -webkit-animation: kenburns-top 5s ease-out both;
+  animation: kenburns-top 5s ease-out both;
+  border-radius: 0.35rem;
+}
+.productList {
+  margin-left: 80px;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+.prodTitle {
+  /* position: relative; */
+  /* height: 0px; */
+  color: #000;
+  display: flex;
+  margin: 0;
+  font-size: 20px;
+  padding: 10px 10px;
+  background-color: #ffb534;
+  justify-content: space-between;
+}
+
+@-webkit-keyframes kenburns-top {
+  0% {
+    -webkit-transform: scale(1) translateY(0);
+    transform: scale(1) translateY(0);
+    -webkit-transform-origin: 50% 16%;
+    transform-origin: 50% 16%;
+  }
+  100% {
+    -webkit-transform: scale(1.25) translateY(-15px);
+    transform: scale(1.25) translateY(-15px);
+    -webkit-transform-origin: top;
+    transform-origin: top;
+  }
+}
+@keyframes kenburns-top {
+  0% {
+    -webkit-transform: scale(1) translateY(0);
+    transform: scale(1) translateY(0);
+    -webkit-transform-origin: 50% 16%;
+    transform-origin: 50% 16%;
+  }
+  100% {
+    -webkit-transform: scale(1.25) translateY(-15px);
+    transform: scale(1.25) translateY(-15px);
+    -webkit-transform-origin: top;
+    transform-origin: top;
+  }
+}
+.pageRow {
+  margin: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-weight: bold;
+}
+.btn-page-h {
+  background-color: #ffb534;
+  color: white;
+}
+.btn-page {
+  align-items: flex-start;
+  appearance: button;
+  /* background-color: rgb(255, 255, 255); */
+  background-image: none;
+  border-bottom-color: rgb(204, 204, 204);
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  border-bottom-style: solid;
+  border-bottom-width: 0.8px;
+  border-image-outset: 0;
+  border-image-repeat: stretch;
+  border-image-slice: 100%;
+  border-image-source: none;
+  border-image-width: 1;
+  border-left-color: rgb(204, 204, 204);
+  border-left-style: solid;
+  border-left-width: 0.8px;
+  border-right-color: rgb(204, 204, 204);
+  border-right-style: solid;
+  border-right-width: 0.8px;
+  border-top-color: rgb(204, 204, 204);
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  border-top-style: solid;
+  border-top-width: 0.8px;
+  box-sizing: border-box;
+  /* color: rgb(51, 51, 51); */
+  cursor: pointer;
+  display: inline-block;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-feature-settings: normal;
+  font-kerning: auto;
+  font-optical-sizing: auto;
+  font-size: 12px;
+  font-stretch: 100%;
+  font-style: normal;
+  font-variant-alternates: normal;
+  font-variant-caps: normal;
+  font-variant-east-asian: normal;
+  font-variant-ligatures: normal;
+  font-variant-numeric: normal;
+  font-variant-position: normal;
+  font-variation-settings: normal;
+  font-weight: 400;
+  height: 29.6px;
+  letter-spacing: normal;
+  line-height: 18px;
+  margin: 0px 3.6px;
+  overflow-x: visible;
+  overflow-y: visible;
+  padding: 5px 10px;
+  text-align: center;
+  text-indent: 0px;
+  text-rendering: auto;
+  text-shadow: none;
+  text-size-adjust: 100%;
+  text-transform: none;
+  text-wrap: nowrap;
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap; /* Corrected the property */
+  width: 33.6px;
+  word-spacing: 0px;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-border-image: none;
+  border-image: none;
+}
+
+.custom-shape-divider-top-1716194365 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.custom-shape-divider-top-1716194365 svg {
+  position: relative;
+  display: block;
+  width: calc(131% + 1.3px);
+  height: 129px;
+}
+
+.custom-shape-divider-top-1716194365 .shape-fill {
+  fill: #ffb534;
+}

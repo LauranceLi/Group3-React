@@ -1,133 +1,104 @@
 import React from 'react'
-import styles from '/styles/members/profile-info.module.css'
-import { ImGoogle2 } from 'react-icons/im'
-import { ImFacebook2 } from 'react-icons/im'
+import { useRouter } from 'next/router'
+import styles from '@/styles/members/member.module.css'
+import useMemberInfo from '@/hooks/use-member-info'
+import Avatar from '@/components/members/avatar'
+import MemberAction from '@/components/members/action-list'
 
-const ProfileInfo = () => {
+import { FaShieldAlt } from 'react-icons/fa'
+import { VscSignOut } from 'react-icons/vsc'
+import { FaStar } from 'react-icons/fa'
+import { BsFillPersonVcardFill } from 'react-icons/bs'
+import { BsPersonFillGear } from 'react-icons/bs'
+import { stripLow } from 'validator'
+
+export default function ProfileInfo() {
+  const {
+    name,
+    email,
+    firstName,
+    lastName,
+    birthday,
+    address,
+    mobile,
+    tag,
+    idNum,
+    points,
+  } = useMemberInfo()
+  const router = useRouter()
+  const toEdit = () => {
+    router.push('/members/profile/edit')
+  }
+
   return (
-    <main>
-      <div className={`${styles.ProfileContainer} bg-img`}>
-        <div className={styles.registerBox}>
-          <div className={styles.registerTitle}>
-            <h2>歡迎加入締杉旅遊</h2>
-          </div>
-
-          <div className={styles.thirdPartyLogin}>
-            <h5>其他方式</h5>
-            <div
-              className={`${styles.registerItem} ${styles.thirdPartyLoginBtns}  border-0 justify-content-start`}
-            >
-              <a href="" className={`${styles.thirdPartyLoginBtn} ${styles.facebookIcon}`}>
-              <ImFacebook2 size={22} />
-                Facebook
-              </a>
-              <a href="" className={`${styles.thirdPartyLoginBtn} ${styles.googleIcon}`}>
-              <ImGoogle2 size={22} />
-                Google
-              </a>
+    <>
+      <main className={styles.memberMain}>
+        <div className={styles.memberContainer}>
+          <div className={styles.memberBox}>
+            <div className={styles.leftBox}>
+              <div className="member">
+                <Avatar width={'10rem'} height={'10rem'} />
+                <h4>{name}</h4>
+              </div>
+              <MemberAction className={styles.actionColumn} />
             </div>
-          </div>
-
-          <form action="#" className={styles.registerForm} method="post">
-            <h5>註冊</h5>
-            <div className={styles.middleBox}>
-              <div className={styles.leftBox}>
-                <div className={styles.registerItem}>
-                  <label htmlFor="registerAccount">帳號</label>
-                  <input
-                    className={styles.registerInput}
-                    name="registerAccount"
-                    type="text"
-                    id="registerAccount"
-                    placeholder="請填入信箱"
-                  />
+            <div className={styles.rightBox}>
+              <MemberAction className={styles.actionRow} />
+              <div className={styles.title}>
+                <BsPersonFillGear
+                  size={40}
+                  className={styles.memberActionIcon}
+                />
+                <h4>會員資料</h4>
+              </div>
+              <div className={styles.infoList}>
+                <div className={styles.infoLeft}>
+                  <div className={styles.infoItem}>
+                    <h5>姓名</h5>
+                    <p>{name}</p>
+                  </div>
+                  <div className={styles.infoItem}>
+                    <h5>護照姓名</h5>
+                    <div className={styles.passportName}>
+                      <p className="me-3">{firstName}</p>
+                      <p>{lastName}</p>
+                    </div>
+                  </div>
+                  <div className={styles.infoItem}>
+                    <h5>信箱</h5>
+                    <p>{email}</p>
+                  </div>
+                  <div className={styles.infoItem}>
+                    <h5>身分證字號</h5>
+                    <p>{idNum}</p>
+                  </div>
                 </div>
-                <div className={`${styles.registerItem} border-0 `}>
-                  <button
-                    type="submit"
-                    className={`btn ${styles.checkMail}`}
-                    
-                  >
-                    驗證信箱
-                  </button>
-                </div>
-                <div className={styles.registerItem}>
-                  <label htmlFor="registerPassword">密碼</label>
-                  <input
-                    className={styles.registerInput}
-                    name="registerPassword"
-                    type="password"
-                    id="registerPassword"
-                    placeholder="請輸入密碼"
-                  />
-                  <button className={styles.eyeIcon} type="button"></button>
-                </div>
-                <div className={styles.registerItem}>
-                  <label htmlFor="registerPassword">確認密碼</label>
-                  <input
-                    className={styles.registerInput}
-                    name="registerPassword"
-                    type="password"
-                    id="registerPassword"
-                    placeholder="請再次確認密碼"
-                  />
-                  <button className={styles.eyeIcon} type="button"></button>
+                <div className={styles.infoRight}>
+                  <div className={styles.infoItem}>
+                    <h5>手機號碼</h5>
+                    <p>{mobile}</p>
+                  </div>
+                  <div className={styles.infoItem}>
+                    <h5>地址</h5>
+                    <p>{address}</p>
+                  </div>
+                  <div className={styles.infoItem}>
+                    <h5>興趣</h5>
+                    <p>{tag}</p>
+                  </div>
+                  <div className={styles.infoItem}>
+                    <h5>生日</h5>
+                    <p>{birthday}</p>
+                  </div>
                 </div>
               </div>
-              <div className={styles.rightBox}>
-                <div className={styles.registerItem}>
-                  <label htmlFor="registerName">姓名</label>
-                  <input
-                    className={styles.registerInput}
-                    name="registerName"
-                    type="text"
-                    id="registerName"
-                  />
-                </div>
-                <div className={styles.registerItem}>
-                  <label htmlFor="registermobile">電話</label>
-                  <input
-                    className={styles.registerInput}
-                    name="registermobile"
-                    type="mobile"
-                    id="registermobile"
-                  />
-                </div>
-                <div className={styles.registerItem}>
-                  <label htmlFor="interest">興趣主題</label>
-                  <select name="interest" className={styles.interestSelect}>
-                    <option
-                      className={styles.interestOption}
-                      value="south-america"
-                    >
-                      中南美洲
-                    </option>
-                    <option className={styles.interestOption} value="japan">
-                      日本
-                    </option>
-                    <option className={styles.interestOption} value="europe">
-                      歐洲
-                    </option>
-                  </select>
-                </div>
-
-                <div
-                  className={`${styles.registerItem} border-0 d-flex align-items-end`}
-                >
-                  <button
-                    type="submit"
-                    className={`btn sonar-btn  ${styles.registerBtn}`}
-                  >
-                    註冊
-                  </button>
-                </div>
-              </div>
+              <buttom type="buttom" className={styles.editBtn} onClick={toEdit}>
+                編輯
+              </buttom>
             </div>
-          </form>
+          </div>
         </div>
-      </div>
-    </main>
+      </main>
+    </>
   )
 }
-
-export default ProfileInfo

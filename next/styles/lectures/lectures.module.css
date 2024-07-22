@@ -1,0 +1,371 @@
+.lectureList {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 3rem;
+  justify-content: center;
+  transition: height 0.3s ease;
+  animation: slideIn 0.3s ease;
+}
+@keyframes slideIn {
+  0% {
+    height: 100px; /* 初始高度 */
+  }
+  100% {
+    height: 200px; /* 最终高度 */
+  }
+}
+
+.lecture_item {
+  width: 21%;
+  min-width: 23rem;
+  padding: 1.5rem;
+  border-radius: 1rem;
+
+
+  opacity: 0;
+  transform: translateY(100px);
+  transition: opacity 0.3s ease-out, transform 0.5s ease-out;
+}
+
+.lecture_item.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.lectureBtn {
+  width: 50%;
+  border: 0;
+  width: 12rem;
+  font-size: 1.2rem;
+}
+.lectureBtn:hover {
+  font-size: 1.2rem;
+  color: white;
+  background-color: var(--info-color);
+}
+.lectureBtn:focus {
+  box-shadow: none;
+  font-size: 1.2rem;
+  color: var(--primary-color);
+  background-color: white;
+}
+
+.signUpform h3 {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 1rem;
+  border-bottom: 2.5px solid #ffb534;
+}
+
+.signUpformBtn {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* 動畫signUpformBtn */
+.signUpformBtn {
+  position: relative;
+  transform: translate3d(0px, 0%, 0px);
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  transition-delay: 0.6s;
+  overflow: hidden;
+  padding: 0.5rem;
+  width: 100%;
+  border: 0;
+}
+.signUpformBtn:before,
+.signUpformBtn:after {
+  content: '';
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  transition: all 0.6s ease;
+}
+.signUpformBtn:before {
+  background: var(--primary-color);
+  border-radius: 50% 50% 0 0;
+  transform: translateY(100%) scaleY(0.5);
+}
+.signUpformBtn:after {
+  background: #ffffff;
+  border-radius: 0;
+  transform: translateY(0) scaleY(1);
+}
+.signUpformBtn div {
+  position: relative;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 1.8rem;
+  text-transform: uppercase;
+  overflow: hidden;
+}
+.signUpformBtn span {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  z-index: 1;
+  text-align: center;
+  transition: transform 0.5s ease;
+}
+.signUpformBtn span:first-child {
+  color: #ffffff;
+
+  transform: translateY(24px);
+}
+.signUpformBtn span:last-child {
+  color: var(--info-color);
+
+  transform: translateY(0);
+}
+.signUpformBtn:hover {
+  background: var(--primary-color);
+  transition: background 0.2s linear;
+  transition-delay: 0.6s;
+  color: #ffffff;
+}
+.signUpformBtn:hover:after {
+  border-radius: 0 0 50% 50%;
+  transform: translateY(-100%) scaleY(0.5);
+  transition-delay: 0;
+}
+.signUpformBtn:hover:before {
+  border-radius: 0;
+  transform: translateY(0) scaleY(1);
+  transition-delay: 0;
+}
+.signUpformBtn:hover span:first-child {
+  transform: translateY(0);
+}
+.signUpformBtn:hover span:last-child {
+  transform: translateY(-32px);
+}
+
+.signUpInput {
+  margin: 1rem;
+}
+.signUpInput input:focus {
+  border-color: #ffb534;
+}
+
+.gallery-content {
+  background-color: #f5ab2c;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sonar-projects-area {
+  margin: auto;
+}
+
+.lectureContent {
+  background-color: #fcfcfc;
+  background-image: url('https://www.transparenttextures.com/patterns/rocky-wall.png');
+  /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+  /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+  box-shadow: 0px 0px 5px #36250852;
+  margin: 0.5rem;
+}
+
+.lectureContent:hover {
+  transition: 0.5s ease;
+}
+
+.signUpBox {
+  background-color: #ffb534;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  height: 3rem;
+}
+
+.imgContainer {
+  position: relative;
+  width: 100%;
+  height: 12.5rem;
+  overflow: hidden; /* 隐藏超出部分 */
+  position: relative;
+}
+
+.imgContainer img {
+  object-fit: cover;
+  object-position: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.country {
+  position: absolute;
+  font-size: 1.6rem;
+  font-weight: 500;
+  letter-spacing: 2px;
+  color: white;
+  width: 100%;
+  margin: 0;
+  padding: 0.3rem;
+  padding-left: 1rem;
+  background-color: var(--balck-color-40);
+  bottom: 0%;
+}
+
+.speaker,
+.introduction {
+  position: absolute;
+  border: 0;
+  background-color: var(--info-color);
+  color: white;
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  margin: 1rem;
+  right: 0;
+  top: 0;
+  transition: 0.1s;
+}
+
+.introduction {
+  right: 0%;
+  top: 3.5rem;
+  background-color: var(--primary-color);
+}
+
+.speaker:hover {
+  right: 3px;
+  top: -2px;
+  box-shadow: 2px 3px 3px var(--balck-color-50);
+}
+
+.introduction:hover {
+  right: 3px;
+  top: 3.375rem;
+  box-shadow: 2px 3px 3px var(--balck-color-50);
+}
+
+.selectBar {
+  width: 100%;
+  /* height: 10rem; */
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #192a56;
+  background-image: url('https://www.transparenttextures.com/patterns/xv.png');
+  /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+}
+
+/* @media only screen and (max-width: 1024px) {
+  .selectBar {
+    height: 12rem;
+  }
+}
+@media only screen and (max-width: 610px) {
+  .selectBar {
+    height: 18rem;
+  }
+} */
+
+.selectTitle {
+  font-size: 2.5rem;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  width: fit-content;
+  padding: 1rem;
+}
+.selectTitle::after {
+  content: '';
+  display: flex;
+  justify-content: center;
+  width: 10rem;
+  height: 3px;
+  background-color: var(--primary-color);
+}
+.selectBtns {
+  display: flex;
+  flex-wrap: wrap;
+  color: white;
+  width: 100%;
+  justify-content: center;
+  bottom: 0;
+  padding-top: 1rem;
+}
+.selectBtn {
+  width: 8rem;
+  height: 100%;
+  border: 0;
+  border-radius: 5px;
+  background-color: transparent;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 2px;
+  padding: 0.5rem ;
+  margin: 0.5rem;
+  transition: 0.3s;
+  cursor: pointer;
+  position: relative;
+}
+
+.selected {
+  position: absolute; /* 绝对定位 */
+  left: 10%;
+  bottom: 0;
+  width: 80%; /* 初始宽度为0 */
+  height: 2px; /* 底线高度 */
+  background-color: #C5E4FB; /* 底线颜色 */
+  transition: width 0.3s ease;
+}
+
+.selectBtn::after {
+  content: ''; /* 必须设置content属性 */
+  position: absolute; /* 绝对定位 */
+  left: 10%;
+  bottom: 0;
+  width: 0; /* 初始宽度为0 */
+  height: 2px; /* 底线高度 */
+  background-color: #C5E4FB; /* 底线颜色 */
+  transition: width 0.3s ease; /* 宽度变化的过渡效果 */
+}
+
+.selectBtn:hover::after, 
+.selectBtn:focus::after, 
+.selectBtn:active::after {
+  width: 80%; /* 悬停、聚焦和点击时底线扩展到100% */
+}
+
+.cardContext {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.cardContext h4:after {
+  content: '';
+  display: block;
+  width: 6rem;
+  height: 3px;
+  background-color: var(--primary-color);
+  margin-top: 0.3rem;
+  margin-bottom: 0.5rem;
+}
+
+.cardContext h1 {
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem;
+}
+
+
+ 

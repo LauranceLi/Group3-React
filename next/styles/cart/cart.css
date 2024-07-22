@@ -1,0 +1,433 @@
+/* 購物車 */
+* ,ul ,li ,label{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style-type: none;
+}
+
+h1,h2,h3,h4,h5,h6{
+  font-weight: 600;
+}
+a{
+  text-decoration: none;
+  color: black;
+}
+p{
+  font-size: 1.125rem;
+}
+.no-border{
+  border: 0;
+  border-radius: 1.25rem;
+}
+.container {
+    width: 80%;
+    height: 100%;
+    justify-content: center;
+    margin: 9.375rem auto;
+}
+#cart_main {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.container_main {
+    width: 68%;
+    margin: 6.25rem 0.625rem 0 3.125rem;
+    display: flex;
+}
+.container_side {
+    width: 25%;
+    /* max-height: 100%; */
+    margin: 6.25rem 3.125rem 0 0.625rem;
+    box-shadow: 0px 0px 0.625rem #7e7e7e;
+    border-radius: 1.25rem;
+}
+
+.order-title {
+    background-color: #ffca6e;
+    padding: 0.625rem;
+    border-top-left-radius: 1.25rem;
+    border-top-right-radius: 1.25rem;
+}
+.order-title h4 {
+    margin: 0;
+}
+.travel-form {
+    width: 100%;
+}
+.first {
+    margin: 0.9375rem;
+    height: 3.125rem;
+    align-content: center;
+    border: 0.0938rem solid #c0c0c0;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+.active-carttitle {
+    background-color: #ffb534;
+    color: #fff;
+    border: none;
+}
+.pass {
+    background-color: #c0c0c0;
+    color: #7e7e7e;
+}
+.second {
+    width: 100%;
+}
+.travel-info {
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+    border-bottom: 0.0938rem solid #c0c0c0;
+    padding: 0.3125rem;
+}
+.travel-info:hover{
+  background-color: #ececec;
+}
+.travel-info2 {
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+    border-bottom: 0.0938rem solid #c0c0c0;
+    padding: 0.3125rem;
+}
+.unit-price {
+    width: 12.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.travel-saleitem {
+    width: 100%;
+    /* font-size: 1.25rem; */
+    line-height: 2.6875rem;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+.travel-saleitem img {
+    width: 6.25rem;
+    /* margin-left: 6.25rem; */
+}
+.quantity {
+    width: 3.125rem;
+}
+.total-amount {
+    display: flex;
+    justify-content: space-between;
+}
+.contract-view {
+    width: 100%;
+    height: 12.5rem;
+}
+.view-text-scroll {
+    height: 12.5rem;
+    overflow: auto;
+}
+.btn-main {
+    background-color: #ffb534;
+}
+ .shopping_items .btn-main:hover {
+    transform: scale(1.03);
+}
+.agreement-btn {
+    display: flex;
+    justify-content: center;
+}
+.go-shopping {
+    width: 18.75rem;
+    margin: auto;
+}
+.cart-img {
+    width: 1.25rem;
+    margin: auto;
+}
+.form-check-label {
+    margin-left: 0%;
+}
+.salebox {
+    display: flex;
+}
+.saleitem {
+    width: 25%;
+    border: 0.0625rem solid #7e7e7e;
+    border-radius: 0.625rem;
+    padding: 0.625rem;
+    margin: 0.625rem;
+}
+ .shopping_items:hover , .saleitem:hover {
+    box-shadow: 0px 0px 0.625rem #7e7e7e;
+}
+.salepic {
+    padding: 0.625rem;
+    display: flex;
+    justify-content: center;
+}
+.salebtn {
+    display: flex;
+    justify-content: space-around;
+}
+.bottom-line {
+    border-bottom: 0.125rem solid #ffb534;
+}
+.text{
+  width: 80%;
+}
+.ship711{
+    max-width: 50%;
+}
+.view{
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  height:37.5rem;
+  /* background-color: #ffca6e; */
+}
+.view_color{
+  color: rgb(0, 0, 0);
+  margin: 3.125rem;
+}
+.view_whitecolor{
+  color: rgb(255, 255, 255);
+}
+  /* 商城 */
+#Shopping_mall{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  }
+  .shopping_container_main{
+    width: 80%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .shopping_container_side{
+    height: 100%;
+    border: .0625rem solid #c0c0c0;
+    border-radius: 1.25rem;
+    padding: .625rem;
+  }
+  .shopping_items{
+    /* display: flex; */
+    width: 23%;
+    height: 120%;
+    border:  0.0625rem solid #c0c0c0;
+    border-radius: 1.25rem;
+    margin: .3125rem;
+  }
+  .shopping_items:hover{
+    transform: scale(1.03);
+  }
+  .shopping_pic{
+    width: 100%;
+    padding: .625rem;
+    display: flex;
+    justify-content: center;
+  }
+  .shopping_pic img {
+    max-width: 100%;
+    border-top-left-radius: 1.25rem;
+    border-top-right-radius: 1.25rem;
+  }
+  .shopping_text h5{
+    padding: .625rem;
+  }
+  .tag{
+    position: relative;
+    /* left: 65%; */
+    background-color: #ffca6e;
+    border-radius: 1.25rem;
+    padding: .3125rem;
+    margin: .3125rem;
+    font-size: 0.8rem;
+    color: #412a03;
+    font-weight: 600;
+  }
+  /* 商品詳細 */
+#Product_information{
+    margin: auto;
+    display: flex;
+    width: 100%;
+  }
+  .product_info{
+    box-shadow: 0px 0px 0.625rem #7e7e7e;
+    border-radius: 1.25rem;
+  }
+  .product_info_pic{
+    /* CSS 檔案無法讀取到 public 資料夾的檔案，
+    那是因為 React 對 src 資料夾做外部的導入限制 */
+    /* background-image: url('/public/001.jpg'); */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center; 
+    width: 25rem;
+    height: 100%;
+  }
+  .product-container-side{
+    height: 18.75rem;
+    border: .0625rem solid #c0c0c0;
+    border-radius: 1.25rem;
+    padding: .625rem;
+  }
+  .categories{
+    padding: .625rem;
+  }
+  .info-btn{
+    display: flex;
+    justify-content: space-around;
+  }
+  .number{
+    margin: .625rem;
+    line-height: 1.875rem;
+  }
+
+  /* 768~1023 */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .container {
+      width: 100%;
+ }
+  #cart_main {
+    width: 100%;
+    display: block;
+  }
+  .container_main {
+    width: 100%;
+    display: block;
+    margin: 6.25rem .625rem;
+ }
+ .container_side {
+    width: 100%;
+  }
+  .travel-info {
+    width: 100%;
+    height: 12.5rem;
+  }
+ .salebox {
+  width: 100%;
+  flex-wrap: wrap;
+  }
+  .saleitem {
+      width: 45%;
+      display: block;
+  }
+  .salepic img{
+      margin: auto;
+  }
+  .customer-info{
+      display: block;
+  }
+  .customer-info-btn button{
+      width: 9.375rem;
+  }
+  .shopping_container_main{
+    width: 100%;
+  }
+  .shopping_items{
+    width: 45%;
+  }
+  .go-shopping{
+    width: 100%;
+  }
+  .ship711{
+    max-width: 80%;
+}
+
+
+}
+
+/* 767  */
+@media screen and (max-width: 767px) {
+  .container {
+      width: 100%;
+ }
+ .big-title{
+  display: none;
+ }
+ #cart_main {
+  width: 100%;
+  display: block;
+  }
+  .container_main {
+      width: 100%;
+      display: block;
+      margin: 6.25rem .625rem;
+ }
+ .container_side {
+  width: 100%;
+  }
+  .travel-info {
+      width: 100%;
+      /* height: 20rem; */
+ }
+ .travel-info img {
+  margin: auto;
+ }
+  .travel-saleitem h6 {
+      border-bottom: none;
+  }
+  .salebox {
+      width: 100%;
+      display: block;
+ }
+ .saleitem {
+  width: 100%;
+  display: block;
+  }
+  .customer-info{
+      display: block;
+  }
+  .customer-info-btn button{
+      width: 9.375rem;
+  }
+  #Shopping_mall{
+    display: block;
+  }
+  .shopping_container_main{
+    width: 100%;
+  }
+  .shopping_items{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  #Product_information{
+    display: block;
+  }
+  .product_info_pic{
+    width: 100%;
+    height: 18.75rem;
+  }
+  .product_info .order-title{
+    display: none;
+  }
+  .go-shopping{
+    width: 100%;
+  }
+  #list{
+    display: none;
+  }
+  .ship711{
+    display: block;
+    max-width: 100%;
+}
+.zipcode{
+  display: block;
+}
+.zipcode_city{
+  width: 100%;
+  margin-top: .625rem;
+}
+.zipcode_area{
+  width: 100%;
+  margin-top: .625rem;
+}
+.zipcode_address{
+  margin-top: .625rem;
+}
+}
+  

@@ -1,7 +1,7 @@
 import { DataTypes } from 'sequelize'
 
 export default async function (sequelize) {
-  return sequelize.define(
+  const Members = sequelize.define(
     'Members',
     {
       member_id: {
@@ -18,16 +18,18 @@ export default async function (sequelize) {
       },
       password: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
     },
     {
-      tableName: 'members', //直接提供資料表名稱
-      timestamps: true, // 使用時間戳
-      paranoid: false, // 軟性刪除
-      underscored: true, // 所有自動建立欄位，使用snake_case命名
-      createdAt: 'created_at', // 建立的時間戳
-      updatedAt: 'updated_at', // 更新的時間戳
+      tableName: 'members',
+      timestamps: true,
+      paranoid: false,
+      underscored: true,
+      createdAt: 'created_at',
+      updatedAt: 'updated_at',
     }
   )
+
+  return Members
 }

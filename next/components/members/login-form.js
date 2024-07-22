@@ -1,12 +1,20 @@
 import React, { useState } from 'react'
-import { useNavigate } from "react-router-dom";
+
+import Link from 'next/link'
+import Swal from 'sweetalert2'
+import { useRouter } from 'next/router'
 import styles from '@/styles/members/login.module.css'
 import Avatar from './avatar'
+import GoogleLogin from './google-login'
 import { ImGoogle2 } from 'react-icons/im'
 import { ImFacebook2 } from 'react-icons/im'
 import { RiEyeFill } from 'react-icons/ri'
 import { RiEyeOffFill } from 'react-icons/ri'
 import { GiCommercialAirplane } from 'react-icons/gi'
+import useMemberInfo from '@/hooks/use-member-info'
+
+// 開發用
+import TestBtn from '@/components/test/testBtn'
 
 // 解析accessToken用的函式
 const parseJwt = (token) => {
@@ -16,7 +24,8 @@ const parseJwt = (token) => {
 }
 
 const LoginForm = () => {
-  // const navigate = useNavigate()
+  const router = useRouter()
+  const [avatarUrl, setAvatarUrl] = useState('/images/forest.jpg')
   const [IsVisible, setIsVisible] = useState(false)
   const toggleVisibility = () => {
     setIsVisible(!IsVisible)
@@ -36,8 +45,6 @@ const LoginForm = () => {
   const handleFieldChange = (e) => {
     // 可以利用e.target觀察目前是在輸入或操作哪個欄位上
     setUser({ ...user, [e.target.name]: e.target.value })
-    console.log(e.target.name, e.target.type, e.target.value)
-    console.log(user)
   }
 
   // 表單送出事件處理函式
@@ -70,10 +77,9 @@ const LoginForm = () => {
 
     // 有錯誤發生，不送到伺服器去
     if (hasErrors) {
-      return 
+      return
     }
     // 表單檢查--- END ---
-
     // 檢查沒問題後再送到伺服器
     const res = await fetch('http://localhost:3005/api/members/login', {
       credentials: 'include', // 設定cookie或是要存取隱私資料時帶cookie到伺服器一定要加
@@ -89,40 +95,62 @@ const LoginForm = () => {
 
     if (data.status === 'success') {
       const returnUser = parseJwt(data.data.accessToken)
-      console.log(returnUser)
+      localStorage.setItem('user', JSON.stringify(returnUser))
 
+      router.push('/members')
     } else {
-      alert(data.message)
+      Swal.fire({
+        title: ' 登入失敗',
+        icon: data.status,
+        text: data.message,
+        confirmButtonText: '重新嘗試',
+        confirmButtonColor: '#192a56',
+      })
     }
   }
 
+  const handleBlur = async () => {
+    const res = await fetch('http://localhost:3005/api/members/login-avatar', {
+      credentials: 'include', // 設定cookie或是要存取隱私資料時帶cookie到伺服器一定要加
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(user),
+    })
 
-  // const handleCheck = async () => {
-  //   // 檢查沒問題後再送到伺服器
-  //   const res = await fetch('http://localhost:3005/api/members/check', {
-  //     credentials: 'include', // 設定cookie或是要存取隱私資料時帶cookie到伺服器一定要加
-  //     method: 'GET',
-  //     headers: {
-  //       Accept: 'application/json',
-  //       'Content-Type': 'application/json',
-  //     },
-  //   })
+    const data = await res.json()
+    setAvatarUrl(data.avatar)
+  }
 
-  //   const data = await res.json()
+  const emailErrorInput = () => {
+    setUser({ email: 'emailError@gmail.com', password: '123456' })
+  }
 
-  //   if (data.status === 'success') {
-  //     console.log(data.data)
-  //   } else {
-  //     alert(data.message)
-  //   }
-  // }
+  const passwordErrorInput = () => {
+    setUser({ email: 'group3@gmail.com', password: 'passwordError' })
+  }
+
+  const successInput = () => {
+    setUser({ email: 'group3@gmail.com', password: '123456' })
+  }
+  const newUserInput = () => {
+    setUser({ email: 'newAccount@gmail.com', password: 'a12345678' })
+  }
 
   return (
     <>
+      <TestBtn
+        testInput_1={emailErrorInput}
+        testInput_2={passwordErrorInput}
+        testInput_3={successInput}
+        testInput_5={newUserInput}
+      />
       <main>
         <div className={`${styles.loginFormContainer} bgImg`}>
           <div className={styles.leftBox}>
-            <Avatar width={'12rem'} height={'12rem'} />
+            <Avatar width={'12rem'} height={'12rem'} avatarUrl={avatarUrl} />
             <form onSubmit={handleSubmit} className={styles.loginForm}>
               <h5>會員登入</h5>
               <div className={styles.loginItem}>
@@ -134,6 +162,7 @@ const LoginForm = () => {
                   type="text"
                   placeholder="請填入信箱"
                   onChange={handleFieldChange}
+                  onBlur={handleBlur}
                 />
               </div>
               <div className={styles.loginItem}>
@@ -167,15 +196,15 @@ const LoginForm = () => {
                 >
                   登入
                 </button>
-
               </div>
               <div className={styles.loginItem}>
-                <a
+                <Link
+                  href="/members/register"
+                  title="註冊"
                   className={`${styles.registerBtn}`}
-                  href="../register/register.html"
                 >
                   立即加入
-                </a>
+                </Link>
               </div>
               <a href="#" className={styles.forgetPW}>
                 忘記密碼
@@ -184,14 +213,15 @@ const LoginForm = () => {
             <div className={styles.thirdPartyLogin}>
               <h5>其他登入方式</h5>
               <div className={`${styles.loginItem} border-0`}>
-                <a href="" className={`${styles.thirdPartyLoginBtn} `}>
+                {/* <buttom
+                  type="button"
+                  className={`${styles.thirdPartyLoginBtn} `}
+                >
                   <ImFacebook2 size={22} className={styles.facebookIcon} />
                   Facebook
-                </a>
-                <a href="" className={styles.thirdPartyLoginBtn}>
-                  <ImGoogle2 size={22} />
-                  Google
-                </a>
+                </buttom> */}
+
+                <GoogleLogin />
               </div>
             </div>
           </div>
@@ -207,6 +237,7 @@ const LoginForm = () => {
               <h2>締杉旅遊 邀您領略，四季遞嬗。</h2>
             </div>
             <div className={styles.contact}>
+            <Link href="/contact">
               <button className={`${styles.contactBtn}`}>
                 <div>
                   <span>
@@ -215,6 +246,7 @@ const LoginForm = () => {
                   <span>聯絡我們</span>
                 </div>
               </button>
+            </Link>
             </div>
           </div>
         </div>
